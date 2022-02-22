@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  ITExams
+
+  Created by Андрей Чернышев on 22.02.2022.
+  
+*/
+
+// MARK: General
+"Cancel" = "Cancel";
+"Continue" = "Continue";
+
+// MARK: ImagePicker
+"ImagePicker.TakePhoto" = "Take photo";
+"ImagePicker.CameraRoll" = "Camera roll";
+"ImagePicker.PhotoLibrary" = "Photo library";
