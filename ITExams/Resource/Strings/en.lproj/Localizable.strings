@@ -27,3 +27,6 @@
 "Onboarding.Motivation.Cell1" = "Expand my knowledge";
 "Onboarding.Motivation.Cell2" = "Keep track of progress";
 "Onboarding.Motivation.Cell3" = "Develop a learning habit";
+"Onboarding.Age.Header" = "Assessment";
+"Onboarding.Age.Title" = "What is your age?";
+"Onboarding.Age.SubTitle" = "It will give you the opportunity to compare your results with your peers";

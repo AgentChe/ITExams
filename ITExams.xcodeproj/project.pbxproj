@@ -53,6 +53,7 @@
 		DED4724327CE406600AEF8A6 /* OStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724227CE406600AEF8A6 /* OStartView.swift */; };
 		DED4724527CE4BF700AEF8A6 /* OMotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724427CE4BF700AEF8A6 /* OMotivationView.swift */; };
 		DED4724827CE4C4B00AEF8A6 /* OMotivationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */; };
+		DED4724A27CE5CF000AEF8A6 /* OAgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724927CE5CF000AEF8A6 /* OAgeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		DED4724227CE406600AEF8A6 /* OStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OStartView.swift; sourceTree = "<group>"; };
 		DED4724427CE4BF700AEF8A6 /* OMotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMotivationView.swift; sourceTree = "<group>"; };
 		DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMotivationCell.swift; sourceTree = "<group>"; };
+		DED4724927CE5CF000AEF8A6 /* OAgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAgeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,6 +342,7 @@
 				DE9378C827C4C0E90073F27C /* OSlideView.swift */,
 				DED4724227CE406600AEF8A6 /* OStartView.swift */,
 				DED4724427CE4BF700AEF8A6 /* OMotivationView.swift */,
+				DED4724927CE5CF000AEF8A6 /* OAgeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				DE93788427C4B2600073F27C /* AppDelegate.swift in Sources */,
 				DE93789727C4BDED0073F27C /* UIEdgeInsets+Extension.swift in Sources */,
 				DE93787E27C4B2600073F27C /* TapAreaButton.swift in Sources */,
+				DED4724A27CE5CF000AEF8A6 /* OAgeView.swift in Sources */,
 				DE93787B27C4B2600073F27C /* Toast.swift in Sources */,
 				DE93790427C4C0E90073F27C /* OnboardingView.swift in Sources */,
 				DE9378F627C4C0E90073F27C /* OSlideView.swift in Sources */,
