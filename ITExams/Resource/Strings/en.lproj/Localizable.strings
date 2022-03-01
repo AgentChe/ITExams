@@ -14,3 +14,9 @@
 "ImagePicker.TakePhoto" = "Take photo";
 "ImagePicker.CameraRoll" = "Camera roll";
 "ImagePicker.PhotoLibrary" = "Photo library";
+
+// MARK: Onboarding
+"Onboarding.Start.Header" = "Personal Plan";
+"Onboarding.Start.Title" = "Let’s build together\nyour study program";
+"Onboarding.Start.SubTitle" = "First, let’s find out your regular study norm. For its calculation we will need to know some information about you.";
+"Onboarding.Start.Button" = "Let’s go";

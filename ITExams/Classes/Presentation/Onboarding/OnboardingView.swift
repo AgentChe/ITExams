@@ -9,13 +9,13 @@ import UIKit
 
 final class OnboardingView: UIView {
     enum Step: Int {
-        case welcome
+        case start
     }
     
     var didFinish: (() -> Void)?
     var didChangedSlide: ((Step) -> Void)?
     
-    var step = Step.welcome {
+    var step = Step.start {
         didSet {
             scroll()
         }
@@ -25,7 +25,7 @@ final class OnboardingView: UIView {
     
     private lazy var contentViews: [OSlideView] = {
         [
-            
+            OStartView(step: .start)
         ]
     }()
     

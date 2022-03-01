@@ -50,6 +50,7 @@
 		DE9378F627C4C0E90073F27C /* OSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9378C827C4C0E90073F27C /* OSlideView.swift */; };
 		DE93790427C4C0E90073F27C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9378D627C4C0E90073F27C /* OnboardingView.swift */; };
 		DE93790527C4C0E90073F27C /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9378D727C4C0E90073F27C /* OnboardingViewModel.swift */; };
+		DED4724327CE406600AEF8A6 /* OStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724227CE406600AEF8A6 /* OStartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +101,7 @@
 		DE9378C827C4C0E90073F27C /* OSlideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSlideView.swift; sourceTree = "<group>"; };
 		DE9378D627C4C0E90073F27C /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		DE9378D727C4C0E90073F27C /* OnboardingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		DED4724227CE406600AEF8A6 /* OStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OStartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -331,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				DE9378C827C4C0E90073F27C /* OSlideView.swift */,
+				DED4724227CE406600AEF8A6 /* OStartView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				DE93787F27C4B2600073F27C /* PaddingLabel.swift in Sources */,
 				DE93787C27C4B2600073F27C /* NursingNavigationController.swift in Sources */,
 				DE9378D827C4C0E90073F27C /* OnboardingViewController.swift in Sources */,
+				DED4724327CE406600AEF8A6 /* OStartView.swift in Sources */,
 				DE93786B27C4B2600073F27C /* Collection+Extension.swift in Sources */,
 				DE93787127C4B2600073F27C /* GlobalDefinitions.swift in Sources */,
 				DE93786A27C4B2600073F27C /* UIColorExtension.swift in Sources */,
