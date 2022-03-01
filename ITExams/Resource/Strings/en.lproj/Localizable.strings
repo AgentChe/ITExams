@@ -9,6 +9,7 @@
 // MARK: General
 "Cancel" = "Cancel";
 "Continue" = "Continue";
+"Next" = "Next";
 
 // MARK: ImagePicker
 "ImagePicker.TakePhoto" = "Take photo";
@@ -20,3 +21,9 @@
 "Onboarding.Start.Title" = "Let’s build together\nyour study program";
 "Onboarding.Start.SubTitle" = "First, let’s find out your regular study norm. For its calculation we will need to know some information about you.";
 "Onboarding.Start.Button" = "Let’s go";
+"Onboarding.Motivation.Header" = "Motivation";
+"Onboarding.Motivation.Title" = "How the App Name\ncan help you?";
+"Onboarding.Motivation.SubTitle" = "Don’t worry, you’ll still have access to every feature";
+"Onboarding.Motivation.Cell1" = "Expand my knowledge";
+"Onboarding.Motivation.Cell2" = "Keep track of progress";
+"Onboarding.Motivation.Cell3" = "Develop a learning habit";

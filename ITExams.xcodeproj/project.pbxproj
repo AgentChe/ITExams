@@ -51,6 +51,8 @@
 		DE93790427C4C0E90073F27C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9378D627C4C0E90073F27C /* OnboardingView.swift */; };
 		DE93790527C4C0E90073F27C /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9378D727C4C0E90073F27C /* OnboardingViewModel.swift */; };
 		DED4724327CE406600AEF8A6 /* OStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724227CE406600AEF8A6 /* OStartView.swift */; };
+		DED4724527CE4BF700AEF8A6 /* OMotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724427CE4BF700AEF8A6 /* OMotivationView.swift */; };
+		DED4724827CE4C4B00AEF8A6 /* OMotivationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +104,8 @@
 		DE9378D627C4C0E90073F27C /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		DE9378D727C4C0E90073F27C /* OnboardingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		DED4724227CE406600AEF8A6 /* OStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OStartView.swift; sourceTree = "<group>"; };
+		DED4724427CE4BF700AEF8A6 /* OMotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMotivationView.swift; sourceTree = "<group>"; };
+		DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMotivationCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,10 +336,20 @@
 		DE9378A227C4C0E90073F27C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DED4724627CE4C4300AEF8A6 /* Atoms */,
 				DE9378C827C4C0E90073F27C /* OSlideView.swift */,
 				DED4724227CE406600AEF8A6 /* OStartView.swift */,
+				DED4724427CE4BF700AEF8A6 /* OMotivationView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		DED4724627CE4C4300AEF8A6 /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+				DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */,
+			);
+			path = Atoms;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -474,11 +488,13 @@
 				DE93790527C4C0E90073F27C /* OnboardingViewModel.swift in Sources */,
 				DE93788327C4B2600073F27C /* GradientView.swift in Sources */,
 				DE93788227C4B2600073F27C /* CircleView.swift in Sources */,
+				DED4724527CE4BF700AEF8A6 /* OMotivationView.swift in Sources */,
 				DE93787327C4B2600073F27C /* NumberLaunches.swift in Sources */,
 				DE93787827C4B2600073F27C /* SignError.swift in Sources */,
 				DE93789D27C4BF0D0073F27C /* SplashViewModel.swift in Sources */,
 				DE93788027C4B2600073F27C /* PaddingPickerView.swift in Sources */,
 				DE93787227C4B2600073F27C /* Scalable.swift in Sources */,
+				DED4724827CE4C4B00AEF8A6 /* OMotivationCell.swift in Sources */,
 				DE93786D27C4B2600073F27C /* UITapGestureRecognizerExtension.swift in Sources */,
 				DE93786E27C4B2600073F27C /* UIDeviceExtension.swift in Sources */,
 				DE93788127C4B2600073F27C /* GradientButton.swift in Sources */,

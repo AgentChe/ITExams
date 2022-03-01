@@ -137,6 +137,7 @@ private extension OStartView {
         view.setAttributedTitle("Onboarding.Start.Button".localized.attributed(with: attrs), for: .normal)
         view.backgroundColor = Appearance.mainColor
         view.layer.cornerRadius = 8.scale
+        view.addTarget(self, action: #selector(onNext), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
