@@ -14,7 +14,7 @@ final class OnboardingView: UIView {
     
     var didFinish: (() -> Void)?
     
-    private(set) var step = Step.start
+    private var step = Step.start
     
     private lazy var contentViews: [OSlideView] = {
         [
@@ -48,9 +48,17 @@ extension OnboardingView: OSlideViewDelegate {
             return
         }
         
-        self.step = nextStep
-        
         scroll(to: nextStep)
+    }
+    
+    func slideViewDidBack(from step: OnboardingView.Step) {
+        let previousRawValue = step.rawValue - 1
+        
+        guard let previousStep = Step(rawValue: previousRawValue) else {
+            return
+        }
+        
+        scroll(to: previousStep)
     }
 }
 
@@ -73,9 +81,11 @@ private extension OnboardingView {
             }
     }
     
-    func scroll(to step: Step) {
-        let currentIndex = step.rawValue - 1
-        let scrollToIndex = step.rawValue
+    func scroll(to newStep: Step) {
+        let currentIndex = step.rawValue
+        let scrollToIndex = newStep.rawValue
+        
+        let direction = scrollToIndex > currentIndex ? 1 : -1
         
         let indices = contentViews.indices
         
@@ -86,16 +96,22 @@ private extension OnboardingView {
         let currentView = contentViews[currentIndex]
         let scrollToView = contentViews[scrollToIndex]
         
-        scrollToView.frame.origin = CGPoint(x: 375.scale, y: 0)
+        scrollToView.frame.origin = CGPoint(x: 375.scale * CGFloat(direction), y: 0)
         addSubview(scrollToView)
         
         UIView.animate(withDuration: 0.3, animations: {
-            currentView.frame.origin = CGPoint(x: -375.scale, y: 0)
+            currentView.frame.origin = CGPoint(x: 375.scale * CGFloat(-direction), y: 0)
             scrollToView.frame.origin = CGPoint(x: 0, y: 0)
-        }, completion: { result in
+        }, completion: { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            
             currentView.removeFromSuperview()
             
             scrollToView.moveToThis()
+            
+            self.step = newStep
         })
     }
 }
