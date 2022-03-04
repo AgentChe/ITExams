@@ -54,6 +54,7 @@
 		DED4724527CE4BF700AEF8A6 /* OMotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724427CE4BF700AEF8A6 /* OMotivationView.swift */; };
 		DED4724827CE4C4B00AEF8A6 /* OMotivationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */; };
 		DED4724A27CE5CF000AEF8A6 /* OAgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724927CE5CF000AEF8A6 /* OAgeView.swift */; };
+		DED4724E27D1DA6B00AEF8A6 /* OWhyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724D27D1DA6B00AEF8A6 /* OWhyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +109,7 @@
 		DED4724427CE4BF700AEF8A6 /* OMotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMotivationView.swift; sourceTree = "<group>"; };
 		DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMotivationCell.swift; sourceTree = "<group>"; };
 		DED4724927CE5CF000AEF8A6 /* OAgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAgeView.swift; sourceTree = "<group>"; };
+		DED4724D27D1DA6B00AEF8A6 /* OWhyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OWhyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,6 +345,7 @@
 				DED4724227CE406600AEF8A6 /* OStartView.swift */,
 				DED4724427CE4BF700AEF8A6 /* OMotivationView.swift */,
 				DED4724927CE5CF000AEF8A6 /* OAgeView.swift */,
+				DED4724D27D1DA6B00AEF8A6 /* OWhyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				DED4724827CE4C4B00AEF8A6 /* OMotivationCell.swift in Sources */,
 				DE93786D27C4B2600073F27C /* UITapGestureRecognizerExtension.swift in Sources */,
 				DE93786E27C4B2600073F27C /* UIDeviceExtension.swift in Sources */,
+				DED4724E27D1DA6B00AEF8A6 /* OWhyView.swift in Sources */,
 				DE93788127C4B2600073F27C /* GradientButton.swift in Sources */,
 				DE93788627C4B2600073F27C /* UIViewRxExtension.swift in Sources */,
 				DE93787927C4B2600073F27C /* Weak.swift in Sources */,

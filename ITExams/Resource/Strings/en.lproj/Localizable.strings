@@ -30,3 +30,6 @@
 "Onboarding.Age.Header" = "Assessment";
 "Onboarding.Age.Title" = "What is your age?";
 "Onboarding.Age.SubTitle" = "It will give you the opportunity to compare your results with your peers";
+"Onboarding.Why.Header" = "Why App Name?";
+"Onboarding.Why.Title" = "It’s not a cramming -\nit’s a playing";
+"Onboarding.Why.SubTitle" = "What if we told you that you could enjoy studying for your exam? It seems like a game, keeping you sharp and interested.";
