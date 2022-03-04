@@ -56,6 +56,10 @@
 		DED4724A27CE5CF000AEF8A6 /* OAgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724927CE5CF000AEF8A6 /* OAgeView.swift */; };
 		DED4724E27D1DA6B00AEF8A6 /* OWhyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724D27D1DA6B00AEF8A6 /* OWhyView.swift */; };
 		DED4725027D1DE6700AEF8A6 /* OQuizSolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724F27D1DE6700AEF8A6 /* OQuizSolutionView.swift */; };
+		DED4725427D2091600AEF8A6 /* OExamsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4725327D2091600AEF8A6 /* OExamsTableCell.swift */; };
+		DED4725627D20B2300AEF8A6 /* OExamsTableElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4725527D20B2300AEF8A6 /* OExamsTableElement.swift */; };
+		DED4725827D20C4C00AEF8A6 /* OExamsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4725727D20C4C00AEF8A6 /* OExamsTable.swift */; };
+		DED4725A27D20F7800AEF8A6 /* OExamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4725927D20F7800AEF8A6 /* OExamsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +116,10 @@
 		DED4724927CE5CF000AEF8A6 /* OAgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAgeView.swift; sourceTree = "<group>"; };
 		DED4724D27D1DA6B00AEF8A6 /* OWhyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OWhyView.swift; sourceTree = "<group>"; };
 		DED4724F27D1DE6700AEF8A6 /* OQuizSolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OQuizSolutionView.swift; sourceTree = "<group>"; };
+		DED4725327D2091600AEF8A6 /* OExamsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OExamsTableCell.swift; sourceTree = "<group>"; };
+		DED4725527D20B2300AEF8A6 /* OExamsTableElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OExamsTableElement.swift; sourceTree = "<group>"; };
+		DED4725727D20C4C00AEF8A6 /* OExamsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OExamsTable.swift; sourceTree = "<group>"; };
+		DED4725927D20F7800AEF8A6 /* OExamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OExamsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,6 +356,7 @@
 				DED4724427CE4BF700AEF8A6 /* OMotivationView.swift */,
 				DED4724927CE5CF000AEF8A6 /* OAgeView.swift */,
 				DED4724D27D1DA6B00AEF8A6 /* OWhyView.swift */,
+				DED4725927D20F7800AEF8A6 /* OExamsView.swift */,
 				DED4724F27D1DE6700AEF8A6 /* OQuizSolutionView.swift */,
 			);
 			path = Views;
@@ -356,9 +365,20 @@
 		DED4724627CE4C4300AEF8A6 /* Atoms */ = {
 			isa = PBXGroup;
 			children = (
+				DED4725127D208B100AEF8A6 /* ExamsTable */,
 				DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */,
 			);
 			path = Atoms;
+			sourceTree = "<group>";
+		};
+		DED4725127D208B100AEF8A6 /* ExamsTable */ = {
+			isa = PBXGroup;
+			children = (
+				DED4725327D2091600AEF8A6 /* OExamsTableCell.swift */,
+				DED4725527D20B2300AEF8A6 /* OExamsTableElement.swift */,
+				DED4725727D20C4C00AEF8A6 /* OExamsTable.swift */,
+			);
+			path = ExamsTable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -480,6 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DED4725627D20B2300AEF8A6 /* OExamsTableElement.swift in Sources */,
 				DE93789B27C4BF070073F27C /* SplashViewController.swift in Sources */,
 				DE93787527C4B2600073F27C /* ScreenSize.swift in Sources */,
 				DE93787727C4B2600073F27C /* Fonts.swift in Sources */,
@@ -496,6 +517,7 @@
 				DE93787A27C4B2600073F27C /* ImagePicker.swift in Sources */,
 				DE93789F27C4BF120073F27C /* SplashView.swift in Sources */,
 				DE93790527C4C0E90073F27C /* OnboardingViewModel.swift in Sources */,
+				DED4725827D20C4C00AEF8A6 /* OExamsTable.swift in Sources */,
 				DE93788327C4B2600073F27C /* GradientView.swift in Sources */,
 				DED4725027D1DE6700AEF8A6 /* OQuizSolutionView.swift in Sources */,
 				DE93788227C4B2600073F27C /* CircleView.swift in Sources */,
@@ -521,6 +543,8 @@
 				DE93787127C4B2600073F27C /* GlobalDefinitions.swift in Sources */,
 				DE93786A27C4B2600073F27C /* UIColorExtension.swift in Sources */,
 				DE93787427C4B2600073F27C /* TextAttributes.swift in Sources */,
+				DED4725A27D20F7800AEF8A6 /* OExamsView.swift in Sources */,
+				DED4725427D2091600AEF8A6 /* OExamsTableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
