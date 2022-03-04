@@ -40,12 +40,12 @@ private extension OWhyView {
             imageView.widthAnchor.constraint(equalToConstant: 287.scale),
             imageView.heightAnchor.constraint(equalToConstant: 287.scale),
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageView.topAnchor.constraint(equalTo: topAnchor, constant: 82.scale)
+            imageView.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 82.scale : 42.scale)
         ])
         
         NSLayoutConstraint.activate([
             headerLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            headerLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 48.scale)
+            headerLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: ScreenSize.isIphoneXFamily ? 48.scale : 24.scale)
         ])
         
         NSLayoutConstraint.activate([

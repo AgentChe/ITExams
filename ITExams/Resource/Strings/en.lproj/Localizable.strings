@@ -33,3 +33,7 @@
 "Onboarding.Why.Header" = "Why App Name?";
 "Onboarding.Why.Title" = "It’s not a cramming -\nit’s a playing";
 "Onboarding.Why.SubTitle" = "What if we told you that you could enjoy studying for your exam? It seems like a game, keeping you sharp and interested.";
+"Onboarding.QuizSolution.Title" = "Now, take this 1-2\nminute quiz";
+"Onboarding.QuizSolution.SubTitle" = "It’s important to enhance your learning";
+"Onboarding.QuizSolution.Skip" = "Skip";
+"Onboarding.QuizSolution.Start" = "Start";

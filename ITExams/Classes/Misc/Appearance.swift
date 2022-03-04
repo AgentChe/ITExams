@@ -11,6 +11,8 @@ struct Appearance {
     static let blackColor = UIColor(integralRed: 52, green: 54, blue: 73)
     static let greyColor = UIColor(integralRed: 106, green: 108, blue: 125)
     static let backgroundColor = UIColor(integralRed: 248, green: 248, blue: 248)
+    static let buttonBackgroundColor = UIColor(integralRed: 235, green: 235, blue: 235)
+    static let buttonBackgroundSelectedColor = UIColor(integralRed: 204, green: 205, blue: 209)
     static let whiteColor = UIColor(integralRed: 255, green: 255, blue: 255)
     static let mainColor = UIColor(integralRed: 18, green: 42, blue: 246)
     static let secondColor = UIColor(integralRed: 5, green: 24, blue: 105)

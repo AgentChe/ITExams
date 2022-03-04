@@ -55,6 +55,7 @@
 		DED4724827CE4C4B00AEF8A6 /* OMotivationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */; };
 		DED4724A27CE5CF000AEF8A6 /* OAgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724927CE5CF000AEF8A6 /* OAgeView.swift */; };
 		DED4724E27D1DA6B00AEF8A6 /* OWhyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724D27D1DA6B00AEF8A6 /* OWhyView.swift */; };
+		DED4725027D1DE6700AEF8A6 /* OQuizSolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724F27D1DE6700AEF8A6 /* OQuizSolutionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +111,7 @@
 		DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMotivationCell.swift; sourceTree = "<group>"; };
 		DED4724927CE5CF000AEF8A6 /* OAgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAgeView.swift; sourceTree = "<group>"; };
 		DED4724D27D1DA6B00AEF8A6 /* OWhyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OWhyView.swift; sourceTree = "<group>"; };
+		DED4724F27D1DE6700AEF8A6 /* OQuizSolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OQuizSolutionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -346,6 +348,7 @@
 				DED4724427CE4BF700AEF8A6 /* OMotivationView.swift */,
 				DED4724927CE5CF000AEF8A6 /* OAgeView.swift */,
 				DED4724D27D1DA6B00AEF8A6 /* OWhyView.swift */,
+				DED4724F27D1DE6700AEF8A6 /* OQuizSolutionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				DE93789F27C4BF120073F27C /* SplashView.swift in Sources */,
 				DE93790527C4C0E90073F27C /* OnboardingViewModel.swift in Sources */,
 				DE93788327C4B2600073F27C /* GradientView.swift in Sources */,
+				DED4725027D1DE6700AEF8A6 /* OQuizSolutionView.swift in Sources */,
 				DE93788227C4B2600073F27C /* CircleView.swift in Sources */,
 				DED4724527CE4BF700AEF8A6 /* OMotivationView.swift in Sources */,
 				DE93787327C4B2600073F27C /* NumberLaunches.swift in Sources */,
