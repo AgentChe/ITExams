@@ -9,7 +9,7 @@ import UIKit
 
 final class OnboardingView: UIView {
     enum Step: Int {
-        case start, motivation, age, why, exams, course, quizSolution
+        case start, motivation, age, why, exams, course, quizSolution, determingSkill
     }
     
     var didFinish: (() -> Void)?
@@ -18,6 +18,7 @@ final class OnboardingView: UIView {
     
     private lazy var examsView = OExamsView(step: .exams)
     private lazy var courseView = OCourseView(step: .course)
+    private lazy var quizSolution = OQuizSolutionView(step: .quizSolution)
     
     private lazy var contentViews: [OSlideView] = {
         [
@@ -27,7 +28,8 @@ final class OnboardingView: UIView {
             OWhyView(step: .why),
             examsView,
             courseView,
-            OQuizSolutionView(step: .quizSolution)
+            quizSolution,
+            ODetermingSkillView(step: .determingSkill)
         ]
     }()
     
@@ -67,6 +69,18 @@ extension OnboardingView: OSlideViewDelegate {
     }
 }
 
+// MARK: OQuizSolutionViewDelegate
+extension OnboardingView: OQuizSolutionViewDelegate {
+    func quizSolutionDidSkip() {
+        // TODO: к выбору даты
+    }
+    
+    func quizSolutionDidStart() {
+        // TODO: на тест
+        scroll(to: .determingSkill)
+    }
+}
+
 // MARK: Private
 private extension OnboardingView {
     func initialize() {
@@ -86,6 +100,7 @@ private extension OnboardingView {
             }
         
         examsView.examsDelegate = courseView
+        quizSolution.quizSolutionDelegate = self
     }
     
     func scroll(to newStep: Step) {

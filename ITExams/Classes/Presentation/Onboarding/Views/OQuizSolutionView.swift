@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol OQuizSolutionViewDelegate: AnyObject {
+    func quizSolutionDidSkip()
+    func quizSolutionDidStart()
+}
+
 final class OQuizSolutionView: OSlideView {
+    weak var quizSolutionDelegate: OQuizSolutionViewDelegate?
+    
     lazy var imageView = makeImageView()
     lazy var titleLabel = makeTitleLabel()
     lazy var subTitleLabel = makeSubTitleLabel()
@@ -30,6 +37,16 @@ final class OQuizSolutionView: OSlideView {
 private extension OQuizSolutionView {
     func initialize() {
         backgroundColor = Appearance.backgroundColor
+    }
+    
+    @objc
+    func didSkip() {
+        quizSolutionDelegate?.quizSolutionDidSkip()
+    }
+    
+    @objc
+    func didStart() {
+        quizSolutionDelegate?.quizSolutionDidStart()
     }
 }
 
@@ -124,7 +141,7 @@ private extension OQuizSolutionView {
         view.setAttributedTitle("Onboarding.QuizSolution.Skip".localized.attributed(with: attrs), for: .normal)
         view.backgroundColor = Appearance.buttonBackgroundColor
         view.layer.cornerRadius = 8.scale
-        view.addTarget(self, action: #selector(onNext), for: .touchUpInside)
+        view.addTarget(self, action: #selector(didSkip), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
@@ -140,7 +157,7 @@ private extension OQuizSolutionView {
         view.setAttributedTitle("Onboarding.QuizSolution.Start".localized.attributed(with: attrs), for: .normal)
         view.backgroundColor = Appearance.mainColor
         view.layer.cornerRadius = 8.scale
-        view.addTarget(self, action: #selector(onNext), for: .touchUpInside)
+        view.addTarget(self, action: #selector(didStart), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
