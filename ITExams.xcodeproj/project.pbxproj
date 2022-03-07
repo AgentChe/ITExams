@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B99EA73E9EE909CA219D5966 /* Pods_ITExams.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CAE425F2492CFBE02D3BA9C /* Pods_ITExams.framework */; };
+		DE55A4AE27D6458000B53B46 /* OCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4AD27D6458000B53B46 /* OCourseView.swift */; };
 		DE93782D27C4AF380073F27C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE93782C27C4AF380073F27C /* Assets.xcassets */; };
 		DE93783027C4AF380073F27C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE93782E27C4AF380073F27C /* LaunchScreen.storyboard */; };
 		DE93783B27C4B0440073F27C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE93783D27C4B0440073F27C /* Localizable.strings */; };
@@ -66,6 +67,7 @@
 		5CAE425F2492CFBE02D3BA9C /* Pods_ITExams.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ITExams.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60A15AB3126C33013B05E7BD /* Pods-ITExams.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITExams.release.xcconfig"; path = "Target Support Files/Pods-ITExams/Pods-ITExams.release.xcconfig"; sourceTree = "<group>"; };
 		A13C46BD67BFF2A820848253 /* Pods-ITExams.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITExams.debug.xcconfig"; path = "Target Support Files/Pods-ITExams/Pods-ITExams.debug.xcconfig"; sourceTree = "<group>"; };
+		DE55A4AD27D6458000B53B46 /* OCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCourseView.swift; sourceTree = "<group>"; };
 		DE93782027C4AF350073F27C /* ITExams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITExams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE93782C27C4AF380073F27C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE93782F27C4AF380073F27C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				DED4724927CE5CF000AEF8A6 /* OAgeView.swift */,
 				DED4724D27D1DA6B00AEF8A6 /* OWhyView.swift */,
 				DED4725927D20F7800AEF8A6 /* OExamsView.swift */,
+				DE55A4AD27D6458000B53B46 /* OCourseView.swift */,
 				DED4724F27D1DE6700AEF8A6 /* OQuizSolutionView.swift */,
 			);
 			path = Views;
@@ -521,6 +524,7 @@
 				DE93788327C4B2600073F27C /* GradientView.swift in Sources */,
 				DED4725027D1DE6700AEF8A6 /* OQuizSolutionView.swift in Sources */,
 				DE93788227C4B2600073F27C /* CircleView.swift in Sources */,
+				DE55A4AE27D6458000B53B46 /* OCourseView.swift in Sources */,
 				DED4724527CE4BF700AEF8A6 /* OMotivationView.swift in Sources */,
 				DE93787327C4B2600073F27C /* NumberLaunches.swift in Sources */,
 				DE93787827C4B2600073F27C /* SignError.swift in Sources */,

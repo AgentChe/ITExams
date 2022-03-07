@@ -6,12 +6,21 @@
 //
 
 import UIKit
+import RxSwift
+
+protocol OExamsViewDelegate: AnyObject {
+    func onbExamsDidSelected(id: String)
+}
 
 final class OExamsView: OSlideView {
+    weak var examsDelegate: OExamsViewDelegate?
+    
     lazy var headerLabel = makeHeaderLabel()
     lazy var titleLabel = makeTitleLabel()
     lazy var tableView = makeTableView()
     lazy var button = makeButton()
+    
+    private lazy var disposeBag = DisposeBag()
     
     override init(step: OnboardingView.Step) {
         super.init(step: step)
@@ -37,6 +46,21 @@ extension OExamsView: OExamsTableDelegate {
 private extension OExamsView {
     func initialize() {
         backgroundColor = Appearance.backgroundColor
+        
+        button.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                guard let id = self.tableView.elements.first(where: { $0.isSelected })?.id else {
+                    return
+                }
+                
+                self.examsDelegate?.onbExamsDidSelected(id: id)
+                self.onNext()
+            })
+            .disposed(by: disposeBag)
         
         // TODO: получать данные с сервера
         let elements = [
@@ -81,7 +105,7 @@ private extension OExamsView {
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4.scale),
             tableView.bottomAnchor.constraint(equalTo: button.topAnchor)
         ])
         
@@ -152,7 +176,6 @@ private extension OExamsView {
         view.setAttributedTitle("Next".localized.attributed(with: attrs), for: .normal)
         view.backgroundColor = Appearance.mainColor
         view.layer.cornerRadius = 8.scale
-        view.addTarget(self, action: #selector(onNext), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

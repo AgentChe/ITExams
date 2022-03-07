@@ -35,6 +35,9 @@
 "Onboarding.Why.SubTitle" = "What if we told you that you could enjoy studying for your exam? It seems like a game, keeping you sharp and interested.";
 "Onboarding.Exams.Header" = "Exam";
 "Onboarding.Exams.Title" = "Which exam are you\nstudying for?";
+"Onboarding.Course.Header" = "Course";
+"Onboarding.Course.Title" = "What do you want\nto learn?";
+"Onboarding.Course.SubTitle" = "Choose one and remember that you can always switch courses later on";
 "Onboarding.QuizSolution.Title" = "Now, take this 1-2\nminute quiz";
 "Onboarding.QuizSolution.SubTitle" = "It’s important to enhance your learning";
 "Onboarding.QuizSolution.Skip" = "Skip";
