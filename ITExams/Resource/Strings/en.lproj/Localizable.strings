@@ -44,3 +44,6 @@
 "Onboarding.QuizSolution.Start" = "Start";
 "Onboarding.DetermingSkill.Title" = "Thank you";
 "Onboarding.DetermingSkill.SubTitle" = "We’re determining your skill level in Advanced Networking";
+"Onboarding.ExamDate.Header" = "Exam date";
+"Onboarding.ExamDate.Title" = "When are you\ntaking your exam?";
+"Onboarding.ExamDate.SubTitle" = "Don't worry if you don't know for sure, you can set later";

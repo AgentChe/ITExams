@@ -9,7 +9,7 @@ import UIKit
 
 final class OnboardingView: UIView {
     enum Step: Int {
-        case start, motivation, age, why, exams, course, quizSolution, determingSkill
+        case start, motivation, age, why, exams, course, quizSolution, determingSkill, examDate
     }
     
     var didFinish: (() -> Void)?
@@ -29,7 +29,8 @@ final class OnboardingView: UIView {
             examsView,
             courseView,
             quizSolution,
-            ODetermingSkillView(step: .determingSkill)
+            ODetermingSkillView(step: .determingSkill),
+            OExamDateView(step: .examDate)
         ]
     }()
     
@@ -72,7 +73,7 @@ extension OnboardingView: OSlideViewDelegate {
 // MARK: OQuizSolutionViewDelegate
 extension OnboardingView: OQuizSolutionViewDelegate {
     func quizSolutionDidSkip() {
-        // TODO: к выбору даты
+        scroll(to: .examDate)
     }
     
     func quizSolutionDidStart() {
