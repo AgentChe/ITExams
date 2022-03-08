@@ -44,6 +44,13 @@
 "Onboarding.QuizSolution.Start" = "Start";
 "Onboarding.DetermingSkill.Title" = "Thank you";
 "Onboarding.DetermingSkill.SubTitle" = "We’re determining your skill level in Advanced Networking";
+"Onboarding.QuizResult.Header" = "Quiz Result";
+"Onboarding.QuizResult.Title" = "Your starting level";
+"Onboarding.QuizResult.SubTitle" = "Keep it up! You’ll be able to move much faster through the question bank";
+"Onboarding.QuizResult.Level1" = "Beginner";
+"Onboarding.QuizResult.Level2" = "Middle";
+"Onboarding.QuizResult.Level3" = "Advanced";
+"Onboarding.QuizResult.Button" = "Create a personal plan";
 "Onboarding.ExamDate.Header" = "Exam date";
 "Onboarding.ExamDate.Title" = "When are you\ntaking your exam?";
 "Onboarding.ExamDate.SubTitle" = "Don't worry if you don't know for sure, you can set later";
