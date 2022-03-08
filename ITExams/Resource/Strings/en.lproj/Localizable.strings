@@ -54,3 +54,14 @@
 "Onboarding.ExamDate.Header" = "Exam date";
 "Onboarding.ExamDate.Title" = "When are you\ntaking your exam?";
 "Onboarding.ExamDate.SubTitle" = "Don't worry if you don't know for sure, you can set later";
+"Onboarding.DailyGoal.Header" = "Daily goal";
+"Onboarding.DailyGoal.Title" = "Picks days and time\nto spend studying";
+"Onboarding.DailyGoal.SubTitle" = "Based on your answers, we recommend to study 3 minute a day.";
+"Onboarding.DailyGoal.Su" = "Su";
+"Onboarding.DailyGoal.Mn" = "Mn";
+"Onboarding.DailyGoal.Tu" = "Tu";
+"Onboarding.DailyGoal.We" = "We";
+"Onboarding.DailyGoal.Th" = "Th";
+"Onboarding.DailyGoal.Fr" = "Fr";
+"Onboarding.DailyGoal.Sa" = "Sa";
+"Onboarding.DailyGoal.min" = "min";

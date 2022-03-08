@@ -1,0 +1,288 @@
+//
+//  ODailyGoalView.swift
+//  ITExams
+//
+//  Created by Андрей Чернышев on 08.03.2022.
+//
+
+import UIKit
+
+final class ODailyGoalView: OSlideView {
+    lazy var headerLabel = makeHeaderLabel()
+    lazy var titleLabel = makeTitleLabel()
+    lazy var subTitleLabel = makeSubTitleLabel()
+    lazy var suDayView = makeDailyView(day: "Onboarding.DailyGoal.Su".localized, tag: 0)
+    lazy var mnDayView = makeDailyView(day: "Onboarding.DailyGoal.Mn".localized, tag: 1)
+    lazy var tuDayView = makeDailyView(day: "Onboarding.DailyGoal.Tu".localized, tag: 2)
+    lazy var weDayView = makeDailyView(day: "Onboarding.DailyGoal.We".localized, tag: 3)
+    lazy var thDayView = makeDailyView(day: "Onboarding.DailyGoal.Th".localized, tag: 4)
+    lazy var frDayView = makeDailyView(day: "Onboarding.DailyGoal.Fr".localized, tag: 5)
+    lazy var saDayView = makeDailyView(day: "Onboarding.DailyGoal.Sa".localized, tag: 6)
+    lazy var pickerView = makePickerView()
+    lazy var minLabel = makeMinLabel()
+    lazy var button = makeButton()
+    
+    override init(step: OnboardingView.Step) {
+        super.init(step: step)
+        
+        makeConstraints()
+        initialize()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func moveToThis() {
+        super.moveToThis()
+        
+        pickerView.selectRow(2, inComponent: 0, animated: false)
+    }
+}
+
+// MARK: UIPickerViewDataSource
+extension ODailyGoalView: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        30
+    }
+}
+
+// MARK: UIPickerViewDelegate
+extension ODailyGoalView: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var label = view as? UILabel
+        
+        if label == nil {
+            label = UILabel()
+            label?.backgroundColor = UIColor.clear
+        }
+        
+        let attrs = TextAttributes()
+            .textColor(Appearance.blackColor)
+            .font(Fonts.Inter.bold(size: 32.scale))
+        
+        let string = String(row + 1)
+        
+        label?.attributedText = string.attributed(with: attrs)
+        
+        label?.sizeToFit()
+        
+        return label!
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        38.scale
+    }
+}
+
+// MARK: Private
+private extension ODailyGoalView {
+    func initialize() {
+        backgroundColor = Appearance.backgroundColor
+    }
+    
+    @objc
+    func tapped(sender: UIButton) {
+        guard let dailyButton = sender as? ODailyView else {
+            return
+        }
+        
+        dailyButton.isChecked.toggle()
+    }
+}
+
+// MARK: Make constraints
+private extension ODailyGoalView {
+    func makeConstraints() {
+        NSLayoutConstraint.activate([
+            headerLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            headerLabel.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 94.scale : 34.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40.scale),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40.scale),
+            titleLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 12.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 28.scale),
+            subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -28.scale),
+            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            suDayView.widthAnchor.constraint(equalToConstant: 50.scale),
+            suDayView.heightAnchor.constraint(equalToConstant: 50.scale),
+            suDayView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 46.scale),
+            suDayView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 20.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            mnDayView.widthAnchor.constraint(equalToConstant: 50.scale),
+            mnDayView.heightAnchor.constraint(equalToConstant: 50.scale),
+            mnDayView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 104.scale),
+            mnDayView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 20.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            tuDayView.widthAnchor.constraint(equalToConstant: 50.scale),
+            tuDayView.heightAnchor.constraint(equalToConstant: 50.scale),
+            tuDayView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 162.scale),
+            tuDayView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 20.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            weDayView.widthAnchor.constraint(equalToConstant: 50.scale),
+            weDayView.heightAnchor.constraint(equalToConstant: 50.scale),
+            weDayView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 220.scale),
+            weDayView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 20.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            thDayView.widthAnchor.constraint(equalToConstant: 50.scale),
+            thDayView.heightAnchor.constraint(equalToConstant: 50.scale),
+            thDayView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 278.scale),
+            thDayView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 20.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            frDayView.widthAnchor.constraint(equalToConstant: 50.scale),
+            frDayView.heightAnchor.constraint(equalToConstant: 50.scale),
+            frDayView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 134.scale),
+            frDayView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 82.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            saDayView.widthAnchor.constraint(equalToConstant: 50.scale),
+            saDayView.heightAnchor.constraint(equalToConstant: 50.scale),
+            saDayView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 192.scale),
+            saDayView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 82.scale)
+        ])
+    
+        NSLayoutConstraint.activate([
+            pickerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            pickerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            pickerView.topAnchor.constraint(equalTo: saDayView.bottomAnchor, constant: 40.scale),
+            pickerView.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -40.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            minLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 214.scale),
+            minLabel.centerYAnchor.constraint(equalTo: pickerView.centerYAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 28.scale),
+            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -28.scale),
+            button.heightAnchor.constraint(equalToConstant: 48.scale),
+            button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -60.scale : -30.scale)
+        ])
+    }
+}
+
+// MARK: Lazy initialization
+private extension ODailyGoalView {
+    func makeHeaderLabel() -> UILabel {
+        let attrs = TextAttributes()
+            .textColor(Appearance.mainColor)
+            .font(Fonts.Inter.bold(size: 17.scale))
+            .lineHeight(20.4.scale)
+            .letterSpacing(-0.44.scale)
+            .textAlignment(.center)
+        
+        let view = UILabel()
+        view.attributedText = "Onboarding.DailyGoal.Header".localized.attributed(with: attrs)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeTitleLabel() -> UILabel {
+        let attrs = TextAttributes()
+            .textColor(Appearance.blackColor)
+            .font(Fonts.Inter.bold(size: 28.scale))
+            .lineHeight(33.6.scale)
+            .letterSpacing(-0.44.scale)
+            .textAlignment(.center)
+        
+        let view = UILabel()
+        view.numberOfLines = 0
+        view.attributedText = "Onboarding.DailyGoal.Title".localized.attributed(with: attrs)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeSubTitleLabel() -> UILabel {
+        let attrs = TextAttributes()
+            .textColor(Appearance.greyColor)
+            .font(Fonts.Inter.regular(size: 15.scale))
+            .lineHeight(22.5.scale)
+            .letterSpacing(-0.14.scale)
+            .textAlignment(.center)
+        
+        let view = UILabel()
+        view.numberOfLines = 0
+        view.attributedText = "Onboarding.DailyGoal.SubTitle".localized.attributed(with: attrs)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeDailyView(day: String, tag: Int) -> ODailyView {
+        let view = ODailyView()
+        view.tag = tag
+        view.day = day
+        view.isChecked = false
+        view.layer.cornerRadius = 25.scale
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.addTarget(self, action: #selector(tapped(sender:)), for: .touchUpInside)
+        addSubview(view)
+        return view
+    }
+    
+    func makePickerView() -> UIPickerView {
+        let view = UIPickerView()
+        view.delegate = self
+        view.dataSource = self
+        view.backgroundColor = UIColor.clear
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeMinLabel() -> UILabel {
+        let attrs = TextAttributes()
+            .textColor(Appearance.blackColor)
+            .font(Fonts.Inter.bold(size: 20.scale))
+            .lineHeight(24.scale)
+            .letterSpacing(-0.44.scale)
+        
+        let view = UILabel()
+        view.attributedText = "Onboarding.DailyGoal.min".localized.attributed(with: attrs)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeButton() -> UIButton {
+        let attrs = TextAttributes()
+            .textColor(Appearance.whiteColor)
+            .font(Fonts.Inter.semiBold(size: 17.scale))
+            .letterSpacing(-0.44.scale)
+        
+        let view = UIButton()
+        view.setAttributedTitle("Continue".localized.attributed(with: attrs), for: .normal)
+        view.backgroundColor = Appearance.mainColor
+        view.layer.cornerRadius = 8.scale
+        view.addTarget(self, action: #selector(onNext), for: .touchUpInside)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+}
