@@ -11,6 +11,8 @@
 		DE2B0FFA27D77546005280DB /* OQuizResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B0FF927D77546005280DB /* OQuizResultView.swift */; };
 		DE2B0FFC27D7960E005280DB /* ODailyGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B0FFB27D7960E005280DB /* ODailyGoalView.swift */; };
 		DE2B0FFE27D798F4005280DB /* ODailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B0FFD27D798F4005280DB /* ODailyView.swift */; };
+		DE2B100027D876A0005280DB /* OStudyModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B0FFF27D876A0005280DB /* OStudyModeView.swift */; };
+		DE2B100227D8789F005280DB /* OStudyModeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B100127D8789F005280DB /* OStudyModeCell.swift */; };
 		DE55A4AE27D6458000B53B46 /* OCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4AD27D6458000B53B46 /* OCourseView.swift */; };
 		DE55A4B027D64C7700B53B46 /* ODetermingSkillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4AF27D64C7600B53B46 /* ODetermingSkillView.swift */; };
 		DE55A4B227D64CB300B53B46 /* OProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4B127D64CB300B53B46 /* OProgressView.swift */; };
@@ -76,6 +78,8 @@
 		DE2B0FF927D77546005280DB /* OQuizResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OQuizResultView.swift; sourceTree = "<group>"; };
 		DE2B0FFB27D7960E005280DB /* ODailyGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ODailyGoalView.swift; sourceTree = "<group>"; };
 		DE2B0FFD27D798F4005280DB /* ODailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ODailyView.swift; sourceTree = "<group>"; };
+		DE2B0FFF27D876A0005280DB /* OStudyModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OStudyModeView.swift; sourceTree = "<group>"; };
+		DE2B100127D8789F005280DB /* OStudyModeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OStudyModeCell.swift; sourceTree = "<group>"; };
 		DE55A4AD27D6458000B53B46 /* OCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCourseView.swift; sourceTree = "<group>"; };
 		DE55A4AF27D64C7600B53B46 /* ODetermingSkillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ODetermingSkillView.swift; sourceTree = "<group>"; };
 		DE55A4B127D64CB300B53B46 /* OProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OProgressView.swift; sourceTree = "<group>"; };
@@ -377,6 +381,7 @@
 				DE2B0FF927D77546005280DB /* OQuizResultView.swift */,
 				DE55A4B327D6538800B53B46 /* OExamDateView.swift */,
 				DE2B0FFB27D7960E005280DB /* ODailyGoalView.swift */,
+				DE2B0FFF27D876A0005280DB /* OStudyModeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -388,6 +393,7 @@
 				DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */,
 				DE55A4B127D64CB300B53B46 /* OProgressView.swift */,
 				DE2B0FFD27D798F4005280DB /* ODailyView.swift */,
+				DE2B100127D8789F005280DB /* OStudyModeCell.swift */,
 			);
 			path = Atoms;
 			sourceTree = "<group>";
@@ -533,6 +539,7 @@
 				DE93787B27C4B2600073F27C /* Toast.swift in Sources */,
 				DE93790427C4C0E90073F27C /* OnboardingView.swift in Sources */,
 				DE9378F627C4C0E90073F27C /* OSlideView.swift in Sources */,
+				DE2B100227D8789F005280DB /* OStudyModeCell.swift in Sources */,
 				DE93788527C4B2600073F27C /* RxActivityIndicator.swift in Sources */,
 				DE93788727C4B2600073F27C /* Appearance.swift in Sources */,
 				DE93787A27C4B2600073F27C /* ImagePicker.swift in Sources */,
@@ -543,6 +550,7 @@
 				DE93788327C4B2600073F27C /* GradientView.swift in Sources */,
 				DED4725027D1DE6700AEF8A6 /* OQuizSolutionView.swift in Sources */,
 				DE93788227C4B2600073F27C /* CircleView.swift in Sources */,
+				DE2B100027D876A0005280DB /* OStudyModeView.swift in Sources */,
 				DE55A4AE27D6458000B53B46 /* OCourseView.swift in Sources */,
 				DED4724527CE4BF700AEF8A6 /* OMotivationView.swift in Sources */,
 				DE2B0FFE27D798F4005280DB /* ODailyView.swift in Sources */,

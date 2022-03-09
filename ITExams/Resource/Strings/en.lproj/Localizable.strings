@@ -65,3 +65,12 @@
 "Onboarding.DailyGoal.Fr" = "Fr";
 "Onboarding.DailyGoal.Sa" = "Sa";
 "Onboarding.DailyGoal.min" = "min";
+"Onboarding.StudyMode.Header" = "Study mode";
+"Onboarding.StudyMode.Title" = "What study mode\ndo you prefer?";
+"Onboarding.StudyMode.SubTitle" = "This will define your test mode and you can control it through the settings";
+"Onboarding.StudyMode.Mode1.Title" = "Full support";
+"Onboarding.StudyMode.Mode1.Text" = "After the answer, the correct one and the explanation will be shown";
+"Onboarding.StudyMode.Mode2.Title" = "Without explanations";
+"Onboarding.StudyMode.Mode2.Text" = "Only the correct answer will be shown before the next question";
+"Onboarding.StudyMode.Mode3.Title" = "Exam-style";
+"Onboarding.StudyMode.Mode3.Text" = "See the results only after answering all questions";
