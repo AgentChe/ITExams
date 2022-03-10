@@ -172,7 +172,7 @@ private extension OCreatingPlanSectionView {
             .lineHeight(20.4.scale)
             .letterSpacing(-0.44.scale)
         let view = UILabel()
-        view.attributedText = "Onboarding.PlanView.100%".localized.attributed(with: attrs)
+        view.attributedText = "Onboarding.CreatingPlanView.100%".localized.attributed(with: attrs)
         view.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)

@@ -58,14 +58,14 @@ private extension OCreatingPlanView {
     }
     
     func configure(data: OCombineData) {
-        let goalsSectionView = OCreatingPlanSectionView(title: "Onboarding.PlanView.Section1".localized,
+        let goalsSectionView = OCreatingPlanSectionView(title: "Onboarding.CreatingPlanView.Section1".localized,
                                                         rows: [data.motivation])
-        let personalDataSectionView = OCreatingPlanSectionView(title: "Onboarding.PlanView.Section2".localized,
+        let personalDataSectionView = OCreatingPlanSectionView(title: "Onboarding.CreatingPlanView.Section2".localized,
                                                                rows: [data.age])
-        let examDetailsSectionView = OCreatingPlanSectionView(title: "Onboarding.PlanView.Section3".localized,
+        let examDetailsSectionView = OCreatingPlanSectionView(title: "Onboarding.CreatingPlanView.Section3".localized,
                                                               rows: [data.exam, data.course, data.examDate].compactMap { $0 })
-        let studyPreferences = OCreatingPlanSectionView(title: "Onboarding.PlanView.Section4".localized,
-                                                        rows: ["Onboarding.PlanView.DailyGoal".localized, data.studyMode])
+        let studyPreferences = OCreatingPlanSectionView(title: "Onboarding.CreatingPlanView.Section4".localized,
+                                                        rows: ["Onboarding.CreatingPlanView.DailyGoal".localized, data.studyMode])
         
         let views = [
             goalsSectionView,
@@ -136,7 +136,7 @@ private extension OCreatingPlanView {
         
         let view = UILabel()
         view.numberOfLines = 0
-        view.attributedText = "Onboarding.PlanView.Title".localized.attributed(with: attrs)
+        view.attributedText = "Onboarding.CreatingPlanView.Title".localized.attributed(with: attrs)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

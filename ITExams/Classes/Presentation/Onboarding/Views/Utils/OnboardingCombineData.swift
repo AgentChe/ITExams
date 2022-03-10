@@ -54,7 +54,7 @@ extension OnboardingCombineData: OMotivationViewDelegate {
 // MARK: OAgeViewDelegate
 extension OnboardingCombineData: OAgeViewDelegate {
     func ageViewDidSelected(age: String) {
-        self.age = String(format: "Onboarding.PlanView.Years".localized, age)
+        self.age = String(format: "Onboarding.CreatingPlanView.Years".localized, age)
     }
 }
 
