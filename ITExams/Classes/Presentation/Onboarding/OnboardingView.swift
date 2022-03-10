@@ -9,33 +9,41 @@ import UIKit
 
 final class OnboardingView: UIView {
     enum Step: Int {
-        case start, motivation, age, why, exams, course, quizSolution, determingSkill, quizResult, examDate, dailyGoal, studyMode
+        case start, motivation, age, why, exams, course, quizSolution, determingSkill, quizResult, examDate, dailyGoal, studyMode, plan
     }
     
     var didFinish: (() -> Void)?
     
     private var step = Step.start
     
+    private lazy var motivationView = OMotivationView(step: .motivation)
+    private lazy var ageView = OAgeView(step: .age)
     private lazy var examsView = OExamsView(step: .exams)
     private lazy var courseView = OCourseView(step: .course)
-    private lazy var quizSolution = OQuizSolutionView(step: .quizSolution)
+    private lazy var quizSolutionView = OQuizSolutionView(step: .quizSolution)
+    private lazy var examDateView =  OExamDateView(step: .examDate)
+    private lazy var studyModeView = OStudyModeView(step: .studyMode)
+    private lazy var planView = OPlanView(step: .plan)
     
     private lazy var contentViews: [OSlideView] = {
         [
             OStartView(step: .start),
-            OMotivationView(step: .motivation),
-            OAgeView(step: .age),
+            motivationView,
+            ageView,
             OWhyView(step: .why),
             examsView,
             courseView,
-            quizSolution,
+            quizSolutionView,
             ODetermingSkillView(step: .determingSkill),
             OQuizResultView(step: .quizResult),
-            OExamDateView(step: .examDate),
+            examDateView,
             ODailyGoalView(step: .dailyGoal),
-            OStudyModeView(step: .studyMode)
+            studyModeView,
+            planView
         ]
     }()
+    
+    private lazy var combineData = OnboardingCombineData()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -103,8 +111,15 @@ private extension OnboardingView {
                 }
             }
         
-        examsView.examsDelegate = courseView
-        quizSolution.quizSolutionDelegate = self
+        motivationView.motivationDelegate = combineData
+        ageView.ageDelegate = combineData
+        examsView.add(delegate: courseView)
+        examsView.add(delegate: combineData)
+        courseView.courseDelegate = combineData
+        quizSolutionView.quizSolutionDelegate = self
+        examDateView.examDateDelegate = combineData
+        studyModeView.studyModeDelegate = combineData
+        planView.combineData = combineData
     }
     
     func scroll(to newStep: Step) {

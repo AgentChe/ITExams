@@ -8,14 +8,16 @@
 import Foundation
 
 final class OExamsTableElement {
-    let id: String = UUID().uuidString
+    let code: String
     let title: String
     let subTitle: String
     var isSelected: Bool
     
-    init(title: String,
+    init(code: String,
+         title: String,
          subTitle: String,
          isSelected: Bool = false) {
+        self.code = code
         self.title = title
         self.subTitle = subTitle
         self.isSelected = isSelected

@@ -13,6 +13,10 @@
 		DE2B0FFE27D798F4005280DB /* ODailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B0FFD27D798F4005280DB /* ODailyView.swift */; };
 		DE2B100027D876A0005280DB /* OStudyModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B0FFF27D876A0005280DB /* OStudyModeView.swift */; };
 		DE2B100227D8789F005280DB /* OStudyModeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B100127D8789F005280DB /* OStudyModeCell.swift */; };
+		DE2B100427D8B5C6005280DB /* OPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B100327D8B5C6005280DB /* OPlanView.swift */; };
+		DE2B100727D9E857005280DB /* OnboardingCombineData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B100627D9E857005280DB /* OnboardingCombineData.swift */; };
+		DE2B100A27D9F441005280DB /* OPlanRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B100927D9F441005280DB /* OPlanRowView.swift */; };
+		DE2B100C27D9F6CE005280DB /* OPlanSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B100B27D9F6CE005280DB /* OPlanSectionView.swift */; };
 		DE55A4AE27D6458000B53B46 /* OCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4AD27D6458000B53B46 /* OCourseView.swift */; };
 		DE55A4B027D64C7700B53B46 /* ODetermingSkillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4AF27D64C7600B53B46 /* ODetermingSkillView.swift */; };
 		DE55A4B227D64CB300B53B46 /* OProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4B127D64CB300B53B46 /* OProgressView.swift */; };
@@ -80,6 +84,10 @@
 		DE2B0FFD27D798F4005280DB /* ODailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ODailyView.swift; sourceTree = "<group>"; };
 		DE2B0FFF27D876A0005280DB /* OStudyModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OStudyModeView.swift; sourceTree = "<group>"; };
 		DE2B100127D8789F005280DB /* OStudyModeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OStudyModeCell.swift; sourceTree = "<group>"; };
+		DE2B100327D8B5C6005280DB /* OPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPlanView.swift; sourceTree = "<group>"; };
+		DE2B100627D9E857005280DB /* OnboardingCombineData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCombineData.swift; sourceTree = "<group>"; };
+		DE2B100927D9F441005280DB /* OPlanRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPlanRowView.swift; sourceTree = "<group>"; };
+		DE2B100B27D9F6CE005280DB /* OPlanSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPlanSectionView.swift; sourceTree = "<group>"; };
 		DE55A4AD27D6458000B53B46 /* OCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCourseView.swift; sourceTree = "<group>"; };
 		DE55A4AF27D64C7600B53B46 /* ODetermingSkillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ODetermingSkillView.swift; sourceTree = "<group>"; };
 		DE55A4B127D64CB300B53B46 /* OProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OProgressView.swift; sourceTree = "<group>"; };
@@ -167,6 +175,23 @@
 				60A15AB3126C33013B05E7BD /* Pods-ITExams.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		DE2B100527D9E83A005280DB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B100627D9E857005280DB /* OnboardingCombineData.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		DE2B100827D9F42A005280DB /* Plan */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B100927D9F441005280DB /* OPlanRowView.swift */,
+				DE2B100B27D9F6CE005280DB /* OPlanSectionView.swift */,
+			);
+			path = Plan;
 			sourceTree = "<group>";
 		};
 		DE93781727C4AF350073F27C = {
@@ -368,6 +393,7 @@
 		DE9378A227C4C0E90073F27C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DE2B100527D9E83A005280DB /* Utils */,
 				DED4724627CE4C4300AEF8A6 /* Atoms */,
 				DE9378C827C4C0E90073F27C /* OSlideView.swift */,
 				DED4724227CE406600AEF8A6 /* OStartView.swift */,
@@ -382,6 +408,7 @@
 				DE55A4B327D6538800B53B46 /* OExamDateView.swift */,
 				DE2B0FFB27D7960E005280DB /* ODailyGoalView.swift */,
 				DE2B0FFF27D876A0005280DB /* OStudyModeView.swift */,
+				DE2B100327D8B5C6005280DB /* OPlanView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -389,6 +416,7 @@
 		DED4724627CE4C4300AEF8A6 /* Atoms */ = {
 			isa = PBXGroup;
 			children = (
+				DE2B100827D9F42A005280DB /* Plan */,
 				DED4725127D208B100AEF8A6 /* ExamsTable */,
 				DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */,
 				DE55A4B127D64CB300B53B46 /* OProgressView.swift */,
@@ -536,6 +564,7 @@
 				DE93789727C4BDED0073F27C /* UIEdgeInsets+Extension.swift in Sources */,
 				DE93787E27C4B2600073F27C /* TapAreaButton.swift in Sources */,
 				DED4724A27CE5CF000AEF8A6 /* OAgeView.swift in Sources */,
+				DE2B100C27D9F6CE005280DB /* OPlanSectionView.swift in Sources */,
 				DE93787B27C4B2600073F27C /* Toast.swift in Sources */,
 				DE93790427C4C0E90073F27C /* OnboardingView.swift in Sources */,
 				DE9378F627C4C0E90073F27C /* OSlideView.swift in Sources */,
@@ -547,11 +576,14 @@
 				DE93790527C4C0E90073F27C /* OnboardingViewModel.swift in Sources */,
 				DED4725827D20C4C00AEF8A6 /* OExamsTable.swift in Sources */,
 				DE2B0FFA27D77546005280DB /* OQuizResultView.swift in Sources */,
+				DE2B100727D9E857005280DB /* OnboardingCombineData.swift in Sources */,
 				DE93788327C4B2600073F27C /* GradientView.swift in Sources */,
 				DED4725027D1DE6700AEF8A6 /* OQuizSolutionView.swift in Sources */,
 				DE93788227C4B2600073F27C /* CircleView.swift in Sources */,
+				DE2B100A27D9F441005280DB /* OPlanRowView.swift in Sources */,
 				DE2B100027D876A0005280DB /* OStudyModeView.swift in Sources */,
 				DE55A4AE27D6458000B53B46 /* OCourseView.swift in Sources */,
+				DE2B100427D8B5C6005280DB /* OPlanView.swift in Sources */,
 				DED4724527CE4BF700AEF8A6 /* OMotivationView.swift in Sources */,
 				DE2B0FFE27D798F4005280DB /* ODailyView.swift in Sources */,
 				DE93787327C4B2600073F27C /* NumberLaunches.swift in Sources */,

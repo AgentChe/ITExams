@@ -8,12 +8,18 @@
 import UIKit
 import RxSwift
 
+struct OExamElement {
+    let code: String
+    let title: String
+    let subTitle: String
+}
+
 protocol OExamsViewDelegate: AnyObject {
-    func onbExamsDidSelected(id: String)
+    func examsDidSelected(element: OExamElement)
 }
 
 final class OExamsView: OSlideView {
-    weak var examsDelegate: OExamsViewDelegate?
+    var examDelegates = [Weak<OExamsViewDelegate>]()
     
     lazy var headerLabel = makeHeaderLabel()
     lazy var titleLabel = makeTitleLabel()
@@ -21,6 +27,18 @@ final class OExamsView: OSlideView {
     lazy var button = makeButton()
     
     private lazy var disposeBag = DisposeBag()
+    
+    private lazy var exams = [
+        OExamElement(code: "aws",
+                     title: "(The Computing Technology Industry Association)",
+                     subTitle: "(The Computing Technology Industry Association)"),
+        OExamElement(code: "nursing",
+                     title: "(The Computing Technology Industry Association)",
+                     subTitle: "(The Computing Technology Industry Association)"),
+        OExamElement(code: "emt",
+                     title: "(The Computing Technology Industry Association)",
+                     subTitle: "(The Computing Technology Industry Association)")
+    ]
     
     override init(step: OnboardingView.Step) {
         super.init(step: step)
@@ -32,6 +50,21 @@ final class OExamsView: OSlideView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: Public
+extension OExamsView {
+    func add(delegate: OExamsViewDelegate) {
+        let weakly = delegate as AnyObject
+        examDelegates.append(Weak<OExamsViewDelegate>(weakly))
+        examDelegates = examDelegates.filter { $0.weak != nil }
+    }
+
+    func remove(delegate: OExamsViewDelegate) {
+        if let index = examDelegates.firstIndex(where: { $0.weak === delegate }) {
+            examDelegates.remove(at: index)
+        }
     }
 }
 
@@ -53,30 +86,23 @@ private extension OExamsView {
                     return
                 }
                 
-                guard let id = self.tableView.elements.first(where: { $0.isSelected })?.id else {
+                guard
+                    let code = self.tableView.elements.first(where: { $0.isSelected })?.code,
+                    let element = self.exams.first(where: { $0.code == code })
+                else {
                     return
                 }
                 
-                self.examsDelegate?.onbExamsDidSelected(id: id)
+                self.examDelegates.forEach { $0.weak?.examsDidSelected(element: element) }
+                
                 self.onNext()
             })
             .disposed(by: disposeBag)
         
         // TODO: получать данные с сервера
-        let elements = [
-            OExamsTableElement(title: "(The Computing Technology Industry Association)",
-                               subTitle: "(The Computing Technology Industry Association) (The Computing Technology Industry Association) (The Computing Technology Industry Association)"),
-            OExamsTableElement(title: "CompTIA",
-                               subTitle: "(Amazon Web Services cloud expertise)"),
-            OExamsTableElement(title: "CompTIA",
-                               subTitle: "(The Computing Technology Industry Association)"),
-            OExamsTableElement(title: "CompTIA",
-                               subTitle: "(The Computing Technology Industry Association)"),
-            OExamsTableElement(title: "(The Computing Technology Industry Association)",
-                               subTitle: "(Amazon Web Services cloud expertise) (The Computing Technology Industry Association) (The Computing Technology Industry Association) (The Computing Technology Industry Association) (The Computing Technology Industry Association) (The Computing Technology Industry Association)"),
-            OExamsTableElement(title: "CompTIA",
-                               subTitle: "(The Computing Technology Industry Association)")
-        ]
+        let elements = exams.map { OExamsTableElement(code: $0.code,
+                                                      title: $0.title,
+                                                      subTitle: $0.subTitle) }
         tableView.setup(elements: elements)
     }
     

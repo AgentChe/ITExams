@@ -6,14 +6,23 @@
 //
 
 import UIKit
+import RxSwift
+
+protocol OCourseViewDelegate: AnyObject {
+    func courseViewDidSelected(course: String)
+}
 
 final class OCourseView: OSlideView {
+    weak var courseDelegate: OCourseViewDelegate?
+    
     lazy var backButton = makeBackButton()
     lazy var headerLabel = makeHeaderLabel()
     lazy var titleLabel = makeTitleLabel()
     lazy var subTitleLabel = makeSubTitleLabel()
     lazy var tableView = makeTableView()
     lazy var button = makeButton()
+    
+    private lazy var disposeBag = DisposeBag()
     
     override init(step: OnboardingView.Step) {
         super.init(step: step)
@@ -30,25 +39,33 @@ final class OCourseView: OSlideView {
 
 // MARK: OExamsViewDelegate
 extension OCourseView: OExamsViewDelegate {
-    func onbExamsDidSelected(id: String) {
+    func examsDidSelected(element: OExamElement) {
         // TODO: получать данные с сервера
         
         let elements = [
-            OExamsTableElement(title: "(Cloud Practitioner",
+            OExamsTableElement(code: UUID().uuidString,
+                               title: "(Cloud Practitioner",
                                subTitle: "Assesses knowledge of core services and use cases, billing and pricing models, security concepts, and how cloud impacts business"),
-            OExamsTableElement(title: "Certified Database",
+            OExamsTableElement(code: UUID().uuidString,
+                               title: "Certified Database",
                                subTitle: "Validates expertise in recommending, designing, and maintaining the optimal AWS database solution to improve performance"),
-            OExamsTableElement(title: "(Cloud Practitioner",
+            OExamsTableElement(code: UUID().uuidString,
+                               title: "(Cloud Practitioner",
                                subTitle: "Assesses knowledge of core services and use cases, billing and pricing models, security concepts, and how cloud impacts business"),
-            OExamsTableElement(title: "Certified Database",
+            OExamsTableElement(code: UUID().uuidString,
+                               title: "Certified Database",
                                subTitle: "Validates expertise in recommending, designing, and maintaining the optimal AWS database solution to improve performance"),
-            OExamsTableElement(title: "(Cloud Practitioner",
+            OExamsTableElement(code: UUID().uuidString,
+                               title: "(Cloud Practitioner",
                                subTitle: "Assesses knowledge of core services and use cases, billing and pricing models, security concepts, and how cloud impacts business"),
-            OExamsTableElement(title: "Certified Database",
+            OExamsTableElement(code: UUID().uuidString,
+                               title: "Certified Database",
                                subTitle: "Validates expertise in recommending, designing, and maintaining the optimal AWS database solution to improve performance"),
-            OExamsTableElement(title: "(Cloud Practitioner",
+            OExamsTableElement(code: UUID().uuidString,
+                               title: "(Cloud Practitioner",
                                subTitle: "Assesses knowledge of core services and use cases, billing and pricing models, security concepts, and how cloud impacts business"),
-            OExamsTableElement(title: "Certified Database",
+            OExamsTableElement(code: UUID().uuidString,
+                               title: "Certified Database",
                                subTitle: "Validates expertise in recommending, designing, and maintaining the optimal AWS database solution to improve performance")
         ]
         tableView.setup(elements: elements)
@@ -67,6 +84,22 @@ extension OCourseView: OExamsTableDelegate {
 private extension OCourseView {
     func initialize() {
         backgroundColor = Appearance.backgroundColor
+        
+        button.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                guard let element = self.tableView.elements.first(where: { $0.isSelected }) else {
+                    return
+                }
+                
+                self.courseDelegate?.courseViewDidSelected(course: element.title)
+                
+                self.onNext()
+            })
+            .disposed(by: disposeBag)
     }
     
     func changeEnabled() {
@@ -203,7 +236,6 @@ private extension OCourseView {
         view.setAttributedTitle("Next".localized.attributed(with: attrs), for: .normal)
         view.backgroundColor = Appearance.mainColor
         view.layer.cornerRadius = 8.scale
-        view.addTarget(self, action: #selector(onNext), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

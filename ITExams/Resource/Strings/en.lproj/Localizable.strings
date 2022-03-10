@@ -54,6 +54,7 @@
 "Onboarding.ExamDate.Header" = "Exam date";
 "Onboarding.ExamDate.Title" = "When are you\ntaking your exam?";
 "Onboarding.ExamDate.SubTitle" = "Don't worry if you don't know for sure, you can set later";
+"Onboarding.ExamDate.Skip" = "I don’t know";
 "Onboarding.DailyGoal.Header" = "Daily goal";
 "Onboarding.DailyGoal.Title" = "Picks days and time\nto spend studying";
 "Onboarding.DailyGoal.SubTitle" = "Based on your answers, we recommend to study 3 minute a day.";
@@ -74,3 +75,11 @@
 "Onboarding.StudyMode.Mode2.Text" = "Only the correct answer will be shown before the next question";
 "Onboarding.StudyMode.Mode3.Title" = "Exam-style";
 "Onboarding.StudyMode.Mode3.Text" = "See the results only after answering all questions";
+"Onboarding.PlanView.Title" = "Creating your plan";
+"Onboarding.PlanView.Section1" = "Identifying your goals";
+"Onboarding.PlanView.Section2" = "Analyzing your personal data";
+"Onboarding.PlanView.Section3" = "Recognizing exam details";
+"Onboarding.PlanView.Section4" = "Reviewing study preferences";
+"Onboarding.PlanView.100%" = "100%";
+"Onboarding.PlanView.Years" = "%@ years old";
+"Onboarding.PlanView.DailyGoal" = "Daily goal";

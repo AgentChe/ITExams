@@ -6,8 +6,15 @@
 //
 
 import UIKit
+import RxSwift
+
+protocol OAgeViewDelegate: AnyObject {
+    func ageViewDidSelected(age: String)
+}
 
 final class OAgeView: OSlideView {
+    weak var ageDelegate: OAgeViewDelegate?
+    
     lazy var headerLabel = makeHeaderLabel()
     lazy var titleLabel = makeTitleLabel()
     lazy var subTitleLabel = makeSubTitleLabel()
@@ -21,6 +28,8 @@ final class OAgeView: OSlideView {
         "45-60",
         "60+"
     ]
+    
+    private lazy var disposeBag = DisposeBag()
     
     override init(step: OnboardingView.Step) {
         super.init(step: step)
@@ -81,6 +90,21 @@ extension OAgeView: UIPickerViewDelegate {
 private extension OAgeView {
     func initialize() {
         backgroundColor = Appearance.backgroundColor
+        
+        button.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                let row = self.pickerView.selectedRow(inComponent: 0)
+                let age = self.ages[row]
+                
+                self.ageDelegate?.ageViewDidSelected(age: age)
+                
+                self.onNext()
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -190,7 +214,6 @@ private extension OAgeView {
         view.setAttributedTitle("Next".localized.attributed(with: attrs), for: .normal)
         view.backgroundColor = Appearance.mainColor
         view.layer.cornerRadius = 8.scale
-        view.addTarget(self, action: #selector(onNext), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

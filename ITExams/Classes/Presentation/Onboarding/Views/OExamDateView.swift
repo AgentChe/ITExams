@@ -6,15 +6,25 @@
 //
 
 import UIKit
+import RxSwift
+
+protocol OExamDateViewDelegate: AnyObject {
+    func examDateDidSelected(date: Date?)
+}
 
 final class OExamDateView: OSlideView {
+    weak var examDateDelegate: OExamDateViewDelegate?
+    
     lazy var headerLabel = makeHeaderLabel()
     lazy var titleLabel = makeTitleLabel()
     lazy var subTitleLabel = makeSubTitleLabel()
     lazy var dateContainer = makeDateContainer()
     lazy var dateLabel = makeDateLabel()
     lazy var button = makeButton()
+    lazy var skipButton = makeSkipButton()
     lazy var datePicker = makeDatePickerView()
+    
+    private lazy var disposeBag = DisposeBag()
     
     override init(step: OnboardingView.Step) {
         super.init(step: step)
@@ -33,6 +43,32 @@ final class OExamDateView: OSlideView {
 private extension OExamDateView {
     func initialize() {
         backgroundColor = Appearance.backgroundColor
+        
+        button.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                let date = self.datePicker.date
+                
+                self.examDateDelegate?.examDateDidSelected(date: date)
+                
+                self.onNext()
+            })
+            .disposed(by: disposeBag)
+        
+        skipButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                self.examDateDelegate?.examDateDidSelected(date: nil)
+                
+                self.onNext()
+            })
+            .disposed(by: disposeBag)
     }
     
     @objc
@@ -91,7 +127,14 @@ private extension OExamDateView {
             button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 28.scale),
             button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -28.scale),
             button.heightAnchor.constraint(equalToConstant: 48.scale),
-            button.bottomAnchor.constraint(equalTo: datePicker.topAnchor, constant: -16.scale)
+            button.bottomAnchor.constraint(equalTo: skipButton.topAnchor, constant: -18.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            skipButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 28.scale),
+            skipButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -28.scale),
+            skipButton.heightAnchor.constraint(equalToConstant: 20.scale),
+            skipButton.bottomAnchor.constraint(equalTo: datePicker.topAnchor, constant: -30.scale)
         ])
         
         NSLayoutConstraint.activate([
@@ -205,7 +248,20 @@ private extension OExamDateView {
         view.setAttributedTitle("Next".localized.attributed(with: attrs), for: .normal)
         view.backgroundColor = Appearance.mainColor
         view.layer.cornerRadius = 8.scale
-        view.addTarget(self, action: #selector(onNext), for: .touchUpInside)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeSkipButton() -> TapAreaButton {
+        let attrs = TextAttributes()
+            .textColor(Appearance.mainColor)
+            .font(Fonts.Inter.semiBold(size: 17.scale))
+            .letterSpacing(-0.44.scale)
+        
+        let view = TapAreaButton()
+        view.setAttributedTitle("Onboarding.ExamDate.Skip".localized.attributed(with: attrs), for: .normal)
+        view.backgroundColor = UIColor.clear
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

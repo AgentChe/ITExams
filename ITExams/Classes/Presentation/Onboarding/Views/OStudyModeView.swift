@@ -6,21 +6,35 @@
 //
 
 import UIKit
+import RxSwift
+
+struct OStudyModeElement {
+    let name: String
+    let text: String
+}
+
+protocol OStudyModeViewDelegate: AnyObject {
+    func studyModeViewDidSelected(element: OStudyModeElement)
+}
 
 final class OStudyModeView: OSlideView {
+    weak var studyModeDelegate: OStudyModeViewDelegate?
+    
     lazy var headerLabel = makeHeaderLabel()
     lazy var titleLabel = makeTitleLabel()
     lazy var subTitleLabel = makeSubTitleLabel()
-    lazy var cell1 = makeCell(name: "Onboarding.StudyMode.Mode1.Title".localized,
-                              text: "Onboarding.StudyMode.Mode1.Text".localized,
+    lazy var cell1 = makeCell(element: OStudyModeElement(name: "Onboarding.StudyMode.Mode1.Title".localized,
+                                                         text: "Onboarding.StudyMode.Mode1.Text".localized),
                               tag: 0)
-    lazy var cell2 = makeCell(name: "Onboarding.StudyMode.Mode2.Title".localized,
-                              text: "Onboarding.StudyMode.Mode2.Text".localized,
+    lazy var cell2 = makeCell(element: OStudyModeElement(name: "Onboarding.StudyMode.Mode2.Title".localized,
+                                                         text: "Onboarding.StudyMode.Mode2.Text".localized),
                               tag: 1)
-    lazy var cell3 = makeCell(name: "Onboarding.StudyMode.Mode3.Title".localized,
-                              text: "Onboarding.StudyMode.Mode3.Text".localized,
+    lazy var cell3 = makeCell(element: OStudyModeElement(name: "Onboarding.StudyMode.Mode3.Title".localized,
+                                                         text: "Onboarding.StudyMode.Mode3.Text".localized),
                               tag: 2)
     lazy var button = makeButton()
+    
+    private lazy var disposeBag = DisposeBag()
     
     override init(step: OnboardingView.Step) {
         super.init(step: step)
@@ -39,6 +53,22 @@ final class OStudyModeView: OSlideView {
 private extension OStudyModeView {
     func initialize() {
         backgroundColor = Appearance.backgroundColor
+        
+        button.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                guard let element = [self.cell1, self.cell2, self.cell3].first(where: { $0.isChecked })?.element else {
+                    return
+                }
+                
+                self.studyModeDelegate?.studyModeViewDidSelected(element: element)
+                
+                self.onNext()
+            })
+            .disposed(by: disposeBag)
     }
     
     @objc
@@ -160,11 +190,10 @@ private extension OStudyModeView {
         return view
     }
     
-    func makeCell(name: String, text: String, tag: Int) -> OStudyModeCell {
+    func makeCell(element: OStudyModeElement, tag: Int) -> OStudyModeCell {
         let view = OStudyModeCell()
         view.isChecked = false
-        view.name = name
-        view.text = text
+        view.element = element
         view.tag = tag
         view.backgroundColor = UIColor.clear
         view.addTarget(self, action: #selector(tapped(sender:)), for: .touchUpInside)
@@ -183,7 +212,6 @@ private extension OStudyModeView {
         view.setAttributedTitle("Next".localized.attributed(with: attrs), for: .normal)
         view.backgroundColor = Appearance.mainColor
         view.layer.cornerRadius = 8.scale
-        view.addTarget(self, action: #selector(onNext), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

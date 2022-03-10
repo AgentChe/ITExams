@@ -8,25 +8,21 @@
 import UIKit
 
 final class OStudyModeCell: UIButton {
-    var name: String? = nil {
+    var element: OStudyModeElement? = nil {
         didSet {
-            let attrs = TextAttributes()
+            let nameAttrs = TextAttributes()
                 .textColor(Appearance.blackColor)
                 .font(Fonts.Inter.bold(size: 17.scale))
                 .lineHeight(20.4.scale)
                 .letterSpacing(-0.44.scale)
-            nameLabel.attributedText = name?.attributed(with: attrs)
-        }
-    }
-    
-    var text: String? = nil {
-        didSet {
-            let attrs = TextAttributes()
+            nameLabel.attributedText = element?.name.attributed(with: nameAttrs)
+            
+            let subTitleAttrs = TextAttributes()
                 .textColor(Appearance.blackColor)
                 .font(Fonts.Inter.regular(size: 15.scale))
                 .lineHeight(22.5.scale)
                 .letterSpacing(-0.14.scale)
-            subTitleLabel.attributedText = text?.attributed(with: attrs)
+            subTitleLabel.attributedText = element?.text.attributed(with: subTitleAttrs)
         }
     }
     

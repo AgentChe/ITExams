@@ -6,8 +6,20 @@
 //
 
 import UIKit
+import RxSwift
+
+struct OMotivationElement {
+    let title: String
+    let icon: UIImage
+}
+
+protocol OMotivationViewDelegate: AnyObject {
+    func motivationViewDidSelected(element: OMotivationElement)
+}
 
 final class OMotivationView: OSlideView {
+    weak var motivationDelegate: OMotivationViewDelegate?
+    
     lazy var headerLabel = makeHeaderLabel()
     lazy var titleLabel = makeTitleLabel()
     lazy var subTitleLabel = makeSubTitleLabel()
@@ -15,6 +27,8 @@ final class OMotivationView: OSlideView {
     lazy var cell2 = makeCell2()
     lazy var cell3 = makeCell3()
     lazy var button = makeButton()
+    
+    private lazy var disposeBag = DisposeBag()
     
     override init(step: OnboardingView.Step) {
         super.init(step: step)
@@ -33,6 +47,22 @@ final class OMotivationView: OSlideView {
 private extension OMotivationView {
     func initialize() {
         backgroundColor = Appearance.backgroundColor
+        
+        button.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                guard let element = [self.cell1, self.cell2, self.cell3].first(where: { $0.isChecked })?.element else {
+                    return
+                }
+                
+                self.motivationDelegate?.motivationViewDidSelected(element: element)
+                
+                self.onNext()
+            })
+            .disposed(by: disposeBag)
     }
     
     @objc
@@ -158,8 +188,8 @@ private extension OMotivationView {
         let view = OMotivationCell(iconWidth: 115.scale,
                                    iconHeight: 75.scale,
                                    iconTop: 9.scale)
-        view.title = "Onboarding.Motivation.Cell1".localized
-        view.icon = UIImage(named: "OMotivation.Image1")
+        view.element = OMotivationElement(title: "Onboarding.Motivation.Cell1".localized,
+                                          icon: UIImage(named: "OMotivation.Image1")!)
         view.layer.cornerRadius = 12.scale
         view.addTarget(self, action: #selector(tapped(sender:)), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -171,8 +201,8 @@ private extension OMotivationView {
         let view = OMotivationCell(iconWidth: 110.scale,
                                    iconHeight: 84.scale,
                                    iconTop: 0)
-        view.title = "Onboarding.Motivation.Cell2".localized
-        view.icon = UIImage(named: "OMotivation.Image2")
+        view.element = OMotivationElement(title: "Onboarding.Motivation.Cell2".localized,
+                                          icon: UIImage(named: "OMotivation.Image2")!)
         view.layer.cornerRadius = 12.scale
         view.addTarget(self, action: #selector(tapped(sender:)), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -184,8 +214,8 @@ private extension OMotivationView {
         let view = OMotivationCell(iconWidth: 142.scale,
                                    iconHeight: 84.scale,
                                    iconTop: 0)
-        view.title = "Onboarding.Motivation.Cell3".localized
-        view.icon = UIImage(named: "OMotivation.Image3")
+        view.element = OMotivationElement(title: "Onboarding.Motivation.Cell3".localized,
+                                          icon: UIImage(named: "OMotivation.Image3")!)
         view.layer.cornerRadius = 12.scale
         view.addTarget(self, action: #selector(tapped(sender:)), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -203,7 +233,6 @@ private extension OMotivationView {
         view.setAttributedTitle("Next".localized.attributed(with: attrs), for: .normal)
         view.backgroundColor = Appearance.mainColor
         view.layer.cornerRadius = 8.scale
-        view.addTarget(self, action: #selector(onNext), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

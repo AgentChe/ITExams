@@ -14,20 +14,16 @@ final class OMotivationCell: UIButton {
         }
     }
     
-    var title: String? {
+    var element: OMotivationElement? = nil {
         didSet {
             let attrs = TextAttributes()
                 .textColor(Appearance.blackColor)
                 .font(Fonts.Inter.bold(size: 17.scale))
                 .lineHeight(23.8.scale)
                 .letterSpacing(-0.44.scale)
-            label.attributedText = title?.attributed(with: attrs)
-        }
-    }
-    
-    var icon: UIImage? {
-        didSet {
-            iconView.image = icon
+            label.attributedText = element?.title.attributed(with: attrs)
+            
+            iconView.image = element?.icon
         }
     }
     

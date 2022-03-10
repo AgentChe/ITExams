@@ -1,0 +1,144 @@
+//
+//  OPlanView.swift
+//  ITExams
+//
+//  Created by Андрей Чернышев on 09.03.2022.
+//
+
+import UIKit
+
+final class OPlanView: OSlideView {
+    weak var combineData: OnboardingCombineData?
+    
+    lazy var titleLabel = makeTitleLabel()
+    
+    private lazy var sections = [OPlanSectionView]()
+    
+    override init(step: OnboardingView.Step) {
+        super.init(step: step)
+        
+        makeConstraints()
+        initialize()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func moveToThis() {
+        super.moveToThis()
+        
+        guard let data = combineData?.combineData() else {
+            return
+        }
+        
+        clear()
+        configure(data: data)
+        openUpSection { [weak self] in
+            guard let self = self else {
+                return
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
+                self.onNext()
+            }
+        }
+    }
+}
+
+// MARK: Private
+private extension OPlanView {
+    func initialize() {
+        backgroundColor = Appearance.backgroundColor
+    }
+    
+    func clear() {
+        sections.forEach { $0.removeFromSuperview() }
+        sections = []
+    }
+    
+    func configure(data: OCombineData) {
+        let goalsSectionView = OPlanSectionView(title: "Onboarding.PlanView.Section1".localized,
+                                                rows: [data.motivation])
+        let personalDataSectionView = OPlanSectionView(title: "Onboarding.PlanView.Section2".localized,
+                                                       rows: [data.age])
+        let examDetailsSectionView = OPlanSectionView(title: "Onboarding.PlanView.Section3".localized,
+                                                      rows: [data.exam, data.course, data.examDate].compactMap { $0 })
+        let studyPreferences = OPlanSectionView(title: "Onboarding.PlanView.Section4".localized,
+                                                rows: ["Onboarding.PlanView.DailyGoal".localized, data.studyMode])
+        
+        let views = [
+            goalsSectionView,
+            personalDataSectionView,
+            examDetailsSectionView,
+            studyPreferences
+        ]
+        
+        views.enumerated().forEach { index, view in
+            view.backgroundColor = UIColor.clear
+            view.translatesAutoresizingMaskIntoConstraints = false
+            addSubview(view)
+            
+            let leading = view.leadingAnchor.constraint(equalTo: leadingAnchor)
+            let trailing = view.trailingAnchor.constraint(equalTo: trailingAnchor)
+            [leading, trailing].forEach { $0.isActive = true }
+            
+            if index == 0 {
+                let top = view.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 26.scale)
+                top.isActive = true
+            } else if let previousView = sections.last {
+                let top = view.topAnchor.constraint(equalTo: previousView.bottomAnchor, constant: 26.scale)
+                top.isActive = true
+            }
+            
+            view.hide()
+            
+            sections.append(view)
+        }
+    }
+    
+    func openUpSection(index: Int = 0, completion: @escaping () -> Void) {
+        guard sections.indices.contains(index) else {
+            completion()
+            return
+        }
+        
+        sections[index].openUp { [weak self] in
+            guard let self = self else {
+                return
+            }
+            
+            self.openUpSection(index: index + 1, completion: completion)
+        }
+    }
+}
+
+// MARK: Make constraints
+private extension OPlanView {
+    func makeConstraints() {
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40.scale),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40.scale),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 94.scale : 34.scale)
+        ])
+    }
+}
+
+// MARK: Lazy initialization
+private extension OPlanView {
+    func makeTitleLabel() -> UILabel {
+        let attrs = TextAttributes()
+            .textColor(Appearance.blackColor)
+            .font(Fonts.Inter.bold(size: 28.scale))
+            .lineHeight(33.6.scale)
+            .letterSpacing(-0.44.scale)
+            .textAlignment(.center)
+        
+        let view = UILabel()
+        view.numberOfLines = 0
+        view.attributedText = "Onboarding.PlanView.Title".localized.attributed(with: attrs)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+}
