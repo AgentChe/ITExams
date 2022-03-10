@@ -7,12 +7,12 @@
 
 import UIKit
 
-final class OPlanView: OSlideView {
+final class OCreatingPlanView: OSlideView {
     weak var combineData: OnboardingCombineData?
     
     lazy var titleLabel = makeTitleLabel()
     
-    private lazy var sections = [OPlanSectionView]()
+    private lazy var sections = [OCreatingPlanSectionView]()
     
     override init(step: OnboardingView.Step) {
         super.init(step: step)
@@ -47,7 +47,7 @@ final class OPlanView: OSlideView {
 }
 
 // MARK: Private
-private extension OPlanView {
+private extension OCreatingPlanView {
     func initialize() {
         backgroundColor = Appearance.backgroundColor
     }
@@ -58,14 +58,14 @@ private extension OPlanView {
     }
     
     func configure(data: OCombineData) {
-        let goalsSectionView = OPlanSectionView(title: "Onboarding.PlanView.Section1".localized,
-                                                rows: [data.motivation])
-        let personalDataSectionView = OPlanSectionView(title: "Onboarding.PlanView.Section2".localized,
-                                                       rows: [data.age])
-        let examDetailsSectionView = OPlanSectionView(title: "Onboarding.PlanView.Section3".localized,
-                                                      rows: [data.exam, data.course, data.examDate].compactMap { $0 })
-        let studyPreferences = OPlanSectionView(title: "Onboarding.PlanView.Section4".localized,
-                                                rows: ["Onboarding.PlanView.DailyGoal".localized, data.studyMode])
+        let goalsSectionView = OCreatingPlanSectionView(title: "Onboarding.PlanView.Section1".localized,
+                                                        rows: [data.motivation])
+        let personalDataSectionView = OCreatingPlanSectionView(title: "Onboarding.PlanView.Section2".localized,
+                                                               rows: [data.age])
+        let examDetailsSectionView = OCreatingPlanSectionView(title: "Onboarding.PlanView.Section3".localized,
+                                                              rows: [data.exam, data.course, data.examDate].compactMap { $0 })
+        let studyPreferences = OCreatingPlanSectionView(title: "Onboarding.PlanView.Section4".localized,
+                                                        rows: ["Onboarding.PlanView.DailyGoal".localized, data.studyMode])
         
         let views = [
             goalsSectionView,
@@ -114,7 +114,7 @@ private extension OPlanView {
 }
 
 // MARK: Make constraints
-private extension OPlanView {
+private extension OCreatingPlanView {
     func makeConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40.scale),
@@ -125,7 +125,7 @@ private extension OPlanView {
 }
 
 // MARK: Lazy initialization
-private extension OPlanView {
+private extension OCreatingPlanView {
     func makeTitleLabel() -> UILabel {
         let attrs = TextAttributes()
             .textColor(Appearance.blackColor)

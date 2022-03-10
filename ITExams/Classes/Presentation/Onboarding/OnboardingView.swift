@@ -9,7 +9,7 @@ import UIKit
 
 final class OnboardingView: UIView {
     enum Step: Int {
-        case start, motivation, age, why, exams, course, quizSolution, determingSkill, quizResult, examDate, dailyGoal, studyMode, plan
+        case start, motivation, age, why, exams, course, quizSolution, determingSkill, quizResult, examDate, dailyGoal, studyMode, creatingPlan
     }
     
     var didFinish: (() -> Void)?
@@ -23,7 +23,7 @@ final class OnboardingView: UIView {
     private lazy var quizSolutionView = OQuizSolutionView(step: .quizSolution)
     private lazy var examDateView =  OExamDateView(step: .examDate)
     private lazy var studyModeView = OStudyModeView(step: .studyMode)
-    private lazy var planView = OPlanView(step: .plan)
+    private lazy var creatingPlanView = OCreatingPlanView(step: .creatingPlan)
     
     private lazy var contentViews: [OSlideView] = {
         [
@@ -39,7 +39,7 @@ final class OnboardingView: UIView {
             examDateView,
             ODailyGoalView(step: .dailyGoal),
             studyModeView,
-            planView
+            creatingPlanView
         ]
     }()
     
@@ -119,7 +119,7 @@ private extension OnboardingView {
         quizSolutionView.quizSolutionDelegate = self
         examDateView.examDateDelegate = combineData
         studyModeView.studyModeDelegate = combineData
-        planView.combineData = combineData
+        creatingPlanView.combineData = combineData
     }
     
     func scroll(to newStep: Step) {

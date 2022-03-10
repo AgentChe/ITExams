@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class OPlanRowView: UIView {
+final class OCreatingPlanRowView: UIView {
     lazy var label = makeLabel()
     lazy var checkedView = makeCheckedView()
     
@@ -27,7 +27,7 @@ final class OPlanRowView: UIView {
 }
 
 // MARK: Make constraints
-private extension OPlanRowView {
+private extension OCreatingPlanRowView {
     func makeConstraints() {
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 52.scale),
@@ -46,7 +46,7 @@ private extension OPlanRowView {
 }
 
 // MARK: Lazy initialization
-private extension OPlanRowView {
+private extension OCreatingPlanRowView {
     func makeLabel() -> UILabel {
         let attrs = TextAttributes()
             .textColor(Appearance.greyColor)

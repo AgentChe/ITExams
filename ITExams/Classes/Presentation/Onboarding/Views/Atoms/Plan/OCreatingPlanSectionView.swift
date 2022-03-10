@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class OPlanSectionView: UIView {
+final class OCreatingPlanSectionView: UIView {
     lazy var checkedView = makeCheckedView()
     lazy var titleLabel = makeTitleLabel()
     lazy var percentLabel = makePercentLabel()
@@ -15,7 +15,7 @@ final class OPlanSectionView: UIView {
     private let title: String
     private let rows: [String]
     
-    private lazy var rowsViews = [OPlanRowView]()
+    private lazy var rowsViews = [OCreatingPlanRowView]()
     
     init(title: String, rows: [String]) {
         self.title = title
@@ -33,7 +33,7 @@ final class OPlanSectionView: UIView {
 }
 
 // MARK: Public
-extension OPlanSectionView {
+extension OCreatingPlanSectionView {
     func hide() {
         checkedView.alpha = 0
         titleLabel.alpha = 0
@@ -63,10 +63,10 @@ extension OPlanSectionView {
 }
 
 // MARK: Private
-private extension OPlanSectionView {
+private extension OCreatingPlanSectionView {
     func addRows() {
         rows.enumerated().forEach { index, title in
-            let rowView = OPlanRowView(title: title)
+            let rowView = OCreatingPlanRowView(title: title)
             rowView.backgroundColor = UIColor.clear
             rowView.translatesAutoresizingMaskIntoConstraints = false
             addSubview(rowView)
@@ -117,7 +117,7 @@ private extension OPlanSectionView {
 }
 
 // MARK: Make constraints
-private extension OPlanSectionView {
+private extension OCreatingPlanSectionView {
     func makeConstraints() {
         NSLayoutConstraint.activate([
             checkedView.widthAnchor.constraint(equalToConstant: 24.scale),
@@ -140,7 +140,7 @@ private extension OPlanSectionView {
 }
 
 // MARK: Lazy initialization
-private extension OPlanSectionView {
+private extension OCreatingPlanSectionView {
     func makeCheckedView() -> UIImageView {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
