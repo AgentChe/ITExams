@@ -12,6 +12,8 @@ struct OExamElement {
     let code: String
     let title: String
     let subTitle: String
+    let api: String
+    let domain: String
 }
 
 protocol OExamsViewDelegate: AnyObject {
@@ -29,15 +31,21 @@ final class OExamsView: OSlideView {
     private lazy var disposeBag = DisposeBag()
     
     private lazy var exams = [
-        OExamElement(code: "aws",
-                     title: "(The Computing Technology Industry Association)",
-                     subTitle: "(The Computing Technology Industry Association)"),
-        OExamElement(code: "nursing",
-                     title: "(The Computing Technology Industry Association)",
-                     subTitle: "(The Computing Technology Industry Association)"),
-        OExamElement(code: "emt",
-                     title: "(The Computing Technology Industry Association)",
-                     subTitle: "(The Computing Technology Industry Association)")
+        OExamElement(code: "AWS",
+                     title: "AWS",
+                     subTitle: "(The Computing Technology Industry Association)",
+                     api: GlobalDefinitions.awsApiKey,
+                     domain: GlobalDefinitions.awsDomainUrl),
+        OExamElement(code: "CompTIA",
+                     title: "CompTIA",
+                     subTitle: "(The Computing Technology Industry Association)",
+                     api: GlobalDefinitions.comptiaApiKey,
+                     domain: GlobalDefinitions.comptiaDomainUrl),
+        OExamElement(code: "CISSP",
+                     title: "CISSP",
+                     subTitle: "(The Computing Technology Industry Association)",
+                     api: GlobalDefinitions.cisspApiKey,
+                     domain: GlobalDefinitions.cisspDomainUrl)
     ]
     
     override init(step: OnboardingView.Step) {
@@ -99,7 +107,6 @@ private extension OExamsView {
             })
             .disposed(by: disposeBag)
         
-        // TODO: получать данные с сервера
         let elements = exams.map { OExamsTableElement(code: $0.code,
                                                       title: $0.title,
                                                       subTitle: $0.subTitle) }

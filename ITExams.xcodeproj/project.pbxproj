@@ -19,6 +19,74 @@
 		DE2B100C27D9F6CE005280DB /* OCreatingPlanSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B100B27D9F6CE005280DB /* OCreatingPlanSectionView.swift */; };
 		DE2B100E27DA47AE005280DB /* OPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B100D27DA47AE005280DB /* OPlanView.swift */; };
 		DE2B101127DA4B49005280DB /* OPlanGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B101027DA4B49005280DB /* OPlanGridView.swift */; };
+		DE2B101627DB139D005280DB /* RestAPITransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B101527DB139D005280DB /* RestAPITransport.swift */; };
+		DE2B101827DB13AC005280DB /* APIRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B101727DB13AC005280DB /* APIRequestBody.swift */; };
+		DE2B101A27DB13E0005280DB /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B101927DB13E0005280DB /* NetworkError.swift */; };
+		DE2B109027DB14EE005280DB /* RateManagerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B101D27DB14ED005280DB /* RateManagerCore.swift */; };
+		DE2B109127DB14EE005280DB /* RateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B101E27DB14ED005280DB /* RateManager.swift */; };
+		DE2B10A027DB14EE005280DB /* TestStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B103327DB14ED005280DB /* TestStats.swift */; };
+		DE2B10A127DB14EE005280DB /* GetTestStatsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B103527DB14ED005280DB /* GetTestStatsRequest.swift */; };
+		DE2B10A227DB14EE005280DB /* GetTestStatsResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B103627DB14ED005280DB /* GetTestStatsResponseMapper.swift */; };
+		DE2B10A327DB14EE005280DB /* TestStatsManagerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B103827DB14ED005280DB /* TestStatsManagerCore.swift */; };
+		DE2B10A427DB14EE005280DB /* TestStatsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B103927DB14ED005280DB /* TestStatsManager.swift */; };
+		DE2B10A527DB14EE005280DB /* TestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B103C27DB14ED005280DB /* TestConfig.swift */; };
+		DE2B10A627DB14EE005280DB /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B103D27DB14ED005280DB /* Test.swift */; };
+		DE2B10A727DB14EE005280DB /* GetTestResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B103F27DB14ED005280DB /* GetTestResponseMapper.swift */; };
+		DE2B10A827DB14EE005280DB /* GetTestConfigResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B104027DB14ED005280DB /* GetTestConfigResponseMapper.swift */; };
+		DE2B10A927DB14EE005280DB /* SendAnswerResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B104127DB14ED005280DB /* SendAnswerResponseMapper.swift */; };
+		DE2B10AA27DB14EE005280DB /* GetTestConfigRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B104227DB14ED005280DB /* GetTestConfigRequest.swift */; };
+		DE2B10AB27DB14EE005280DB /* GetFailedSetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B104327DB14ED005280DB /* GetFailedSetRequest.swift */; };
+		DE2B10AC27DB14EE005280DB /* GetOnboardingSetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B104427DB14ED005280DB /* GetOnboardingSetRequest.swift */; };
+		DE2B10AD27DB14EE005280DB /* GetRandomSetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B104527DB14ED005280DB /* GetRandomSetRequest.swift */; };
+		DE2B10AE27DB14EE005280DB /* GetQotdRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B104627DB14ED005280DB /* GetQotdRequest.swift */; };
+		DE2B10AF27DB14EE005280DB /* SendAnswerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B104727DB14ED005280DB /* SendAnswerRequest.swift */; };
+		DE2B10B027DB14EE005280DB /* GetTestRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B104827DB14ED005280DB /* GetTestRequest.swift */; };
+		DE2B10B127DB14EE005280DB /* GetTenSetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B104927DB14ED005280DB /* GetTenSetRequest.swift */; };
+		DE2B10B227DB14EE005280DB /* QuestionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B104B27DB14ED005280DB /* QuestionManager.swift */; };
+		DE2B10B327DB14EE005280DB /* QuestionManagerMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B104C27DB14ED005280DB /* QuestionManagerMediator.swift */; };
+		DE2B10B427DB14EE005280DB /* QuestionManagerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B104D27DB14ED005280DB /* QuestionManagerCore.swift */; };
+		DE2B10B527DB14EE005280DB /* QuestionManagerDelagate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B104E27DB14ED005280DB /* QuestionManagerDelagate.swift */; };
+		DE2B10B627DB14EE005280DB /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B105127DB14ED005280DB /* Reference.swift */; };
+		DE2B10B727DB14EE005280DB /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B105227DB14ED005280DB /* Course.swift */; };
+		DE2B10B827DB14EE005280DB /* GetCourcesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B105427DB14ED005280DB /* GetCourcesRequest.swift */; };
+		DE2B10B927DB14EE005280DB /* GetReferencesResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B105627DB14ED005280DB /* GetReferencesResponseMapper.swift */; };
+		DE2B10BA27DB14EE005280DB /* GetReferencesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B105727DB14ED005280DB /* GetReferencesRequest.swift */; };
+		DE2B10BB27DB14EE005280DB /* SetSelectCourseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B105927DB14ED005280DB /* SetSelectCourseRequest.swift */; };
+		DE2B10BC27DB14EE005280DB /* GetSelectedCourseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B105B27DB14ED005280DB /* GetSelectedCourseResponse.swift */; };
+		DE2B10BD27DB14EE005280DB /* GetSelectedCourseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B105C27DB14ED005280DB /* GetSelectedCourseRequest.swift */; };
+		DE2B10BE27DB14EE005280DB /* GetCourcesResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B105D27DB14ED005280DB /* GetCourcesResponseMapper.swift */; };
+		DE2B10BF27DB14EE005280DB /* CoursesManagerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B105F27DB14ED005280DB /* CoursesManagerCore.swift */; };
+		DE2B10C027DB14EE005280DB /* CoursesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B106027DB14ED005280DB /* CoursesManager.swift */; };
+		DE2B10C127DB14EE005280DB /* CoursesManagerMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B106227DB14ED005280DB /* CoursesManagerMediator.swift */; };
+		DE2B10C227DB14EE005280DB /* TestMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B106527DB14ED005280DB /* TestMode.swift */; };
+		DE2B10C327DB14EE005280DB /* ProfileManagerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B106727DB14ED005280DB /* ProfileManagerCore.swift */; };
+		DE2B10C427DB14EE005280DB /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B106827DB14ED005280DB /* ProfileManager.swift */; };
+		DE2B10C527DB14EE005280DB /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B106A27DB14ED005280DB /* LoginRequest.swift */; };
+		DE2B10C627DB14EE005280DB /* SyncTokensRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B106B27DB14ED005280DB /* SyncTokensRequest.swift */; };
+		DE2B10C727DB14EE005280DB /* GetTestModeResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B106D27DB14ED005280DB /* GetTestModeResponseMapper.swift */; };
+		DE2B10C827DB14EE005280DB /* GetTestModeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B106E27DB14ED005280DB /* GetTestModeRequest.swift */; };
+		DE2B10C927DB14EE005280DB /* SetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B106F27DB14EE005280DB /* SetRequest.swift */; };
+		DE2B10CA27DB14EE005280DB /* ProfileMediatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B107127DB14EE005280DB /* ProfileMediatorDelegate.swift */; };
+		DE2B10CB27DB14EE005280DB /* ProfileMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B107227DB14EE005280DB /* ProfileMediator.swift */; };
+		DE2B10CC27DB14EE005280DB /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B107427DB14EE005280DB /* IAPManager.swift */; };
+		DE2B10CD27DB14EE005280DB /* PurchaseValidationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B107527DB14EE005280DB /* PurchaseValidationObserver.swift */; };
+		DE2B10CE27DB14EE005280DB /* IAPActionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B107727DB14EE005280DB /* IAPActionResult.swift */; };
+		DE2B10CF27DB14EE005280DB /* IAPProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B107827DB14EE005280DB /* IAPProduct.swift */; };
+		DE2B10D027DB14EE005280DB /* IAPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B107A27DB14EE005280DB /* IAPError.swift */; };
+		DE2B10D127DB14EE005280DB /* IAPErrorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B107B27DB14EE005280DB /* IAPErrorHelper.swift */; };
+		DE2B10D227DB14EE005280DB /* Brief.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B107E27DB14EE005280DB /* Brief.swift */; };
+		DE2B10D327DB14EE005280DB /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B107F27DB14EE005280DB /* Stats.swift */; };
+		DE2B10D427DB14EE005280DB /* GetBriefRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B108127DB14EE005280DB /* GetBriefRequest.swift */; };
+		DE2B10D527DB14EE005280DB /* GetBriefResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B108227DB14EE005280DB /* GetBriefResponseMapper.swift */; };
+		DE2B10D627DB14EE005280DB /* GetStatsResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B108327DB14EE005280DB /* GetStatsResponseMapper.swift */; };
+		DE2B10D727DB14EE005280DB /* GetStatsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B108427DB14EE005280DB /* GetStatsRequest.swift */; };
+		DE2B10D827DB14EE005280DB /* StatsManagerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B108627DB14EE005280DB /* StatsManagerCore.swift */; };
+		DE2B10D927DB14EE005280DB /* StatsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B108727DB14EE005280DB /* StatsManager.swift */; };
+		DE2B10DA27DB14EE005280DB /* StatsShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B108927DB14EE005280DB /* StatsShareManager.swift */; };
+		DE2B10DB27DB14EE005280DB /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B108C27DB14EE005280DB /* Session.swift */; };
+		DE2B10DC27DB14EE005280DB /* SessionManagerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B108E27DB14EE005280DB /* SessionManagerCore.swift */; };
+		DE2B10DD27DB14EE005280DB /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B108F27DB14EE005280DB /* SessionManager.swift */; };
+		DE2B10DF27DB16F2005280DB /* XOREncryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B10DE27DB16F2005280DB /* XOREncryption.swift */; };
 		DE55A4AE27D6458000B53B46 /* OCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4AD27D6458000B53B46 /* OCourseView.swift */; };
 		DE55A4B027D64C7700B53B46 /* ODetermingSkillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4AF27D64C7600B53B46 /* ODetermingSkillView.swift */; };
 		DE55A4B227D64CB300B53B46 /* OProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4B127D64CB300B53B46 /* OProgressView.swift */; };
@@ -92,6 +160,74 @@
 		DE2B100B27D9F6CE005280DB /* OCreatingPlanSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCreatingPlanSectionView.swift; sourceTree = "<group>"; };
 		DE2B100D27DA47AE005280DB /* OPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPlanView.swift; sourceTree = "<group>"; };
 		DE2B101027DA4B49005280DB /* OPlanGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPlanGridView.swift; sourceTree = "<group>"; };
+		DE2B101527DB139D005280DB /* RestAPITransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPITransport.swift; sourceTree = "<group>"; };
+		DE2B101727DB13AC005280DB /* APIRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestBody.swift; sourceTree = "<group>"; };
+		DE2B101927DB13E0005280DB /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		DE2B101D27DB14ED005280DB /* RateManagerCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateManagerCore.swift; sourceTree = "<group>"; };
+		DE2B101E27DB14ED005280DB /* RateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateManager.swift; sourceTree = "<group>"; };
+		DE2B103327DB14ED005280DB /* TestStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestStats.swift; sourceTree = "<group>"; };
+		DE2B103527DB14ED005280DB /* GetTestStatsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTestStatsRequest.swift; sourceTree = "<group>"; };
+		DE2B103627DB14ED005280DB /* GetTestStatsResponseMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTestStatsResponseMapper.swift; sourceTree = "<group>"; };
+		DE2B103827DB14ED005280DB /* TestStatsManagerCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestStatsManagerCore.swift; sourceTree = "<group>"; };
+		DE2B103927DB14ED005280DB /* TestStatsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestStatsManager.swift; sourceTree = "<group>"; };
+		DE2B103C27DB14ED005280DB /* TestConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestConfig.swift; sourceTree = "<group>"; };
+		DE2B103D27DB14ED005280DB /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		DE2B103F27DB14ED005280DB /* GetTestResponseMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTestResponseMapper.swift; sourceTree = "<group>"; };
+		DE2B104027DB14ED005280DB /* GetTestConfigResponseMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTestConfigResponseMapper.swift; sourceTree = "<group>"; };
+		DE2B104127DB14ED005280DB /* SendAnswerResponseMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendAnswerResponseMapper.swift; sourceTree = "<group>"; };
+		DE2B104227DB14ED005280DB /* GetTestConfigRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTestConfigRequest.swift; sourceTree = "<group>"; };
+		DE2B104327DB14ED005280DB /* GetFailedSetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetFailedSetRequest.swift; sourceTree = "<group>"; };
+		DE2B104427DB14ED005280DB /* GetOnboardingSetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetOnboardingSetRequest.swift; sourceTree = "<group>"; };
+		DE2B104527DB14ED005280DB /* GetRandomSetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetRandomSetRequest.swift; sourceTree = "<group>"; };
+		DE2B104627DB14ED005280DB /* GetQotdRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetQotdRequest.swift; sourceTree = "<group>"; };
+		DE2B104727DB14ED005280DB /* SendAnswerRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendAnswerRequest.swift; sourceTree = "<group>"; };
+		DE2B104827DB14ED005280DB /* GetTestRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTestRequest.swift; sourceTree = "<group>"; };
+		DE2B104927DB14ED005280DB /* GetTenSetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTenSetRequest.swift; sourceTree = "<group>"; };
+		DE2B104B27DB14ED005280DB /* QuestionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionManager.swift; sourceTree = "<group>"; };
+		DE2B104C27DB14ED005280DB /* QuestionManagerMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionManagerMediator.swift; sourceTree = "<group>"; };
+		DE2B104D27DB14ED005280DB /* QuestionManagerCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionManagerCore.swift; sourceTree = "<group>"; };
+		DE2B104E27DB14ED005280DB /* QuestionManagerDelagate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionManagerDelagate.swift; sourceTree = "<group>"; };
+		DE2B105127DB14ED005280DB /* Reference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reference.swift; sourceTree = "<group>"; };
+		DE2B105227DB14ED005280DB /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		DE2B105427DB14ED005280DB /* GetCourcesRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCourcesRequest.swift; sourceTree = "<group>"; };
+		DE2B105627DB14ED005280DB /* GetReferencesResponseMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetReferencesResponseMapper.swift; sourceTree = "<group>"; };
+		DE2B105727DB14ED005280DB /* GetReferencesRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetReferencesRequest.swift; sourceTree = "<group>"; };
+		DE2B105927DB14ED005280DB /* SetSelectCourseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSelectCourseRequest.swift; sourceTree = "<group>"; };
+		DE2B105B27DB14ED005280DB /* GetSelectedCourseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetSelectedCourseResponse.swift; sourceTree = "<group>"; };
+		DE2B105C27DB14ED005280DB /* GetSelectedCourseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetSelectedCourseRequest.swift; sourceTree = "<group>"; };
+		DE2B105D27DB14ED005280DB /* GetCourcesResponseMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCourcesResponseMapper.swift; sourceTree = "<group>"; };
+		DE2B105F27DB14ED005280DB /* CoursesManagerCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesManagerCore.swift; sourceTree = "<group>"; };
+		DE2B106027DB14ED005280DB /* CoursesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesManager.swift; sourceTree = "<group>"; };
+		DE2B106227DB14ED005280DB /* CoursesManagerMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesManagerMediator.swift; sourceTree = "<group>"; };
+		DE2B106527DB14ED005280DB /* TestMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestMode.swift; sourceTree = "<group>"; };
+		DE2B106727DB14ED005280DB /* ProfileManagerCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileManagerCore.swift; sourceTree = "<group>"; };
+		DE2B106827DB14ED005280DB /* ProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
+		DE2B106A27DB14ED005280DB /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		DE2B106B27DB14ED005280DB /* SyncTokensRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncTokensRequest.swift; sourceTree = "<group>"; };
+		DE2B106D27DB14ED005280DB /* GetTestModeResponseMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTestModeResponseMapper.swift; sourceTree = "<group>"; };
+		DE2B106E27DB14ED005280DB /* GetTestModeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTestModeRequest.swift; sourceTree = "<group>"; };
+		DE2B106F27DB14EE005280DB /* SetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetRequest.swift; sourceTree = "<group>"; };
+		DE2B107127DB14EE005280DB /* ProfileMediatorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileMediatorDelegate.swift; sourceTree = "<group>"; };
+		DE2B107227DB14EE005280DB /* ProfileMediator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileMediator.swift; sourceTree = "<group>"; };
+		DE2B107427DB14EE005280DB /* IAPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
+		DE2B107527DB14EE005280DB /* PurchaseValidationObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseValidationObserver.swift; sourceTree = "<group>"; };
+		DE2B107727DB14EE005280DB /* IAPActionResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPActionResult.swift; sourceTree = "<group>"; };
+		DE2B107827DB14EE005280DB /* IAPProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPProduct.swift; sourceTree = "<group>"; };
+		DE2B107A27DB14EE005280DB /* IAPError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPError.swift; sourceTree = "<group>"; };
+		DE2B107B27DB14EE005280DB /* IAPErrorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPErrorHelper.swift; sourceTree = "<group>"; };
+		DE2B107E27DB14EE005280DB /* Brief.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brief.swift; sourceTree = "<group>"; };
+		DE2B107F27DB14EE005280DB /* Stats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		DE2B108127DB14EE005280DB /* GetBriefRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetBriefRequest.swift; sourceTree = "<group>"; };
+		DE2B108227DB14EE005280DB /* GetBriefResponseMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetBriefResponseMapper.swift; sourceTree = "<group>"; };
+		DE2B108327DB14EE005280DB /* GetStatsResponseMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStatsResponseMapper.swift; sourceTree = "<group>"; };
+		DE2B108427DB14EE005280DB /* GetStatsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStatsRequest.swift; sourceTree = "<group>"; };
+		DE2B108627DB14EE005280DB /* StatsManagerCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsManagerCore.swift; sourceTree = "<group>"; };
+		DE2B108727DB14EE005280DB /* StatsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsManager.swift; sourceTree = "<group>"; };
+		DE2B108927DB14EE005280DB /* StatsShareManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsShareManager.swift; sourceTree = "<group>"; };
+		DE2B108C27DB14EE005280DB /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		DE2B108E27DB14EE005280DB /* SessionManagerCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManagerCore.swift; sourceTree = "<group>"; };
+		DE2B108F27DB14EE005280DB /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		DE2B10DE27DB16F2005280DB /* XOREncryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XOREncryption.swift; sourceTree = "<group>"; };
 		DE55A4AD27D6458000B53B46 /* OCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCourseView.swift; sourceTree = "<group>"; };
 		DE55A4AF27D64C7600B53B46 /* ODetermingSkillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ODetermingSkillView.swift; sourceTree = "<group>"; };
 		DE55A4B127D64CB300B53B46 /* OProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OProgressView.swift; sourceTree = "<group>"; };
@@ -198,6 +334,358 @@
 			path = CreatingPlan;
 			sourceTree = "<group>";
 		};
+		DE2B101427DB1390005280DB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B101527DB139D005280DB /* RestAPITransport.swift */,
+				DE2B101727DB13AC005280DB /* APIRequestBody.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		DE2B101B27DB14ED005280DB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B101C27DB14ED005280DB /* Rate */,
+				DE2B103127DB14ED005280DB /* TestStats */,
+				DE2B103A27DB14ED005280DB /* Qestions */,
+				DE2B104F27DB14ED005280DB /* Courses */,
+				DE2B106327DB14ED005280DB /* Profile */,
+				DE2B107327DB14EE005280DB /* Purchase */,
+				DE2B107C27DB14EE005280DB /* Stats */,
+				DE2B108A27DB14EE005280DB /* Session */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		DE2B101C27DB14ED005280DB /* Rate */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B101D27DB14ED005280DB /* RateManagerCore.swift */,
+				DE2B101E27DB14ED005280DB /* RateManager.swift */,
+			);
+			path = Rate;
+			sourceTree = "<group>";
+		};
+		DE2B103127DB14ED005280DB /* TestStats */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B103227DB14ED005280DB /* Models */,
+				DE2B103427DB14ED005280DB /* Requests */,
+				DE2B103727DB14ED005280DB /* Manager */,
+			);
+			path = TestStats;
+			sourceTree = "<group>";
+		};
+		DE2B103227DB14ED005280DB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B103327DB14ED005280DB /* TestStats.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DE2B103427DB14ED005280DB /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B103527DB14ED005280DB /* GetTestStatsRequest.swift */,
+				DE2B103627DB14ED005280DB /* GetTestStatsResponseMapper.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		DE2B103727DB14ED005280DB /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B103827DB14ED005280DB /* TestStatsManagerCore.swift */,
+				DE2B103927DB14ED005280DB /* TestStatsManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		DE2B103A27DB14ED005280DB /* Qestions */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B103B27DB14ED005280DB /* Models */,
+				DE2B103E27DB14ED005280DB /* Requests */,
+				DE2B104A27DB14ED005280DB /* Manager */,
+			);
+			path = Qestions;
+			sourceTree = "<group>";
+		};
+		DE2B103B27DB14ED005280DB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B103C27DB14ED005280DB /* TestConfig.swift */,
+				DE2B103D27DB14ED005280DB /* Test.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DE2B103E27DB14ED005280DB /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B103F27DB14ED005280DB /* GetTestResponseMapper.swift */,
+				DE2B104027DB14ED005280DB /* GetTestConfigResponseMapper.swift */,
+				DE2B104127DB14ED005280DB /* SendAnswerResponseMapper.swift */,
+				DE2B104227DB14ED005280DB /* GetTestConfigRequest.swift */,
+				DE2B104327DB14ED005280DB /* GetFailedSetRequest.swift */,
+				DE2B104427DB14ED005280DB /* GetOnboardingSetRequest.swift */,
+				DE2B104527DB14ED005280DB /* GetRandomSetRequest.swift */,
+				DE2B104627DB14ED005280DB /* GetQotdRequest.swift */,
+				DE2B104727DB14ED005280DB /* SendAnswerRequest.swift */,
+				DE2B104827DB14ED005280DB /* GetTestRequest.swift */,
+				DE2B104927DB14ED005280DB /* GetTenSetRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		DE2B104A27DB14ED005280DB /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B104B27DB14ED005280DB /* QuestionManager.swift */,
+				DE2B104C27DB14ED005280DB /* QuestionManagerMediator.swift */,
+				DE2B104D27DB14ED005280DB /* QuestionManagerCore.swift */,
+				DE2B104E27DB14ED005280DB /* QuestionManagerDelagate.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		DE2B104F27DB14ED005280DB /* Courses */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B105027DB14ED005280DB /* Models */,
+				DE2B105327DB14ED005280DB /* Requests */,
+				DE2B105E27DB14ED005280DB /* Manager */,
+				DE2B106127DB14ED005280DB /* Mediator */,
+			);
+			path = Courses;
+			sourceTree = "<group>";
+		};
+		DE2B105027DB14ED005280DB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B105127DB14ED005280DB /* Reference.swift */,
+				DE2B105227DB14ED005280DB /* Course.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DE2B105327DB14ED005280DB /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B105427DB14ED005280DB /* GetCourcesRequest.swift */,
+				DE2B105527DB14ED005280DB /* GetReferences */,
+				DE2B105827DB14ED005280DB /* SetSelectCourse */,
+				DE2B105A27DB14ED005280DB /* GetSelectedCourse */,
+				DE2B105D27DB14ED005280DB /* GetCourcesResponseMapper.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		DE2B105527DB14ED005280DB /* GetReferences */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B105627DB14ED005280DB /* GetReferencesResponseMapper.swift */,
+				DE2B105727DB14ED005280DB /* GetReferencesRequest.swift */,
+			);
+			path = GetReferences;
+			sourceTree = "<group>";
+		};
+		DE2B105827DB14ED005280DB /* SetSelectCourse */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B105927DB14ED005280DB /* SetSelectCourseRequest.swift */,
+			);
+			path = SetSelectCourse;
+			sourceTree = "<group>";
+		};
+		DE2B105A27DB14ED005280DB /* GetSelectedCourse */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B105B27DB14ED005280DB /* GetSelectedCourseResponse.swift */,
+				DE2B105C27DB14ED005280DB /* GetSelectedCourseRequest.swift */,
+			);
+			path = GetSelectedCourse;
+			sourceTree = "<group>";
+		};
+		DE2B105E27DB14ED005280DB /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B105F27DB14ED005280DB /* CoursesManagerCore.swift */,
+				DE2B106027DB14ED005280DB /* CoursesManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		DE2B106127DB14ED005280DB /* Mediator */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B106227DB14ED005280DB /* CoursesManagerMediator.swift */,
+			);
+			path = Mediator;
+			sourceTree = "<group>";
+		};
+		DE2B106327DB14ED005280DB /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B106427DB14ED005280DB /* Models */,
+				DE2B106627DB14ED005280DB /* Manager */,
+				DE2B106927DB14ED005280DB /* Request */,
+				DE2B107027DB14EE005280DB /* Mediator */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		DE2B106427DB14ED005280DB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B106527DB14ED005280DB /* TestMode.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DE2B106627DB14ED005280DB /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B106727DB14ED005280DB /* ProfileManagerCore.swift */,
+				DE2B106827DB14ED005280DB /* ProfileManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		DE2B106927DB14ED005280DB /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B106A27DB14ED005280DB /* LoginRequest.swift */,
+				DE2B106B27DB14ED005280DB /* SyncTokensRequest.swift */,
+				DE2B106C27DB14ED005280DB /* GetTestMode */,
+				DE2B106F27DB14EE005280DB /* SetRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		DE2B106C27DB14ED005280DB /* GetTestMode */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B106D27DB14ED005280DB /* GetTestModeResponseMapper.swift */,
+				DE2B106E27DB14ED005280DB /* GetTestModeRequest.swift */,
+			);
+			path = GetTestMode;
+			sourceTree = "<group>";
+		};
+		DE2B107027DB14EE005280DB /* Mediator */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B107127DB14EE005280DB /* ProfileMediatorDelegate.swift */,
+				DE2B107227DB14EE005280DB /* ProfileMediator.swift */,
+			);
+			path = Mediator;
+			sourceTree = "<group>";
+		};
+		DE2B107327DB14EE005280DB /* Purchase */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B107427DB14EE005280DB /* IAPManager.swift */,
+				DE2B107527DB14EE005280DB /* PurchaseValidationObserver.swift */,
+				DE2B107627DB14EE005280DB /* Model */,
+				DE2B107927DB14EE005280DB /* Error */,
+			);
+			path = Purchase;
+			sourceTree = "<group>";
+		};
+		DE2B107627DB14EE005280DB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B107727DB14EE005280DB /* IAPActionResult.swift */,
+				DE2B107827DB14EE005280DB /* IAPProduct.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DE2B107927DB14EE005280DB /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B107A27DB14EE005280DB /* IAPError.swift */,
+				DE2B107B27DB14EE005280DB /* IAPErrorHelper.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		DE2B107C27DB14EE005280DB /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B107D27DB14EE005280DB /* Models */,
+				DE2B108027DB14EE005280DB /* Requests */,
+				DE2B108527DB14EE005280DB /* Manager */,
+				DE2B108827DB14EE005280DB /* Share */,
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
+		DE2B107D27DB14EE005280DB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B107E27DB14EE005280DB /* Brief.swift */,
+				DE2B107F27DB14EE005280DB /* Stats.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DE2B108027DB14EE005280DB /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B108127DB14EE005280DB /* GetBriefRequest.swift */,
+				DE2B108227DB14EE005280DB /* GetBriefResponseMapper.swift */,
+				DE2B108327DB14EE005280DB /* GetStatsResponseMapper.swift */,
+				DE2B108427DB14EE005280DB /* GetStatsRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		DE2B108527DB14EE005280DB /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B108627DB14EE005280DB /* StatsManagerCore.swift */,
+				DE2B108727DB14EE005280DB /* StatsManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		DE2B108827DB14EE005280DB /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B108927DB14EE005280DB /* StatsShareManager.swift */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
+		DE2B108A27DB14EE005280DB /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B108B27DB14EE005280DB /* Models */,
+				DE2B108D27DB14EE005280DB /* Manager */,
+			);
+			path = Session;
+			sourceTree = "<group>";
+		};
+		DE2B108B27DB14EE005280DB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B108C27DB14EE005280DB /* Session.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DE2B108D27DB14EE005280DB /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B108E27DB14EE005280DB /* SessionManagerCore.swift */,
+				DE2B108F27DB14EE005280DB /* SessionManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		DE93781727C4AF350073F27C = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +737,7 @@
 			isa = PBXGroup;
 			children = (
 				DE93783F27C4B2600073F27C /* Misc */,
+				DE2B101B27DB14ED005280DB /* Service */,
 				DE93789827C4BEF20073F27C /* Presentation */,
 			);
 			path = Classes;
@@ -257,6 +746,7 @@
 		DE93783F27C4B2600073F27C /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				DE2B101427DB1390005280DB /* Network */,
 				DE93784027C4B2600073F27C /* Extension */,
 				DE93784927C4B2600073F27C /* Utils */,
 				DE93785327C4B2600073F27C /* Components */,
@@ -292,6 +782,7 @@
 				DE93784D27C4B2600073F27C /* ScreenSize.swift */,
 				DE93784F27C4B2600073F27C /* Fonts.swift */,
 				DE93785227C4B2600073F27C /* Weak.swift */,
+				DE2B10DE27DB16F2005280DB /* XOREncryption.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -300,6 +791,7 @@
 			isa = PBXGroup;
 			children = (
 				DE93785127C4B2600073F27C /* SignError.swift */,
+				DE2B101927DB13E0005280DB /* NetworkError.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -561,46 +1053,100 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE2B109027DB14EE005280DB /* RateManagerCore.swift in Sources */,
+				DE2B10DA27DB14EE005280DB /* StatsShareManager.swift in Sources */,
 				DED4725627D20B2300AEF8A6 /* OExamsTableElement.swift in Sources */,
+				DE2B10C227DB14EE005280DB /* TestMode.swift in Sources */,
 				DE93789B27C4BF070073F27C /* SplashViewController.swift in Sources */,
 				DE93787527C4B2600073F27C /* ScreenSize.swift in Sources */,
+				DE2B10D427DB14EE005280DB /* GetBriefRequest.swift in Sources */,
+				DE2B10A927DB14EE005280DB /* SendAnswerResponseMapper.swift in Sources */,
 				DE2B100E27DA47AE005280DB /* OPlanView.swift in Sources */,
+				DE2B10A127DB14EE005280DB /* GetTestStatsRequest.swift in Sources */,
+				DE2B101827DB13AC005280DB /* APIRequestBody.swift in Sources */,
+				DE2B10B627DB14EE005280DB /* Reference.swift in Sources */,
 				DE93787727C4B2600073F27C /* Fonts.swift in Sources */,
+				DE2B10CC27DB14EE005280DB /* IAPManager.swift in Sources */,
 				DE93787D27C4B2600073F27C /* NursingNavigationControllerSettings.swift in Sources */,
+				DE2B10B527DB14EE005280DB /* QuestionManagerDelagate.swift in Sources */,
 				DE93788427C4B2600073F27C /* AppDelegate.swift in Sources */,
+				DE2B10AE27DB14EE005280DB /* GetQotdRequest.swift in Sources */,
+				DE2B10DF27DB16F2005280DB /* XOREncryption.swift in Sources */,
 				DE93789727C4BDED0073F27C /* UIEdgeInsets+Extension.swift in Sources */,
+				DE2B10AF27DB14EE005280DB /* SendAnswerRequest.swift in Sources */,
+				DE2B10B127DB14EE005280DB /* GetTenSetRequest.swift in Sources */,
 				DE93787E27C4B2600073F27C /* TapAreaButton.swift in Sources */,
+				DE2B10D127DB14EE005280DB /* IAPErrorHelper.swift in Sources */,
+				DE2B10D727DB14EE005280DB /* GetStatsRequest.swift in Sources */,
+				DE2B10BE27DB14EE005280DB /* GetCourcesResponseMapper.swift in Sources */,
 				DED4724A27CE5CF000AEF8A6 /* OAgeView.swift in Sources */,
+				DE2B10BA27DB14EE005280DB /* GetReferencesRequest.swift in Sources */,
 				DE2B100C27D9F6CE005280DB /* OCreatingPlanSectionView.swift in Sources */,
 				DE93787B27C4B2600073F27C /* Toast.swift in Sources */,
 				DE93790427C4C0E90073F27C /* OnboardingView.swift in Sources */,
+				DE2B10DD27DB14EE005280DB /* SessionManager.swift in Sources */,
+				DE2B10C527DB14EE005280DB /* LoginRequest.swift in Sources */,
+				DE2B10AB27DB14EE005280DB /* GetFailedSetRequest.swift in Sources */,
 				DE9378F627C4C0E90073F27C /* OSlideView.swift in Sources */,
+				DE2B10BC27DB14EE005280DB /* GetSelectedCourseResponse.swift in Sources */,
+				DE2B101A27DB13E0005280DB /* NetworkError.swift in Sources */,
+				DE2B10BF27DB14EE005280DB /* CoursesManagerCore.swift in Sources */,
+				DE2B10B027DB14EE005280DB /* GetTestRequest.swift in Sources */,
+				DE2B10C927DB14EE005280DB /* SetRequest.swift in Sources */,
 				DE2B100227D8789F005280DB /* OStudyModeCell.swift in Sources */,
 				DE93788527C4B2600073F27C /* RxActivityIndicator.swift in Sources */,
 				DE93788727C4B2600073F27C /* Appearance.swift in Sources */,
 				DE93787A27C4B2600073F27C /* ImagePicker.swift in Sources */,
+				DE2B10B727DB14EE005280DB /* Course.swift in Sources */,
 				DE93789F27C4BF120073F27C /* SplashView.swift in Sources */,
 				DE93790527C4C0E90073F27C /* OnboardingViewModel.swift in Sources */,
+				DE2B10DC27DB14EE005280DB /* SessionManagerCore.swift in Sources */,
+				DE2B10CE27DB14EE005280DB /* IAPActionResult.swift in Sources */,
+				DE2B10D627DB14EE005280DB /* GetStatsResponseMapper.swift in Sources */,
 				DED4725827D20C4C00AEF8A6 /* OExamsTable.swift in Sources */,
 				DE2B0FFA27D77546005280DB /* OQuizResultView.swift in Sources */,
 				DE2B100727D9E857005280DB /* OnboardingCombineData.swift in Sources */,
 				DE93788327C4B2600073F27C /* GradientView.swift in Sources */,
+				DE2B10B827DB14EE005280DB /* GetCourcesRequest.swift in Sources */,
 				DED4725027D1DE6700AEF8A6 /* OQuizSolutionView.swift in Sources */,
+				DE2B10C027DB14EE005280DB /* CoursesManager.swift in Sources */,
+				DE2B10A527DB14EE005280DB /* TestConfig.swift in Sources */,
 				DE93788227C4B2600073F27C /* CircleView.swift in Sources */,
 				DE2B100A27D9F441005280DB /* OCreatingPlanRowView.swift in Sources */,
+				DE2B10CD27DB14EE005280DB /* PurchaseValidationObserver.swift in Sources */,
+				DE2B10C727DB14EE005280DB /* GetTestModeResponseMapper.swift in Sources */,
+				DE2B10B927DB14EE005280DB /* GetReferencesResponseMapper.swift in Sources */,
 				DE2B100027D876A0005280DB /* OStudyModeView.swift in Sources */,
 				DE55A4AE27D6458000B53B46 /* OCourseView.swift in Sources */,
 				DE2B100427D8B5C6005280DB /* OCreatingPlanView.swift in Sources */,
 				DED4724527CE4BF700AEF8A6 /* OMotivationView.swift in Sources */,
+				DE2B10D527DB14EE005280DB /* GetBriefResponseMapper.swift in Sources */,
+				DE2B10AA27DB14EE005280DB /* GetTestConfigRequest.swift in Sources */,
 				DE2B0FFE27D798F4005280DB /* ODailyView.swift in Sources */,
+				DE2B10D927DB14EE005280DB /* StatsManager.swift in Sources */,
+				DE2B10CA27DB14EE005280DB /* ProfileMediatorDelegate.swift in Sources */,
+				DE2B10BB27DB14EE005280DB /* SetSelectCourseRequest.swift in Sources */,
+				DE2B10CB27DB14EE005280DB /* ProfileMediator.swift in Sources */,
+				DE2B10A327DB14EE005280DB /* TestStatsManagerCore.swift in Sources */,
 				DE93787327C4B2600073F27C /* NumberLaunches.swift in Sources */,
+				DE2B10A027DB14EE005280DB /* TestStats.swift in Sources */,
 				DE93787827C4B2600073F27C /* SignError.swift in Sources */,
 				DE93789D27C4BF0D0073F27C /* SplashViewModel.swift in Sources */,
 				DE2B0FFC27D7960E005280DB /* ODailyGoalView.swift in Sources */,
+				DE2B10A427DB14EE005280DB /* TestStatsManager.swift in Sources */,
+				DE2B10A227DB14EE005280DB /* GetTestStatsResponseMapper.swift in Sources */,
+				DE2B10D027DB14EE005280DB /* IAPError.swift in Sources */,
+				DE2B10C127DB14EE005280DB /* CoursesManagerMediator.swift in Sources */,
+				DE2B10B227DB14EE005280DB /* QuestionManager.swift in Sources */,
+				DE2B10C327DB14EE005280DB /* ProfileManagerCore.swift in Sources */,
+				DE2B10D327DB14EE005280DB /* Stats.swift in Sources */,
+				DE2B10AD27DB14EE005280DB /* GetRandomSetRequest.swift in Sources */,
 				DE93788027C4B2600073F27C /* PaddingPickerView.swift in Sources */,
 				DE93787227C4B2600073F27C /* Scalable.swift in Sources */,
 				DED4724827CE4C4B00AEF8A6 /* OMotivationCell.swift in Sources */,
+				DE2B10C827DB14EE005280DB /* GetTestModeRequest.swift in Sources */,
 				DE55A4B227D64CB300B53B46 /* OProgressView.swift in Sources */,
+				DE2B101627DB139D005280DB /* RestAPITransport.swift in Sources */,
 				DE93786D27C4B2600073F27C /* UITapGestureRecognizerExtension.swift in Sources */,
 				DE93786E27C4B2600073F27C /* UIDeviceExtension.swift in Sources */,
 				DED4724E27D1DA6B00AEF8A6 /* OWhyView.swift in Sources */,
@@ -609,18 +1155,32 @@
 				DE93788627C4B2600073F27C /* UIViewRxExtension.swift in Sources */,
 				DE93787927C4B2600073F27C /* Weak.swift in Sources */,
 				DE93787027C4B2600073F27C /* StringExtension.swift in Sources */,
+				DE2B10B427DB14EE005280DB /* QuestionManagerCore.swift in Sources */,
+				DE2B10C427DB14EE005280DB /* ProfileManager.swift in Sources */,
+				DE2B10CF27DB14EE005280DB /* IAPProduct.swift in Sources */,
+				DE2B10C627DB14EE005280DB /* SyncTokensRequest.swift in Sources */,
+				DE2B10BD27DB14EE005280DB /* GetSelectedCourseRequest.swift in Sources */,
 				DE93787F27C4B2600073F27C /* PaddingLabel.swift in Sources */,
 				DE93787C27C4B2600073F27C /* NursingNavigationController.swift in Sources */,
 				DE9378D827C4C0E90073F27C /* OnboardingViewController.swift in Sources */,
+				DE2B10D827DB14EE005280DB /* StatsManagerCore.swift in Sources */,
 				DED4724327CE406600AEF8A6 /* OStartView.swift in Sources */,
+				DE2B10A627DB14EE005280DB /* Test.swift in Sources */,
+				DE2B10D227DB14EE005280DB /* Brief.swift in Sources */,
 				DE93786B27C4B2600073F27C /* Collection+Extension.swift in Sources */,
+				DE2B109127DB14EE005280DB /* RateManager.swift in Sources */,
+				DE2B10AC27DB14EE005280DB /* GetOnboardingSetRequest.swift in Sources */,
 				DE93787127C4B2600073F27C /* GlobalDefinitions.swift in Sources */,
+				DE2B10B327DB14EE005280DB /* QuestionManagerMediator.swift in Sources */,
 				DE93786A27C4B2600073F27C /* UIColorExtension.swift in Sources */,
 				DE93787427C4B2600073F27C /* TextAttributes.swift in Sources */,
+				DE2B10DB27DB14EE005280DB /* Session.swift in Sources */,
 				DE55A4B427D6538800B53B46 /* OExamDateView.swift in Sources */,
+				DE2B10A827DB14EE005280DB /* GetTestConfigResponseMapper.swift in Sources */,
 				DE2B101127DA4B49005280DB /* OPlanGridView.swift in Sources */,
 				DED4725A27D20F7800AEF8A6 /* OExamsView.swift in Sources */,
 				DED4725427D2091600AEF8A6 /* OExamsTableCell.swift in Sources */,
+				DE2B10A727DB14EE005280DB /* GetTestResponseMapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

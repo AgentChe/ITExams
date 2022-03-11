@@ -24,6 +24,8 @@ final class OCourseView: OSlideView {
     
     private lazy var disposeBag = DisposeBag()
     
+    private lazy var coursesManager = CoursesManagerCore()
+    
     override init(step: OnboardingView.Step) {
         super.init(step: step)
         
@@ -40,36 +42,25 @@ final class OCourseView: OSlideView {
 // MARK: OExamsViewDelegate
 extension OCourseView: OExamsViewDelegate {
     func examsDidSelected(element: OExamElement) {
-        // TODO: получать данные с сервера
-        
-        let elements = [
-            OExamsTableElement(code: UUID().uuidString,
-                               title: "(Cloud Practitioner",
-                               subTitle: "Assesses knowledge of core services and use cases, billing and pricing models, security concepts, and how cloud impacts business"),
-            OExamsTableElement(code: UUID().uuidString,
-                               title: "Certified Database",
-                               subTitle: "Validates expertise in recommending, designing, and maintaining the optimal AWS database solution to improve performance"),
-            OExamsTableElement(code: UUID().uuidString,
-                               title: "(Cloud Practitioner",
-                               subTitle: "Assesses knowledge of core services and use cases, billing and pricing models, security concepts, and how cloud impacts business"),
-            OExamsTableElement(code: UUID().uuidString,
-                               title: "Certified Database",
-                               subTitle: "Validates expertise in recommending, designing, and maintaining the optimal AWS database solution to improve performance"),
-            OExamsTableElement(code: UUID().uuidString,
-                               title: "(Cloud Practitioner",
-                               subTitle: "Assesses knowledge of core services and use cases, billing and pricing models, security concepts, and how cloud impacts business"),
-            OExamsTableElement(code: UUID().uuidString,
-                               title: "Certified Database",
-                               subTitle: "Validates expertise in recommending, designing, and maintaining the optimal AWS database solution to improve performance"),
-            OExamsTableElement(code: UUID().uuidString,
-                               title: "(Cloud Practitioner",
-                               subTitle: "Assesses knowledge of core services and use cases, billing and pricing models, security concepts, and how cloud impacts business"),
-            OExamsTableElement(code: UUID().uuidString,
-                               title: "Certified Database",
-                               subTitle: "Validates expertise in recommending, designing, and maintaining the optimal AWS database solution to improve performance")
-        ]
-        tableView.setup(elements: elements)
-        changeEnabled()
+        coursesManager
+            .retrieveCourses(domain: element.domain, apiKey: element.api)
+            .asDriver(onErrorJustReturn: [])
+            .drive(onNext: { [weak self] courses in
+                guard let self = self else {
+                    return
+                }
+                
+                let elements = courses.map { course in
+                    OExamsTableElement(code: String(course.id),
+                                       title: course.name,
+                                       subTitle: course.subTitle)
+                }
+                
+                self.tableView.setup(elements: elements)
+                
+                self.changeEnabled()
+            })
+            .disposed(by: disposeBag)
     }
 }
 

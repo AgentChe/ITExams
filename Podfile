@@ -13,6 +13,8 @@ target 'ITExams' do
   pod 'RxCocoa'
   
   pod 'Alamofire'
+  
+  pod 'SwiftyStoreKit'
 
   pod 'OtterScaleiOS', :git => "https://github.com/AgentChe/OtterScaleiOS.git"
 end
@@ -25,7 +27,3 @@ post_install do |installer|
     end
   end
 end
-
-#  pod 'FBSDKCoreKit'
-#  pod 'Branch'
-#  pod 'AppsFlyerFramework'
