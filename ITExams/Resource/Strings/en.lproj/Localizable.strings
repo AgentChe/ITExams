@@ -90,3 +90,30 @@
 "Onboarding.PlanView.Column2.Title" = "15 tests\nper week";
 "Onboarding.PlanView.Column2.Period" = "Week 4";
 "Onboarding.PlanView.Button" = "Get my plan";
+
+// MARK: Paygate
+"Paygate.FreeTrial.Title" = "Free trial guide";
+"Paygate.FreeTrial.Cell1.Title" = "Install the app";
+"Paygate.FreeTrial.Cell1.SubTitle" = "You successfully created your\nprofile";
+"Paygate.FreeTrial.Cell2.Title" = "Today: Get Instant Access";
+"Paygate.FreeTrial.Cell2.SubTitle" = "Personal study plan with 5000+\nquestions";
+"Paygate.FreeTrial.Cell3.Title" = "Day 5: Trial Reminder";
+"Paygate.FreeTrial.Cell3.SubTitle" = "We’ll send you a notification. Cancel\nanytime in just 15 seconds";
+"Paygate.FreeTrial.Cell4.Title" = "Day 7: Trial Ends";
+"Paygate.FreeTrial.Cell4.SubTitle" = "Your subscritption will start Feb 22";
+"Paygate.FreeTrial.Price" = "7 days free, then %@/year\nonly %@/week";
+"Paygate.FreeTrial.TrialButton" = "Start free trial";
+"Paygate.FreeTrial.PlansButton" = "View all plans";
+"Paygate.Plans.Title" = "Get access to unlimited\nstudy material";
+"Paygate.Plans.Cell1" = "Unlimited access to 5000+ questions";
+"Paygate.Plans.Cell2" = "Never waste your time to learning";
+"Paygate.Plans.Cell3" = "98% pass rate on the first attempt";
+"Paygate.Plans.Product1.Title" = "Lifetime";
+"Paygate.Plans.Product1.Placeholder" = "BEST  VALUE • SAVE 21%";
+"Paygate.Plans.Product2.Title" = "Monthly";
+"Paygate.Plans.Product2.Placeholder" = "POPULAR";
+"Paygate.Plans.TermsOfService" = "Terms of Service";
+"Paygate.Plans.PrivacyPolicy" = "Privacy Policy";
+"Paygate.Purchase.Failed" = "Failed to purchase";
+"Paygate.Week" = "week";
+"Paygate.Month" = "month";
