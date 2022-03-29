@@ -8,16 +8,8 @@
 import UIKit
 import RxSwift
 
-struct OExamElement {
-    let code: String
-    let title: String
-    let subTitle: String
-    let api: String
-    let domain: String
-}
-
 protocol OExamsViewDelegate: AnyObject {
-    func examsDidSelected(element: OExamElement)
+    func examsDidSelected(element: Exam)
 }
 
 final class OExamsView: OSlideView {
@@ -30,23 +22,9 @@ final class OExamsView: OSlideView {
     
     private lazy var disposeBag = DisposeBag()
     
-    private lazy var exams = [
-        OExamElement(code: "AWS",
-                     title: "AWS",
-                     subTitle: "(The Computing Technology Industry Association)",
-                     api: GlobalDefinitions.awsApiKey,
-                     domain: GlobalDefinitions.awsDomainUrl),
-        OExamElement(code: "CompTIA",
-                     title: "CompTIA",
-                     subTitle: "(The Computing Technology Industry Association)",
-                     api: GlobalDefinitions.comptiaApiKey,
-                     domain: GlobalDefinitions.comptiaDomainUrl),
-        OExamElement(code: "CISSP",
-                     title: "CISSP",
-                     subTitle: "(The Computing Technology Industry Association)",
-                     api: GlobalDefinitions.cisspApiKey,
-                     domain: GlobalDefinitions.cisspDomainUrl)
-    ]
+    private lazy var profileManager = ProfileManager()
+    
+    private lazy var exams = [Exam]()
     
     override init(step: OnboardingView.Step) {
         super.init(step: step)
@@ -88,6 +66,23 @@ private extension OExamsView {
     func initialize() {
         backgroundColor = Appearance.backgroundColor
         
+        profileManager
+            .obtainExams()
+            .asDriver(onErrorJustReturn: [])
+            .drive(onNext: { [weak self] exams in
+                guard let self = self else {
+                    return
+                }
+                
+                self.exams = exams
+                
+                let elements = exams.map { OExamsTableElement(code: $0.code,
+                                                              title: $0.title,
+                                                              subTitle: $0.subTitle) }
+                self.tableView.setup(elements: elements)
+            })
+            .disposed(by: disposeBag)
+        
         button.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else {
@@ -106,11 +101,6 @@ private extension OExamsView {
                 self.onNext()
             })
             .disposed(by: disposeBag)
-        
-        let elements = exams.map { OExamsTableElement(code: $0.code,
-                                                      title: $0.title,
-                                                      subTitle: $0.subTitle) }
-        tableView.setup(elements: elements)
     }
     
     func changeEnabled() {

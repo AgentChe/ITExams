@@ -11,7 +11,7 @@ import RxSwift
 struct OStudyModeElement {
     let name: String
     let text: String
-    let mode: TestMode
+    let code: Int
 }
 
 protocol OStudyModeViewDelegate: AnyObject {
@@ -26,15 +26,15 @@ final class OStudyModeView: OSlideView {
     lazy var subTitleLabel = makeSubTitleLabel()
     lazy var cell1 = makeCell(element: OStudyModeElement(name: "Onboarding.StudyMode.Mode1.Title".localized,
                                                          text: "Onboarding.StudyMode.Mode1.Text".localized,
-                                                         mode: .fullComplect),
+                                                         code: 0),
                               tag: 0)
     lazy var cell2 = makeCell(element: OStudyModeElement(name: "Onboarding.StudyMode.Mode2.Title".localized,
                                                          text: "Onboarding.StudyMode.Mode2.Text".localized,
-                                                         mode: .noExplanations),
+                                                         code: 1),
                               tag: 1)
     lazy var cell3 = makeCell(element: OStudyModeElement(name: "Onboarding.StudyMode.Mode3.Title".localized,
                                                          text: "Onboarding.StudyMode.Mode3.Text".localized,
-                                                         mode: .onAnExam),
+                                                         code: 2),
                               tag: 2)
     lazy var button = makeButton()
     

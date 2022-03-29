@@ -11,13 +11,20 @@ protocol ProfileManagerProtocol {
     func set(motivation: Int?,
              examDate: String?,
              testMode: Int?,
-             testMinutes: Int?) -> Single<Void>
+             testMinutes: Int?,
+             exam: Exam?) -> Single<Void>
+    func obtainExams() -> Single<[Exam]>
+    func obtainSelectedExam() -> Single<Exam?>
     func obtainTestMode() -> Single<TestMode?>
     func syncTokens(oldToken: String, newToken: String) -> Single<Void>
     func login(userToken: String) -> Single<Void>
 }
 
 final class ProfileManager: ProfileManagerProtocol {
+    enum Constants {
+        static let examKey = "profile_manager_exam_key"
+    }
+    
     private lazy var defaultRequestWrapper = DefaultRequestWrapper()
     
     private lazy var sessionMager = SessionManagerCore()
@@ -28,7 +35,8 @@ extension ProfileManager {
     func set(motivation: Int? = nil,
              examDate: String? = nil,
              testMode: Int? = nil,
-             testMinutes: Int? = nil) -> Single<Void> {
+             testMinutes: Int? = nil,
+             exam: Exam? = nil) -> Single<Void> {
         guard let userToken = sessionMager.getSession()?.userToken else {
             return .error(SignError.tokenNotFound)
         }
@@ -48,7 +56,51 @@ extension ProfileManager {
                 }
                 
                 self.notifyAboutChanged(testMode: testMode)
+                self.store(exam: exam)
             })
+    }
+    
+    func obtainExams() -> Single<[Exam]> {
+        Single<[Exam]>
+            .create { event in
+                let exams = [
+                    Exam(code: "AWS",
+                         title: "Onboarding.Exams.Exam1.Name".localized,
+                         subTitle: "Onboarding.Exams.Exam1.Text".localized,
+                         api: GlobalDefinitions.awsApiKey,
+                         domain: GlobalDefinitions.awsDomainUrl),
+                    Exam(code: "CompTIA",
+                         title: "Onboarding.Exams.Exam2.Name".localized,
+                         subTitle: "Onboarding.Exams.Exam2.Text".localized,
+                         api: GlobalDefinitions.comptiaApiKey,
+                         domain: GlobalDefinitions.comptiaDomainUrl),
+                    Exam(code: "CISSP",
+                         title: "Onboarding.Exams.Exam3.Name".localized,
+                         subTitle: "Onboarding.Exams.Exam3.Text".localized,
+                         api: GlobalDefinitions.cisspApiKey,
+                         domain: GlobalDefinitions.cisspDomainUrl)
+                ]
+                
+                event(.success(exams))
+                
+                return Disposables.create()
+            }
+    }
+    
+    func obtainSelectedExam() -> Single<Exam?> {
+        Single<Exam?>
+            .create { event in
+                guard let data = UserDefaults.standard.data(forKey: Constants.examKey) else {
+                    event(.success(nil))
+                    return Disposables.create()
+                }
+                
+                let exam = try? JSONDecoder().decode(Exam.self, from: data)
+                
+                event(.success(exam))
+                
+                return Disposables.create()
+            }
     }
     
     func obtainTestMode() -> Single<TestMode?> {
@@ -84,5 +136,13 @@ private extension ProfileManager {
         if let testMode = testMode, let mode = GetTestModeResponseMapper.map(testModeCode: testMode) {
             ProfileMediator.shared.notifyAboutChanged(testMode: mode)
         }
+    }
+    
+    func store(exam: Exam?) {
+        guard let exam = exam, let data = try? JSONEncoder().encode(exam) else {
+            return
+        }
+        
+        UserDefaults.standard.set(data, forKey: Constants.examKey)
     }
 }

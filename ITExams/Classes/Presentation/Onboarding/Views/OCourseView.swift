@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 
 protocol OCourseViewDelegate: AnyObject {
-    func courseViewDidSelected(course: String)
+    func courseViewDidSelected(course: Course)
 }
 
 final class OCourseView: OSlideView {
@@ -26,6 +26,8 @@ final class OCourseView: OSlideView {
     
     private lazy var coursesManager = CoursesManagerCore()
     
+    private lazy var courses = [Course]()
+    
     override init(step: OnboardingView.Step) {
         super.init(step: step)
         
@@ -41,7 +43,9 @@ final class OCourseView: OSlideView {
 
 // MARK: OExamsViewDelegate
 extension OCourseView: OExamsViewDelegate {
-    func examsDidSelected(element: OExamElement) {
+    func examsDidSelected(element: Exam) {
+        clear()
+        
         coursesManager
             .retrieveCourses(domain: element.domain, apiKey: element.api)
             .asDriver(onErrorJustReturn: [])
@@ -49,6 +53,8 @@ extension OCourseView: OExamsViewDelegate {
                 guard let self = self else {
                     return
                 }
+                
+                self.courses = courses
                 
                 let elements = courses.map { course in
                     OExamsTableElement(code: String(course.id),
@@ -86,11 +92,20 @@ private extension OCourseView {
                     return
                 }
                 
-                self.courseDelegate?.courseViewDidSelected(course: element.title)
+                guard let course = self.courses.first(where: { $0.id == Int(element.code) }) else {
+                    return
+                }
+                
+                self.courseDelegate?.courseViewDidSelected(course: course)
                 
                 self.onNext()
             })
             .disposed(by: disposeBag)
+    }
+    
+    func clear() {
+        courses = []
+        tableView.setup(elements: [])
     }
     
     func changeEnabled() {

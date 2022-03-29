@@ -171,6 +171,7 @@
 		DEE74EAB27F32479002FE71D /* ProfileMediatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE74EAA27F32479002FE71D /* ProfileMediatorDelegate.swift */; };
 		DEE74EAD27F32486002FE71D /* ProfileMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE74EAC27F32486002FE71D /* ProfileMediator.swift */; };
 		DEE74EAF27F3275D002FE71D /* ObservableAndSingleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE74EAE27F3275D002FE71D /* ObservableAndSingleExtension.swift */; };
+		DEE74EB127F34CB6002FE71D /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE74EB027F34CB6002FE71D /* Exam.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -342,6 +343,7 @@
 		DEE74EAA27F32479002FE71D /* ProfileMediatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMediatorDelegate.swift; sourceTree = "<group>"; };
 		DEE74EAC27F32486002FE71D /* ProfileMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMediator.swift; sourceTree = "<group>"; };
 		DEE74EAE27F3275D002FE71D /* ObservableAndSingleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableAndSingleExtension.swift; sourceTree = "<group>"; };
+		DEE74EB027F34CB6002FE71D /* Exam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exam.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -673,6 +675,7 @@
 			isa = PBXGroup;
 			children = (
 				DE2B106527DB14ED005280DB /* TestMode.swift */,
+				DEE74EB027F34CB6002FE71D /* Exam.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1290,6 +1293,7 @@
 				DE2B10DC27DB14EE005280DB /* SessionManagerCore.swift in Sources */,
 				DE2B10CE27DB14EE005280DB /* IAPActionResult.swift in Sources */,
 				DE3FD60A27E9FFEE00E76844 /* PaygatePlansCell.swift in Sources */,
+				DEE74EB127F34CB6002FE71D /* Exam.swift in Sources */,
 				DE2B10D627DB14EE005280DB /* GetStatsResponseMapper.swift in Sources */,
 				DED4725827D20C4C00AEF8A6 /* OExamsTable.swift in Sources */,
 				DE2B0FFA27D77546005280DB /* OQuizResultView.swift in Sources */,

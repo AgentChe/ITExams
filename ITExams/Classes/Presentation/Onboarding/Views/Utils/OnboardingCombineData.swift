@@ -10,8 +10,8 @@ import Foundation
 struct OCombineData {
     let motivation: OMotivationElement
     let age: String
-    let exam: String
-    let course: String
+    let exam: Exam
+    let course: Course
     let examDate: String?
     let studyMode: OStudyModeElement
     let testMinutes: Int
@@ -20,8 +20,8 @@ struct OCombineData {
 final class OnboardingCombineData {
     private var motivation: OMotivationElement?
     private var age: String?
-    private var exam: String?
-    private var course: String?
+    private var exam: Exam?
+    private var course: Course?
     private var examDate: String?
     private var studyMode: OStudyModeElement?
     private var testMinutes: Int?
@@ -64,14 +64,14 @@ extension OnboardingCombineData: OAgeViewDelegate {
 
 // MARK: OExamsViewDelegate
 extension OnboardingCombineData: OExamsViewDelegate {
-    func examsDidSelected(element: OExamElement) {
-        exam = element.title
+    func examsDidSelected(element: Exam) {
+        exam = element
     }
 }
 
 // MARK: OCourseViewDelegate
 extension OnboardingCombineData: OCourseViewDelegate {
-    func courseViewDidSelected(course: String) {
+    func courseViewDidSelected(course: Course) {
         self.course = course
     }
 }

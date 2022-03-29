@@ -10,6 +10,7 @@ import RxCocoa
 import OtterScaleiOS
 
 final class SplashViewModel {
+    // TODO: проверять, что есть сохраненный экзамен и курс (можно убрать сохранение курса на сервере)
     enum Step {
         case onboarding, main, paygate
     }

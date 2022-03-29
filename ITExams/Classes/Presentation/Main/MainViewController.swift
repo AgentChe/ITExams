@@ -21,7 +21,7 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         addActionsToTabs()
         
         rx.methodInvoked(#selector(UIViewController.viewDidLayoutSubviews))
