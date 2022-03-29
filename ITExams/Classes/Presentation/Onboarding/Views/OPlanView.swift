@@ -28,7 +28,7 @@ final class OPlanView: OSlideView {
     private lazy var disposeBag = DisposeBag()
     
     private lazy var profileManager = ProfileManager()
-    private lazy var coursesManager = CoursesManagerCore()
+    private lazy var coursesManager = CoursesManager()
     
     override init(step: OnboardingView.Step) {
         super.init(step: step)
@@ -65,19 +65,13 @@ private extension OPlanView {
                     return .never()
                 }
                 
-                let profile = self.profileManager
+                return self.profileManager
                     .set(motivation: combineData.motivation.code,
                          examDate: combineData.examDate,
                          testMode: combineData.studyMode.code,
                          testMinutes: combineData.testMinutes,
-                         exam: combineData.exam)
-                
-                let course = self.coursesManager
-                    .rxSelect(course: combineData.course)
-                
-                return Single
-                    .zip(profile, course)
-                    .mapToVoid()
+                         exam: combineData.exam,
+                         course: combineData.course)
             }
             .subscribe(onNext: { [weak self] in
                 guard let self = self else {

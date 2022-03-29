@@ -10,14 +10,12 @@ import RxCocoa
 import OtterScaleiOS
 
 final class SplashViewModel {
-    // TODO: проверять, что есть сохраненный экзамен и курс (можно убрать сохранение курса на сервере)
     enum Step {
         case onboarding, main, paygate
     }
     
     lazy var validationComplete = PublishRelay<Void>()
     
-    private lazy var coursesManager = CoursesManagerCore()
     private lazy var paygateManager = PaygateManager()
     private lazy var sessionManager = SessionManagerCore()
     private lazy var profileManager = ProfileManager()
@@ -78,40 +76,28 @@ private extension SplashViewModel {
     }
     
     func library() -> Single<Void> {
-        Single
-            .zip(
-                paygateManager
-                    .retrieveMonetization(forceUpdate: true)
-                    .catchAndReturn(nil),
-                
-                coursesManager
-                    .retrieveReferences(forceUpdate: true)
-                    .catchAndReturn([])
-            ) { _, _ in Void() }
+        paygateManager
+            .retrieveMonetization(forceUpdate: true)
+            .catchAndReturn(nil)
+            .mapToVoid()
     }
     
     func makeStep() -> Single<Step> {
-        coursesManager
-            .retrieveSelectedCourse(forceUpdate: true)
-            .catchAndReturn(nil)
-            .map { [weak self] selectedCourse -> Step in
-                guard let self = self else {
-                    return .onboarding
+        Single<Step>
+            .create { event in
+                let step: Step
+                
+                if !OnboardingViewController.wasViewed() {
+                    step = .onboarding
+                } else if self.needPayment() {
+                    step = .paygate
+                } else {
+                    step = .main
                 }
                 
-                if selectedCourse != nil {
-                    return .main
-                }
+                event(.success(step))
                 
-                guard OnboardingViewController.wasViewed() else {
-                    return .onboarding
-                }
-                
-                if self.needPayment() {
-                    return .paygate
-                }
-                
-                return .main
+                return Disposables.create()
             }
     }
     

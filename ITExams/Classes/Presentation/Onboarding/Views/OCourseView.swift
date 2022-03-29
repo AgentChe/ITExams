@@ -24,7 +24,7 @@ final class OCourseView: OSlideView {
     
     private lazy var disposeBag = DisposeBag()
     
-    private lazy var coursesManager = CoursesManagerCore()
+    private lazy var coursesManager = CoursesManager()
     
     private lazy var courses = [Course]()
     

@@ -12,9 +12,11 @@ protocol ProfileManagerProtocol {
              examDate: String?,
              testMode: Int?,
              testMinutes: Int?,
-             exam: Exam?) -> Single<Void>
+             exam: Exam?,
+             course: Course?) -> Single<Void>
     func obtainExams() -> Single<[Exam]>
     func obtainSelectedExam() -> Single<Exam?>
+    func obtainSelectedCourse() -> Single<Course?>
     func obtainTestMode() -> Single<TestMode?>
     func syncTokens(oldToken: String, newToken: String) -> Single<Void>
     func login(userToken: String) -> Single<Void>
@@ -23,6 +25,7 @@ protocol ProfileManagerProtocol {
 final class ProfileManager: ProfileManagerProtocol {
     enum Constants {
         static let examKey = "profile_manager_exam_key"
+        static let courseKey = "profile_manager_course_key"
     }
     
     private lazy var defaultRequestWrapper = DefaultRequestWrapper()
@@ -36,7 +39,8 @@ extension ProfileManager {
              examDate: String? = nil,
              testMode: Int? = nil,
              testMinutes: Int? = nil,
-             exam: Exam? = nil) -> Single<Void> {
+             exam: Exam? = nil,
+             course: Course? = nil) -> Single<Void> {
         guard let userToken = sessionMager.getSession()?.userToken else {
             return .error(SignError.tokenNotFound)
         }
@@ -57,6 +61,7 @@ extension ProfileManager {
                 
                 self.notifyAboutChanged(testMode: testMode)
                 self.store(exam: exam)
+                self.store(course: course)
             })
     }
     
@@ -103,6 +108,22 @@ extension ProfileManager {
             }
     }
     
+    func obtainSelectedCourse() -> Single<Course?> {
+        Single<Course?>
+            .create { event in
+                guard let data = UserDefaults.standard.data(forKey: Constants.courseKey) else {
+                    event(.success(nil))
+                    return Disposables.create()
+                }
+                
+                let course = try? JSONDecoder().decode(Course.self, from: data)
+                
+                event(.success(course))
+                
+                return Disposables.create()
+            }
+    }
+    
     func obtainTestMode() -> Single<TestMode?> {
         guard let userToken = sessionMager.getSession()?.userToken else {
             return .error(SignError.tokenNotFound)
@@ -144,5 +165,13 @@ private extension ProfileManager {
         }
         
         UserDefaults.standard.set(data, forKey: Constants.examKey)
+    }
+    
+    func store(course: Course?) {
+        guard let course = course, let data = try? JSONEncoder().encode(course) else {
+            return
+        }
+        
+        UserDefaults.standard.set(data, forKey: Constants.courseKey)
     }
 }
