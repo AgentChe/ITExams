@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NursingNavigationController: UINavigationController {
+class NavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,8 +20,8 @@ class NursingNavigationController: UINavigationController {
 }
 
 // MARK: API
-extension NursingNavigationController {
-    func apply(settings: NursingNavigationControllerSettings) {
+extension NavigationController {
+    func apply(settings: NavigationControllerSettings) {
         navigationBar.setBackgroundImage(settings.backgroundImage, for: .default)
         navigationBar.shadowImage = settings.shadowImage
         navigationBar.isTranslucent = settings.isTranslucent

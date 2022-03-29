@@ -21,15 +21,8 @@ final class SplashViewController: UIViewController {
         
         // TODO
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
-            self.openPaygate()
-//            UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = OnboardingViewController.make()
+            UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = MainViewController.make()
         }
-    }
-    
-    // TODO
-    func openPaygate() {
-        let vc = PaygateViewController.make()
-        present(vc, animated: true)
     }
 }
 

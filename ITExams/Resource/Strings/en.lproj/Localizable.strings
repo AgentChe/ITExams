@@ -117,3 +117,9 @@
 "Paygate.Purchase.Failed" = "Failed to purchase";
 "Paygate.Week" = "week";
 "Paygate.Month" = "month";
+
+// MARK: Main
+"Main.Plan" = "Plan";
+"Main.Practice" = "Practice";
+"Main.Flashcards" = "Flashcards";
+"Main.Profile" = "Profile";

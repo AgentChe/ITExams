@@ -9,7 +9,6 @@ import RxSwift
 import RxCocoa
 import OtterScaleiOS
 
-// TODO: Узнать у Сергея, есть ли необходимость в синхронизации
 final class PaygateInteractor {
     enum Action {
         case buy(String)

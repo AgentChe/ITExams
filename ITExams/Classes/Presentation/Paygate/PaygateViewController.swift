@@ -9,25 +9,39 @@ import UIKit
 import RxSwift
 
 final class PaygateViewController: UIViewController {
+    enum Mode {
+        case full, onlyPlans
+    }
+    
     weak var delegate: PaygateViewControllerDelegate?
     
-    lazy var trialView = PaygateTrialView()
-    lazy var plansView = PaygatePlansView()
+    lazy var mainView = PaygateView()
+    
+    private lazy var trialView = PaygateTrialView()
+    private lazy var plansView = PaygatePlansView()
     
     private lazy var disposeBag = DisposeBag()
     
     private lazy var viewModel = PaygateViewModel()
     
+    private let mode: Mode
+    
+    private init(mode: Mode) {
+        self.mode = mode
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
-        view = trialView
+        view = mainView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = Appearance.backgroundColor
-        
-        plansView.lifetimeButton.isChecked = true
         
         viewModel.prices
             .drive(onNext: { [weak self] prices in
@@ -124,13 +138,44 @@ final class PaygateViewController: UIViewController {
                 self.viewModel.buy.accept(id)
             })
             .disposed(by: disposeBag)
+        
+        trialView.plansButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                self.mainView.moveToPlans()
+            })
+            .disposed(by: disposeBag)
+        
+        plansView.backButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                self.mainView.backToTrial()
+            })
+            .disposed(by: disposeBag)
+        
+        plansView.lifetimeButton.isChecked = true
+        
+        mainView.register(trialView: trialView, plansView: plansView, mode: mode)
+        
+        configureMode()
     }
 }
 
 // MARK: Make
 extension PaygateViewController {
     static func make() -> PaygateViewController {
-        let vc = PaygateViewController()
+        // TODO: Получать из OtterScale
+        let usedProducts = [PaygateViewModel.Constants.lifetime]
+        
+        let mode: Mode = usedProducts.contains(PaygateViewModel.Constants.monthly) ? .onlyPlans : .full
+        
+        let vc = PaygateViewController(mode: mode)
         vc.modalPresentationStyle = .fullScreen
         return vc
     }
@@ -152,6 +197,10 @@ private extension PaygateViewController {
                 self.plansView.subscriptionButton.price = price
             }
         }
+    }
+    
+    func configureMode() {
+        plansView.backButton.isHidden = mode == .onlyPlans
     }
     
     func dismiss(with result: PaygateViewControllerResult) {

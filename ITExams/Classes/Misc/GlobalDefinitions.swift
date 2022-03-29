@@ -6,8 +6,8 @@
 //
 
 final class GlobalDefinitions {
-    static let domainUrl = ""
-    static let apiKey = ""
+    static let domainUrl = "https://exams2.quantresear.ch"
+    static let apiKey = "6LbJ2meaKoYXjqUT"
     
     static let awsDomainUrl = "https://exams.korrekted.com"
     static let awsApiKey = "hQFvAU5TpF65gGhj"
@@ -18,8 +18,8 @@ final class GlobalDefinitions {
     static let cisspDomainUrl = "https://exams.korrekted.com"
     static let cisspApiKey = "dE5V8choEsHoVyEN"
     
-    static let otterScaleHost = ""
-    static let otterScaleApiKey = ""
+    static let otterScaleHost = "https://api.korrekted.com"
+    static let otterScaleApiKey = "oCrVwRgejQISV560"
 
     static let termsOfServiceUrl = ""
     static let privacyPolicyUrl = ""
