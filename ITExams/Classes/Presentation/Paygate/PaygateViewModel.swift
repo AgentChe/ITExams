@@ -17,6 +17,7 @@ final class PaygateViewModel {
     let buy = PublishRelay<String>()
     let restore = PublishRelay<Void>()
 
+    lazy var monetization = makeMonetization()
     lazy var prices = makePrices()
     lazy var buyed = makeBuyed()
     lazy var restored = makeRestored()
@@ -25,10 +26,18 @@ final class PaygateViewModel {
     
     private lazy var iapManager = IAPManager()
     private lazy var purchaseInteractor = PaygateInteractor()
+    private lazy var paygateManager = PaygateManager()
 }
 
 // MARK: Private
 private extension PaygateViewModel {
+    func makeMonetization() -> Driver<Monetization> {
+        paygateManager
+            .retrieveMonetization()
+            .asDriver(onErrorJustReturn: nil)
+            .map { $0 ?? .suggest }
+    }
+    
     func makePrices() -> Driver<[PaygatePrice]> {
         iapManager
             .obtainPrices(for: [

@@ -44,6 +44,16 @@ final class PaygateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.monetization
+            .drive(onNext: { [weak self] monetization in
+                guard let self = self else {
+                    return
+                }
+                
+                self.configure(monetization: monetization)
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.prices
             .drive(onNext: { [weak self] prices in
                 guard let self = self else {
@@ -185,6 +195,11 @@ extension PaygateViewController {
 
 // MARK: Private
 private extension PaygateViewController {
+    func configure(monetization: Monetization) {
+        trialView.closeButton.isHidden = monetization == .block
+        plansView.closeButton.isHidden = monetization == .block
+    }
+    
     func configure(prices: [PaygatePrice]) {
         prices.forEach { [weak self] price in
             guard let self = self else {
