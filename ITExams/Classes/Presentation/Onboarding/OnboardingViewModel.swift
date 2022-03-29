@@ -9,5 +9,16 @@ import RxSwift
 import RxCocoa
 
 final class OnboardingViewModel {
+    enum Step {
+        case paygate, main
+    }
     
+    private lazy var sessionManager = SessionManagerCore()
+}
+
+// MARK: Public
+extension OnboardingViewModel {
+    func whatNext() -> Step {
+        sessionManager.hasActiveSubscriptions() ? .main : .paygate
+    }
 }

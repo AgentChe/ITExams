@@ -58,7 +58,7 @@ private extension OPlanView {
                     return
                 }
                 
-                // TODO: отправка данных на сервер
+                // TODO: отправка и сохранение данных
                 
                 self.onNext()
             })
