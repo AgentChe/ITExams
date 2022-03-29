@@ -59,13 +59,13 @@ private extension OCreatingPlanView {
     
     func configure(data: OCombineData) {
         let goalsSectionView = OCreatingPlanSectionView(title: "Onboarding.CreatingPlanView.Section1".localized,
-                                                        rows: [data.motivation])
+                                                        rows: [data.motivation.title])
         let personalDataSectionView = OCreatingPlanSectionView(title: "Onboarding.CreatingPlanView.Section2".localized,
                                                                rows: [data.age])
         let examDetailsSectionView = OCreatingPlanSectionView(title: "Onboarding.CreatingPlanView.Section3".localized,
                                                               rows: [data.exam, data.course, data.examDate].compactMap { $0 })
         let studyPreferences = OCreatingPlanSectionView(title: "Onboarding.CreatingPlanView.Section4".localized,
-                                                        rows: ["Onboarding.CreatingPlanView.DailyGoal".localized, data.studyMode])
+                                                        rows: ["Onboarding.CreatingPlanView.DailyGoal".localized, data.studyMode.name])
         
         let views = [
             goalsSectionView,

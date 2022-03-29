@@ -23,14 +23,14 @@ final class PaygateViewModel {
     
     let activityIndicator = RxActivityIndicator()
     
-    private lazy var paygateManager = PaygateManager()
+    private lazy var iapManager = IAPManager()
     private lazy var purchaseInteractor = PaygateInteractor()
 }
 
 // MARK: Private
 private extension PaygateViewModel {
     func makePrices() -> Driver<[PaygatePrice]> {
-        paygateManager
+        iapManager
             .obtainPrices(for: [
                 Constants.lifetime, Constants.monthly
             ])

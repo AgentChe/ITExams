@@ -8,21 +8,23 @@
 import Foundation
 
 struct OCombineData {
-    let motivation: String
+    let motivation: OMotivationElement
     let age: String
     let exam: String
     let course: String
     let examDate: String?
-    let studyMode: String
+    let studyMode: OStudyModeElement
+    let testMinutes: Int
 }
 
 final class OnboardingCombineData {
-    private var motivation: String?
+    private var motivation: OMotivationElement?
     private var age: String?
     private var exam: String?
     private var course: String?
     private var examDate: String?
-    private var studyMode: String?
+    private var studyMode: OStudyModeElement?
+    private var testMinutes: Int?
     
     func combineData() -> OCombineData? {
         guard
@@ -30,7 +32,8 @@ final class OnboardingCombineData {
             let age = age,
             let exam = exam,
             let course = course,
-            let studyMode = studyMode
+            let studyMode = studyMode,
+            let testMinutes = testMinutes
         else {
             return nil
         }
@@ -40,14 +43,15 @@ final class OnboardingCombineData {
                             exam: exam,
                             course: course,
                             examDate: examDate,
-                            studyMode: studyMode)
+                            studyMode: studyMode,
+                            testMinutes: testMinutes)
     }
 }
 
 // MARK: OMotivationViewDelegate
 extension OnboardingCombineData: OMotivationViewDelegate {
     func motivationViewDidSelected(element: OMotivationElement) {
-        self.motivation = element.title
+        self.motivation = element
     }
 }
 
@@ -90,6 +94,13 @@ extension OnboardingCombineData: OExamDateViewDelegate {
 // MARK: OStudyModeViewDelegate
 extension OnboardingCombineData: OStudyModeViewDelegate {
     func studyModeViewDidSelected(element: OStudyModeElement) {
-        self.studyMode = element.name
+        self.studyMode = element
+    }
+}
+
+// MARK: ODailyGoalViewDelegate
+extension OnboardingCombineData: ODailyGoalViewDelegate {
+    func dailyGoalDidSelected(testMinutes: Int) {
+        self.testMinutes = testMinutes
     }
 }

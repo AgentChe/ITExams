@@ -11,6 +11,7 @@ import RxSwift
 struct OMotivationElement {
     let title: String
     let icon: UIImage
+    let code: Int
 }
 
 protocol OMotivationViewDelegate: AnyObject {
@@ -189,7 +190,8 @@ private extension OMotivationView {
                                    iconHeight: 75.scale,
                                    iconTop: 9.scale)
         view.element = OMotivationElement(title: "Onboarding.Motivation.Cell1".localized,
-                                          icon: UIImage(named: "OMotivation.Image1")!)
+                                          icon: UIImage(named: "OMotivation.Image1")!,
+                                          code: 0)
         view.layer.cornerRadius = 12.scale
         view.addTarget(self, action: #selector(tapped(sender:)), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -202,7 +204,8 @@ private extension OMotivationView {
                                    iconHeight: 84.scale,
                                    iconTop: 0)
         view.element = OMotivationElement(title: "Onboarding.Motivation.Cell2".localized,
-                                          icon: UIImage(named: "OMotivation.Image2")!)
+                                          icon: UIImage(named: "OMotivation.Image2")!,
+                                          code: 1)
         view.layer.cornerRadius = 12.scale
         view.addTarget(self, action: #selector(tapped(sender:)), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -215,7 +218,8 @@ private extension OMotivationView {
                                    iconHeight: 84.scale,
                                    iconTop: 0)
         view.element = OMotivationElement(title: "Onboarding.Motivation.Cell3".localized,
-                                          icon: UIImage(named: "OMotivation.Image3")!)
+                                          icon: UIImage(named: "OMotivation.Image3")!,
+                                          code: 2)
         view.layer.cornerRadius = 12.scale
         view.addTarget(self, action: #selector(tapped(sender:)), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false

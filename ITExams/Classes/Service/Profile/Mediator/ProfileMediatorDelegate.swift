@@ -1,8 +1,8 @@
 //
 //  ProfileMediatorDelegate.swift
-//  FNP
+//  ITExams
 //
-//  Created by Andrey Chernyshev on 14.07.2021.
+//  Created by Андрей Чернышев on 29.03.2022.
 //
 
 protocol ProfileMediatorDelegate: AnyObject {

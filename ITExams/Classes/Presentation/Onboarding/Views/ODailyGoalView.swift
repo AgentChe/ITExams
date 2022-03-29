@@ -6,8 +6,15 @@
 //
 
 import UIKit
+import RxSwift
+
+protocol ODailyGoalViewDelegate: AnyObject {
+    func dailyGoalDidSelected(testMinutes: Int)
+}
 
 final class ODailyGoalView: OSlideView {
+    weak var dailyGoalDelegate: ODailyGoalViewDelegate?
+    
     lazy var headerLabel = makeHeaderLabel()
     lazy var titleLabel = makeTitleLabel()
     lazy var subTitleLabel = makeSubTitleLabel()
@@ -21,6 +28,8 @@ final class ODailyGoalView: OSlideView {
     lazy var pickerView = makePickerView()
     lazy var minLabel = makeMinLabel()
     lazy var button = makeButton()
+    
+    private lazy var disposeBag = DisposeBag()
     
     override init(step: OnboardingView.Step) {
         super.init(step: step)
@@ -83,6 +92,21 @@ extension ODailyGoalView: UIPickerViewDelegate {
 private extension ODailyGoalView {
     func initialize() {
         backgroundColor = Appearance.backgroundColor
+        
+        button.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                let row = self.pickerView.selectedRow(inComponent: 0)
+                let minutes = row + 1
+                
+                self.dailyGoalDelegate?.dailyGoalDidSelected(testMinutes: minutes)
+                
+                self.onNext()
+            })
+            .disposed(by: disposeBag)
     }
     
     @objc
@@ -280,7 +304,6 @@ private extension ODailyGoalView {
         view.setAttributedTitle("Continue".localized.attributed(with: attrs), for: .normal)
         view.backgroundColor = Appearance.mainColor
         view.layer.cornerRadius = 8.scale
-        view.addTarget(self, action: #selector(onNext), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

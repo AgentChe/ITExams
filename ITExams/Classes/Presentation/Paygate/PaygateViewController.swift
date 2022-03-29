@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import OtterScaleiOS
 
 final class PaygateViewController: UIViewController {
     enum Mode {
@@ -170,8 +171,9 @@ final class PaygateViewController: UIViewController {
 // MARK: Make
 extension PaygateViewController {
     static func make() -> PaygateViewController {
-        // TODO: Получать из OtterScale
-        let usedProducts = [PaygateViewModel.Constants.lifetime]
+        let usedProducts = OtterScale.shared.getUsedProducts().map { products -> [String] in
+            products.appleAppStore + products.googlePlay + products.stripe
+        } ?? []
         
         let mode: Mode = usedProducts.contains(PaygateViewModel.Constants.monthly) ? .onlyPlans : .full
         

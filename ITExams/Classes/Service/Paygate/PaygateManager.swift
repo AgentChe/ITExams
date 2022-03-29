@@ -2,27 +2,76 @@
 //  PaygateManager.swift
 //  ITExams
 //
-//  Created by Андрей Чернышев on 22.03.2022.
+//  Created by Андрей Чернышев on 29.03.2022.
 //
 
 import RxSwift
-import SwiftyStoreKit
+import OtterScaleiOS
 
-final class PaygateManager {}
+final class PaygateManager {
+    enum Constants {
+        static let monetizationKey = "paygate_manager_monetization_key"
+    }
+    
+    private let defaultRequestWrapper = DefaultRequestWrapper()
+    private let sessionManager = SessionManagerCore()
+}
 
-// MARK: Obtain prices
+// MARK: Public
 extension PaygateManager {
-    func obtainPrices(for ids: [String]) -> Single<[ProductPrice]> {
-        Single<[ProductPrice]>.create { event in
-            SwiftyStoreKit.retrieveProductsInfo(Set(ids)) { results in
-                let prices = results.retrievedProducts.map { product -> ProductPrice in
-                    ProductPrice(product: product)
+    func retrieveMonetization(forceUpdate: Bool = false) -> Single<Monetization?> {
+        forceUpdate ? loadAndStoreMonetization() : localMonetization()
+    }
+}
+
+// MARK: Private
+private extension PaygateManager {
+    func localMonetization() -> Single<Monetization?> {
+        Single<Monetization?>
+            .create { event in
+                var monetization: Monetization?
+                
+                if let rawValue = UserDefaults.standard.string(forKey: Constants.monetizationKey) {
+                    monetization = Monetization(rawValue: rawValue)
                 }
                 
-                event(.success(prices))
+                event(.success(monetization))
+                
+                return Disposables.create()
             }
-            
-            return Disposables.create()
-        }
+    }
+    
+    func loadAndStoreMonetization() -> Single<Monetization?> {
+        let request = GetMonetizationRequest(userToken: sessionManager.getSession()?.userToken,
+                                             version: UIDevice.appVersion ?? "1",
+                                             appAnonymousId: OtterScale.shared.getAnonymousID())
+        
+        return defaultRequestWrapper
+            .callServerApi(requestBody: request)
+            .map { GetMonetizationResponseMapper.map(from: $0) }
+            .catchAndReturn(nil)
+            .flatMap { [weak self] monetization -> Single<Monetization?> in
+                guard let self = self else {
+                    return .never()
+                }
+                
+                return self.store(monetization: monetization)
+            }
+    }
+    
+    func store(monetization: Monetization?) -> Single<Monetization?> {
+        Single<Monetization?>
+            .create { event in
+                guard let rawValue = monetization?.rawValue else {
+                    event(.success(monetization))
+                    return Disposables.create()
+                }
+        
+                UserDefaults.standard.setValue(rawValue, forKey: Constants.monetizationKey)
+                
+                event(.success(monetization))
+                
+                return Disposables.create()
+            }
     }
 }

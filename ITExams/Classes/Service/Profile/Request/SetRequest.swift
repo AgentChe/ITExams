@@ -10,32 +10,20 @@ import Alamofire
 struct SetRequest: APIRequestBody {
     private let userToken: String
     private let level: Int?
-    private let assetsPreferences: [Int]?
     private let testMode: Int?
     private let examDate: String?
     private let testMinutes: Int?
-    private let testNumber: Int?
-    private let testWhen: [Int]?
-    private let notificationKey: String?
     
     init(userToken: String,
          level: Int? = nil,
-         assetsPreferences: [Int]? = nil,
          testMode: Int? = nil,
          examDate: String? = nil,
-         testMinutes: Int? = nil,
-         testNumber: Int? = nil,
-         testWhen: [Int]? = nil,
-         notificationKey: String? = nil) {
+         testMinutes: Int? = nil) {
         self.userToken = userToken
         self.level = level
-        self.assetsPreferences = assetsPreferences
         self.testMode = testMode
         self.examDate = examDate
         self.testMinutes = testMinutes
-        self.testNumber = testNumber
-        self.testWhen = testWhen
-        self.notificationKey = notificationKey
     }
     
     var url: String {
@@ -56,10 +44,6 @@ struct SetRequest: APIRequestBody {
             params["level"] = level
         }
         
-        if let assetsPreferences = self.assetsPreferences {
-            params["assets_preferences"] = assetsPreferences
-        }
-        
         if let testMode = self.testMode {
             params["test_mode"] = testMode
         }
@@ -70,18 +54,6 @@ struct SetRequest: APIRequestBody {
         
         if let testMinutes = self.testMinutes {
             params["test_minutes"] = testMinutes
-        }
-        
-        if let testNumber = self.testNumber {
-            params["test_number"] = testNumber
-        }
-        
-        if let testWhen = self.testWhen {
-            params["test_when"] = testWhen
-        }
-        
-        if let notificationKey = self.notificationKey {
-            params["notification_key"] = notificationKey
         }
         
         return params

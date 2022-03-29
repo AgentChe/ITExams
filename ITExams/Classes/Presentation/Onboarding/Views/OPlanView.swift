@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import RxSwift
 
 final class OPlanView: OSlideView {
+    weak var combineData: OnboardingCombineData?
+    
     lazy var titleLabel = makeTitleLabel()
     lazy var subTitleLabel = makeSubTitleLabel()
     lazy var gridView = makeGridView()
@@ -21,6 +24,8 @@ final class OPlanView: OSlideView {
     
     private lazy var column1Height = NSLayoutConstraint()
     private lazy var column2Height = NSLayoutConstraint()
+    
+    private lazy var disposeBag = DisposeBag()
     
     override init(step: OnboardingView.Step) {
         super.init(step: step)
@@ -46,6 +51,18 @@ final class OPlanView: OSlideView {
 private extension OPlanView {
     func initialize() {
         backgroundColor = Appearance.backgroundColor
+        
+        button.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                // TODO: отправка данных на сервер
+                
+                self.onNext()
+            })
+            .disposed(by: disposeBag)
     }
     
     func prepare() {
@@ -331,7 +348,6 @@ private extension OPlanView {
         view.setAttributedTitle("Onboarding.PlanView.Button".localized.attributed(with: attrs), for: .normal)
         view.backgroundColor = Appearance.mainColor
         view.layer.cornerRadius = 8.scale
-        view.addTarget(self, action: #selector(onNext), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

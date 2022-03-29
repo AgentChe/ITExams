@@ -58,6 +58,6 @@ private extension OnboardingViewController {
     }
     
     func goToNext() {
-        
+        // TODO
     }
 }

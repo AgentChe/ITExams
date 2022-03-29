@@ -22,8 +22,10 @@ final class OnboardingView: UIView {
     private lazy var courseView = OCourseView(step: .course)
     private lazy var quizSolutionView = OQuizSolutionView(step: .quizSolution)
     private lazy var examDateView =  OExamDateView(step: .examDate)
+    private lazy var dailyGoalView = ODailyGoalView(step: .dailyGoal)
     private lazy var studyModeView = OStudyModeView(step: .studyMode)
     private lazy var creatingPlanView = OCreatingPlanView(step: .creatingPlan)
+    private lazy var planView = OPlanView(step: .plan)
     
     private lazy var contentViews: [OSlideView] = {
         [
@@ -37,10 +39,10 @@ final class OnboardingView: UIView {
             ODetermingSkillView(step: .determingSkill),
             OQuizResultView(step: .quizResult),
             examDateView,
-            ODailyGoalView(step: .dailyGoal),
+            dailyGoalView,
             studyModeView,
             creatingPlanView,
-            OPlanView(step: .plan)
+            planView
         ]
     }()
     
@@ -119,8 +121,10 @@ private extension OnboardingView {
         courseView.courseDelegate = combineData
         quizSolutionView.quizSolutionDelegate = self
         examDateView.examDateDelegate = combineData
+        dailyGoalView.dailyGoalDelegate = combineData
         studyModeView.studyModeDelegate = combineData
         creatingPlanView.combineData = combineData
+        planView.combineData = combineData
     }
     
     func scroll(to newStep: Step) {
