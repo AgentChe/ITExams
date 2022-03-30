@@ -164,6 +164,15 @@
 		DEE74EAD27F32486002FE71D /* ProfileMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE74EAC27F32486002FE71D /* ProfileMediator.swift */; };
 		DEE74EAF27F3275D002FE71D /* ObservableAndSingleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE74EAE27F3275D002FE71D /* ObservableAndSingleExtension.swift */; };
 		DEE74EB127F34CB6002FE71D /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE74EB027F34CB6002FE71D /* Exam.swift */; };
+		DEE74EB627F41852002FE71D /* PlanTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE74EB527F41852002FE71D /* PlanTest.swift */; };
+		DEE74EB827F41863002FE71D /* PlanStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE74EB727F41863002FE71D /* PlanStep.swift */; };
+		DEE74EBA27F41873002FE71D /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE74EB927F41873002FE71D /* Plan.swift */; };
+		DEE74EBF27F41960002FE71D /* GetPlanRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE74EBE27F41960002FE71D /* GetPlanRequest.swift */; };
+		DEE74EC127F41AAA002FE71D /* GetPlanResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE74EC027F41AAA002FE71D /* GetPlanResponseMapper.swift */; };
+		DEE74EC327F41CFF002FE71D /* PlanManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE74EC227F41CFF002FE71D /* PlanManager.swift */; };
+		DEE74EC727F41DE3002FE71D /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE74EC627F41DE3002FE71D /* PlanViewController.swift */; };
+		DEE74EC927F41DEC002FE71D /* PlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE74EC827F41DEC002FE71D /* PlanViewModel.swift */; };
+		DEE74ECB27F41DF3002FE71D /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE74ECA27F41DF3002FE71D /* PlanView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -328,6 +337,15 @@
 		DEE74EAC27F32486002FE71D /* ProfileMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMediator.swift; sourceTree = "<group>"; };
 		DEE74EAE27F3275D002FE71D /* ObservableAndSingleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableAndSingleExtension.swift; sourceTree = "<group>"; };
 		DEE74EB027F34CB6002FE71D /* Exam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exam.swift; sourceTree = "<group>"; };
+		DEE74EB527F41852002FE71D /* PlanTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTest.swift; sourceTree = "<group>"; };
+		DEE74EB727F41863002FE71D /* PlanStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStep.swift; sourceTree = "<group>"; };
+		DEE74EB927F41873002FE71D /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
+		DEE74EBE27F41960002FE71D /* GetPlanRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlanRequest.swift; sourceTree = "<group>"; };
+		DEE74EC027F41AAA002FE71D /* GetPlanResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlanResponseMapper.swift; sourceTree = "<group>"; };
+		DEE74EC227F41CFF002FE71D /* PlanManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanManager.swift; sourceTree = "<group>"; };
+		DEE74EC627F41DE3002FE71D /* PlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
+		DEE74EC827F41DEC002FE71D /* PlanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewModel.swift; sourceTree = "<group>"; };
+		DEE74ECA27F41DF3002FE71D /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -463,6 +481,7 @@
 		DE2B101B27DB14ED005280DB /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				DEE74EB327F41526002FE71D /* Plan */,
 				DE1CA99F27F2FC1100C66DAD /* Paygate */,
 				DE2B101C27DB14ED005280DB /* Rate */,
 				DE2B103127DB14ED005280DB /* TestStats */,
@@ -973,6 +992,7 @@
 		DE93789827C4BEF20073F27C /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				DEE74EC427F41D84002FE71D /* Plan */,
 				DE1CA98A27F2ED3700C66DAD /* Main */,
 				DE3FD5FD27E9D3FA00E76844 /* Paygate */,
 				DE9378A027C4C0E90073F27C /* Onboarding */,
@@ -1067,6 +1087,61 @@
 				DE2B105427DB14ED005280DB /* GetCourcesRequest.swift */,
 			);
 			path = GetCourses;
+			sourceTree = "<group>";
+		};
+		DEE74EB327F41526002FE71D /* Plan */ = {
+			isa = PBXGroup;
+			children = (
+				DEE74EBB27F41948002FE71D /* Request */,
+				DEE74EB427F4152C002FE71D /* Model */,
+				DEE74EC227F41CFF002FE71D /* PlanManager.swift */,
+			);
+			path = Plan;
+			sourceTree = "<group>";
+		};
+		DEE74EB427F4152C002FE71D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DEE74EB527F41852002FE71D /* PlanTest.swift */,
+				DEE74EB727F41863002FE71D /* PlanStep.swift */,
+				DEE74EB927F41873002FE71D /* Plan.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DEE74EBB27F41948002FE71D /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				DEE74EBD27F41955002FE71D /* GetPlan */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		DEE74EBD27F41955002FE71D /* GetPlan */ = {
+			isa = PBXGroup;
+			children = (
+				DEE74EBE27F41960002FE71D /* GetPlanRequest.swift */,
+				DEE74EC027F41AAA002FE71D /* GetPlanResponseMapper.swift */,
+			);
+			path = GetPlan;
+			sourceTree = "<group>";
+		};
+		DEE74EC427F41D84002FE71D /* Plan */ = {
+			isa = PBXGroup;
+			children = (
+				DEE74EC527F41D8B002FE71D /* Plan */,
+			);
+			path = Plan;
+			sourceTree = "<group>";
+		};
+		DEE74EC527F41D8B002FE71D /* Plan */ = {
+			isa = PBXGroup;
+			children = (
+				DEE74EC627F41DE3002FE71D /* PlanViewController.swift */,
+				DEE74EC827F41DEC002FE71D /* PlanViewModel.swift */,
+				DEE74ECA27F41DF3002FE71D /* PlanView.swift */,
+			);
+			path = Plan;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1211,6 +1286,7 @@
 				DE2B10DF27DB16F2005280DB /* XOREncryption.swift in Sources */,
 				DE93789727C4BDED0073F27C /* UIEdgeInsets+Extension.swift in Sources */,
 				DE2B10AF27DB14EE005280DB /* SendAnswerRequest.swift in Sources */,
+				DEE74ECB27F41DF3002FE71D /* PlanView.swift in Sources */,
 				DE2B10B127DB14EE005280DB /* GetTenSetRequest.swift in Sources */,
 				DE93787E27C4B2600073F27C /* TapAreaButton.swift in Sources */,
 				DE2B10D127DB14EE005280DB /* IAPErrorHelper.swift in Sources */,
@@ -1229,9 +1305,11 @@
 				DE1CA98E27F2ED6800C66DAD /* MainViewCoordinator.swift in Sources */,
 				DE1CA9AA27F2FCAE00C66DAD /* PaygateManager.swift in Sources */,
 				DE1CA9A627F2FC5900C66DAD /* GetMonetizationRequest.swift in Sources */,
+				DEE74EBA27F41873002FE71D /* Plan.swift in Sources */,
 				DE2B10B027DB14EE005280DB /* GetTestRequest.swift in Sources */,
 				DE1CA99C27F2F80100C66DAD /* FirebaseManager.swift in Sources */,
 				DE2B10C927DB14EE005280DB /* SetRequest.swift in Sources */,
+				DEE74EC327F41CFF002FE71D /* PlanManager.swift in Sources */,
 				DE2B100227D8789F005280DB /* OStudyModeCell.swift in Sources */,
 				DE93788527C4B2600073F27C /* RxActivityIndicator.swift in Sources */,
 				DE93788727C4B2600073F27C /* Appearance.swift in Sources */,
@@ -1253,13 +1331,17 @@
 				DED4725027D1DE6700AEF8A6 /* OQuizSolutionView.swift in Sources */,
 				DE2B10A527DB14EE005280DB /* TestConfig.swift in Sources */,
 				DE1CA99827F2F7C600C66DAD /* BranchManager.swift in Sources */,
+				DEE74EC127F41AAA002FE71D /* GetPlanResponseMapper.swift in Sources */,
 				DE93788227C4B2600073F27C /* CircleView.swift in Sources */,
 				DE2B100A27D9F441005280DB /* OCreatingPlanRowView.swift in Sources */,
+				DEE74EBF27F41960002FE71D /* GetPlanRequest.swift in Sources */,
 				DE2B10CD27DB14EE005280DB /* PurchaseValidationObserver.swift in Sources */,
 				DE2B10C727DB14EE005280DB /* GetTestModeResponseMapper.swift in Sources */,
 				DE2B100027D876A0005280DB /* OStudyModeView.swift in Sources */,
 				DE3FD60C27EA02F500E76844 /* PaygateProductButton.swift in Sources */,
+				DEE74EB827F41863002FE71D /* PlanStep.swift in Sources */,
 				DE55A4AE27D6458000B53B46 /* OCourseView.swift in Sources */,
+				DEE74EB627F41852002FE71D /* PlanTest.swift in Sources */,
 				DE2B100427D8B5C6005280DB /* OCreatingPlanView.swift in Sources */,
 				DED4724527CE4BF700AEF8A6 /* OMotivationView.swift in Sources */,
 				DE3FD61A27EA2AAE00E76844 /* PaygateViewControllerDelegate.swift in Sources */,
@@ -1269,6 +1351,7 @@
 				DE2B10D927DB14EE005280DB /* StatsManager.swift in Sources */,
 				DE1CA9A827F2FC6200C66DAD /* GetMonetizationResponseMapper.swift in Sources */,
 				DE3FD5FF27E9D40600E76844 /* PaygateViewController.swift in Sources */,
+				DEE74EC727F41DE3002FE71D /* PlanViewController.swift in Sources */,
 				DE2B10A327DB14EE005280DB /* TestStatsManagerCore.swift in Sources */,
 				DE1CA99027F2ED7100C66DAD /* MainView.swift in Sources */,
 				DE93787327C4B2600073F27C /* NumberLaunches.swift in Sources */,
@@ -1331,6 +1414,7 @@
 				DE2B10A827DB14EE005280DB /* GetTestConfigResponseMapper.swift in Sources */,
 				DE2B101127DA4B49005280DB /* OPlanGridView.swift in Sources */,
 				DED4725A27D20F7800AEF8A6 /* OExamsView.swift in Sources */,
+				DEE74EC927F41DEC002FE71D /* PlanViewModel.swift in Sources */,
 				DE1CA99327F2ED8300C66DAD /* TabItemView.swift in Sources */,
 				DE3FD62127EB280100E76844 /* PaygateView.swift in Sources */,
 				DEE74EAF27F3275D002FE71D /* ObservableAndSingleExtension.swift in Sources */,

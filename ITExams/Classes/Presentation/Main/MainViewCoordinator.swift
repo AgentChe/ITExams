@@ -10,7 +10,7 @@ import UIKit
 final class MainViewCoordinator {
     weak var parentVC: MainViewController?
     
-    lazy var planVC = NavigationController(rootViewController: UIViewController())
+    lazy var planVC = NavigationController(rootViewController: PlanViewController.make())
     lazy var practiceVC = NavigationController(rootViewController: UIViewController())
     lazy var flashcardsVC = NavigationController(rootViewController: UIViewController())
     lazy var profileVC = NavigationController(rootViewController: UIViewController())
