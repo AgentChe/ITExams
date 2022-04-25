@@ -8,7 +8,11 @@
 import RxSwift
 import OtterScaleiOS
 
-final class PaygateManager {
+protocol PaygateManagerProtocol {
+    func retrieveMonetization(forceUpdate: Bool) -> Single<Monetization?>
+}
+
+final class PaygateManager: PaygateManagerProtocol {
     enum Constants {
         static let monetizationKey = "paygate_manager_monetization_key"
     }

@@ -11,6 +11,8 @@ final class ProfileMediator {
     static let shared = ProfileMediator()
     
     private let changedTestModeTrigger = PublishRelay<TestMode>()
+    private let changedExamTrigger = PublishRelay<Exam>()
+    private let changedCourseTrigger = PublishRelay<Course>()
     
     private var delegates = [Weak<ProfileMediatorDelegate>]()
     
@@ -28,12 +30,40 @@ extension ProfileMediator {
             self?.changedTestModeTrigger.accept(testMode)
         }
     }
+    
+    func notifyAboutChanged(exam: Exam) {
+        DispatchQueue.main.async { [weak self] in
+            self?.delegates.forEach {
+                $0.weak?.didChanged(exam: exam)
+            }
+            
+            self?.changedExamTrigger.accept(exam)
+        }
+    }
+    
+    func notifyAboutChanged(course: Course) {
+        DispatchQueue.main.async { [weak self] in
+            self?.delegates.forEach {
+                $0.weak?.didChanged(course: course)
+            }
+            
+            self?.changedCourseTrigger.accept(course)
+        }
+    }
 }
 
 // MARK: Triggers(Rx)
 extension ProfileMediator {
-    var rxChangedTestMode: Signal<TestMode> {
+    var changedTestMode: Signal<TestMode> {
         changedTestModeTrigger.asSignal()
+    }
+    
+    var changedExam: Signal<Exam> {
+        changedExamTrigger.asSignal()
+    }
+    
+    var changedCourse: Signal<Course> {
+        changedCourseTrigger.asSignal()
     }
 }
 

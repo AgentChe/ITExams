@@ -165,6 +165,8 @@ private extension ProfileManager {
         }
         
         UserDefaults.standard.set(data, forKey: Constants.examKey)
+        
+        ProfileMediator.shared.notifyAboutChanged(exam: exam)
     }
     
     func store(course: Course?) {
@@ -173,5 +175,7 @@ private extension ProfileManager {
         }
         
         UserDefaults.standard.set(data, forKey: Constants.courseKey)
+        
+        ProfileMediator.shared.notifyAboutChanged(course: course)
     }
 }

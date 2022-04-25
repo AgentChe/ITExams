@@ -7,4 +7,6 @@
 
 protocol ProfileMediatorDelegate: AnyObject {
     func didChanged(testMode: TestMode)
+    func didChanged(exam: Exam)
+    func didChanged(course: Course)
 }
