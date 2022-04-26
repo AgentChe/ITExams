@@ -158,6 +158,10 @@
 		DEC345FC2816FDFA0069A060 /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345FB2816FDFA0069A060 /* CoursesViewController.swift */; };
 		DEC345FE2816FE070069A060 /* CoursesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345FD2816FE070069A060 /* CoursesViewModel.swift */; };
 		DEC346002816FE0F0069A060 /* CoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345FF2816FE0F0069A060 /* CoursesView.swift */; };
+		DEC346042817D5BF0069A060 /* CoursesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC346032817D5BF0069A060 /* CoursesTableView.swift */; };
+		DEC346062817D5CD0069A060 /* CoursesTableElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC346052817D5CD0069A060 /* CoursesTableElement.swift */; };
+		DEC346092817D8890069A060 /* CoursesTableExamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC346082817D8890069A060 /* CoursesTableExamCell.swift */; };
+		DEC3460B2817D8950069A060 /* CoursesTableCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3460A2817D8950069A060 /* CoursesTableCourseCell.swift */; };
 		DED4724327CE406600AEF8A6 /* OStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724227CE406600AEF8A6 /* OStartView.swift */; };
 		DED4724527CE4BF700AEF8A6 /* OMotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724427CE4BF700AEF8A6 /* OMotivationView.swift */; };
 		DED4724827CE4C4B00AEF8A6 /* OMotivationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */; };
@@ -339,6 +343,10 @@
 		DEC345FB2816FDFA0069A060 /* CoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
 		DEC345FD2816FE070069A060 /* CoursesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewModel.swift; sourceTree = "<group>"; };
 		DEC345FF2816FE0F0069A060 /* CoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesView.swift; sourceTree = "<group>"; };
+		DEC346032817D5BF0069A060 /* CoursesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesTableView.swift; sourceTree = "<group>"; };
+		DEC346052817D5CD0069A060 /* CoursesTableElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesTableElement.swift; sourceTree = "<group>"; };
+		DEC346082817D8890069A060 /* CoursesTableExamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesTableExamCell.swift; sourceTree = "<group>"; };
+		DEC3460A2817D8950069A060 /* CoursesTableCourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesTableCourseCell.swift; sourceTree = "<group>"; };
 		DED4724227CE406600AEF8A6 /* OStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OStartView.swift; sourceTree = "<group>"; };
 		DED4724427CE4BF700AEF8A6 /* OMotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMotivationView.swift; sourceTree = "<group>"; };
 		DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMotivationCell.swift; sourceTree = "<group>"; };
@@ -1085,11 +1093,39 @@
 		DEC345FA2816FDD80069A060 /* Courses */ = {
 			isa = PBXGroup;
 			children = (
+				DEC346012817D5A30069A060 /* Views */,
 				DEC345FB2816FDFA0069A060 /* CoursesViewController.swift */,
 				DEC345FD2816FE070069A060 /* CoursesViewModel.swift */,
 				DEC345FF2816FE0F0069A060 /* CoursesView.swift */,
 			);
 			path = Courses;
+			sourceTree = "<group>";
+		};
+		DEC346012817D5A30069A060 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DEC346022817D5B40069A060 /* TableView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DEC346022817D5B40069A060 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				DEC346072817D8790069A060 /* Cells */,
+				DEC346032817D5BF0069A060 /* CoursesTableView.swift */,
+				DEC346052817D5CD0069A060 /* CoursesTableElement.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		DEC346072817D8790069A060 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DEC346082817D8890069A060 /* CoursesTableExamCell.swift */,
+				DEC3460A2817D8950069A060 /* CoursesTableCourseCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		DED4724627CE4C4300AEF8A6 /* Atoms */ = {
@@ -1324,6 +1360,7 @@
 				DE2B100E27DA47AE005280DB /* OPlanView.swift in Sources */,
 				DE2B10A127DB14EE005280DB /* GetTestStatsRequest.swift in Sources */,
 				DE2B101827DB13AC005280DB /* APIRequestBody.swift in Sources */,
+				DEC346092817D8890069A060 /* CoursesTableExamCell.swift in Sources */,
 				DE93787727C4B2600073F27C /* Fonts.swift in Sources */,
 				DE2B10CC27DB14EE005280DB /* IAPManager.swift in Sources */,
 				DE93787D27C4B2600073F27C /* NavigationControllerSettings.swift in Sources */,
@@ -1402,6 +1439,7 @@
 				DE2B0FFE27D798F4005280DB /* ODailyView.swift in Sources */,
 				DE2B10D927DB14EE005280DB /* StatsManager.swift in Sources */,
 				DE1CA9A827F2FC6200C66DAD /* GetMonetizationResponseMapper.swift in Sources */,
+				DEC346042817D5BF0069A060 /* CoursesTableView.swift in Sources */,
 				DE3FD5FF27E9D40600E76844 /* PaygateViewController.swift in Sources */,
 				DEE74EC727F41DE3002FE71D /* PlanViewController.swift in Sources */,
 				DE2B10A327DB14EE005280DB /* TestStatsManagerCore.swift in Sources */,
@@ -1423,6 +1461,7 @@
 				DE2B10D327DB14EE005280DB /* Stats.swift in Sources */,
 				DE2B10AD27DB14EE005280DB /* GetRandomSetRequest.swift in Sources */,
 				DE1CA9AD27F3017C00C66DAD /* SplashReceiptValidationObserver.swift in Sources */,
+				DEC3460B2817D8950069A060 /* CoursesTableCourseCell.swift in Sources */,
 				DEE74EAB27F32479002FE71D /* ProfileMediatorDelegate.swift in Sources */,
 				DE3FD61527EA09E400E76844 /* DefaultRequestWrapper.swift in Sources */,
 				DE93788027C4B2600073F27C /* PaddingPickerView.swift in Sources */,
@@ -1455,6 +1494,7 @@
 				DED4724327CE406600AEF8A6 /* OStartView.swift in Sources */,
 				DE2B10A627DB14EE005280DB /* Test.swift in Sources */,
 				DE2B10D227DB14EE005280DB /* Brief.swift in Sources */,
+				DEC346062817D5CD0069A060 /* CoursesTableElement.swift in Sources */,
 				DE93786B27C4B2600073F27C /* Collection+Extension.swift in Sources */,
 				DE2B109127DB14EE005280DB /* RateManager.swift in Sources */,
 				DE2B10AC27DB14EE005280DB /* GetOnboardingSetRequest.swift in Sources */,

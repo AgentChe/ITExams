@@ -133,3 +133,8 @@
 // MARK: Plan
 "Plan.StudyScore.Title" = "Studyscore";
 "Plan.StudyScore.Goal" = "Your goal - %@";
+
+// MARK: Courses
+"Courses.Save" = "Save";
+"Courses.TItle" = "Exams";
+"Courses.Current" = "Current";

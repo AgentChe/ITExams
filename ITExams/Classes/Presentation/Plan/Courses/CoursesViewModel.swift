@@ -9,5 +9,89 @@ import RxSwift
 import RxCocoa
 
 final class CoursesViewModel {
+    lazy var elements = makeElements()
     
+    private lazy var profileManager = ProfileManager()
+    private lazy var coursesManager = CoursesManager()
+}
+
+// MARK: Public
+extension CoursesViewModel {
+    func save(exam: Exam, course: Course) -> Single<Void> {
+        profileManager.set(exam: exam, course: course)
+    }
+}
+
+// MARK: Private
+private extension CoursesViewModel {
+    func makeElements() -> Driver<[CoursesTableElement]> {
+        let currentCourse = profileManager.obtainSelectedCourse()
+        
+        let zipped = profileManager.obtainExams()
+            .flatMap { [weak self] exams -> Single<[(Exam, [Course])]> in
+                guard let self = self else {
+                    return .never()
+                }
+                
+                let zipped = exams.map { exam -> Single<(Exam, [Course])> in
+                    return self.coursesManager
+                        .retrieveCourses(domain: exam.domain, apiKey: exam.api)
+                        .map { courses -> (Exam, [Course]) in
+                            (exam, courses)
+                        }
+                }
+                
+                return Single.zip(zipped)
+            }
+        
+        return Single
+            .zip(currentCourse, zipped) { [weak self] currentCourse, zipped -> [CoursesTableElement] in
+                guard let self = self else {
+                    return []
+                }
+                
+                let currentID = currentCourse?.id ?? -1
+                
+                var result = [CoursesTableElement]()
+                
+                zipped.forEach { exam, courses in
+                    let group = self.makeGroup(exam: exam, courses: courses, currentCourseID: currentID)
+                    result.append(contentsOf: group)
+                }
+                
+                return result
+            }
+            .asDriver(onErrorJustReturn: [])
+    }
+    
+    func makeGroup(exam: Exam, courses: [Course], currentCourseID: Int) -> [CoursesTableElement] {
+        var result = [CoursesTableElement]()
+        
+        let currentCourseInThisGroup = courses.contains(where: { $0.id == currentCourseID })
+        
+        let coursesElement = courses.map { course -> CoursesTableCourseElement in
+            let isCurrentCourse = course.id == currentCourseID
+            
+            return CoursesTableCourseElement(course: course,
+                                             isCurrent: isCurrentCourse,
+                                             isSelected: isCurrentCourse)
+        }
+        
+        let examElement = CoursesTableExamElement(exam: exam,
+                                                  courses: coursesElement,
+                                                  isOpened: currentCourseInThisGroup)
+        
+        result.append(.exam(examElement))
+        
+        if currentCourseInThisGroup {
+            coursesElement.enumerated().forEach { index, courseElement in
+                result.append(.offset(16.scale))
+                result.append(.course(courseElement))
+            }
+        }
+        
+        result.append(.offset(32.scale))
+        
+        return result
+    }
 }

@@ -30,6 +30,6 @@ extension CoursesManager {
         
         return RestAPITransport()
             .callServerApi(requestBody: request)
-            .map(GetCourcesResponseMapper.map(from:))
+            .map { GetCourcesResponseMapper.map(from: $0) }
     }
 }
