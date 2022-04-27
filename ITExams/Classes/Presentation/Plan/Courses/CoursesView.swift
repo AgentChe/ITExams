@@ -12,6 +12,7 @@ final class CoursesView: UIView {
     lazy var titleLabel = makeTitleLabel()
     lazy var saveButton = makeSaveButton()
     lazy var tableView = makeTableView()
+    lazy var preloader = makePreloader()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -55,6 +56,11 @@ private extension CoursesView {
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
             tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            preloader.centerXAnchor.constraint(equalTo: centerXAnchor),
+            preloader.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 }
@@ -109,6 +115,13 @@ private extension CoursesView {
         view.showsVerticalScrollIndicator = false
         view.backgroundColor = .clear
         view.separatorStyle = .none
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makePreloader() -> Spinner {
+        let view = Spinner(size: CGSize(width: 45.scale, height: 45.scale))
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

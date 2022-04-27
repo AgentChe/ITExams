@@ -163,6 +163,11 @@
 		DEC346092817D8890069A060 /* CoursesTableExamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC346082817D8890069A060 /* CoursesTableExamCell.swift */; };
 		DEC3460B2817D8950069A060 /* CoursesTableCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3460A2817D8950069A060 /* CoursesTableCourseCell.swift */; };
 		DEC3460D28185EBB0069A060 /* CourseCurrentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3460C28185EBB0069A060 /* CourseCurrentView.swift */; };
+		DEC3460F28196AE90069A060 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3460E28196AE90069A060 /* Spinner.swift */; };
+		DEC34612281971160069A060 /* TryAgainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC34611281971160069A060 /* TryAgainViewController.swift */; };
+		DEC34614281971200069A060 /* TryAgainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC34613281971200069A060 /* TryAgainView.swift */; };
+		DEC34616281971E50069A060 /* ObservableRetrySingle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC34615281971E50069A060 /* ObservableRetrySingle.swift */; };
+		DEC34618281979350069A060 /* ContentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC34617281979350069A060 /* ContentError.swift */; };
 		DED4724327CE406600AEF8A6 /* OStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724227CE406600AEF8A6 /* OStartView.swift */; };
 		DED4724527CE4BF700AEF8A6 /* OMotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724427CE4BF700AEF8A6 /* OMotivationView.swift */; };
 		DED4724827CE4C4B00AEF8A6 /* OMotivationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */; };
@@ -349,6 +354,11 @@
 		DEC346082817D8890069A060 /* CoursesTableExamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesTableExamCell.swift; sourceTree = "<group>"; };
 		DEC3460A2817D8950069A060 /* CoursesTableCourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesTableCourseCell.swift; sourceTree = "<group>"; };
 		DEC3460C28185EBB0069A060 /* CourseCurrentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCurrentView.swift; sourceTree = "<group>"; };
+		DEC3460E28196AE90069A060 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
+		DEC34611281971160069A060 /* TryAgainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryAgainViewController.swift; sourceTree = "<group>"; };
+		DEC34613281971200069A060 /* TryAgainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryAgainView.swift; sourceTree = "<group>"; };
+		DEC34615281971E50069A060 /* ObservableRetrySingle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableRetrySingle.swift; sourceTree = "<group>"; };
+		DEC34617281979350069A060 /* ContentError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentError.swift; sourceTree = "<group>"; };
 		DED4724227CE406600AEF8A6 /* OStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OStartView.swift; sourceTree = "<group>"; };
 		DED4724427CE4BF700AEF8A6 /* OMotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMotivationView.swift; sourceTree = "<group>"; };
 		DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMotivationCell.swift; sourceTree = "<group>"; };
@@ -511,7 +521,7 @@
 				DE1CA99F27F2FC1100C66DAD /* Paygate */,
 				DE2B101C27DB14ED005280DB /* Rate */,
 				DE2B103127DB14ED005280DB /* TestStats */,
-				DE2B103A27DB14ED005280DB /* Qestions */,
+				DE2B103A27DB14ED005280DB /* Questions */,
 				DE2B104F27DB14ED005280DB /* Courses */,
 				DE2B106327DB14ED005280DB /* Profile */,
 				DE2B107327DB14EE005280DB /* Purchase */,
@@ -566,14 +576,14 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		DE2B103A27DB14ED005280DB /* Qestions */ = {
+		DE2B103A27DB14ED005280DB /* Questions */ = {
 			isa = PBXGroup;
 			children = (
 				DE2B103B27DB14ED005280DB /* Models */,
 				DE2B103E27DB14ED005280DB /* Requests */,
 				DE2B104A27DB14ED005280DB /* Manager */,
 			);
-			path = Qestions;
+			path = Questions;
 			sourceTree = "<group>";
 		};
 		DE2B103B27DB14ED005280DB /* Models */ = {
@@ -607,8 +617,8 @@
 			isa = PBXGroup;
 			children = (
 				DE2B104B27DB14ED005280DB /* QuestionManager.swift */,
-				DE2B104C27DB14ED005280DB /* QuestionManagerMediator.swift */,
 				DE2B104D27DB14ED005280DB /* QuestionManagerCore.swift */,
+				DE2B104C27DB14ED005280DB /* QuestionManagerMediator.swift */,
 				DE2B104E27DB14ED005280DB /* QuestionManagerDelagate.swift */,
 			);
 			path = Manager;
@@ -942,6 +952,7 @@
 				DE93784F27C4B2600073F27C /* Fonts.swift */,
 				DE93785227C4B2600073F27C /* Weak.swift */,
 				DE2B10DE27DB16F2005280DB /* XOREncryption.swift */,
+				DEC34615281971E50069A060 /* ObservableRetrySingle.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -951,6 +962,7 @@
 			children = (
 				DE93785127C4B2600073F27C /* SignError.swift */,
 				DE2B101927DB13E0005280DB /* NetworkError.swift */,
+				DEC34617281979350069A060 /* ContentError.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -974,6 +986,7 @@
 				DE93785D27C4B2600073F27C /* GradientButton.swift */,
 				DE93785E27C4B2600073F27C /* CircleView.swift */,
 				DE93785F27C4B2600073F27C /* GradientView.swift */,
+				DEC3460E28196AE90069A060 /* Spinner.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -1018,6 +1031,7 @@
 		DE93789827C4BEF20073F27C /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				DEC346102819710D0069A060 /* TryAgain */,
 				DEE74EC427F41D84002FE71D /* Plan */,
 				DE1CA98A27F2ED3700C66DAD /* Main */,
 				DE3FD5FD27E9D3FA00E76844 /* Paygate */,
@@ -1129,6 +1143,15 @@
 				DEC3460A2817D8950069A060 /* CoursesTableCourseCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		DEC346102819710D0069A060 /* TryAgain */ = {
+			isa = PBXGroup;
+			children = (
+				DEC34611281971160069A060 /* TryAgainViewController.swift */,
+				DEC34613281971200069A060 /* TryAgainView.swift */,
+			);
+			path = TryAgain;
 			sourceTree = "<group>";
 		};
 		DED4724627CE4C4300AEF8A6 /* Atoms */ = {
@@ -1400,6 +1423,7 @@
 				DE2B10B027DB14EE005280DB /* GetTestRequest.swift in Sources */,
 				DE1CA99C27F2F80100C66DAD /* FirebaseManager.swift in Sources */,
 				DE2B10C927DB14EE005280DB /* SetRequest.swift in Sources */,
+				DEC34614281971200069A060 /* TryAgainView.swift in Sources */,
 				DEE74EC327F41CFF002FE71D /* PlanManager.swift in Sources */,
 				DE2B100227D8789F005280DB /* OStudyModeCell.swift in Sources */,
 				DE93788527C4B2600073F27C /* RxActivityIndicator.swift in Sources */,
@@ -1415,6 +1439,7 @@
 				DEE74EB127F34CB6002FE71D /* Exam.swift in Sources */,
 				DE2B10D627DB14EE005280DB /* GetStatsResponseMapper.swift in Sources */,
 				DED4725827D20C4C00AEF8A6 /* OExamsTable.swift in Sources */,
+				DEC3460F28196AE90069A060 /* Spinner.swift in Sources */,
 				DE2B0FFA27D77546005280DB /* OQuizResultView.swift in Sources */,
 				DE2B100727D9E857005280DB /* OnboardingCombineData.swift in Sources */,
 				DE93788327C4B2600073F27C /* GradientView.swift in Sources */,
@@ -1462,11 +1487,13 @@
 				DE2B10D027DB14EE005280DB /* IAPError.swift in Sources */,
 				DE2B10B227DB14EE005280DB /* QuestionManager.swift in Sources */,
 				DE2B10C327DB14EE005280DB /* ProfileManager.swift in Sources */,
+				DEC34618281979350069A060 /* ContentError.swift in Sources */,
 				DE2B10D327DB14EE005280DB /* Stats.swift in Sources */,
 				DE2B10AD27DB14EE005280DB /* GetRandomSetRequest.swift in Sources */,
 				DE1CA9AD27F3017C00C66DAD /* SplashReceiptValidationObserver.swift in Sources */,
 				DEC3460B2817D8950069A060 /* CoursesTableCourseCell.swift in Sources */,
 				DEE74EAB27F32479002FE71D /* ProfileMediatorDelegate.swift in Sources */,
+				DEC34612281971160069A060 /* TryAgainViewController.swift in Sources */,
 				DE3FD61527EA09E400E76844 /* DefaultRequestWrapper.swift in Sources */,
 				DE93788027C4B2600073F27C /* PaddingPickerView.swift in Sources */,
 				DE93787227C4B2600073F27C /* Scalable.swift in Sources */,
@@ -1521,6 +1548,7 @@
 				DE3FD60727E9FEA400E76844 /* PaygatePlansView.swift in Sources */,
 				DED4725427D2091600AEF8A6 /* OExamsTableCell.swift in Sources */,
 				DE2B10A727DB14EE005280DB /* GetTestResponseMapper.swift in Sources */,
+				DEC34616281971E50069A060 /* ObservableRetrySingle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

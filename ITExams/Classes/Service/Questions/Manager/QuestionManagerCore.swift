@@ -7,10 +7,13 @@
 
 import RxSwift
 
-final class QuestionManagerCore: QuestionManager {}
+final class QuestionManagerCore: QuestionManager {
+    private lazy var xorRequestWrapper = XORRequestWrapper()
+    private lazy var defaultRequestWrapper = DefaultRequestWrapper()
+}
 
 extension QuestionManagerCore {
-    func retrieve(courseId: Int, testId: Int?, activeSubscription: Bool) -> Single<Test?> {
+    func retrieve(courseId: Int, testId: Int?, activeSubscription: Bool, key: String) -> Single<Test?> {
         guard let userToken = SessionManagerCore().getSession()?.userToken else {
             return .deferred { .just(nil) }
         }
@@ -22,12 +25,12 @@ extension QuestionManagerCore {
             activeSubscription: activeSubscription
         )
         
-        return RestAPITransport()
-            .callServerStringApi(requestBody: request)
+        return xorRequestWrapper
+            .callServerStringApi(requestBody: request, key: key)
             .map(GetTestResponseMapper.map(from:))
     }
     
-    func retrieveTenSet(courseId: Int, activeSubscription: Bool) -> Single<Test?> {
+    func retrieveTenSet(courseId: Int, activeSubscription: Bool, key: String) -> Single<Test?> {
         guard let userToken = SessionManagerCore().getSession()?.userToken else {
             return .deferred { .just(nil) }
         }
@@ -36,12 +39,12 @@ extension QuestionManagerCore {
                                        courseId: courseId,
                                        activeSubscription: activeSubscription)
         
-        return RestAPITransport()
-            .callServerStringApi(requestBody: request)
+        return xorRequestWrapper
+            .callServerStringApi(requestBody: request, key: key)
             .map(GetTestResponseMapper.map(from:))
     }
     
-    func retrieveFailedSet(courseId: Int, activeSubscription: Bool) -> Single<Test?> {
+    func retrieveFailedSet(courseId: Int, activeSubscription: Bool, key: String) -> Single<Test?> {
         guard let userToken = SessionManagerCore().getSession()?.userToken else {
             return .deferred { .just(nil) }
         }
@@ -50,12 +53,12 @@ extension QuestionManagerCore {
                                           courseId: courseId,
                                           activeSubscription: activeSubscription)
         
-        return RestAPITransport()
-            .callServerStringApi(requestBody: request)
+        return xorRequestWrapper
+            .callServerStringApi(requestBody: request, key: key)
             .map(GetTestResponseMapper.map(from:))
     }
     
-    func retrieveQotd(courseId: Int, activeSubscription: Bool) -> Single<Test?> {
+    func retrieveQotd(courseId: Int, activeSubscription: Bool, key: String) -> Single<Test?> {
         guard let userToken = SessionManagerCore().getSession()?.userToken else {
             return .deferred { .just(nil) }
         }
@@ -64,12 +67,12 @@ extension QuestionManagerCore {
                                      courseId: courseId,
                                      activeSubscription: activeSubscription)
         
-        return RestAPITransport()
-            .callServerStringApi(requestBody: request)
+        return xorRequestWrapper
+            .callServerStringApi(requestBody: request, key: key)
             .map(GetTestResponseMapper.map(from:))
     }
     
-    func retrieveRandomSet(courseId: Int, activeSubscription: Bool) -> Single<Test?> {
+    func retrieveRandomSet(courseId: Int, activeSubscription: Bool, key: String) -> Single<Test?> {
         guard let userToken = SessionManagerCore().getSession()?.userToken else {
             return .deferred { .just(nil) }
         }
@@ -78,20 +81,20 @@ extension QuestionManagerCore {
                                           courseId: courseId,
                                           activeSubscription: activeSubscription)
         
-        return RestAPITransport()
-            .callServerStringApi(requestBody: request)
+        return xorRequestWrapper
+            .callServerStringApi(requestBody: request, key: key)
             .map(GetTestResponseMapper.map(from:))
     }
     
-    func retrieveOnboardingSet() -> Single<Test?> {
+    func retrieveOnboardingSet(key: String) -> Single<Test?> {
         guard let userToken = SessionManagerCore().getSession()?.userToken else {
             return .deferred { .just(nil) }
         }
         
         let request = GetOnboardingSetRequest(userToken: userToken)
         
-        return RestAPITransport()
-            .callServerStringApi(requestBody: request)
+        return xorRequestWrapper
+            .callServerStringApi(requestBody: request, key: key)
             .map(GetTestResponseMapper.map(from:))
     }
     
@@ -107,7 +110,7 @@ extension QuestionManagerCore {
             answerIds: answerIds
         )
         
-        return RestAPITransport()
+        return defaultRequestWrapper
             .callServerApi(requestBody: request)
             .map(SendAnswerResponseMapper.map(from:))
             .do(onSuccess: { isEndOfTest in
@@ -115,10 +118,9 @@ extension QuestionManagerCore {
                     QuestionManagerMediator.shared.testPassed()
                 }
             })
-
     }
     
-    func retrieveConfig(courseId: Int) -> Single<[TestConfig]> {
+    func retrieveConfig(courseId: Int, key: String) -> Single<[TestConfig]> {
         guard let userToken = SessionManagerCore().getSession()?.userToken else {
             return .error(SignError.tokenNotFound)
         }
@@ -126,8 +128,8 @@ extension QuestionManagerCore {
         let request = GetTestConfigRequest(userToken: userToken,
                                                courseId: courseId)
         
-        return RestAPITransport()
-            .callServerStringApi(requestBody: request)
+        return xorRequestWrapper
+            .callServerStringApi(requestBody: request, key: key)
             .map(GetTestConfigResponseMapper.from(response:))
     }
 }

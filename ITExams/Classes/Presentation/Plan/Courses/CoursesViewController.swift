@@ -52,6 +52,24 @@ final class CoursesViewController: UIViewController {
                 self?.dismiss(animated: true)
             })
             .disposed(by: disposeBag)
+        
+        viewModel.activity
+            .drive(onNext: { [weak self] activity in
+                guard let self = self else {
+                    return
+                }
+                
+                activity ? self.mainView.preloader.startAnimating() : self.mainView.preloader.stopAnimating()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.tryAgain = { [weak self] error -> Observable<Void> in
+            guard let self = self else {
+                return .never()
+            }
+            
+            return self.openError()
+        }
     }
 }
 
@@ -79,5 +97,21 @@ private extension CoursesViewController {
         }
         
         return nil
+    }
+    
+    func openError() -> Observable<Void> {
+        Observable<Void>
+            .create { [weak self] observe in
+                guard let self = self else {
+                    return Disposables.create()
+                }
+                
+                let vc = TryAgainViewController.make {
+                    observe.onNext(())
+                }
+                self.present(vc, animated: true)
+                
+                return Disposables.create()
+            }
     }
 }

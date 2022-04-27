@@ -65,13 +65,18 @@ private extension OPlanView {
                     return .never()
                 }
                 
-                return self.profileManager
+                let remote = self.profileManager
                     .set(motivation: combineData.motivation.code,
                          examDate: combineData.examDate,
                          testMode: combineData.studyMode.code,
-                         testMinutes: combineData.testMinutes,
-                         exam: combineData.exam,
-                         course: combineData.course)
+                         testMinutes: combineData.testMinutes)
+                
+                let local = self.profileManager
+                    .set(exam: combineData.exam, course: combineData.course)
+                
+                return Single
+                    .zip(remote, local)
+                    .mapToVoid()
             }
             .subscribe(onNext: { [weak self] in
                 guard let self = self else {

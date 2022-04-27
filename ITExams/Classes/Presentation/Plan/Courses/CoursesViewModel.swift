@@ -9,10 +9,15 @@ import RxSwift
 import RxCocoa
 
 final class CoursesViewModel {
+    var tryAgain: ((Error) -> (Observable<Void>))?
+    
     lazy var elements = makeElements()
+    lazy var activity = RxActivityIndicator()
     
     private lazy var profileManager = ProfileManager()
     private lazy var coursesManager = CoursesManager()
+    
+    private lazy var observableRetrySingle = ObservableRetrySingle()
 }
 
 // MARK: Public
@@ -25,26 +30,44 @@ extension CoursesViewModel {
 // MARK: Private
 private extension CoursesViewModel {
     func makeElements() -> Driver<[CoursesTableElement]> {
-        let currentCourse = profileManager.obtainSelectedCourse()
+        let currentCourse = profileManager
+            .obtainSelectedCourse()
+            .asObservable()
         
         let zipped = profileManager.obtainExams()
-            .flatMap { [weak self] exams -> Single<[(Exam, [Course])]> in
+            .asObservable()
+            .flatMap { [weak self] exams -> Observable<[(Exam, [Course])]> in
                 guard let self = self else {
                     return .never()
                 }
                 
-                let zipped = exams.map { exam -> Single<(Exam, [Course])> in
-                    return self.coursesManager
-                        .retrieveCourses(domain: exam.domain, apiKey: exam.api)
-                        .map { courses -> (Exam, [Course]) in
-                            (exam, courses)
-                        }
+                func source() -> Single<[(Exam, [Course])]> {
+                    let zipped = exams.map { exam -> Single<(Exam, [Course])> in
+                        return self.coursesManager
+                            .retrieveCourses(domain: exam.domain, apiKey: exam.api)
+                            .map { courses -> (Exam, [Course]) in
+                                (exam, courses)
+                            }
+                    }
+                    
+                    return Single.zip(zipped)
                 }
                 
-                return Single.zip(zipped)
+                func trigger(error: Error) -> Observable<Void> {
+                    guard let tryAgain = self.tryAgain?(error) else {
+                        return .empty()
+                    }
+                    
+                    return tryAgain
+                }
+                
+                return self.observableRetrySingle
+                    .retry(source: { source() },
+                           trigger: { trigger(error: $0) })
+                    .trackActivity(self.activity)
             }
         
-        return Single
+        return Observable
             .zip(currentCourse, zipped) { [weak self] currentCourse, zipped -> [CoursesTableElement] in
                 guard let self = self else {
                     return []

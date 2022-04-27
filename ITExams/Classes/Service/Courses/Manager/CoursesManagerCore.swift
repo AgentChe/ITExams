@@ -15,6 +15,8 @@ final class CoursesManager: CoursesManagerProtocol {
     enum Constants {
         static let courseKey = "courses_manager_course_key"
     }
+    
+    private lazy var defaultRequestWrapper = DefaultRequestWrapper()
 }
 
 // MARK: Public
@@ -28,8 +30,8 @@ extension CoursesManager {
                                         apiKey: apiKey,
                                         userToken: userToken)
         
-        return RestAPITransport()
+        return defaultRequestWrapper
             .callServerApi(requestBody: request)
-            .map { GetCourcesResponseMapper.map(from: $0) }
+            .map { try GetCourcesResponseMapper.map(from: $0) }
     }
 }

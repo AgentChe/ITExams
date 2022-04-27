@@ -7,7 +7,9 @@
 
 import RxSwift
 
-final class StatsManagerCore: StatsManager {}
+final class StatsManagerCore: StatsManager {
+    private lazy var defaultRequestWrapper = DefaultRequestWrapper()
+}
 
 // MARK: API(Rx)
 extension StatsManagerCore {
@@ -18,7 +20,7 @@ extension StatsManagerCore {
         
         let request = GetStatsRequest(userToken: userToken, courseId: courseId)
         
-        return RestAPITransport()
+        return defaultRequestWrapper
             .callServerApi(requestBody: request)
             .map(GetStatsResponseMapper.map(from:))
             .flatMap { [weak self] stats -> Single<Stats?> in
@@ -37,7 +39,7 @@ extension StatsManagerCore {
         
         let request = GetBriefRequest(userToken: userToken, courseId: courseId)
         
-        return RestAPITransport()
+        return defaultRequestWrapper
             .callServerApi(requestBody: request)
             .map(GetBriefResponseMapper.from(response:))
     }

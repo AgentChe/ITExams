@@ -11,9 +11,8 @@ protocol ProfileManagerProtocol {
     func set(motivation: Int?,
              examDate: String?,
              testMode: Int?,
-             testMinutes: Int?,
-             exam: Exam?,
-             course: Course?) -> Single<Void>
+             testMinutes: Int?) -> Single<Void>
+    func set(exam: Exam?, course: Course?) -> Single<Void>
     func obtainExams() -> Single<[Exam]>
     func obtainSelectedExam() -> Single<Exam?>
     func obtainSelectedCourse() -> Single<Course?>
@@ -30,7 +29,7 @@ final class ProfileManager: ProfileManagerProtocol {
     
     private lazy var defaultRequestWrapper = DefaultRequestWrapper()
     
-    private lazy var sessionMager = SessionManagerCore()
+    private lazy var sessionManager = SessionManagerCore()
 }
 
 // MARK: Study
@@ -38,10 +37,8 @@ extension ProfileManager {
     func set(motivation: Int? = nil,
              examDate: String? = nil,
              testMode: Int? = nil,
-             testMinutes: Int? = nil,
-             exam: Exam? = nil,
-             course: Course? = nil) -> Single<Void> {
-        guard let userToken = sessionMager.getSession()?.userToken else {
+             testMinutes: Int? = nil) -> Single<Void> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
             return .error(SignError.tokenNotFound)
         }
         
@@ -60,9 +57,23 @@ extension ProfileManager {
                 }
                 
                 self.notifyAboutChanged(testMode: testMode)
-                self.store(exam: exam)
-                self.store(course: course)
             })
+    }
+    
+    func set(exam: Exam?, course: Course?) -> Single<Void> {
+        Single<Void>.create { [weak self] event in
+            guard let self = self else {
+                event(.success(Void()))
+                return Disposables.create()
+            }
+            
+            self.store(exam: exam)
+            self.store(course: course)
+            
+            event(.success(Void()))
+            
+            return Disposables.create()
+        }
     }
     
     func obtainExams() -> Single<[Exam]> {
@@ -125,7 +136,7 @@ extension ProfileManager {
     }
     
     func obtainTestMode() -> Single<TestMode?> {
-        guard let userToken = sessionMager.getSession()?.userToken else {
+        guard let userToken = sessionManager.getSession()?.userToken else {
             return .error(SignError.tokenNotFound)
         }
         
