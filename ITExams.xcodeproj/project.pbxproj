@@ -162,6 +162,7 @@
 		DEC346062817D5CD0069A060 /* CoursesTableElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC346052817D5CD0069A060 /* CoursesTableElement.swift */; };
 		DEC346092817D8890069A060 /* CoursesTableExamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC346082817D8890069A060 /* CoursesTableExamCell.swift */; };
 		DEC3460B2817D8950069A060 /* CoursesTableCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3460A2817D8950069A060 /* CoursesTableCourseCell.swift */; };
+		DEC3460D28185EBB0069A060 /* CourseCurrentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3460C28185EBB0069A060 /* CourseCurrentView.swift */; };
 		DED4724327CE406600AEF8A6 /* OStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724227CE406600AEF8A6 /* OStartView.swift */; };
 		DED4724527CE4BF700AEF8A6 /* OMotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724427CE4BF700AEF8A6 /* OMotivationView.swift */; };
 		DED4724827CE4C4B00AEF8A6 /* OMotivationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */; };
@@ -347,6 +348,7 @@
 		DEC346052817D5CD0069A060 /* CoursesTableElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesTableElement.swift; sourceTree = "<group>"; };
 		DEC346082817D8890069A060 /* CoursesTableExamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesTableExamCell.swift; sourceTree = "<group>"; };
 		DEC3460A2817D8950069A060 /* CoursesTableCourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesTableCourseCell.swift; sourceTree = "<group>"; };
+		DEC3460C28185EBB0069A060 /* CourseCurrentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCurrentView.swift; sourceTree = "<group>"; };
 		DED4724227CE406600AEF8A6 /* OStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OStartView.swift; sourceTree = "<group>"; };
 		DED4724427CE4BF700AEF8A6 /* OMotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMotivationView.swift; sourceTree = "<group>"; };
 		DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMotivationCell.swift; sourceTree = "<group>"; };
@@ -1105,6 +1107,7 @@
 			isa = PBXGroup;
 			children = (
 				DEC346022817D5B40069A060 /* TableView */,
+				DEC3460C28185EBB0069A060 /* CourseCurrentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1407,6 +1410,7 @@
 				DE93790527C4C0E90073F27C /* OnboardingViewModel.swift in Sources */,
 				DE2B10DC27DB14EE005280DB /* SessionManagerCore.swift in Sources */,
 				DE2B10CE27DB14EE005280DB /* IAPActionResult.swift in Sources */,
+				DEC3460D28185EBB0069A060 /* CourseCurrentView.swift in Sources */,
 				DE3FD60A27E9FFEE00E76844 /* PaygatePlansCell.swift in Sources */,
 				DEE74EB127F34CB6002FE71D /* Exam.swift in Sources */,
 				DE2B10D627DB14EE005280DB /* GetStatsResponseMapper.swift in Sources */,

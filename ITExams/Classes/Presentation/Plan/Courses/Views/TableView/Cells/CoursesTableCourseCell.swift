@@ -11,6 +11,9 @@ final class CoursesTableCourseCell: UITableViewCell {
     lazy var container = makeContainer()
     lazy var nameLabel = makeLabel()
     lazy var subTitleLabel = makeLabel()
+    lazy var currentView = makeCurrentView()
+    
+    private lazy var nameLabelTrailingConstraint = NSLayoutConstraint()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -45,6 +48,10 @@ extension CoursesTableCourseCell {
         container.layer.borderColor = element.isSelected ? Appearance.mainColor.cgColor : UIColor.clear.cgColor
         
         container.backgroundColor = element.isSelected ? Appearance.mainColor.withAlphaComponent(0.1) : Appearance.whiteColor
+        
+        currentView.isHidden = !element.isCurrent
+        
+        nameLabelTrailingConstraint.constant = element.isCurrent ? -80.scale : -16.scale
     }
 }
 
@@ -68,9 +75,10 @@ private extension CoursesTableCourseCell {
             container.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
         
+        nameLabelTrailingConstraint = nameLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -16.scale)
         NSLayoutConstraint.activate([
             nameLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 16.scale),
-            nameLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -16.scale),
+            nameLabelTrailingConstraint,
             nameLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 20.scale)
         ])
         
@@ -79,6 +87,11 @@ private extension CoursesTableCourseCell {
             subTitleLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -16.scale),
             subTitleLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 12.scale),
             subTitleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -20.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            currentView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -16.scale),
+            currentView.topAnchor.constraint(equalTo: container.topAnchor, constant: 21.scale)
         ])
     }
 }
@@ -100,6 +113,15 @@ private extension CoursesTableCourseCell {
     func makeLabel() -> UILabel {
         let view = UILabel()
         view.numberOfLines = 0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        container.addSubview(view)
+        return view
+    }
+    
+    func makeCurrentView() -> CourseCurrentView {
+        let view = CourseCurrentView()
+        view.backgroundColor = Appearance.mainColor
+        view.layer.cornerRadius = 9.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(view)
         return view
