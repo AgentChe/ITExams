@@ -18,7 +18,7 @@ final class PaygateManager: PaygateManagerProtocol {
     }
     
     private let defaultRequestWrapper = DefaultRequestWrapper()
-    private let sessionManager = SessionManagerCore()
+    private let sessionManager = SessionManager()
 }
 
 // MARK: Public

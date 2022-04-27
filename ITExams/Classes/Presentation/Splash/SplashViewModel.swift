@@ -17,7 +17,7 @@ final class SplashViewModel {
     lazy var validationComplete = PublishRelay<Void>()
     
     private lazy var paygateManager = PaygateManager()
-    private lazy var sessionManager = SessionManagerCore()
+    private lazy var sessionManager = SessionManager()
     private lazy var profileManager = ProfileManager()
     
     func step() -> Driver<Step> {

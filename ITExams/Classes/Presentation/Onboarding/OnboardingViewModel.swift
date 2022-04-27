@@ -13,7 +13,7 @@ final class OnboardingViewModel {
         case paygate, main
     }
     
-    private lazy var sessionManager = SessionManagerCore()
+    private lazy var sessionManager = SessionManager()
 }
 
 // MARK: Public

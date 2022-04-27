@@ -17,12 +17,14 @@ final class CoursesManager: CoursesManagerProtocol {
     }
     
     private lazy var defaultRequestWrapper = DefaultRequestWrapper()
+    
+    private lazy var sessionManager = SessionManager()
 }
 
 // MARK: Public
 extension CoursesManager {
     func retrieveCourses(domain: String, apiKey: String) -> Single<[Course]> {
-        guard let userToken = SessionManagerCore().getSession()?.userToken else {
+        guard let userToken = sessionManager.getSession()?.userToken else {
             return .deferred { .just([]) }
         }
         
