@@ -19,7 +19,7 @@ final class OnboardingView: UIView {
     lazy var examsView = OExamsView(step: .exams)
     lazy var courseView = OCourseView(step: .course)
     lazy var quizSolutionView = OQuizSolutionView(step: .quizSolution)
-    lazy var examDateView =  OExamDateView(step: .examDate)
+    lazy var examDateView = OExamDateView(step: .examDate)
     lazy var dailyGoalView = ODailyGoalView(step: .dailyGoal)
     lazy var studyModeView = OStudyModeView(step: .studyMode)
     lazy var creatingPlanView = OCreatingPlanView(step: .creatingPlan)

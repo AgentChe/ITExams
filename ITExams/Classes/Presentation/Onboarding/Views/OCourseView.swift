@@ -7,12 +7,14 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 protocol OCourseViewDelegate: AnyObject {
     func courseViewDidSelected(course: Course)
 }
 
 final class OCourseView: OSlideView {
+    weak var vc: UIViewController?
     weak var courseDelegate: OCourseViewDelegate?
     
     lazy var backButton = makeBackButton()
@@ -20,6 +22,7 @@ final class OCourseView: OSlideView {
     lazy var titleLabel = makeTitleLabel()
     lazy var subTitleLabel = makeSubTitleLabel()
     lazy var tableView = makeTableView()
+    lazy var preloader = makePreloader()
     lazy var button = makeButton()
     
     private lazy var disposeBag = DisposeBag()
@@ -27,6 +30,10 @@ final class OCourseView: OSlideView {
     private lazy var coursesManager = CoursesManager()
     
     private lazy var courses = [Course]()
+    
+    private lazy var activity = RxActivityIndicator()
+    
+    private lazy var observableRetrySingle = ObservableRetrySingle()
     
     override init(step: OnboardingView.Step) {
         super.init(step: step)
@@ -46,8 +53,19 @@ extension OCourseView: OExamsViewDelegate {
     func examsDidSelected(element: Exam) {
         clear()
         
-        coursesManager
-            .retrieveCourses(domain: element.domain, apiKey: element.api)
+        func source() -> Single<[Course]> {
+            coursesManager
+                .retrieveCourses(domain: element.domain, apiKey: element.api)
+        }
+        
+        func trigger(error: Error) -> Observable<Void> {
+            openError()
+        }
+        
+        observableRetrySingle
+            .retry(source: { source() },
+                   trigger: { trigger(error: $0) })
+            .trackActivity(activity)
             .asDriver(onErrorJustReturn: [])
             .drive(onNext: { [weak self] courses in
                 guard let self = self else {
@@ -101,6 +119,16 @@ private extension OCourseView {
                 self.onNext()
             })
             .disposed(by: disposeBag)
+        
+        activity
+            .drive(onNext: { [weak self] activity in
+                guard let self = self else {
+                    return
+                }
+                
+                activity ? self.preloader.startAnimating() : self.preloader.stopAnimating()
+            })
+            .disposed(by: disposeBag)
     }
     
     func clear() {
@@ -113,6 +141,22 @@ private extension OCourseView {
         
         button.isEnabled = isSelected
         button.alpha = isSelected ? 1 : 0.2
+    }
+    
+    func openError() -> Observable<Void> {
+        Observable<Void>
+            .create { [weak self] observe in
+                guard let self = self else {
+                    return Disposables.create()
+                }
+                
+                let vc = TryAgainViewController.make {
+                    observe.onNext(())
+                }
+                self.vc?.present(vc, animated: true)
+                
+                return Disposables.create()
+            }
     }
 }
 
@@ -148,6 +192,11 @@ private extension OCourseView {
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 4.scale),
             tableView.bottomAnchor.constraint(equalTo: button.topAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            preloader.centerXAnchor.constraint(equalTo: centerXAnchor),
+            preloader.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
         
         NSLayoutConstraint.activate([
@@ -227,6 +276,13 @@ private extension OCourseView {
         if #available(iOS 15.0, *) {
             view.sectionHeaderTopPadding = 0.0
         }
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makePreloader() -> Spinner {
+        let view = Spinner(size: CGSize(width: 45.scale, height: 45.scale))
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
