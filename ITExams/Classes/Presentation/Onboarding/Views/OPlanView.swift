@@ -7,8 +7,10 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 final class OPlanView: OSlideView {
+    weak var vc: UIViewController?
     weak var combineData: OnboardingCombineData?
     
     lazy var titleLabel = makeTitleLabel()
@@ -26,6 +28,8 @@ final class OPlanView: OSlideView {
     private lazy var column2Height = NSLayoutConstraint()
     
     private lazy var disposeBag = DisposeBag()
+    
+    private lazy var tryAgainTrigger = PublishRelay<Void>()
     
     private lazy var profileManager = ProfileManager()
     private lazy var coursesManager = CoursesManager()
@@ -55,8 +59,12 @@ private extension OPlanView {
     func initialize() {
         backgroundColor = Appearance.backgroundColor
         
-        button.rx.tap
-            .flatMapLatest { [weak self] _ -> Single<Void> in
+        Observable
+            .merge(
+                button.rx.tap.asObservable(),
+                tryAgainTrigger.asObservable()
+            )
+            .flatMapLatest { [weak self] _ -> Single<Bool> in
                 guard let self = self else {
                     return .never()
                 }
@@ -70,22 +78,36 @@ private extension OPlanView {
                          examDate: combineData.examDate,
                          testMode: combineData.studyMode.code,
                          testMinutes: combineData.testMinutes)
+                    .map { true }
+                    .catchAndReturn(false)
                 
                 let local = self.profileManager
                     .set(exam: combineData.exam, course: combineData.course)
+                    .map { true }
+                    .catchAndReturn(false)
                 
                 return Single
-                    .zip(remote, local)
-                    .mapToVoid()
+                    .zip(remote, local) { $0 && $1 }
             }
-            .subscribe(onNext: { [weak self] in
+            .subscribe(onNext: { [weak self] success in
                 guard let self = self else {
                     return
                 }
                 
-                self.onNext()
+                success ? self.onNext() : self.openError()
             })
             .disposed(by: disposeBag)
+    }
+    
+    func openError() {
+        let tryAgainVC = TryAgainViewController.make { [weak self] in
+            guard let self = self else {
+                return
+            }
+            
+            self.tryAgainTrigger.accept(Void())
+        }
+        vc?.present(tryAgainVC, animated: true)
     }
     
     func prepare() {

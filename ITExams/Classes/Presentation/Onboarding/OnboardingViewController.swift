@@ -36,6 +36,8 @@ final class OnboardingViewController: UIViewController {
             let step = self.viewModel.whatNext()
             self.goToNext(at: step)
         }
+        
+        mainView.planView.vc = self
     }
 }
 

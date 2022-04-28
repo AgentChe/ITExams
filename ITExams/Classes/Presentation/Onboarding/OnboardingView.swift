@@ -14,18 +14,16 @@ final class OnboardingView: UIView {
     
     var didFinish: (() -> Void)?
     
-    private var step = Step.start
-    
-    private lazy var motivationView = OMotivationView(step: .motivation)
-    private lazy var ageView = OAgeView(step: .age)
-    private lazy var examsView = OExamsView(step: .exams)
-    private lazy var courseView = OCourseView(step: .course)
-    private lazy var quizSolutionView = OQuizSolutionView(step: .quizSolution)
-    private lazy var examDateView =  OExamDateView(step: .examDate)
-    private lazy var dailyGoalView = ODailyGoalView(step: .dailyGoal)
-    private lazy var studyModeView = OStudyModeView(step: .studyMode)
-    private lazy var creatingPlanView = OCreatingPlanView(step: .creatingPlan)
-    private lazy var planView = OPlanView(step: .plan)
+    lazy var motivationView = OMotivationView(step: .motivation)
+    lazy var ageView = OAgeView(step: .age)
+    lazy var examsView = OExamsView(step: .exams)
+    lazy var courseView = OCourseView(step: .course)
+    lazy var quizSolutionView = OQuizSolutionView(step: .quizSolution)
+    lazy var examDateView =  OExamDateView(step: .examDate)
+    lazy var dailyGoalView = ODailyGoalView(step: .dailyGoal)
+    lazy var studyModeView = OStudyModeView(step: .studyMode)
+    lazy var creatingPlanView = OCreatingPlanView(step: .creatingPlan)
+    lazy var planView = OPlanView(step: .plan)
     
     private lazy var contentViews: [OSlideView] = {
         [
@@ -45,6 +43,8 @@ final class OnboardingView: UIView {
             planView
         ]
     }()
+    
+    private var step = Step.start
     
     private lazy var combineData = OnboardingCombineData()
     
