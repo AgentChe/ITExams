@@ -9,6 +9,7 @@ import UIKit
 
 final class PlanView: UIView {
     lazy var headerView = makeHeaderView()
+    lazy var preloader = makePreloader()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,6 +39,11 @@ private extension PlanView {
             headerView.topAnchor.constraint(equalTo: topAnchor),
             headerView.heightAnchor.constraint(equalToConstant: ScreenSize.isIphoneXFamily ? 167.scale : 157.scale)
         ])
+        
+        NSLayoutConstraint.activate([
+            preloader.centerXAnchor.constraint(equalTo: centerXAnchor),
+            preloader.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
     }
 }
 
@@ -47,6 +53,13 @@ private extension PlanView {
         let view = PlanHeaderView()
         view.isUserInteractionEnabled = true
         view.backgroundColor = Appearance.secondColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makePreloader() -> Spinner {
+        let view = Spinner(size: CGSize(width: 45.scale, height: 45.scale))
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

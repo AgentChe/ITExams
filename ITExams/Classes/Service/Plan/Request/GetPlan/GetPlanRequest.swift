@@ -9,6 +9,7 @@ import Alamofire
 
 struct GetPlanRequest: APIRequestBody {
     let userToken: String
+    let courseId: Int
     
     var url: String {
         GlobalDefinitions.domainUrl + "/api/plan/list"
@@ -21,7 +22,8 @@ struct GetPlanRequest: APIRequestBody {
     var parameters: Parameters? {
         [
             "_api_key": GlobalDefinitions.apiKey,
-            "_user_token": userToken
+            "_user_token": userToken,
+            "course_id": courseId
         ]
     }
 }

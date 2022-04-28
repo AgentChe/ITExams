@@ -6,10 +6,20 @@
 //
 
 final class GetPlanResponseMapper {
-    static func map(from response: Any) -> Plan? {
+    static func map(from response: Any) throws -> Plan? {
         guard
             let json = response as? [String: Any],
             let data = json["_data"] as? [String: Any],
+            let code = json["_code"] as? Int
+        else {
+            throw ContentError(.notContent)
+        }
+        
+        guard code == 200 else {
+            throw ContentError(.notContent)
+        }
+        
+        guard
             let plan = data["plan"] as? [String: Any],
             let stepsArray = plan["steps"] as? [[String: Any]],
             let passRate = plan["pass_rate"] as? Int,

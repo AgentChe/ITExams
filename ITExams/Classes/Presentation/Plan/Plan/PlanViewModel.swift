@@ -9,42 +9,28 @@ import RxSwift
 import RxCocoa
 
 final class PlanViewModel {
+    var tryAgain: ((Error) -> (Observable<Void>))?
+    
     lazy var planCurrent = makePlanCurrent()
     lazy var planStudyScore = makePlanStudyScore()
     
+    lazy var activity = RxActivityIndicator()
+    
+    private lazy var currentExam = makeCurrentExam()
+    private lazy var currentCourse = makeCurrentCourse()
     private lazy var plan = makePlan()
     
     private lazy var profileManager = ProfileManager()
     private lazy var planManager = PlanManager()
+    
+    private lazy var observableRetrySingle = ObservableRetrySingle()
 }
 
 // MARK: Private
 private extension PlanViewModel {
     func makePlanCurrent() -> Driver<PlanCurrent> {
-        let examInitial = profileManager
-            .obtainSelectedExam()
-            .compactMap { $0 }
-            .asDriver(onErrorDriveWith: .never())
-        
-        let examUpdated = ProfileMediator.shared
-            .changedExam
-            .asDriver(onErrorDriveWith: .never())
-        
-        let exam = Driver.merge(examInitial, examUpdated)
-        
-        let courseInitial = profileManager
-            .obtainSelectedCourse()
-            .compactMap { $0 }
-            .asDriver(onErrorDriveWith: .never())
-        
-        let courseUpdated = ProfileMediator.shared
-            .changedCourse
-            .asDriver(onErrorDriveWith: .never())
-        
-        let course = Driver.merge(courseInitial, courseUpdated)
-        
-        return Driver
-            .combineLatest(exam, course) {
+        Driver
+            .combineLatest(currentExam, currentCourse) {
                 PlanCurrent(exam: $0, course: $1)
             }
     }
@@ -57,9 +43,63 @@ private extension PlanViewModel {
     }
     
     func makePlan() -> Driver<Plan> {
-        planManager
-            .obtainPlan()
+        currentCourse
+            .flatMapLatest { [weak self] course -> Driver<Plan> in
+                guard let self = self else {
+                    return .never()
+                }
+                
+                func source() -> Single<Plan> {
+                    self.planManager
+                        .obtainPlan(for: course.id)
+                        .flatMap { plan -> Single<Plan> in
+                            guard let plan = plan else {
+                                return .error(ContentError(.notContent))
+                            }
+                            
+                            return .just(plan)
+                        }
+                }
+                
+                func trigger(error: Error) -> Observable<Void> {
+                    guard let tryAgain = self.tryAgain?(error) else {
+                        return .empty()
+                    }
+                    
+                    return tryAgain
+                }
+                
+                return self.observableRetrySingle
+                    .retry(source: { source() },
+                           trigger: { trigger(error: $0) })
+                    .trackActivity(self.activity)
+                    .asDriver(onErrorDriveWith: .never())
+            }
+    }
+    
+    func makeCurrentExam() -> Driver<Exam> {
+        let initial = profileManager
+            .obtainSelectedExam()
             .compactMap { $0 }
             .asDriver(onErrorDriveWith: .never())
+        
+        let updated = ProfileMediator.shared
+            .changedExam
+            .asDriver(onErrorDriveWith: .never())
+        
+        return Driver.merge(initial, updated)
+    }
+    
+    func makeCurrentCourse() -> Driver<Course> {
+        let initial = profileManager
+            .obtainSelectedCourse()
+            .compactMap { $0 }
+            .asDriver(onErrorDriveWith: .never())
+        
+        let updated = ProfileMediator.shared
+            .changedCourse
+            .asDriver(onErrorDriveWith: .never())
+        
+        return Driver.merge(initial, updated)
     }
 }
