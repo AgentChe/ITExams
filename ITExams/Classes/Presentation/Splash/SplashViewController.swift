@@ -43,6 +43,14 @@ final class SplashViewController: UIViewController {
             
             self.viewModel.validationComplete.accept(Void())
         }
+        
+        viewModel.tryAgain = { [weak self] error -> Observable<Void> in
+            guard let self = self else {
+                return .never()
+            }
+            
+            return self.openError()
+        }
     }
 }
 
@@ -73,5 +81,21 @@ private extension SplashViewController {
             vc.delegate = self
             present(vc, animated: true)
         }
+    }
+    
+    func openError() -> Observable<Void> {
+        Observable<Void>
+            .create { [weak self] observe in
+                guard let self = self else {
+                    return Disposables.create()
+                }
+                
+                let vc = TryAgainViewController.make {
+                    observe.onNext(())
+                }
+                self.present(vc, animated: true)
+                
+                return Disposables.create()
+            }
     }
 }

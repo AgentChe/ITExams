@@ -23,7 +23,7 @@ final class SplashView: UIView {
 // MARK: Private
 private extension SplashView {
     func initialize() {
-        
+        backgroundColor = Appearance.backgroundColor
     }
 }
 

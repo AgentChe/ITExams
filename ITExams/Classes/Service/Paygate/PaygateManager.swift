@@ -52,8 +52,7 @@ private extension PaygateManager {
         
         return defaultRequestWrapper
             .callServerApi(requestBody: request)
-            .map { GetMonetizationResponseMapper.map(from: $0) }
-            .catchAndReturn(nil)
+            .map { try GetMonetizationResponseMapper.map(from: $0) }
             .flatMap { [weak self] monetization -> Single<Monetization?> in
                 guard let self = self else {
                     return .never()
