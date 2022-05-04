@@ -11,6 +11,7 @@ import RxCocoa
 final class PlanViewModel {
     var tryAgain: ((Error) -> (Observable<Void>))?
     
+    lazy var planSteps = makePlanSteps()
     lazy var planCurrent = makePlanCurrent()
     lazy var planStudyScore = makePlanStudyScore()
     
@@ -28,6 +29,14 @@ final class PlanViewModel {
 
 // MARK: Private
 private extension PlanViewModel {
+    func makePlanSteps() -> Driver<[StepCollectionElement]> {
+        plan.map { plan -> [StepCollectionElement] in
+            let steps = plan.steps.sorted(by: { $0.sort < $1.sort })
+            let elements = StepCollectionElement.from(steps: steps)
+            return elements
+        }
+    }
+    
     func makePlanCurrent() -> Driver<PlanCurrent> {
         Driver
             .combineLatest(currentExam, currentCourse) {

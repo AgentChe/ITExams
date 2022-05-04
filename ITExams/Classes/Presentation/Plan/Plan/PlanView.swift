@@ -9,6 +9,8 @@ import UIKit
 
 final class PlanView: UIView {
     lazy var headerView = makeHeaderView()
+    lazy var stepCollectionView = makeStepCollectionView()
+    lazy var stepNameLabel = makeStepNameLabel()
     lazy var preloader = makePreloader()
     
     override init(frame: CGRect) {
@@ -41,6 +43,18 @@ private extension PlanView {
         ])
         
         NSLayoutConstraint.activate([
+            stepCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stepCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            stepCollectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 40.scale),
+            stepCollectionView.heightAnchor.constraint(equalToConstant: 136.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            stepNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            stepNameLabel.topAnchor.constraint(equalTo: stepCollectionView.bottomAnchor, constant: 18.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
             preloader.centerXAnchor.constraint(equalTo: centerXAnchor),
             preloader.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
@@ -53,6 +67,28 @@ private extension PlanView {
         let view = PlanHeaderView()
         view.isUserInteractionEnabled = true
         view.backgroundColor = Appearance.secondColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeStepCollectionView() -> StepCollectionView {
+        let layout = StudyCollectionLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 46.scale
+        layout.itemSize = CGSize(width: 136.scale, height: 136.scale)
+        
+        let view = StepCollectionView(frame: .zero, collectionViewLayout: layout)
+        view.backgroundColor = UIColor.clear
+        view.showsHorizontalScrollIndicator = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeStepNameLabel() -> UILabel {
+        let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

@@ -34,6 +34,16 @@ final class PlanViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.planSteps
+            .drive(onNext: { [weak self] planSteps in
+                guard let self = self else {
+                    return
+                }
+                
+                self.mainView.stepCollectionView.setup(elements: planSteps)
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.planCurrent
             .drive(onNext: { [weak self] current in
                 guard let self = self else {
@@ -84,6 +94,8 @@ final class PlanViewController: UIViewController {
                 self.activity(activity)
             })
             .disposed(by: disposeBag)
+        
+        mainView.stepCollectionView.mainDelegate = self
     }
 }
 
@@ -91,6 +103,13 @@ final class PlanViewController: UIViewController {
 extension PlanViewController {
     static func make() -> PlanViewController {
         PlanViewController()
+    }
+}
+
+// MARK: StepCollectionViewDelegate
+extension PlanViewController: StepCollectionViewDelegate {
+    func stepCollectionViewDidSelect(element: StepCollectionElement) {
+        update(stepName: element.step.name)
     }
 }
 
@@ -112,8 +131,18 @@ private extension PlanViewController {
             }
     }
     
-    // TODO: если в списке уже есть элементы, то не показывать прелоудер
     func activity(_ activity: Bool) {
-        activity ? mainView.preloader.startAnimating() : mainView.preloader.stopAnimating()
+        let showAnimating = activity && mainView.stepCollectionView.elements.isEmpty
+        showAnimating ? mainView.preloader.startAnimating() : mainView.preloader.stopAnimating()
+    }
+    
+    func update(stepName: String) {
+        let attrs = TextAttributes()
+            .textColor(Appearance.blackColor)
+            .font(Fonts.Inter.bold(size: 24.scale))
+            .lineHeight(28.8.scale)
+            .letterSpacing(-0.44.scale)
+            .textAlignment(.center)
+        mainView.stepNameLabel.attributedText = stepName.attributed(with: attrs)
     }
 }
