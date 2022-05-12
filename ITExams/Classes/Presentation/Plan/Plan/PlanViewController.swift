@@ -109,6 +109,7 @@ final class PlanViewController: UIViewController {
             .disposed(by: disposeBag)
         
         mainView.stepCollectionView.mainDelegate = self
+        mainView.testsTableView.mainDelegate = self
     }
 }
 
@@ -124,6 +125,24 @@ extension PlanViewController: StepCollectionViewDelegate {
     func stepCollectionViewDidSelect(element: StepCollectionElement) {
         update(stepName: element.step.name)
         viewModel.currentStep.accept(element)
+    }
+}
+
+// MARK: StepTestsTableViewDelegate
+extension PlanViewController: StepTestsTableViewDelegate {
+    func stepTestsTableDidSelect(element: PlanTest, activeSubscription: Bool, lockedStep: Bool) {
+        guard !lockedStep else {
+            return
+        }
+        
+        let needPayment = activeSubscription ? false : element.paid
+        
+        if needPayment {
+            let vc = PaygateViewController.make()
+            present(vc, animated: true)
+        } else {
+            // TODO: Open test
+        }
     }
 }
 

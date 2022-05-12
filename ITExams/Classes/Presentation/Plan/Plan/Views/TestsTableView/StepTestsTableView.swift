@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol StepTestsTableViewDelegate: AnyObject {
+    func stepTestsTableDidSelect(element: PlanTest, activeSubscription: Bool, lockedStep: Bool)
+}
+
 final class StepTestsTableView: UITableView {
+    weak var mainDelegate: StepTestsTableViewDelegate?
+    
     private lazy var elements = [PlanTest]()
     private lazy var activeSubscription = false
     private lazy var lockedStep = false
@@ -56,7 +62,11 @@ extension StepTestsTableView: UITableViewDataSource {
 // MARK: UITableViewDelegate
 extension StepTestsTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(elements[indexPath.section].name)
+        let element = elements[indexPath.section]
+        
+        mainDelegate?.stepTestsTableDidSelect(element: element,
+                                              activeSubscription: activeSubscription,
+                                              lockedStep: lockedStep)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
