@@ -11,6 +11,9 @@ import RxCocoa
 final class PlanViewModel {
     var tryAgain: ((Error) -> (Observable<Void>))?
     
+    lazy var currentStep = PublishRelay<StepCollectionElement>()
+    
+    lazy var tests = makeTests()
     lazy var planSteps = makePlanSteps()
     lazy var planCurrent = makePlanCurrent()
     lazy var planStudyScore = makePlanStudyScore()
@@ -20,15 +23,28 @@ final class PlanViewModel {
     private lazy var currentExam = makeCurrentExam()
     private lazy var currentCourse = makeCurrentCourse()
     private lazy var plan = makePlan()
+    private lazy var activeSubscription = makeActiveSubscription()
     
     private lazy var profileManager = ProfileManager()
     private lazy var planManager = PlanManager()
+    private lazy var sessionManager = SessionManager()
     
     private lazy var observableRetrySingle = ObservableRetrySingle()
 }
 
 // MARK: Private
 private extension PlanViewModel {
+    func makeTests() -> Driver<StepTests> {
+        let step = currentStep
+            .asDriver(onErrorDriveWith: .empty())
+        
+        return Driver.combineLatest(step, activeSubscription) {
+            StepTests(tests: $0.step.tests,
+                      activeSubscription: $1,
+                      lockedStep: $0.locked)
+        }
+    }
+    
     func makePlanSteps() -> Driver<[StepCollectionElement]> {
         plan.map { plan -> [StepCollectionElement] in
             let steps = plan.steps.sorted(by: { $0.sort < $1.sort })
@@ -110,5 +126,19 @@ private extension PlanViewModel {
             .asDriver(onErrorDriveWith: .never())
         
         return Driver.merge(initial, updated)
+    }
+    
+    func makeActiveSubscription() -> Driver<Bool> {
+        PurchaseValidationObserver.shared
+            .didValidatedWithActiveSubscription
+            .map { [weak self] in
+                guard let self = self else {
+                    return false
+                }
+                
+                return self.sessionManager.hasActiveSubscriptions()
+            }
+            .startWith(sessionManager.hasActiveSubscriptions())
+            .asDriver(onErrorJustReturn: false)
     }
 }

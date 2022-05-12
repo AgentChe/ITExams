@@ -57,6 +57,10 @@
 		DE2B10DB27DB14EE005280DB /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B108C27DB14EE005280DB /* Session.swift */; };
 		DE2B10DC27DB14EE005280DB /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B108E27DB14EE005280DB /* SessionManager.swift */; };
 		DE2B10DF27DB16F2005280DB /* XOREncryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B10DE27DB16F2005280DB /* XOREncryption.swift */; };
+		DE2D7F1E282D2BB000B8952B /* StepTestsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2D7F1D282D2BAF00B8952B /* StepTestsTableView.swift */; };
+		DE2D7F20282D307700B8952B /* StepTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2D7F1F282D307700B8952B /* StepTests.swift */; };
+		DE2D7F22282D319B00B8952B /* StepTestsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2D7F21282D319B00B8952B /* StepTestsTableCell.swift */; };
+		DE2D7F25282D367000B8952B /* StepTestProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2D7F24282D367000B8952B /* StepTestProgressView.swift */; };
 		DE3FD5FF27E9D40600E76844 /* PaygateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3FD5FE27E9D40600E76844 /* PaygateViewController.swift */; };
 		DE3FD60127E9D41000E76844 /* PaygateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3FD60027E9D41000E76844 /* PaygateViewModel.swift */; };
 		DE3FD60527E9D4C200E76844 /* PaygateTrialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3FD60427E9D4C200E76844 /* PaygateTrialView.swift */; };
@@ -217,6 +221,10 @@
 		DE2B108C27DB14EE005280DB /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		DE2B108E27DB14EE005280DB /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		DE2B10DE27DB16F2005280DB /* XOREncryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XOREncryption.swift; sourceTree = "<group>"; };
+		DE2D7F1D282D2BAF00B8952B /* StepTestsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTestsTableView.swift; sourceTree = "<group>"; };
+		DE2D7F1F282D307700B8952B /* StepTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTests.swift; sourceTree = "<group>"; };
+		DE2D7F21282D319B00B8952B /* StepTestsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTestsTableCell.swift; sourceTree = "<group>"; };
+		DE2D7F24282D367000B8952B /* StepTestProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTestProgressView.swift; sourceTree = "<group>"; };
 		DE3FD5FE27E9D40600E76844 /* PaygateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaygateViewController.swift; sourceTree = "<group>"; };
 		DE3FD60027E9D41000E76844 /* PaygateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaygateViewModel.swift; sourceTree = "<group>"; };
 		DE3FD60427E9D4C200E76844 /* PaygateTrialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaygateTrialView.swift; sourceTree = "<group>"; };
@@ -606,6 +614,24 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		DE2D7F1C282D2B9600B8952B /* TestsTableView */ = {
+			isa = PBXGroup;
+			children = (
+				DE2D7F23282D366200B8952B /* Atoms */,
+				DE2D7F1D282D2BAF00B8952B /* StepTestsTableView.swift */,
+				DE2D7F21282D319B00B8952B /* StepTestsTableCell.swift */,
+			);
+			path = TestsTableView;
+			sourceTree = "<group>";
+		};
+		DE2D7F23282D366200B8952B /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+				DE2D7F24282D367000B8952B /* StepTestProgressView.swift */,
+			);
+			path = Atoms;
+			sourceTree = "<group>";
+		};
 		DE3FD5FD27E9D3FA00E76844 /* Paygate */ = {
 			isa = PBXGroup;
 			children = (
@@ -906,6 +932,7 @@
 		DEC345EE2816D5F80069A060 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DE2D7F1C282D2B9600B8952B /* TestsTableView */,
 				DE50438A2822774700C6B1C8 /* StepCollectionView */,
 				DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */,
 				DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */,
@@ -919,6 +946,7 @@
 			children = (
 				DEC345F62816E4BD0069A060 /* PlanCurrent.swift */,
 				DEC345F82816E6840069A060 /* PlanStudyScore.swift */,
+				DE2D7F1F282D307700B8952B /* StepTests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1252,7 +1280,9 @@
 				DE3FD61F27EADB7200E76844 /* PaygatePrice.swift in Sources */,
 				DE2B10B827DB14EE005280DB /* GetCourcesRequest.swift in Sources */,
 				DED4725027D1DE6700AEF8A6 /* OQuizSolutionView.swift in Sources */,
+				DE2D7F20282D307700B8952B /* StepTests.swift in Sources */,
 				DE1CA99827F2F7C600C66DAD /* BranchManager.swift in Sources */,
+				DE2D7F25282D367000B8952B /* StepTestProgressView.swift in Sources */,
 				DEE74EC127F41AAA002FE71D /* GetPlanResponseMapper.swift in Sources */,
 				DE93788227C4B2600073F27C /* CircleView.swift in Sources */,
 				DE2B100A27D9F441005280DB /* OCreatingPlanRowView.swift in Sources */,
@@ -1266,6 +1296,7 @@
 				DE55A4AE27D6458000B53B46 /* OCourseView.swift in Sources */,
 				DEE74EB627F41852002FE71D /* PlanTest.swift in Sources */,
 				DE2B100427D8B5C6005280DB /* OCreatingPlanView.swift in Sources */,
+				DE2D7F1E282D2BB000B8952B /* StepTestsTableView.swift in Sources */,
 				DE50439028227ACE00C6B1C8 /* StudyCollectionLayout.swift in Sources */,
 				DED4724527CE4BF700AEF8A6 /* OMotivationView.swift in Sources */,
 				DE3FD61A27EA2AAE00E76844 /* PaygateViewControllerDelegate.swift in Sources */,
@@ -1273,6 +1304,7 @@
 				DE1CA9A827F2FC6200C66DAD /* GetMonetizationResponseMapper.swift in Sources */,
 				DEC346042817D5BF0069A060 /* CoursesTableView.swift in Sources */,
 				DE3FD5FF27E9D40600E76844 /* PaygateViewController.swift in Sources */,
+				DE2D7F22282D319B00B8952B /* StepTestsTableCell.swift in Sources */,
 				DEE74EC727F41DE3002FE71D /* PlanViewController.swift in Sources */,
 				DE1CA99027F2ED7100C66DAD /* MainView.swift in Sources */,
 				DE93787327C4B2600073F27C /* NumberLaunches.swift in Sources */,

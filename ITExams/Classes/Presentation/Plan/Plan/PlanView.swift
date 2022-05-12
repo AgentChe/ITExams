@@ -11,6 +11,7 @@ final class PlanView: UIView {
     lazy var headerView = makeHeaderView()
     lazy var stepCollectionView = makeStepCollectionView()
     lazy var stepNameLabel = makeStepNameLabel()
+    lazy var testsTableView = makeTestsTableView()
     lazy var preloader = makePreloader()
     
     override init(frame: CGRect) {
@@ -45,13 +46,20 @@ private extension PlanView {
         NSLayoutConstraint.activate([
             stepCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             stepCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stepCollectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 40.scale),
+            stepCollectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: ScreenSize.isIphoneXFamily ? 40.scale : 16.scale),
             stepCollectionView.heightAnchor.constraint(equalToConstant: 136.scale)
         ])
         
         NSLayoutConstraint.activate([
             stepNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            stepNameLabel.topAnchor.constraint(equalTo: stepCollectionView.bottomAnchor, constant: 18.scale)
+            stepNameLabel.topAnchor.constraint(equalTo: stepCollectionView.bottomAnchor, constant: ScreenSize.isIphoneXFamily ? 18.scale : 9.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            testsTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20.scale),
+            testsTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20.scale),
+            testsTableView.topAnchor.constraint(equalTo: stepNameLabel.bottomAnchor, constant: ScreenSize.isIphoneXFamily ? 40.scale : 16.scale),
+            testsTableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
         NSLayoutConstraint.activate([
@@ -89,6 +97,25 @@ private extension PlanView {
     
     func makeStepNameLabel() -> UILabel {
         let view = UILabel()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeTestsTableView() -> StepTestsTableView {
+        let view = StepTestsTableView()
+        view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 24.scale, right: 0)
+        if #available(iOS 15.0, *) {
+            view.sectionHeaderTopPadding = 0.0
+        }
+        view.separatorStyle = .none
+        view.showsVerticalScrollIndicator = false
+        view.backgroundColor = Appearance.whiteColor
+        view.layer.cornerRadius = 12.scale
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.08
+        view.layer.shadowOffset = .zero
+        view.layer.shadowRadius = 6.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

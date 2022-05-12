@@ -45,6 +45,18 @@ final class PlanViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        viewModel.tests
+            .drive(onNext: { [weak self] planTests in
+                guard let self = self else {
+                    return
+                }
+                
+                self.mainView.testsTableView.setup(elements: planTests.tests,
+                                                   activeSubscription: planTests.activeSubscription,
+                                                   lockedStep: planTests.lockedStep)
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.planCurrent
             .drive(onNext: { [weak self] current in
                 guard let self = self else {
@@ -111,6 +123,7 @@ extension PlanViewController {
 extension PlanViewController: StepCollectionViewDelegate {
     func stepCollectionViewDidSelect(element: StepCollectionElement) {
         update(stepName: element.step.name)
+        viewModel.currentStep.accept(element)
     }
 }
 
@@ -145,6 +158,9 @@ private extension PlanViewController {
     func activity(_ activity: Bool) {
         let showAnimating = activity && mainView.stepCollectionView.elements.isEmpty
         showAnimating ? mainView.preloader.startAnimating() : mainView.preloader.stopAnimating()
+        mainView.stepCollectionView.isHidden = showAnimating
+        mainView.stepNameLabel.isHidden = showAnimating
+        mainView.testsTableView.isHidden = showAnimating
     }
     
     func update(stepName: String) {

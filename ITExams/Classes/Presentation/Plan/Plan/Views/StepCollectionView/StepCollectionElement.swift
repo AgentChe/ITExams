@@ -21,14 +21,12 @@ extension StepCollectionElement {
         
         var lastStepProgress: Int = 100
         
-        // TODO
         steps.enumerated().forEach { index, step in
             let locked = lastStepProgress < 100
-            let s = PlanStep(name: step.name, sort: step.sort, progress: [0, 1].contains(index) ? 100 : step.progress, tests: [])
-            let element = StepCollectionElement(step: s, locked: locked)
+            let element = StepCollectionElement(step: step, locked: locked)
             result.append(element)
             
-            lastStepProgress = s.progress
+            lastStepProgress = step.progress
         }
         
         return result
