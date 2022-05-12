@@ -52,7 +52,19 @@ extension StepCollectionView: UICollectionViewDataSource {
 
 // MARK: UICollectionViewDelegateFlowLayout
 extension StepCollectionView: UICollectionViewDelegateFlowLayout {
-    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard let maxCell = visibleCells.max(by: { $0.transform.a < $1.transform.a }) else {
+            return
+        }
+        
+        guard let indexPath = indexPath(for: maxCell) else {
+            return
+        }
+        
+        let element = elements[indexPath.row]
+        
+        mainDelegate?.stepCollectionViewDidSelect(element: element)
+    }
 }
 
 // MARK: Private
