@@ -33,4 +33,16 @@ extension StepCollectionElement {
         
         return result
     }
+    
+    static func currentIndex(in elements: [StepCollectionElement]) -> Int? {
+        guard !elements.isEmpty else {
+            return nil
+        }
+        
+        if let index = elements.firstIndex(where: { $0.step.progress != 100 }) {
+            return index
+        }
+        
+        return elements.count - 1
+    }
 }

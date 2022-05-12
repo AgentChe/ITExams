@@ -41,6 +41,7 @@ final class PlanViewController: UIViewController {
                 }
                 
                 self.mainView.stepCollectionView.setup(elements: planSteps)
+                self.determineCurrentStep(elements: planSteps)
             })
             .disposed(by: disposeBag)
         
@@ -115,6 +116,16 @@ extension PlanViewController: StepCollectionViewDelegate {
 
 // MARK: Private
 private extension PlanViewController {
+    func determineCurrentStep(elements: [StepCollectionElement]) {
+        guard let index = StepCollectionElement.currentIndex(in: elements) else {
+            return
+        }
+        
+        let element = elements[index]
+        
+        stepCollectionViewDidSelect(element: element)
+    }
+    
     func openError() -> Observable<Void> {
         Observable<Void>
             .create { [weak self] observe in

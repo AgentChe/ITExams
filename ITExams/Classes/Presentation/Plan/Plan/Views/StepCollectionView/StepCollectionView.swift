@@ -33,6 +33,10 @@ extension StepCollectionView {
         self.elements = elements
         
         reloadData()
+        
+        if let index = StepCollectionElement.currentIndex(in: elements) {
+            scrollToItem(at: IndexPath(item: index, section: 0), at: .right, animated: false)
+        }
     }
 }
 
