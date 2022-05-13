@@ -27,6 +27,8 @@ final class SettingsViewController: UIViewController {
                 self?.mainView.tableView.setup(elements: elements)
             })
             .disposed(by: disposeBag)
+        
+        mainView.tableView.mainDelegate = self
     }
 }
 
@@ -40,6 +42,14 @@ extension SettingsViewController {
 // MARK: SettingsTableViewDelegate
 extension SettingsViewController: SettingsTableViewDelegate {
     func settingsTableDidSelect(element: SettingsTableElement) {
-        
+        switch element {
+        case .premium:
+            let vc = PaygateViewController.make()
+            present(vc, animated: true)
+        case .profile:
+            break
+        default:
+            break
+        }
     }
 }

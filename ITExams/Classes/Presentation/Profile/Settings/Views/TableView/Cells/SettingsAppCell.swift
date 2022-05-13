@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import StoreKit
 
 final class SettingsAppCell: UITableViewCell {
     lazy var container = makeContainer()
@@ -13,6 +15,8 @@ final class SettingsAppCell: UITableViewCell {
     lazy var privacyPolicyButton = makeButton(title: "Settings.PrivacyPolicy".localized, withSeparator: true)
     lazy var termsOfUseButton = makeButton(title: "Settings.TermsOfUse".localized, withSeparator: true)
     lazy var rateUsButton = makeButton(title: "Settings.RateUs".localized, withSeparator: false)
+    
+    private lazy var disposeBag = DisposeBag()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -33,6 +37,27 @@ private extension SettingsAppCell {
         contentView.backgroundColor = UIColor.clear
         
         selectionStyle = .none
+
+        Observable
+            .merge(
+                contactUsButton.rx.tap
+                    .map { GlobalDefinitions.contactUsUrl },
+                privacyPolicyButton.rx.tap
+                    .map { GlobalDefinitions.privacyPolicyUrl },
+                termsOfUseButton.rx.tap
+                    .map { GlobalDefinitions.termsOfServiceUrl }
+            )
+            .compactMap { URL(string: $0) }
+            .subscribe(onNext: { url in
+                UIApplication.shared.open(url, options: [:])
+            })
+            .disposed(by: disposeBag)
+        
+        rateUsButton.rx.tap
+            .subscribe(onNext: {
+                SKStoreReviewController.requestReview()
+            })
+            .disposed(by: disposeBag)
     }
 }
 
