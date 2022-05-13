@@ -151,3 +151,13 @@
 "Profile.Stats" = "Stats";
 "Profile.Review" = "Review";
 "Profile.Settings" = "Settings";
+
+// MARK: Settings
+"Settings.Premium.Title" = "Go premium";
+"Settings.Premium.SubTitle" = "Know all 10000+ questions\nbeforehand";
+"Settings.MyProfile" = "My profile";
+"Settings.App" = "App";
+"Settings.ContactUs" = "Contact us";
+"Settings.PrivacyPolicy" = "Privacy Policy";
+"Settings.TermsOfUse" = "Terms of use";
+"Settings.RateUs" = "Rate us";

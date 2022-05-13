@@ -12,7 +12,7 @@ final class ProfileViewCoordinator {
     
     lazy var statsVC = UIViewController()
     lazy var reviewVC = UIViewController()
-    lazy var settingsVC = UIViewController()
+    lazy var settingsVC = SettingsViewController.make()
     
     private var previousVC: UIViewController?
     

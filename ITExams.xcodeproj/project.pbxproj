@@ -131,6 +131,16 @@
 		DE95A87A282E307000809171 /* ProfileTabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A879282E307000809171 /* ProfileTabsView.swift */; };
 		DE95A87C282E310200809171 /* ProfileTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A87B282E310200809171 /* ProfileTabView.swift */; };
 		DE95A87E282E5ADA00809171 /* ProfileViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A87D282E5ADA00809171 /* ProfileViewCoordinator.swift */; };
+		DE95A881282E632400809171 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A880282E632400809171 /* SettingsViewController.swift */; };
+		DE95A883282E632F00809171 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A882282E632F00809171 /* SettingsViewModel.swift */; };
+		DE95A885282E633600809171 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A884282E633600809171 /* SettingsView.swift */; };
+		DE95A889282E81D000809171 /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A888282E81D000809171 /* SettingsTableView.swift */; };
+		DE95A88B282E81DF00809171 /* SettingsTableElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A88A282E81DF00809171 /* SettingsTableElement.swift */; };
+		DE95A88E282E81F000809171 /* SettingsPremiumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A88D282E81F000809171 /* SettingsPremiumCell.swift */; };
+		DE95A890282E89B500809171 /* SettingsProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A88F282E89B500809171 /* SettingsProfileCell.swift */; };
+		DE95A892282E910C00809171 /* SettingsAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A891282E910C00809171 /* SettingsAppCell.swift */; };
+		DE95A895282E920400809171 /* SettingsTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A894282E920400809171 /* SettingsTitleCell.swift */; };
+		DE95A897282E940000809171 /* SettingsAppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A896282E940000809171 /* SettingsAppButton.swift */; };
 		DEC345F02816DADD0069A060 /* PlanCurrentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */; };
 		DEC345F22816DE200069A060 /* PlanStudyScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */; };
 		DEC345F42816E1EE0069A060 /* PlanHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */; };
@@ -303,6 +313,16 @@
 		DE95A879282E307000809171 /* ProfileTabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabsView.swift; sourceTree = "<group>"; };
 		DE95A87B282E310200809171 /* ProfileTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabView.swift; sourceTree = "<group>"; };
 		DE95A87D282E5ADA00809171 /* ProfileViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewCoordinator.swift; sourceTree = "<group>"; };
+		DE95A880282E632400809171 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		DE95A882282E632F00809171 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		DE95A884282E633600809171 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		DE95A888282E81D000809171 /* SettingsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableView.swift; sourceTree = "<group>"; };
+		DE95A88A282E81DF00809171 /* SettingsTableElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableElement.swift; sourceTree = "<group>"; };
+		DE95A88D282E81F000809171 /* SettingsPremiumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPremiumCell.swift; sourceTree = "<group>"; };
+		DE95A88F282E89B500809171 /* SettingsProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProfileCell.swift; sourceTree = "<group>"; };
+		DE95A891282E910C00809171 /* SettingsAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppCell.swift; sourceTree = "<group>"; };
+		DE95A894282E920400809171 /* SettingsTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTitleCell.swift; sourceTree = "<group>"; };
+		DE95A896282E940000809171 /* SettingsAppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppButton.swift; sourceTree = "<group>"; };
 		DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCurrentView.swift; sourceTree = "<group>"; };
 		DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStudyScoreView.swift; sourceTree = "<group>"; };
 		DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanHeaderView.swift; sourceTree = "<group>"; };
@@ -945,6 +965,7 @@
 		DE95A870282E2DF700809171 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				DE95A87F282E631800809171 /* Settings */,
 				DE95A871282E2E0500809171 /* Profile */,
 			);
 			path = Profile;
@@ -969,6 +990,55 @@
 				DE95A87B282E310200809171 /* ProfileTabView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		DE95A87F282E631800809171 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DE95A886282E633D00809171 /* Views */,
+				DE95A880282E632400809171 /* SettingsViewController.swift */,
+				DE95A882282E632F00809171 /* SettingsViewModel.swift */,
+				DE95A884282E633600809171 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		DE95A886282E633D00809171 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DE95A887282E648800809171 /* TableView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DE95A887282E648800809171 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				DE95A88C282E81E400809171 /* Cells */,
+				DE95A888282E81D000809171 /* SettingsTableView.swift */,
+				DE95A88A282E81DF00809171 /* SettingsTableElement.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		DE95A88C282E81E400809171 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DE95A893282E916200809171 /* Atoms */,
+				DE95A88D282E81F000809171 /* SettingsPremiumCell.swift */,
+				DE95A88F282E89B500809171 /* SettingsProfileCell.swift */,
+				DE95A894282E920400809171 /* SettingsTitleCell.swift */,
+				DE95A891282E910C00809171 /* SettingsAppCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		DE95A893282E916200809171 /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+				DE95A896282E940000809171 /* SettingsAppButton.swift */,
+			);
+			path = Atoms;
 			sourceTree = "<group>";
 		};
 		DEC345EE2816D5F80069A060 /* Views */ = {
@@ -1291,6 +1361,7 @@
 				DE2B10C527DB14EE005280DB /* LoginRequest.swift in Sources */,
 				DE9378F627C4C0E90073F27C /* OSlideView.swift in Sources */,
 				DE2B101A27DB13E0005280DB /* NetworkError.swift in Sources */,
+				DE95A881282E632400809171 /* SettingsViewController.swift in Sources */,
 				DE2B10BF27DB14EE005280DB /* CoursesManager.swift in Sources */,
 				DE1CA98E27F2ED6800C66DAD /* MainViewCoordinator.swift in Sources */,
 				DE5043952822A85300C6B1C8 /* StepCollectionElement.swift in Sources */,
@@ -1298,15 +1369,19 @@
 				DE1CA9AA27F2FCAE00C66DAD /* PaygateManager.swift in Sources */,
 				DE1CA9A627F2FC5900C66DAD /* GetMonetizationRequest.swift in Sources */,
 				DEE74EBA27F41873002FE71D /* Plan.swift in Sources */,
+				DE95A889282E81D000809171 /* SettingsTableView.swift in Sources */,
 				DE1CA99C27F2F80100C66DAD /* FirebaseManager.swift in Sources */,
 				DE2B10C927DB14EE005280DB /* SetRequest.swift in Sources */,
+				DE95A88B282E81DF00809171 /* SettingsTableElement.swift in Sources */,
 				DEC34614281971200069A060 /* TryAgainView.swift in Sources */,
+				DE95A883282E632F00809171 /* SettingsViewModel.swift in Sources */,
 				DEE74EC327F41CFF002FE71D /* PlanManager.swift in Sources */,
 				DE2B100227D8789F005280DB /* OStudyModeCell.swift in Sources */,
 				DE93788527C4B2600073F27C /* RxActivityIndicator.swift in Sources */,
 				DE93788727C4B2600073F27C /* Appearance.swift in Sources */,
 				DE93787A27C4B2600073F27C /* ImagePicker.swift in Sources */,
 				DE2B10B727DB14EE005280DB /* Course.swift in Sources */,
+				DE95A885282E633600809171 /* SettingsView.swift in Sources */,
 				DE93789F27C4BF120073F27C /* SplashView.swift in Sources */,
 				DE93790527C4C0E90073F27C /* OnboardingViewModel.swift in Sources */,
 				DE2B10DC27DB14EE005280DB /* SessionManager.swift in Sources */,
@@ -1336,6 +1411,7 @@
 				DE2B100027D876A0005280DB /* OStudyModeView.swift in Sources */,
 				DE3FD60C27EA02F500E76844 /* PaygateProductButton.swift in Sources */,
 				DEE74EB827F41863002FE71D /* PlanStep.swift in Sources */,
+				DE95A897282E940000809171 /* SettingsAppButton.swift in Sources */,
 				DE55A4AE27D6458000B53B46 /* OCourseView.swift in Sources */,
 				DEE74EB627F41852002FE71D /* PlanTest.swift in Sources */,
 				DE2B100427D8B5C6005280DB /* OCreatingPlanView.swift in Sources */,
@@ -1356,6 +1432,7 @@
 				DE93789D27C4BF0D0073F27C /* SplashViewModel.swift in Sources */,
 				DE1CA99527F2ED8F00C66DAD /* TabView.swift in Sources */,
 				DE3FD61C27EA312800E76844 /* PaygateInteractor.swift in Sources */,
+				DE95A890282E89B500809171 /* SettingsProfileCell.swift in Sources */,
 				DE3FD60527E9D4C200E76844 /* PaygateTrialView.swift in Sources */,
 				DE2B0FFC27D7960E005280DB /* ODailyGoalView.swift in Sources */,
 				DE1CA9A227F2FC2E00C66DAD /* Monetization.swift in Sources */,
@@ -1400,10 +1477,12 @@
 				DE93787127C4B2600073F27C /* GlobalDefinitions.swift in Sources */,
 				DE95A875282E2E2F00809171 /* ProfileViewModel.swift in Sources */,
 				DE93786A27C4B2600073F27C /* UIColorExtension.swift in Sources */,
+				DE95A88E282E81F000809171 /* SettingsPremiumCell.swift in Sources */,
 				DE93787427C4B2600073F27C /* TextAttributes.swift in Sources */,
 				DE2B10DB27DB14EE005280DB /* Session.swift in Sources */,
 				DEE74EAD27F32486002FE71D /* ProfileMediator.swift in Sources */,
 				DE55A4B427D6538800B53B46 /* OExamDateView.swift in Sources */,
+				DE95A892282E910C00809171 /* SettingsAppCell.swift in Sources */,
 				DEC345F92816E6840069A060 /* PlanStudyScore.swift in Sources */,
 				DE2B101127DA4B49005280DB /* OPlanGridView.swift in Sources */,
 				DED4725A27D20F7800AEF8A6 /* OExamsView.swift in Sources */,
@@ -1416,6 +1495,7 @@
 				DEC345F02816DADD0069A060 /* PlanCurrentView.swift in Sources */,
 				DE3FD60727E9FEA400E76844 /* PaygatePlansView.swift in Sources */,
 				DED4725427D2091600AEF8A6 /* OExamsTableCell.swift in Sources */,
+				DE95A895282E920400809171 /* SettingsTitleCell.swift in Sources */,
 				DEC34616281971E50069A060 /* ObservableRetrySingle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
