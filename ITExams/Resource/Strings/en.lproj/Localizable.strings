@@ -161,3 +161,16 @@
 "Settings.PrivacyPolicy" = "Privacy Policy";
 "Settings.TermsOfUse" = "Terms of use";
 "Settings.RateUs" = "Rate us";
+
+// MARK: My profile
+"MyProfile.Title" = "My profile";
+"MyProfile.DateOfExam" = "Date of exam";
+"MyProfile.Exams" = "Exams";
+"MyProfile.Course" = "Course";
+"MyProfile.StudyMode" = "Study mode";
+"MyProfile.DailyGoal" = "Daily goal";
+"MyProfile.ResetProgress" = "Reset progress";
+"MyProfile.min" = "%i min";
+"MyProfile.StudyMode.FullSupport" = "Full support";
+"MyProfile.StudyMode.WithoutExplanations" = "Without explanations";
+"MyProfile.StudyMode.Exam-style" = "Exam-style";

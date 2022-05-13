@@ -141,6 +141,13 @@
 		DE95A892282E910C00809171 /* SettingsAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A891282E910C00809171 /* SettingsAppCell.swift */; };
 		DE95A895282E920400809171 /* SettingsTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A894282E920400809171 /* SettingsTitleCell.swift */; };
 		DE95A897282E940000809171 /* SettingsAppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A896282E940000809171 /* SettingsAppButton.swift */; };
+		DE95A89A282ECFA200809171 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A899282ECFA200809171 /* MyProfileViewController.swift */; };
+		DE95A89C282ECFD000809171 /* MyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A89B282ECFD000809171 /* MyProfileViewModel.swift */; };
+		DE95A89E282ECFD800809171 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A89D282ECFD800809171 /* MyProfileView.swift */; };
+		DE95A8A2282ED2D200809171 /* MyProfileTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8A1282ED2D200809171 /* MyProfileTableView.swift */; };
+		DE95A8A4282ED2E000809171 /* MyProfileTableElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8A3282ED2E000809171 /* MyProfileTableElement.swift */; };
+		DE95A8A7282ED3F600809171 /* MyProfilePropertyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8A6282ED3F600809171 /* MyProfilePropertyCell.swift */; };
+		DE95A8A9282ED40500809171 /* MyProfileResetProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8A8282ED40500809171 /* MyProfileResetProgressCell.swift */; };
 		DEC345F02816DADD0069A060 /* PlanCurrentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */; };
 		DEC345F22816DE200069A060 /* PlanStudyScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */; };
 		DEC345F42816E1EE0069A060 /* PlanHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */; };
@@ -323,6 +330,13 @@
 		DE95A891282E910C00809171 /* SettingsAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppCell.swift; sourceTree = "<group>"; };
 		DE95A894282E920400809171 /* SettingsTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTitleCell.swift; sourceTree = "<group>"; };
 		DE95A896282E940000809171 /* SettingsAppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppButton.swift; sourceTree = "<group>"; };
+		DE95A899282ECFA200809171 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		DE95A89B282ECFD000809171 /* MyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewModel.swift; sourceTree = "<group>"; };
+		DE95A89D282ECFD800809171 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
+		DE95A8A1282ED2D200809171 /* MyProfileTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTableView.swift; sourceTree = "<group>"; };
+		DE95A8A3282ED2E000809171 /* MyProfileTableElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTableElement.swift; sourceTree = "<group>"; };
+		DE95A8A6282ED3F600809171 /* MyProfilePropertyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfilePropertyCell.swift; sourceTree = "<group>"; };
+		DE95A8A8282ED40500809171 /* MyProfileResetProgressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileResetProgressCell.swift; sourceTree = "<group>"; };
 		DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCurrentView.swift; sourceTree = "<group>"; };
 		DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStudyScoreView.swift; sourceTree = "<group>"; };
 		DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanHeaderView.swift; sourceTree = "<group>"; };
@@ -965,6 +979,7 @@
 		DE95A870282E2DF700809171 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				DE95A898282ECF9500809171 /* MyProfile */,
 				DE95A87F282E631800809171 /* Settings */,
 				DE95A871282E2E0500809171 /* Profile */,
 			);
@@ -1039,6 +1054,44 @@
 				DE95A896282E940000809171 /* SettingsAppButton.swift */,
 			);
 			path = Atoms;
+			sourceTree = "<group>";
+		};
+		DE95A898282ECF9500809171 /* MyProfile */ = {
+			isa = PBXGroup;
+			children = (
+				DE95A89F282ED29400809171 /* Views */,
+				DE95A899282ECFA200809171 /* MyProfileViewController.swift */,
+				DE95A89B282ECFD000809171 /* MyProfileViewModel.swift */,
+				DE95A89D282ECFD800809171 /* MyProfileView.swift */,
+			);
+			path = MyProfile;
+			sourceTree = "<group>";
+		};
+		DE95A89F282ED29400809171 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DE95A8A0282ED2C300809171 /* TableView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DE95A8A0282ED2C300809171 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				DE95A8A5282ED3D300809171 /* Cells */,
+				DE95A8A1282ED2D200809171 /* MyProfileTableView.swift */,
+				DE95A8A3282ED2E000809171 /* MyProfileTableElement.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		DE95A8A5282ED3D300809171 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DE95A8A6282ED3F600809171 /* MyProfilePropertyCell.swift */,
+				DE95A8A8282ED40500809171 /* MyProfileResetProgressCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		DEC345EE2816D5F80069A060 /* Views */ = {
@@ -1353,6 +1406,7 @@
 				DE93787E27C4B2600073F27C /* TapAreaButton.swift in Sources */,
 				DE2B10D127DB14EE005280DB /* IAPErrorHelper.swift in Sources */,
 				DE2B10BE27DB14EE005280DB /* GetCourcesResponseMapper.swift in Sources */,
+				DE95A89C282ECFD000809171 /* MyProfileViewModel.swift in Sources */,
 				DEC345FE2816FE070069A060 /* CoursesViewModel.swift in Sources */,
 				DED4724A27CE5CF000AEF8A6 /* OAgeView.swift in Sources */,
 				DE2B100C27D9F6CE005280DB /* OCreatingPlanSectionView.swift in Sources */,
@@ -1372,6 +1426,7 @@
 				DE95A889282E81D000809171 /* SettingsTableView.swift in Sources */,
 				DE1CA99C27F2F80100C66DAD /* FirebaseManager.swift in Sources */,
 				DE2B10C927DB14EE005280DB /* SetRequest.swift in Sources */,
+				DE95A89E282ECFD800809171 /* MyProfileView.swift in Sources */,
 				DE95A88B282E81DF00809171 /* SettingsTableElement.swift in Sources */,
 				DEC34614281971200069A060 /* TryAgainView.swift in Sources */,
 				DE95A883282E632F00809171 /* SettingsViewModel.swift in Sources */,
@@ -1390,6 +1445,7 @@
 				DE3FD60A27E9FFEE00E76844 /* PaygatePlansCell.swift in Sources */,
 				DEE74EB127F34CB6002FE71D /* Exam.swift in Sources */,
 				DED4725827D20C4C00AEF8A6 /* OExamsTable.swift in Sources */,
+				DE95A8A2282ED2D200809171 /* MyProfileTableView.swift in Sources */,
 				DEC3460F28196AE90069A060 /* Spinner.swift in Sources */,
 				DE2B0FFA27D77546005280DB /* OQuizResultView.swift in Sources */,
 				DE2B100727D9E857005280DB /* OnboardingCombineData.swift in Sources */,
@@ -1402,6 +1458,7 @@
 				DE1CA99827F2F7C600C66DAD /* BranchManager.swift in Sources */,
 				DE2D7F25282D367000B8952B /* StepTestProgressView.swift in Sources */,
 				DEE74EC127F41AAA002FE71D /* GetPlanResponseMapper.swift in Sources */,
+				DE95A8A7282ED3F600809171 /* MyProfilePropertyCell.swift in Sources */,
 				DE93788227C4B2600073F27C /* CircleView.swift in Sources */,
 				DE2B100A27D9F441005280DB /* OCreatingPlanRowView.swift in Sources */,
 				DEE74EBF27F41960002FE71D /* GetPlanRequest.swift in Sources */,
@@ -1425,6 +1482,7 @@
 				DEC346042817D5BF0069A060 /* CoursesTableView.swift in Sources */,
 				DE3FD5FF27E9D40600E76844 /* PaygateViewController.swift in Sources */,
 				DE2D7F22282D319B00B8952B /* StepTestsTableCell.swift in Sources */,
+				DE95A8A4282ED2E000809171 /* MyProfileTableElement.swift in Sources */,
 				DEE74EC727F41DE3002FE71D /* PlanViewController.swift in Sources */,
 				DE1CA99027F2ED7100C66DAD /* MainView.swift in Sources */,
 				DE93787327C4B2600073F27C /* NumberLaunches.swift in Sources */,
@@ -1457,6 +1515,7 @@
 				DED4724E27D1DA6B00AEF8A6 /* OWhyView.swift in Sources */,
 				DE55A4B027D64C7700B53B46 /* ODetermingSkillView.swift in Sources */,
 				DE93788127C4B2600073F27C /* GradientButton.swift in Sources */,
+				DE95A89A282ECFA200809171 /* MyProfileViewController.swift in Sources */,
 				DE93788627C4B2600073F27C /* UIViewRxExtension.swift in Sources */,
 				DE93787927C4B2600073F27C /* Weak.swift in Sources */,
 				DE93787027C4B2600073F27C /* StringExtension.swift in Sources */,
@@ -1465,6 +1524,7 @@
 				DEC345F42816E1EE0069A060 /* PlanHeaderView.swift in Sources */,
 				DE3FD61727EA09F300E76844 /* XORRequestWrapper.swift in Sources */,
 				DE3FD60127E9D41000E76844 /* PaygateViewModel.swift in Sources */,
+				DE95A8A9282ED40500809171 /* MyProfileResetProgressCell.swift in Sources */,
 				DE95A87C282E310200809171 /* ProfileTabView.swift in Sources */,
 				DE2B10CF27DB14EE005280DB /* IAPProduct.swift in Sources */,
 				DE2B10C627DB14EE005280DB /* SyncTokensRequest.swift in Sources */,

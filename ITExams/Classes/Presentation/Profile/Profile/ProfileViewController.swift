@@ -38,7 +38,9 @@ final class ProfileViewController: UIViewController {
 // MARK: Make
 extension ProfileViewController {
     static func make() -> ProfileViewController {
-        ProfileViewController()
+        let vc = ProfileViewController()
+        vc.navigationItem.backButtonTitle = " "
+        return vc
     }
 }
 

@@ -47,7 +47,8 @@ extension SettingsViewController: SettingsTableViewDelegate {
             let vc = PaygateViewController.make()
             present(vc, animated: true)
         case .profile:
-            break
+            let vc = MyProfileViewController.make()
+            navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }

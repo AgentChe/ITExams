@@ -21,9 +21,9 @@ extension NavigationControllerSettings {
         NavigationControllerSettings(backgroundImage: UIImage(),
                                      shadowImage: UIImage(),
                                      isTranslucent: true,
-                                     tintColor: UIColor(integralRed: 0, green: 122, blue: 255),
+                                     tintColor: Appearance.blackColor,
                                      titleTextAttrributes: TextAttributes()
-                                        .textColor(UIColor.white)
+                                        .textColor(Appearance.blackColor)
                                         .font(Fonts.Inter.semiBold(size: 17.scale))
                                         .textAlignment(.center)
                                         .dictionary)
