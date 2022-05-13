@@ -74,6 +74,7 @@ private extension PlanViewModel {
                     return .never()
                 }
                 
+                // TODO: Обновлять план после прохождения теста и сброса прогресса
                 func source() -> Single<Plan> {
                     self.planManager
                         .obtainPlan(for: course.id)

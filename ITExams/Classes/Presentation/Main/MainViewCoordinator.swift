@@ -13,7 +13,7 @@ final class MainViewCoordinator {
     lazy var planVC = NavigationController(rootViewController: PlanViewController.make())
     lazy var practiceVC = NavigationController(rootViewController: UIViewController())
     lazy var flashcardsVC = NavigationController(rootViewController: UIViewController())
-    lazy var profileVC = NavigationController(rootViewController: UIViewController())
+    lazy var profileVC = NavigationController(rootViewController: ProfileViewController.make())
     
     private var previousVC: UIViewController?
     

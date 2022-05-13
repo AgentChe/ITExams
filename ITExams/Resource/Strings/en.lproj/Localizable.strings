@@ -145,3 +145,9 @@
 "TryAgain.SubTitle" = "If there’s a connection issue on your side try one more time. If the connection is fine and the error keeps on repeating please get in touch with the support";
 "TryAgain.Button" = "Try again";
 "TryAgain.Contact" = "Contact the support";
+
+// MARK: Profile
+"Profile.Title" = "Profile";
+"Profile.Stats" = "Stats";
+"Profile.Review" = "Review";
+"Profile.Settings" = "Settings";
