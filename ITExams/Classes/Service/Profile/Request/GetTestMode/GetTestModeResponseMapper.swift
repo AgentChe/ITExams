@@ -15,19 +15,6 @@ final class GetTestModeResponseMapper {
             return nil
         }
         
-        return map(testModeCode: code)
-    }
-    
-    static func map(testModeCode: Int) -> TestMode? {
-        switch testModeCode {
-        case 0:
-            return .fullComplect
-        case 1:
-            return .noExplanations
-        case 2:
-            return .onAnExam
-        default:
-            return nil
-        }
+        return TestMode(code: code)
     }
 }

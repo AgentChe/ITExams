@@ -10,9 +10,11 @@ import RxCocoa
 final class ProfileMediator {
     static let shared = ProfileMediator()
     
-    private let changedTestModeTrigger = PublishRelay<TestMode>()
+    private let changedDateOfExamTrigger = PublishRelay<String>()
     private let changedExamTrigger = PublishRelay<Exam>()
     private let changedCourseTrigger = PublishRelay<Course>()
+    private let changedTestModeTrigger = PublishRelay<TestMode>()
+    private let changedTestMinutesTrigger = PublishRelay<Int>()
     
     private var delegates = [Weak<ProfileMediatorDelegate>]()
     
@@ -21,20 +23,20 @@ final class ProfileMediator {
 
 // MARK: API
 extension ProfileMediator {
-    func notifyAboutChanged(testMode: TestMode) {
+    func notifyAboutChanged(dateOfExam: String) {
         DispatchQueue.main.async { [weak self] in
             self?.delegates.forEach {
-                $0.weak?.didChanged(testMode: testMode)
+                $0.weak?.prodileMediatorDidChanged(dateOfExam: dateOfExam)
             }
             
-            self?.changedTestModeTrigger.accept(testMode)
+            self?.changedDateOfExamTrigger.accept(dateOfExam)
         }
     }
     
     func notifyAboutChanged(exam: Exam) {
         DispatchQueue.main.async { [weak self] in
             self?.delegates.forEach {
-                $0.weak?.didChanged(exam: exam)
+                $0.weak?.prodileMediatorDidChanged(exam: exam)
             }
             
             self?.changedExamTrigger.accept(exam)
@@ -44,18 +46,38 @@ extension ProfileMediator {
     func notifyAboutChanged(course: Course) {
         DispatchQueue.main.async { [weak self] in
             self?.delegates.forEach {
-                $0.weak?.didChanged(course: course)
+                $0.weak?.prodileMediatorDidChanged(course: course)
             }
             
             self?.changedCourseTrigger.accept(course)
+        }
+    }
+    
+    func notifyAboutChanged(testMode: TestMode) {
+        DispatchQueue.main.async { [weak self] in
+            self?.delegates.forEach {
+                $0.weak?.prodileMediatorDidChanged(testMode: testMode)
+            }
+            
+            self?.changedTestModeTrigger.accept(testMode)
+        }
+    }
+    
+    func notifyAboutChanged(testMinutes: Int) {
+        DispatchQueue.main.async { [weak self] in
+            self?.delegates.forEach {
+                $0.weak?.prodileMediatorDidChanged(testMinutes: testMinutes)
+            }
+            
+            self?.changedTestMinutesTrigger.accept(testMinutes)
         }
     }
 }
 
 // MARK: Triggers(Rx)
 extension ProfileMediator {
-    var changedTestMode: Signal<TestMode> {
-        changedTestModeTrigger.asSignal()
+    var changedDateOfExam: Signal<String> {
+        changedDateOfExamTrigger.asSignal()
     }
     
     var changedExam: Signal<Exam> {
@@ -64,6 +86,14 @@ extension ProfileMediator {
     
     var changedCourse: Signal<Course> {
         changedCourseTrigger.asSignal()
+    }
+    
+    var changedTestMode: Signal<TestMode> {
+        changedTestModeTrigger.asSignal()
+    }
+    
+    var changedTestMinutes: Signal<Int> {
+        changedTestMinutesTrigger.asSignal()
     }
 }
 

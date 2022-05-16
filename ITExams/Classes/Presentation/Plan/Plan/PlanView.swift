@@ -130,6 +130,7 @@ private extension PlanView {
     
     func makeFinalStepView() -> PlanFinalStepView {
         let view = PlanFinalStepView()
+        view.isHidden = true
         view.backgroundColor = UIColor.clear
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)

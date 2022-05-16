@@ -99,9 +99,28 @@ private extension SplashViewModel {
     
     func library() -> Observable<Void> {
         func source() -> Single<Void> {
-            paygateManager
+            let monetization = paygateManager
                 .retrieveMonetization(forceUpdate: true)
                 .mapToVoid()
+            
+            let dateOfExam = profileManager
+                .obtainDateOfExam(forceUpdate: true)
+                .mapToVoid()
+            
+            let testMode = profileManager
+                .obtainTestMode(forceUpdate: true)
+                .mapToVoid()
+            
+            let testMinutes = profileManager
+                .obtainTestMinutes(forceUpdate: true)
+                .mapToVoid()
+            
+            return Single.zip(
+                monetization,
+                dateOfExam,
+                testMode,
+                testMinutes
+            ).mapToVoid()
         }
         
         func trigger(error: Error) -> Observable<Void> {

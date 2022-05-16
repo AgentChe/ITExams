@@ -45,36 +45,64 @@ private extension MyProfileViewModel {
             }
     }
     
-    // TODO
     func makeDateOfExam() -> Driver<String> {
-        .deferred {
-            .just("Feb 15, 2022")
-        }
+        let initial = profileManager
+            .obtainDateOfExam(forceUpdate: false)
+            .map { $0 ?? "" }
+            .asDriver(onErrorJustReturn: "")
+        
+        let updated = ProfileMediator.shared
+            .changedDateOfExam
+            .asDriver(onErrorJustReturn: "")
+        
+        return Driver.merge(initial, updated)
     }
     
-    // TODO
     func makeExam() -> Driver<String> {
-        profileManager
+        let initial = profileManager
             .obtainSelectedExam()
-            .compactMap { $0?.title }
-            .asDriver(onErrorDriveWith: .empty())
+            .map { $0?.title ?? "" }
+            .asDriver(onErrorJustReturn: "")
+        
+        let updated = ProfileMediator.shared
+            .changedExam
+            .map { $0.title }
+            .asDriver(onErrorJustReturn: "")
+        
+        return Driver.merge(initial, updated)
     }
     
-    // TODO
     func makeCourse() -> Driver<String> {
-        profileManager
+        let initial = profileManager
             .obtainSelectedCourse()
-            .compactMap { $0?.name }
-            .asDriver(onErrorDriveWith: .empty())
+            .map { $0?.name ?? "" }
+            .asDriver(onErrorJustReturn: "")
+        
+        let updated = ProfileMediator.shared
+            .changedCourse
+            .map { $0.name }
+            .asDriver(onErrorJustReturn: "")
+        
+        return Driver.merge(initial, updated)
     }
     
-    // TODO: activity
     func makeStudyMode() -> Driver<String> {
-        profileManager
-            .obtainTestMode()
-            .compactMap { mode -> String? in
+        let initial = profileManager
+            .obtainTestMode(forceUpdate: false)
+            .asDriver(onErrorJustReturn: nil)
+        
+        let updated = ProfileMediator.shared
+            .changedTestMode
+            .map { mode -> TestMode? in
+                mode
+            }
+            .asDriver(onErrorJustReturn: nil)
+        
+        return Driver
+            .merge(initial, updated)
+            .map { mode -> String in
                 guard let mode = mode else {
-                    return nil
+                    return ""
                 }
                 
                 switch mode {
@@ -86,13 +114,27 @@ private extension MyProfileViewModel {
                     return "MyProfile.StudyMode.Exam-style".localized
                 }
             }
-            .asDriver(onErrorDriveWith: .empty())
     }
     
-    // TODO
     func makeDailyGoal() -> Driver<String> {
-        .deferred {
-            .just("3 min")
-        }
+        let initial = profileManager
+            .obtainTestMinutes(forceUpdate: false)
+            .asDriver(onErrorJustReturn: nil)
+        
+        let updated = ProfileMediator.shared
+            .changedTestMinutes
+            .map { testMinutes -> Int? in
+                testMinutes
+            }
+            .asDriver(onErrorJustReturn: nil)
+        
+        return Driver.merge(initial, updated)
+            .map { testMinutes -> String in
+                guard let testMinutes = testMinutes else {
+                    return ""
+                }
+                
+                return String(format: "MyProfile.min".localized, testMinutes)
+            }
     }
 }

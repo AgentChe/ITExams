@@ -6,7 +6,9 @@
 //
 
 protocol ProfileMediatorDelegate: AnyObject {
-    func didChanged(testMode: TestMode)
-    func didChanged(exam: Exam)
-    func didChanged(course: Course)
+    func prodileMediatorDidChanged(dateOfExam: String)
+    func prodileMediatorDidChanged(exam: Exam)
+    func prodileMediatorDidChanged(course: Course)
+    func prodileMediatorDidChanged(testMode: TestMode)
+    func prodileMediatorDidChanged(testMinutes: Int)
 }

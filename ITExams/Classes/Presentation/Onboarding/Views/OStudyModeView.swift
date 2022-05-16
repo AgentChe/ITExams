@@ -11,7 +11,7 @@ import RxSwift
 struct OStudyModeElement {
     let name: String
     let text: String
-    let code: Int
+    let code: TestMode
 }
 
 protocol OStudyModeViewDelegate: AnyObject {
@@ -26,16 +26,13 @@ final class OStudyModeView: OSlideView {
     lazy var subTitleLabel = makeSubTitleLabel()
     lazy var cell1 = makeCell(element: OStudyModeElement(name: "Onboarding.StudyMode.Mode1.Title".localized,
                                                          text: "Onboarding.StudyMode.Mode1.Text".localized,
-                                                         code: 0),
-                              tag: 0)
+                                                         code: .fullComplect))
     lazy var cell2 = makeCell(element: OStudyModeElement(name: "Onboarding.StudyMode.Mode2.Title".localized,
                                                          text: "Onboarding.StudyMode.Mode2.Text".localized,
-                                                         code: 1),
-                              tag: 1)
+                                                         code: .noExplanations))
     lazy var cell3 = makeCell(element: OStudyModeElement(name: "Onboarding.StudyMode.Mode3.Title".localized,
                                                          text: "Onboarding.StudyMode.Mode3.Text".localized,
-                                                         code: 2),
-                              tag: 2)
+                                                         code: .onAnExam))
     lazy var button = makeButton()
     
     private lazy var disposeBag = DisposeBag()
@@ -194,11 +191,10 @@ private extension OStudyModeView {
         return view
     }
     
-    func makeCell(element: OStudyModeElement, tag: Int) -> OStudyModeCell {
+    func makeCell(element: OStudyModeElement) -> OStudyModeCell {
         let view = OStudyModeCell()
         view.isChecked = false
         view.element = element
-        view.tag = tag
         view.backgroundColor = UIColor.clear
         view.addTarget(self, action: #selector(tapped(sender:)), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
