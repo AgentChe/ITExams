@@ -193,8 +193,8 @@ private extension DailyGoalView {
         NSLayoutConstraint.activate([
             pickerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             pickerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            pickerView.topAnchor.constraint(equalTo: saDayView.bottomAnchor, constant: 40.scale),
-            pickerView.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -40.scale)
+            pickerView.topAnchor.constraint(equalTo: saDayView.bottomAnchor, constant: ScreenSize.isIphoneXFamily ? 40.scale : 20.scale),
+            pickerView.bottomAnchor.constraint(equalTo: button.topAnchor, constant: ScreenSize.isIphoneXFamily ? -40.scale : -20.scale)
         ])
         
         NSLayoutConstraint.activate([

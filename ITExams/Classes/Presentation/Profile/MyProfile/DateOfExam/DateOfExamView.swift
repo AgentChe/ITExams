@@ -69,7 +69,7 @@ private extension DateOfExamView {
     func makeConstraints() {
         NSLayoutConstraint.activate([
             headerLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            headerLabel.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 94.scale : 44.scale)
+            headerLabel.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 34.scale : 24.scale)
         ])
         
         NSLayoutConstraint.activate([
@@ -88,7 +88,7 @@ private extension DateOfExamView {
             dateContainer.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20.scale),
             dateContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20.scale),
             dateContainer.heightAnchor.constraint(equalToConstant: 61.scale),
-            dateContainer.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 56.scale)
+            dateContainer.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: ScreenSize.isIphoneXFamily ? 56.scale : 26.scale)
         ])
         
         NSLayoutConstraint.activate([
