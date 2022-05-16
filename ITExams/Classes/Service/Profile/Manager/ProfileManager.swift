@@ -12,7 +12,8 @@ protocol ProfileManagerProtocol {
     func set(motivation: Int?,
              examDate: String?,
              testMode: TestMode?,
-             testMinutes: Int?) -> Single<Void>
+             testMinutes: Int?,
+             testDaysOfWeek: [DayOfWeek]?) -> Single<Void>
     func set(exam: Exam?, course: Course?) -> Single<Void>
     func obtainDateOfExam(forceUpdate: Bool) -> Single<String?>
     func obtainExams() -> Single<[Exam]>
@@ -20,6 +21,7 @@ protocol ProfileManagerProtocol {
     func obtainSelectedCourse() -> Single<Course?>
     func obtainTestMode(forceUpdate: Bool) -> Single<TestMode?>
     func obtainTestMinutes(forceUpdate: Bool) -> Single<Int?>
+    func obtainTestDaysOfWeek() -> Single<[DayOfWeek]?>
     func syncTokens(oldToken: String, newToken: String) -> Single<Void>
     func login(userToken: String) -> Single<Void>
 }
@@ -31,6 +33,7 @@ final class ProfileManager: ProfileManagerProtocol {
         static let courseKey = "profile_manager_course_key"
         static let testModeKey = "profile_manager_test_mode_key"
         static let testMinutesKey = "profile_manager_test_minutes_key"
+        static let testDaysOfWeekKey = "profile_manager_days_of_week_key"
     }
     
     private lazy var defaultRequestWrapper = DefaultRequestWrapper()
@@ -43,7 +46,8 @@ extension ProfileManager {
     func set(motivation: Int? = nil,
              examDate: String? = nil,
              testMode: TestMode? = nil,
-             testMinutes: Int? = nil) -> Single<Void> {
+             testMinutes: Int? = nil,
+             testDaysOfWeek: [DayOfWeek]? = nil) -> Single<Void> {
         guard let userToken = sessionManager.getSession()?.userToken else {
             return .error(SignError.tokenNotFound)
         }
@@ -65,6 +69,7 @@ extension ProfileManager {
                 self.store(dateOfExam: examDate)
                 self.store(testMode: testMode)
                 self.store(testMinutes: testMinutes)
+                self.store(testDaysOfWeek: testDaysOfWeek)
             })
     }
     
@@ -153,6 +158,23 @@ extension ProfileManager {
     
     func obtainTestMinutes(forceUpdate: Bool) -> Single<Int?> {
         forceUpdate ? loadTestMinutes() : cachedTestMinutes()
+    }
+    
+    func obtainTestDaysOfWeek() -> Single<[DayOfWeek]?> {
+        Single<[DayOfWeek]?>
+            .create { event in
+                guard
+                    let data = UserDefaults.standard.data(forKey: Constants.testDaysOfWeekKey),
+                    let testDaysOfWeek = try? JSONDecoder().decode([DayOfWeek].self, from: data)
+                else {
+                    event(.success(nil))
+                    return Disposables.create()
+                }
+                
+                event(.success(testDaysOfWeek))
+                
+                return Disposables.create()
+            }
     }
     
     func syncTokens(oldToken: String, newToken: String) -> Single<Void> {
@@ -330,5 +352,18 @@ private extension ProfileManager {
                 self.store(testMinutes: testMinutes)
             })
             .delay(RxTimeInterval.seconds(2), scheduler: MainScheduler.asyncInstance)
+    }
+    
+    func store(testDaysOfWeek: [DayOfWeek]?) {
+        guard
+            let testDaysOfWeek = testDaysOfWeek,
+            let data = try? JSONEncoder().encode(testDaysOfWeek)
+        else {
+            return
+        }
+
+        UserDefaults.standard.set(data, forKey: Constants.testDaysOfWeekKey)
+        
+        ProfileMediator.shared.notifyAboutChanged(testDaysOfWeek: testDaysOfWeek)
     }
 }

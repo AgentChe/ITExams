@@ -10,6 +10,7 @@ import RxSwift
 
 protocol ODailyGoalViewDelegate: AnyObject {
     func dailyGoalDidSelected(testMinutes: Int)
+    func dailyGoalDidSelected(daysOfWeek: [DayOfWeek])
 }
 
 final class ODailyGoalView: OSlideView {
@@ -18,13 +19,13 @@ final class ODailyGoalView: OSlideView {
     lazy var headerLabel = makeHeaderLabel()
     lazy var titleLabel = makeTitleLabel()
     lazy var subTitleLabel = makeSubTitleLabel()
-    lazy var suDayView = makeDailyView(day: "Onboarding.DailyGoal.Su".localized, tag: 0)
-    lazy var mnDayView = makeDailyView(day: "Onboarding.DailyGoal.Mn".localized, tag: 1)
-    lazy var tuDayView = makeDailyView(day: "Onboarding.DailyGoal.Tu".localized, tag: 2)
-    lazy var weDayView = makeDailyView(day: "Onboarding.DailyGoal.We".localized, tag: 3)
-    lazy var thDayView = makeDailyView(day: "Onboarding.DailyGoal.Th".localized, tag: 4)
-    lazy var frDayView = makeDailyView(day: "Onboarding.DailyGoal.Fr".localized, tag: 5)
-    lazy var saDayView = makeDailyView(day: "Onboarding.DailyGoal.Sa".localized, tag: 6)
+    lazy var suDayView = makeDailyView(day: .su)
+    lazy var mnDayView = makeDailyView(day: .mn)
+    lazy var tuDayView = makeDailyView(day: .tu)
+    lazy var weDayView = makeDailyView(day: .we)
+    lazy var thDayView = makeDailyView(day: .th)
+    lazy var frDayView = makeDailyView(day: .fr)
+    lazy var saDayView = makeDailyView(day: .sa)
     lazy var pickerView = makePickerView()
     lazy var minLabel = makeMinLabel()
     lazy var button = makeButton()
@@ -99,14 +100,33 @@ private extension ODailyGoalView {
                     return
                 }
                 
-                let row = self.pickerView.selectedRow(inComponent: 0)
-                let minutes = row + 1
-                
-                self.dailyGoalDelegate?.dailyGoalDidSelected(testMinutes: minutes)
+                self.selectedTestMinutes()
+                self.selectedTestDays()
                 
                 self.onNext()
             })
             .disposed(by: disposeBag)
+    }
+    
+    func selectedTestMinutes() {
+        let row = self.pickerView.selectedRow(inComponent: 0)
+        let minutes = row + 1
+        
+        dailyGoalDelegate?.dailyGoalDidSelected(testMinutes: minutes)
+    }
+    
+    func selectedTestDays() {
+        let days = [suDayView,
+                    mnDayView,
+                    tuDayView,
+                    weDayView,
+                    thDayView,
+                    frDayView,
+                    saDayView]
+            .filter { $0.isChecked }
+            .compactMap { $0.day }
+        
+        dailyGoalDelegate?.dailyGoalDidSelected(daysOfWeek: days)
     }
     
     @objc
@@ -258,9 +278,8 @@ private extension ODailyGoalView {
         return view
     }
     
-    func makeDailyView(day: String, tag: Int) -> ODailyView {
+    func makeDailyView(day: DayOfWeek) -> ODailyView {
         let view = ODailyView()
-        view.tag = tag
         view.day = day
         view.isChecked = false
         view.layer.cornerRadius = 25.scale

@@ -15,6 +15,7 @@ struct OCombineData {
     let examDate: String?
     let studyMode: OStudyModeElement
     let testMinutes: Int
+    let testDays: [DayOfWeek]
 }
 
 final class OnboardingCombineData {
@@ -25,6 +26,7 @@ final class OnboardingCombineData {
     private var examDate: String?
     private var studyMode: OStudyModeElement?
     private var testMinutes: Int?
+    private var testDays: [DayOfWeek]?
     
     func combineData() -> OCombineData? {
         guard
@@ -33,7 +35,8 @@ final class OnboardingCombineData {
             let exam = exam,
             let course = course,
             let studyMode = studyMode,
-            let testMinutes = testMinutes
+            let testMinutes = testMinutes,
+            let testDays = testDays
         else {
             return nil
         }
@@ -44,7 +47,8 @@ final class OnboardingCombineData {
                             course: course,
                             examDate: examDate,
                             studyMode: studyMode,
-                            testMinutes: testMinutes)
+                            testMinutes: testMinutes,
+                            testDays: testDays)
     }
 }
 
@@ -100,5 +104,9 @@ extension OnboardingCombineData: OStudyModeViewDelegate {
 extension OnboardingCombineData: ODailyGoalViewDelegate {
     func dailyGoalDidSelected(testMinutes: Int) {
         self.testMinutes = testMinutes
+    }
+    
+    func dailyGoalDidSelected(daysOfWeek: [DayOfWeek]) {
+        self.testDays = daysOfWeek
     }
 }

@@ -11,4 +11,5 @@ protocol ProfileMediatorDelegate: AnyObject {
     func prodileMediatorDidChanged(course: Course)
     func prodileMediatorDidChanged(testMode: TestMode)
     func prodileMediatorDidChanged(testMinutes: Int)
+    func prodileMediatorDidChanged(testDaysOfWeek: [DayOfWeek])
 }

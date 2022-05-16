@@ -15,6 +15,7 @@ final class ProfileMediator {
     private let changedCourseTrigger = PublishRelay<Course>()
     private let changedTestModeTrigger = PublishRelay<TestMode>()
     private let changedTestMinutesTrigger = PublishRelay<Int>()
+    private let changedTestDaysOfWeekTrigger = PublishRelay<[DayOfWeek]>()
     
     private var delegates = [Weak<ProfileMediatorDelegate>]()
     
@@ -72,6 +73,16 @@ extension ProfileMediator {
             self?.changedTestMinutesTrigger.accept(testMinutes)
         }
     }
+    
+    func notifyAboutChanged(testDaysOfWeek: [DayOfWeek]) {
+        DispatchQueue.main.async { [weak self] in
+            self?.delegates.forEach {
+                $0.weak?.prodileMediatorDidChanged(testDaysOfWeek: testDaysOfWeek)
+            }
+            
+            self?.changedTestDaysOfWeekTrigger.accept(testDaysOfWeek)
+        }
+    }
 }
 
 // MARK: Triggers(Rx)
@@ -94,6 +105,10 @@ extension ProfileMediator {
     
     var changedTestMinutes: Signal<Int> {
         changedTestMinutesTrigger.asSignal()
+    }
+    
+    var changedTestDaysOfWeek: Signal<[DayOfWeek]> {
+        changedTestDaysOfWeekTrigger.asSignal()
     }
 }
 

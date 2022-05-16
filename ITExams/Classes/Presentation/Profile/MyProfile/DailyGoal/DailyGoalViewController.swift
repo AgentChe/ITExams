@@ -33,6 +33,16 @@ final class DailyGoalViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        viewModel.currentTestDaysOfWeek
+            .drive(onNext: { [weak self] daysOfWeek in
+                guard let self = self else {
+                    return
+                }
+                
+                self.mainView.setup(daysOfWeek: daysOfWeek)
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.tryAgain = { [weak self] error -> Observable<Void> in
             guard let self = self else {
                 return .never()
@@ -67,7 +77,7 @@ final class DailyGoalViewController: UIViewController {
                     return
                 }
                 
-                self.setNewTestMinutes()
+                self.save()
             })
             .disposed(by: disposeBag)
     }
@@ -84,11 +94,23 @@ extension DailyGoalViewController {
 
 // MARK: Private
 private extension DailyGoalViewController {
-    func setNewTestMinutes() {
+    func save() {
         let row = mainView.pickerView.selectedRow(inComponent: 0)
         let minutes = row + 1
         
-        viewModel.newTestMinutes.accept(minutes)
+        let days = [mainView.suDayView,
+                    mainView.mnDayView,
+                    mainView.tuDayView,
+                    mainView.weDayView,
+                    mainView.thDayView,
+                    mainView.frDayView,
+                    mainView.saDayView]
+            .filter { $0.isChecked }
+            .compactMap { $0.day }
+        
+        let bundle = DailyGoalViewModel.DailyGoalBundle(minutes, days)
+        
+        viewModel.save.accept(bundle)
     }
     
     func openError() -> Observable<Void> {

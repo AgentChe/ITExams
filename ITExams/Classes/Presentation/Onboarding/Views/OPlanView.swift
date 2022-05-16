@@ -77,7 +77,8 @@ private extension OPlanView {
                     .set(motivation: combineData.motivation.code,
                          examDate: combineData.examDate,
                          testMode: combineData.studyMode.code,
-                         testMinutes: combineData.testMinutes)
+                         testMinutes: combineData.testMinutes,
+                         testDaysOfWeek: combineData.testDays)
                     .map { true }
                     .catchAndReturn(false)
                 

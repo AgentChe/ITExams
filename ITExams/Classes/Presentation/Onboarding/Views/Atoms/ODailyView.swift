@@ -14,7 +14,7 @@ final class ODailyView: UIButton {
         }
     }
     
-    var day: String? = nil {
+    var day: DayOfWeek? = nil {
         didSet {
             update()
         }
@@ -45,7 +45,7 @@ private extension ODailyView {
             .lineHeight(20.4.scale)
             .letterSpacing(-0.44.scale)
             .textAlignment(.center)
-        label.attributedText = day?.attributed(with: attrs)
+        label.attributedText = day?.short.attributed(with: attrs)
     }
 }
 

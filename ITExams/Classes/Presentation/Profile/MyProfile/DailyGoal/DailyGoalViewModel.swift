@@ -9,11 +9,14 @@ import RxSwift
 import RxCocoa
 
 final class DailyGoalViewModel {
+    typealias DailyGoalBundle = (minutes: Int, daysOfWeek: [DayOfWeek])
+    
     var tryAgain: ((Error) -> (Observable<Void>))?
     
-    lazy var newTestMinutes = PublishRelay<Int>()
+    lazy var save = PublishRelay<DailyGoalBundle>()
     
     lazy var currentTestMinutes = makeCurrentTestMinutes()
+    lazy var currentTestDaysOfWeek = makeCurrentTestDaysOfWeek()
     lazy var saved = makeSaved()
     lazy var activity = RxActivityIndicator()
     
@@ -31,16 +34,25 @@ private extension DailyGoalViewModel {
             .asDriver(onErrorDriveWith: .empty())
     }
     
+    func makeCurrentTestDaysOfWeek() -> Driver<[DayOfWeek]> {
+        profileManager
+            .obtainTestDaysOfWeek()
+            .compactMap { $0 }
+            .asDriver(onErrorJustReturn: [])
+    }
+    
     func makeSaved() -> Driver<Void> {
-        newTestMinutes
-            .flatMapLatest { [weak self] testMinutes -> Observable<Void> in
+        save
+            .flatMapLatest { [weak self] bundle -> Observable<Void> in
                 guard let self = self else {
                     return .never()
                 }
                 
+                let (testMinutes, testDaysOfWeek) = bundle
+                
                 func source() -> Single<Void> {
                     self.profileManager
-                        .set(testMinutes: testMinutes)
+                        .set(testMinutes: testMinutes, testDaysOfWeek: testDaysOfWeek)
                         .mapToVoid()
                 }
                 

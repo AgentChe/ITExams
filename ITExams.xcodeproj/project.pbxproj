@@ -160,6 +160,7 @@
 		DE95A8CB2832901500809171 /* DailyGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8CA2832901500809171 /* DailyGoalViewController.swift */; };
 		DE95A8CD2832901E00809171 /* DailyGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8CC2832901E00809171 /* DailyGoalViewModel.swift */; };
 		DE95A8CF2832902600809171 /* DailyGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8CE2832902600809171 /* DailyGoalView.swift */; };
+		DE95A8D3283299E100809171 /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8D2283299E100809171 /* DayOfWeek.swift */; };
 		DEC345F02816DADD0069A060 /* PlanCurrentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */; };
 		DEC345F22816DE200069A060 /* PlanStudyScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */; };
 		DEC345F42816E1EE0069A060 /* PlanHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */; };
@@ -361,6 +362,7 @@
 		DE95A8CA2832901500809171 /* DailyGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoalViewController.swift; sourceTree = "<group>"; };
 		DE95A8CC2832901E00809171 /* DailyGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoalViewModel.swift; sourceTree = "<group>"; };
 		DE95A8CE2832902600809171 /* DailyGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoalView.swift; sourceTree = "<group>"; };
+		DE95A8D2283299E100809171 /* DayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
 		DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCurrentView.swift; sourceTree = "<group>"; };
 		DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStudyScoreView.swift; sourceTree = "<group>"; };
 		DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanHeaderView.swift; sourceTree = "<group>"; };
@@ -597,6 +599,7 @@
 			children = (
 				DE2B106527DB14ED005280DB /* TestMode.swift */,
 				DEE74EB027F34CB6002FE71D /* Exam.swift */,
+				DE95A8D2283299E100809171 /* DayOfWeek.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1601,6 +1604,7 @@
 				DE93786D27C4B2600073F27C /* UITapGestureRecognizerExtension.swift in Sources */,
 				DE93786E27C4B2600073F27C /* UIDeviceExtension.swift in Sources */,
 				DED4724E27D1DA6B00AEF8A6 /* OWhyView.swift in Sources */,
+				DE95A8D3283299E100809171 /* DayOfWeek.swift in Sources */,
 				DE55A4B027D64C7700B53B46 /* ODetermingSkillView.swift in Sources */,
 				DE93788127C4B2600073F27C /* GradientButton.swift in Sources */,
 				DE95A89A282ECFA200809171 /* MyProfileViewController.swift in Sources */,
