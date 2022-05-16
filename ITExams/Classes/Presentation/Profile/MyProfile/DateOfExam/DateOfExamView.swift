@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RxSwift
 
 final class DateOfExamView: UIView {
     lazy var headerLabel = makeHeaderLabel()
@@ -18,8 +17,6 @@ final class DateOfExamView: UIView {
     lazy var skipButton = makeSkipButton()
     lazy var datePicker = makeDatePickerView()
     lazy var preloader = makePreloader()
-    
-    private lazy var disposeBag = DisposeBag()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

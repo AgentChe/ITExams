@@ -157,6 +157,9 @@
 		DE95A8C42832892600809171 /* StudyModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8C32832892600809171 /* StudyModeViewController.swift */; };
 		DE95A8C62832893000809171 /* StudyModeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8C52832893000809171 /* StudyModeViewModel.swift */; };
 		DE95A8C82832893800809171 /* StudyModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8C72832893800809171 /* StudyModeView.swift */; };
+		DE95A8CB2832901500809171 /* DailyGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8CA2832901500809171 /* DailyGoalViewController.swift */; };
+		DE95A8CD2832901E00809171 /* DailyGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8CC2832901E00809171 /* DailyGoalViewModel.swift */; };
+		DE95A8CF2832902600809171 /* DailyGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8CE2832902600809171 /* DailyGoalView.swift */; };
 		DEC345F02816DADD0069A060 /* PlanCurrentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */; };
 		DEC345F22816DE200069A060 /* PlanStudyScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */; };
 		DEC345F42816E1EE0069A060 /* PlanHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */; };
@@ -355,6 +358,9 @@
 		DE95A8C32832892600809171 /* StudyModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyModeViewController.swift; sourceTree = "<group>"; };
 		DE95A8C52832893000809171 /* StudyModeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyModeViewModel.swift; sourceTree = "<group>"; };
 		DE95A8C72832893800809171 /* StudyModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyModeView.swift; sourceTree = "<group>"; };
+		DE95A8CA2832901500809171 /* DailyGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoalViewController.swift; sourceTree = "<group>"; };
+		DE95A8CC2832901E00809171 /* DailyGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoalViewModel.swift; sourceTree = "<group>"; };
+		DE95A8CE2832902600809171 /* DailyGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoalView.swift; sourceTree = "<group>"; };
 		DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCurrentView.swift; sourceTree = "<group>"; };
 		DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStudyScoreView.swift; sourceTree = "<group>"; };
 		DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanHeaderView.swift; sourceTree = "<group>"; };
@@ -1077,6 +1083,7 @@
 		DE95A898282ECF9500809171 /* MyProfile */ = {
 			isa = PBXGroup;
 			children = (
+				DE95A8C928328FF000809171 /* DailyGoal */,
 				DE95A8C22832891900809171 /* StudyMode */,
 				DE95A8B22832786A00809171 /* DateOfExam */,
 				DE95A8B12832785400809171 /* MyProfile */,
@@ -1150,6 +1157,16 @@
 				DE95A8C72832893800809171 /* StudyModeView.swift */,
 			);
 			path = StudyMode;
+			sourceTree = "<group>";
+		};
+		DE95A8C928328FF000809171 /* DailyGoal */ = {
+			isa = PBXGroup;
+			children = (
+				DE95A8CA2832901500809171 /* DailyGoalViewController.swift */,
+				DE95A8CC2832901E00809171 /* DailyGoalViewModel.swift */,
+				DE95A8CE2832902600809171 /* DailyGoalView.swift */,
+			);
+			path = DailyGoal;
 			sourceTree = "<group>";
 		};
 		DEC345EE2816D5F80069A060 /* Views */ = {
@@ -1448,6 +1465,7 @@
 				DED4725627D20B2300AEF8A6 /* OExamsTableElement.swift in Sources */,
 				DE504393282291F400C6B1C8 /* StepProgressView.swift in Sources */,
 				DE95A8AC283219D000809171 /* StepCollectionFinalCell.swift in Sources */,
+				DE95A8CD2832901E00809171 /* DailyGoalViewModel.swift in Sources */,
 				DE2B10C227DB14EE005280DB /* TestMode.swift in Sources */,
 				DE93789B27C4BF070073F27C /* SplashViewController.swift in Sources */,
 				DE93787527C4B2600073F27C /* ScreenSize.swift in Sources */,
@@ -1571,9 +1589,11 @@
 				DEE74EAB27F32479002FE71D /* ProfileMediatorDelegate.swift in Sources */,
 				DEC34612281971160069A060 /* TryAgainViewController.swift in Sources */,
 				DE3FD61527EA09E400E76844 /* DefaultRequestWrapper.swift in Sources */,
+				DE95A8CF2832902600809171 /* DailyGoalView.swift in Sources */,
 				DE93788027C4B2600073F27C /* PaddingPickerView.swift in Sources */,
 				DE93787227C4B2600073F27C /* Scalable.swift in Sources */,
 				DED4724827CE4C4B00AEF8A6 /* OMotivationCell.swift in Sources */,
+				DE95A8CB2832901500809171 /* DailyGoalViewController.swift in Sources */,
 				DE3FD61027EA097E00E76844 /* ProductPrice.swift in Sources */,
 				DE2B10C827DB14EE005280DB /* GetTestModeRequest.swift in Sources */,
 				DE55A4B227D64CB300B53B46 /* OProgressView.swift in Sources */,

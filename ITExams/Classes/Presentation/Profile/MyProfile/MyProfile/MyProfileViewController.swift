@@ -58,7 +58,8 @@ extension MyProfileViewController: MyProfileTableViewDelegate {
             let vc = StudyModeViewController.make()
             present(vc, animated: true)
         case .dailyGoal:
-            break
+            let vc = DailyGoalViewController.make()
+            present(vc, animated: true)
         case .resetProgress:
             break
         }

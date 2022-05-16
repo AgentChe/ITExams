@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RxSwift
 
 final class StudyModeView: UIView {
     lazy var headerLabel = makeHeaderLabel()
@@ -23,8 +22,6 @@ final class StudyModeView: UIView {
                                                          code: .onAnExam))
     lazy var button = makeButton()
     lazy var preloader = makePreloader()
-    
-    private lazy var disposeBag = DisposeBag()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
