@@ -82,7 +82,7 @@ final class DateOfExamViewController: UIViewController {
 extension DateOfExamViewController {
     static func make() -> DateOfExamViewController {
         let vc = DateOfExamViewController()
-        vc.modalPresentationStyle = .fullScreen
+        vc.modalPresentationStyle = .popover
         return vc
     }
 }

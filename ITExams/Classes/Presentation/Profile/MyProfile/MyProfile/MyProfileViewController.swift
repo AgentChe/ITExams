@@ -49,11 +49,14 @@ extension MyProfileViewController: MyProfileTableViewDelegate {
             let vc = DateOfExamViewController.make()
             present(vc, animated: true)
         case .exams:
-            break
+            let vc = CoursesViewController.make()
+            present(vc, animated: true)
         case .course:
-            break
+            let vc = CoursesViewController.make()
+            present(vc, animated: true)
         case .studyMode:
-            break
+            let vc = StudyModeViewController.make()
+            present(vc, animated: true)
         case .dailyGoal:
             break
         case .resetProgress:

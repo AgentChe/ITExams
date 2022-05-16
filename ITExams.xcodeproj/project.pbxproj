@@ -154,6 +154,9 @@
 		DE95A8B62832788600809171 /* DateOfExamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8B52832788600809171 /* DateOfExamViewModel.swift */; };
 		DE95A8B82832789300809171 /* DateOfExamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8B72832789300809171 /* DateOfExamView.swift */; };
 		DE95A8BA283280BF00809171 /* DateFormatter+DateOfExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8B9283280BF00809171 /* DateFormatter+DateOfExam.swift */; };
+		DE95A8C42832892600809171 /* StudyModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8C32832892600809171 /* StudyModeViewController.swift */; };
+		DE95A8C62832893000809171 /* StudyModeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8C52832893000809171 /* StudyModeViewModel.swift */; };
+		DE95A8C82832893800809171 /* StudyModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8C72832893800809171 /* StudyModeView.swift */; };
 		DEC345F02816DADD0069A060 /* PlanCurrentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */; };
 		DEC345F22816DE200069A060 /* PlanStudyScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */; };
 		DEC345F42816E1EE0069A060 /* PlanHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */; };
@@ -349,6 +352,9 @@
 		DE95A8B52832788600809171 /* DateOfExamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfExamViewModel.swift; sourceTree = "<group>"; };
 		DE95A8B72832789300809171 /* DateOfExamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfExamView.swift; sourceTree = "<group>"; };
 		DE95A8B9283280BF00809171 /* DateFormatter+DateOfExam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+DateOfExam.swift"; sourceTree = "<group>"; };
+		DE95A8C32832892600809171 /* StudyModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyModeViewController.swift; sourceTree = "<group>"; };
+		DE95A8C52832893000809171 /* StudyModeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyModeViewModel.swift; sourceTree = "<group>"; };
+		DE95A8C72832893800809171 /* StudyModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyModeView.swift; sourceTree = "<group>"; };
 		DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCurrentView.swift; sourceTree = "<group>"; };
 		DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStudyScoreView.swift; sourceTree = "<group>"; };
 		DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanHeaderView.swift; sourceTree = "<group>"; };
@@ -1071,6 +1077,7 @@
 		DE95A898282ECF9500809171 /* MyProfile */ = {
 			isa = PBXGroup;
 			children = (
+				DE95A8C22832891900809171 /* StudyMode */,
 				DE95A8B22832786A00809171 /* DateOfExam */,
 				DE95A8B12832785400809171 /* MyProfile */,
 			);
@@ -1133,6 +1140,16 @@
 				DE95A8B72832789300809171 /* DateOfExamView.swift */,
 			);
 			path = DateOfExam;
+			sourceTree = "<group>";
+		};
+		DE95A8C22832891900809171 /* StudyMode */ = {
+			isa = PBXGroup;
+			children = (
+				DE95A8C32832892600809171 /* StudyModeViewController.swift */,
+				DE95A8C52832893000809171 /* StudyModeViewModel.swift */,
+				DE95A8C72832893800809171 /* StudyModeView.swift */,
+			);
+			path = StudyMode;
 			sourceTree = "<group>";
 		};
 		DEC345EE2816D5F80069A060 /* Views */ = {
@@ -1435,6 +1452,7 @@
 				DE93789B27C4BF070073F27C /* SplashViewController.swift in Sources */,
 				DE93787527C4B2600073F27C /* ScreenSize.swift in Sources */,
 				DE2B100E27DA47AE005280DB /* OPlanView.swift in Sources */,
+				DE95A8C42832892600809171 /* StudyModeViewController.swift in Sources */,
 				DE2B101827DB13AC005280DB /* APIRequestBody.swift in Sources */,
 				DEC346092817D8890069A060 /* CoursesTableExamCell.swift in Sources */,
 				DE93787727C4B2600073F27C /* Fonts.swift in Sources */,
@@ -1484,6 +1502,7 @@
 				DE93789F27C4BF120073F27C /* SplashView.swift in Sources */,
 				DE93790527C4C0E90073F27C /* OnboardingViewModel.swift in Sources */,
 				DE2B10DC27DB14EE005280DB /* SessionManager.swift in Sources */,
+				DE95A8C62832893000809171 /* StudyModeViewModel.swift in Sources */,
 				DE2B10CE27DB14EE005280DB /* IAPActionResult.swift in Sources */,
 				DEC3460D28185EBB0069A060 /* CourseCurrentView.swift in Sources */,
 				DE3FD60A27E9FFEE00E76844 /* PaygatePlansCell.swift in Sources */,
@@ -1515,6 +1534,7 @@
 				DE3FD60C27EA02F500E76844 /* PaygateProductButton.swift in Sources */,
 				DEE74EB827F41863002FE71D /* PlanStep.swift in Sources */,
 				DE95A897282E940000809171 /* SettingsAppButton.swift in Sources */,
+				DE95A8C82832893800809171 /* StudyModeView.swift in Sources */,
 				DE55A4AE27D6458000B53B46 /* OCourseView.swift in Sources */,
 				DEE74EB627F41852002FE71D /* PlanTest.swift in Sources */,
 				DE2B100427D8B5C6005280DB /* OCreatingPlanView.swift in Sources */,
