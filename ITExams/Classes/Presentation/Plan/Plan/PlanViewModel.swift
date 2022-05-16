@@ -13,7 +13,7 @@ final class PlanViewModel {
     
     lazy var currentStep = PublishRelay<StepCollectionElement>()
     
-    lazy var tests = makeTests()
+    lazy var stepContent = makeStepContent()
     lazy var planSteps = makePlanSteps()
     lazy var planCurrent = makePlanCurrent()
     lazy var planStudyScore = makePlanStudyScore()
@@ -34,14 +34,20 @@ final class PlanViewModel {
 
 // MARK: Private
 private extension PlanViewModel {
-    func makeTests() -> Driver<StepTests> {
+    func makeStepContent() -> Driver<StepContent> {
         let step = currentStep
             .asDriver(onErrorDriveWith: .empty())
         
-        return Driver.combineLatest(step, activeSubscription) {
-            StepTests(tests: $0.step.tests,
-                      activeSubscription: $1,
-                      lockedStep: $0.locked)
+        return Driver.combineLatest(step, activeSubscription) { step, activeSubscription in
+            switch step {
+            case .tests(let element):
+                let tests = StepTests(tests: element.step.tests,
+                          activeSubscription: activeSubscription,
+                          lockedStep: element.locked)
+                return .tests(tests)
+            case .final(let element):
+                return .finalStep(element.locked)
+            }
         }
     }
     

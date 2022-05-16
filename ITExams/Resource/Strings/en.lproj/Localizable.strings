@@ -134,6 +134,10 @@
 "Plan.StudyScore.Title" = "Studyscore";
 "Plan.StudyScore.Goal" = "Your goal - %@";
 "Plan.Test.Questions" = "%i questions";
+"Plan.FinalStep" = "Final step";
+"Plan.FinalStep.Title" = "You’re in the right place!";
+"Plan.FinalStep.SubTitle" = "Complete this final step to check your\npreparation for the exam";
+"Plan.FinalStep.Button" = "Start";
 
 // MARK: Courses
 "Courses.Save" = "Save";

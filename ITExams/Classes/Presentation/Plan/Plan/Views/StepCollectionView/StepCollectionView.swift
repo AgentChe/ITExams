@@ -47,10 +47,16 @@ extension StepCollectionView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = dequeueReusableCell(withReuseIdentifier: String(describing: StepCollectionCell.self), for: indexPath) as! StepCollectionCell
-        let element = elements[indexPath.row]
-        cell.setup(progress: element.step.progress, locked: element.locked)
-        return cell
+        switch elements[indexPath.row] {
+        case .tests(let element):
+            let cell = dequeueReusableCell(withReuseIdentifier: String(describing: StepCollectionCell.self), for: indexPath) as! StepCollectionCell
+            cell.setup(progress: element.step.progress, locked: element.locked)
+            return cell
+        case .final(let element):
+            let cell = dequeueReusableCell(withReuseIdentifier: String(describing: StepCollectionFinalCell.self), for: indexPath) as! StepCollectionFinalCell
+            cell.setup(locked: element.locked)
+            return cell
+        }
     }
 }
 
@@ -75,6 +81,7 @@ extension StepCollectionView: UICollectionViewDelegateFlowLayout {
 private extension StepCollectionView {
     func initialize() {
         register(StepCollectionCell.self, forCellWithReuseIdentifier: String(describing: StepCollectionCell.self))
+        register(StepCollectionFinalCell.self, forCellWithReuseIdentifier: String(describing: StepCollectionFinalCell.self))
         
         dataSource = self
         delegate = self

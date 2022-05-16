@@ -12,6 +12,7 @@ final class PlanView: UIView {
     lazy var stepCollectionView = makeStepCollectionView()
     lazy var stepNameLabel = makeStepNameLabel()
     lazy var testsTableView = makeTestsTableView()
+    lazy var finalStepView = makeFinalStepView()
     lazy var preloader = makePreloader()
     
     override init(frame: CGRect) {
@@ -60,6 +61,12 @@ private extension PlanView {
             testsTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20.scale),
             testsTableView.topAnchor.constraint(equalTo: stepNameLabel.bottomAnchor, constant: ScreenSize.isIphoneXFamily ? 40.scale : 16.scale),
             testsTableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            finalStepView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            finalStepView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            finalStepView.topAnchor.constraint(equalTo: stepNameLabel.bottomAnchor, constant: 8.scale)
         ])
         
         NSLayoutConstraint.activate([
@@ -116,6 +123,14 @@ private extension PlanView {
         view.layer.shadowOpacity = 0.08
         view.layer.shadowOffset = .zero
         view.layer.shadowRadius = 6.scale
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeFinalStepView() -> PlanFinalStepView {
+        let view = PlanFinalStepView()
+        view.backgroundColor = UIColor.clear
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

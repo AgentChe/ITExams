@@ -45,15 +45,13 @@ final class PlanViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.tests
-            .drive(onNext: { [weak self] planTests in
+        viewModel.stepContent
+            .drive(onNext: { [weak self] stepContent in
                 guard let self = self else {
                     return
                 }
                 
-                self.mainView.testsTableView.setup(elements: planTests.tests,
-                                                   activeSubscription: planTests.activeSubscription,
-                                                   lockedStep: planTests.lockedStep)
+                self.handle(stepContent: stepContent)
             })
             .disposed(by: disposeBag)
         
@@ -123,7 +121,7 @@ extension PlanViewController {
 // MARK: StepCollectionViewDelegate
 extension PlanViewController: StepCollectionViewDelegate {
     func stepCollectionViewDidSelect(element: StepCollectionElement) {
-        update(stepName: element.step.name)
+        update(stepName: element.name())
         viewModel.currentStep.accept(element)
     }
 }
@@ -148,6 +146,24 @@ extension PlanViewController: StepTestsTableViewDelegate {
 
 // MARK: Private
 private extension PlanViewController {
+    func handle(stepContent: StepContent) {
+        func hiddenTable(_ hidden: Bool) {
+            mainView.testsTableView.isHidden = hidden
+            mainView.finalStepView.isHidden = !hidden
+        }
+        
+        switch stepContent {
+        case .tests(let stepTests):
+            mainView.testsTableView.setup(elements: stepTests.tests,
+                                          activeSubscription: stepTests.activeSubscription,
+                                          lockedStep: stepTests.lockedStep)
+            hiddenTable(false)
+        case .finalStep(let locked):
+            mainView.finalStepView.setup(locked: locked)
+            hiddenTable(true)
+        }
+    }
+    
     func determineCurrentStep(elements: [StepCollectionElement]) {
         guard let index = StepCollectionElement.currentIndex(in: elements) else {
             return

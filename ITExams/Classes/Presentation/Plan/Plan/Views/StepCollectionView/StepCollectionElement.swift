@@ -5,8 +5,17 @@
 //  Created by Андрей Чернышев on 04.05.2022.
 //
 
-struct StepCollectionElement {
+enum StepCollectionElement {
+    case tests(StepCollectionTestsElement)
+    case final(StepCollectionFinalElement)
+}
+
+struct StepCollectionTestsElement {
     let step: PlanStep
+    let locked: Bool
+}
+
+struct StepCollectionFinalElement {
     let locked: Bool
 }
 
@@ -23,11 +32,15 @@ extension StepCollectionElement {
         
         steps.enumerated().forEach { index, step in
             let locked = lastStepProgress < 100
-            let element = StepCollectionElement(step: step, locked: locked)
-            result.append(element)
+            let test = StepCollectionTestsElement(step: step, locked: locked)
+            result.append(.tests(test))
             
             lastStepProgress = step.progress
         }
+        
+        // TODO: синхронизировать с бэком
+        let final = StepCollectionFinalElement(locked: false)
+        result.append(.final(final))
         
         return result
     }
@@ -37,10 +50,24 @@ extension StepCollectionElement {
             return nil
         }
         
-        if let index = elements.firstIndex(where: { $0.step.progress != 100 }) {
-            return index
-        }
+        let index = elements.firstIndex(where: { element -> Bool in
+            switch element {
+            case .tests(let testElement):
+                return testElement.step.progress != 100
+            case .final:
+                return true
+            }
+        })
         
-        return elements.count - 1
+        return index ?? elements.count - 1
+    }
+    
+    func name() -> String {
+        switch self {
+        case .tests(let element):
+            return element.step.name
+        case .final:
+            return "Plan.FinalStep".localized
+        }
     }
 }

@@ -148,6 +148,8 @@
 		DE95A8A4282ED2E000809171 /* MyProfileTableElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8A3282ED2E000809171 /* MyProfileTableElement.swift */; };
 		DE95A8A7282ED3F600809171 /* MyProfilePropertyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8A6282ED3F600809171 /* MyProfilePropertyCell.swift */; };
 		DE95A8A9282ED40500809171 /* MyProfileResetProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8A8282ED40500809171 /* MyProfileResetProgressCell.swift */; };
+		DE95A8AC283219D000809171 /* StepCollectionFinalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8AB283219D000809171 /* StepCollectionFinalCell.swift */; };
+		DE95A8B02832261A00809171 /* PlanFinalStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8AF2832261A00809171 /* PlanFinalStepView.swift */; };
 		DEC345F02816DADD0069A060 /* PlanCurrentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */; };
 		DEC345F22816DE200069A060 /* PlanStudyScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */; };
 		DEC345F42816E1EE0069A060 /* PlanHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */; };
@@ -337,6 +339,8 @@
 		DE95A8A3282ED2E000809171 /* MyProfileTableElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTableElement.swift; sourceTree = "<group>"; };
 		DE95A8A6282ED3F600809171 /* MyProfilePropertyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfilePropertyCell.swift; sourceTree = "<group>"; };
 		DE95A8A8282ED40500809171 /* MyProfileResetProgressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileResetProgressCell.swift; sourceTree = "<group>"; };
+		DE95A8AB283219D000809171 /* StepCollectionFinalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCollectionFinalCell.swift; sourceTree = "<group>"; };
+		DE95A8AF2832261A00809171 /* PlanFinalStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanFinalStepView.swift; sourceTree = "<group>"; };
 		DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCurrentView.swift; sourceTree = "<group>"; };
 		DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStudyScoreView.swift; sourceTree = "<group>"; };
 		DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanHeaderView.swift; sourceTree = "<group>"; };
@@ -723,9 +727,8 @@
 		DE50438A2822774700C6B1C8 /* StepCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				DE504391282291E600C6B1C8 /* Atoms */,
+				DE95A8AA2832117300809171 /* Cells */,
 				DE50438B2822775300C6B1C8 /* StepCollectionView.swift */,
-				DE50438D2822780100C6B1C8 /* StepCollectionCell.swift */,
 				DE50438F28227ACE00C6B1C8 /* StudyCollectionLayout.swift */,
 				DE5043942822A85300C6B1C8 /* StepCollectionElement.swift */,
 			);
@@ -1094,6 +1097,16 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		DE95A8AA2832117300809171 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DE504391282291E600C6B1C8 /* Atoms */,
+				DE50438D2822780100C6B1C8 /* StepCollectionCell.swift */,
+				DE95A8AB283219D000809171 /* StepCollectionFinalCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		DEC345EE2816D5F80069A060 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1102,6 +1115,7 @@
 				DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */,
 				DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */,
 				DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */,
+				DE95A8AF2832261A00809171 /* PlanFinalStepView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1388,6 +1402,7 @@
 				DE1CA98C27F2ED4600C66DAD /* MainViewController.swift in Sources */,
 				DED4725627D20B2300AEF8A6 /* OExamsTableElement.swift in Sources */,
 				DE504393282291F400C6B1C8 /* StepProgressView.swift in Sources */,
+				DE95A8AC283219D000809171 /* StepCollectionFinalCell.swift in Sources */,
 				DE2B10C227DB14EE005280DB /* TestMode.swift in Sources */,
 				DE93789B27C4BF070073F27C /* SplashViewController.swift in Sources */,
 				DE93787527C4B2600073F27C /* ScreenSize.swift in Sources */,
@@ -1495,6 +1510,7 @@
 				DE2B0FFC27D7960E005280DB /* ODailyGoalView.swift in Sources */,
 				DE1CA9A227F2FC2E00C66DAD /* Monetization.swift in Sources */,
 				DE2B10D027DB14EE005280DB /* IAPError.swift in Sources */,
+				DE95A8B02832261A00809171 /* PlanFinalStepView.swift in Sources */,
 				DE2B10C327DB14EE005280DB /* ProfileManager.swift in Sources */,
 				DEC34618281979350069A060 /* ContentError.swift in Sources */,
 				DE1CA9AD27F3017C00C66DAD /* SplashReceiptValidationObserver.swift in Sources */,
