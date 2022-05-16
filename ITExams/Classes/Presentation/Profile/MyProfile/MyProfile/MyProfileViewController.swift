@@ -46,7 +46,8 @@ extension MyProfileViewController: MyProfileTableViewDelegate {
     func myProfileDidSelect(element: MyProfileTableElement) {
         switch element {
         case .dateOfExam:
-            break
+            let vc = DateOfExamViewController.make()
+            present(vc, animated: true)
         case .exams:
             break
         case .course:

@@ -75,9 +75,7 @@ private extension OExamDateView {
     func dateDidChanged() {
         let date = datePicker.date
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM dd, yyyy"
-        formatter.locale = Locale.current
+        let formatter = DateFormatter.dateOfExamDisplayFormmater()
         
         let attrs = TextAttributes()
             .textColor(Appearance.blackColor)

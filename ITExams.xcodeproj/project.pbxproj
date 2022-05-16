@@ -150,6 +150,10 @@
 		DE95A8A9282ED40500809171 /* MyProfileResetProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8A8282ED40500809171 /* MyProfileResetProgressCell.swift */; };
 		DE95A8AC283219D000809171 /* StepCollectionFinalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8AB283219D000809171 /* StepCollectionFinalCell.swift */; };
 		DE95A8B02832261A00809171 /* PlanFinalStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8AF2832261A00809171 /* PlanFinalStepView.swift */; };
+		DE95A8B42832787D00809171 /* DateOfExamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8B32832787D00809171 /* DateOfExamViewController.swift */; };
+		DE95A8B62832788600809171 /* DateOfExamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8B52832788600809171 /* DateOfExamViewModel.swift */; };
+		DE95A8B82832789300809171 /* DateOfExamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8B72832789300809171 /* DateOfExamView.swift */; };
+		DE95A8BA283280BF00809171 /* DateFormatter+DateOfExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8B9283280BF00809171 /* DateFormatter+DateOfExam.swift */; };
 		DEC345F02816DADD0069A060 /* PlanCurrentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */; };
 		DEC345F22816DE200069A060 /* PlanStudyScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */; };
 		DEC345F42816E1EE0069A060 /* PlanHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */; };
@@ -341,6 +345,10 @@
 		DE95A8A8282ED40500809171 /* MyProfileResetProgressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileResetProgressCell.swift; sourceTree = "<group>"; };
 		DE95A8AB283219D000809171 /* StepCollectionFinalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCollectionFinalCell.swift; sourceTree = "<group>"; };
 		DE95A8AF2832261A00809171 /* PlanFinalStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanFinalStepView.swift; sourceTree = "<group>"; };
+		DE95A8B32832787D00809171 /* DateOfExamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfExamViewController.swift; sourceTree = "<group>"; };
+		DE95A8B52832788600809171 /* DateOfExamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfExamViewModel.swift; sourceTree = "<group>"; };
+		DE95A8B72832789300809171 /* DateOfExamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfExamView.swift; sourceTree = "<group>"; };
+		DE95A8B9283280BF00809171 /* DateFormatter+DateOfExam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+DateOfExam.swift"; sourceTree = "<group>"; };
 		DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCurrentView.swift; sourceTree = "<group>"; };
 		DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStudyScoreView.swift; sourceTree = "<group>"; };
 		DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanHeaderView.swift; sourceTree = "<group>"; };
@@ -828,6 +836,7 @@
 				DE93784727C4B2600073F27C /* StringExtension.swift */,
 				DE93789627C4BDED0073F27C /* UIEdgeInsets+Extension.swift */,
 				DEE74EAE27F3275D002FE71D /* ObservableAndSingleExtension.swift */,
+				DE95A8B9283280BF00809171 /* DateFormatter+DateOfExam.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1062,10 +1071,8 @@
 		DE95A898282ECF9500809171 /* MyProfile */ = {
 			isa = PBXGroup;
 			children = (
-				DE95A89F282ED29400809171 /* Views */,
-				DE95A899282ECFA200809171 /* MyProfileViewController.swift */,
-				DE95A89B282ECFD000809171 /* MyProfileViewModel.swift */,
-				DE95A89D282ECFD800809171 /* MyProfileView.swift */,
+				DE95A8B22832786A00809171 /* DateOfExam */,
+				DE95A8B12832785400809171 /* MyProfile */,
 			);
 			path = MyProfile;
 			sourceTree = "<group>";
@@ -1105,6 +1112,27 @@
 				DE95A8AB283219D000809171 /* StepCollectionFinalCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		DE95A8B12832785400809171 /* MyProfile */ = {
+			isa = PBXGroup;
+			children = (
+				DE95A89F282ED29400809171 /* Views */,
+				DE95A899282ECFA200809171 /* MyProfileViewController.swift */,
+				DE95A89B282ECFD000809171 /* MyProfileViewModel.swift */,
+				DE95A89D282ECFD800809171 /* MyProfileView.swift */,
+			);
+			path = MyProfile;
+			sourceTree = "<group>";
+		};
+		DE95A8B22832786A00809171 /* DateOfExam */ = {
+			isa = PBXGroup;
+			children = (
+				DE95A8B32832787D00809171 /* DateOfExamViewController.swift */,
+				DE95A8B52832788600809171 /* DateOfExamViewModel.swift */,
+				DE95A8B72832789300809171 /* DateOfExamView.swift */,
+			);
+			path = DateOfExam;
 			sourceTree = "<group>";
 		};
 		DEC345EE2816D5F80069A060 /* Views */ = {
@@ -1435,6 +1463,7 @@
 				DE1CA98E27F2ED6800C66DAD /* MainViewCoordinator.swift in Sources */,
 				DE5043952822A85300C6B1C8 /* StepCollectionElement.swift in Sources */,
 				DEC346002816FE0F0069A060 /* CoursesView.swift in Sources */,
+				DE95A8B62832788600809171 /* DateOfExamViewModel.swift in Sources */,
 				DE1CA9AA27F2FCAE00C66DAD /* PaygateManager.swift in Sources */,
 				DE1CA9A627F2FC5900C66DAD /* GetMonetizationRequest.swift in Sources */,
 				DEE74EBA27F41873002FE71D /* Plan.swift in Sources */,
@@ -1467,7 +1496,9 @@
 				DE93788327C4B2600073F27C /* GradientView.swift in Sources */,
 				DE3FD61F27EADB7200E76844 /* PaygatePrice.swift in Sources */,
 				DE2B10B827DB14EE005280DB /* GetCourcesRequest.swift in Sources */,
+				DE95A8B82832789300809171 /* DateOfExamView.swift in Sources */,
 				DED4725027D1DE6700AEF8A6 /* OQuizSolutionView.swift in Sources */,
+				DE95A8B42832787D00809171 /* DateOfExamViewController.swift in Sources */,
 				DE2D7F20282D307700B8952B /* StepTests.swift in Sources */,
 				DE95A873282E2E1900809171 /* ProfileViewController.swift in Sources */,
 				DE1CA99827F2F7C600C66DAD /* BranchManager.swift in Sources */,
@@ -1511,6 +1542,7 @@
 				DE1CA9A227F2FC2E00C66DAD /* Monetization.swift in Sources */,
 				DE2B10D027DB14EE005280DB /* IAPError.swift in Sources */,
 				DE95A8B02832261A00809171 /* PlanFinalStepView.swift in Sources */,
+				DE95A8BA283280BF00809171 /* DateFormatter+DateOfExam.swift in Sources */,
 				DE2B10C327DB14EE005280DB /* ProfileManager.swift in Sources */,
 				DEC34618281979350069A060 /* ContentError.swift in Sources */,
 				DE1CA9AD27F3017C00C66DAD /* SplashReceiptValidationObserver.swift in Sources */,

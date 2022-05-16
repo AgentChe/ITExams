@@ -83,9 +83,7 @@ extension OnboardingCombineData: OExamDateViewDelegate {
             return
         }
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM dd, yyyy"
-        formatter.locale = Locale.current
+        let formatter = DateFormatter.dateOfExamDisplayFormmater()
         
         self.examDate = formatter.string(from: date)
     }
