@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StudyCollectionLayout: UICollectionViewFlowLayout {
+class StepCollectionLayout: UICollectionViewFlowLayout {
     private let minimumScale: CGFloat = 0.64
     
     override func prepare() {

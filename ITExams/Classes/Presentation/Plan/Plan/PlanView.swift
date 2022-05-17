@@ -88,7 +88,7 @@ private extension PlanView {
     }
     
     func makeStepCollectionView() -> StepCollectionView {
-        let layout = StudyCollectionLayout()
+        let layout = StepCollectionLayout()
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 46.scale

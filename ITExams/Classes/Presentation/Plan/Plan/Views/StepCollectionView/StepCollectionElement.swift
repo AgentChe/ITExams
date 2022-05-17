@@ -16,12 +16,13 @@ struct StepCollectionTestsElement {
 }
 
 struct StepCollectionFinalElement {
+    let finalStep: PlanFinalStep
     let locked: Bool
 }
 
 // MARK: Public
 extension StepCollectionElement {
-    static func from(steps: [PlanStep]) -> [StepCollectionElement] {
+    static func from(steps: [PlanStep], finalStep: PlanFinalStep) -> [StepCollectionElement] {
         guard !steps.isEmpty else {
             return []
         }
@@ -38,8 +39,10 @@ extension StepCollectionElement {
             lastStepProgress = step.progress
         }
         
-        // TODO: синхронизировать с бэком
-        let final = StepCollectionFinalElement(locked: false)
+        let finalStepLocked = steps.contains(where: { $0.progress < 100 })
+        
+        let final = StepCollectionFinalElement(finalStep: finalStep,
+                                               locked: finalStepLocked)
         result.append(.final(final))
         
         return result

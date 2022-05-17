@@ -137,9 +137,15 @@
 "Plan.StudyScore.Goal" = "Your goal - %@";
 "Plan.Test.Questions" = "%i questions";
 "Plan.FinalStep" = "Final step";
-"Plan.FinalStep.Title" = "You’re in the right place!";
-"Plan.FinalStep.SubTitle" = "Complete this final step to check your\npreparation for the exam";
-"Plan.FinalStep.Button" = "Start";
+"Plan.FinalStep.Title1" = "You’re in the right place!";
+"Plan.FinalStep.SubTitle1" = "Complete this final step to check your\npreparation for the exam";
+"Plan.FinalStep.Title2" = "You’re in the right place!";
+"Plan.FinalStep.SubTitle2" = "Complete this final step to check your\npreparation for the exam";
+"Plan.FinalStep.Title3" = "Great job completing the final step!";
+"Plan.FinalStep.SubTitle3" = "You got %i%%. Take it again to consolidate the\nresult";
+"Plan.FinalStep.Button1" = "Start";
+"Plan.FinalStep.Button2" = "Continue";
+"Plan.FinalStep.Button3" = "Try Again";
 
 // MARK: Courses
 "Courses.Save" = "Save";

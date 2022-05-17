@@ -76,7 +76,7 @@
 		DE3FD62127EB280100E76844 /* PaygateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3FD62027EB280100E76844 /* PaygateView.swift */; };
 		DE50438C2822775300C6B1C8 /* StepCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE50438B2822775300C6B1C8 /* StepCollectionView.swift */; };
 		DE50438E2822780100C6B1C8 /* StepCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE50438D2822780100C6B1C8 /* StepCollectionCell.swift */; };
-		DE50439028227ACE00C6B1C8 /* StudyCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE50438F28227ACE00C6B1C8 /* StudyCollectionLayout.swift */; };
+		DE50439028227ACE00C6B1C8 /* StepCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE50438F28227ACE00C6B1C8 /* StepCollectionLayout.swift */; };
 		DE504393282291F400C6B1C8 /* StepProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE504392282291F400C6B1C8 /* StepProgressView.swift */; };
 		DE5043952822A85300C6B1C8 /* StepCollectionElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5043942822A85300C6B1C8 /* StepCollectionElement.swift */; };
 		DE55A4AE27D6458000B53B46 /* OCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4AD27D6458000B53B46 /* OCourseView.swift */; };
@@ -161,6 +161,7 @@
 		DE95A8CD2832901E00809171 /* DailyGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8CC2832901E00809171 /* DailyGoalViewModel.swift */; };
 		DE95A8CF2832902600809171 /* DailyGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8CE2832902600809171 /* DailyGoalView.swift */; };
 		DE95A8D3283299E100809171 /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8D2283299E100809171 /* DayOfWeek.swift */; };
+		DE95A8D72833703D00809171 /* PlanFinalStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8D62833703D00809171 /* PlanFinalStep.swift */; };
 		DEC345F02816DADD0069A060 /* PlanCurrentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */; };
 		DEC345F22816DE200069A060 /* PlanStudyScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */; };
 		DEC345F42816E1EE0069A060 /* PlanHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */; };
@@ -276,7 +277,7 @@
 		DE3FD62027EB280100E76844 /* PaygateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaygateView.swift; sourceTree = "<group>"; };
 		DE50438B2822775300C6B1C8 /* StepCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCollectionView.swift; sourceTree = "<group>"; };
 		DE50438D2822780100C6B1C8 /* StepCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCollectionCell.swift; sourceTree = "<group>"; };
-		DE50438F28227ACE00C6B1C8 /* StudyCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCollectionLayout.swift; sourceTree = "<group>"; };
+		DE50438F28227ACE00C6B1C8 /* StepCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCollectionLayout.swift; sourceTree = "<group>"; };
 		DE504392282291F400C6B1C8 /* StepProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepProgressView.swift; sourceTree = "<group>"; };
 		DE5043942822A85300C6B1C8 /* StepCollectionElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCollectionElement.swift; sourceTree = "<group>"; };
 		DE55A4AD27D6458000B53B46 /* OCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCourseView.swift; sourceTree = "<group>"; };
@@ -363,6 +364,7 @@
 		DE95A8CC2832901E00809171 /* DailyGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoalViewModel.swift; sourceTree = "<group>"; };
 		DE95A8CE2832902600809171 /* DailyGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoalView.swift; sourceTree = "<group>"; };
 		DE95A8D2283299E100809171 /* DayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
+		DE95A8D62833703D00809171 /* PlanFinalStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanFinalStep.swift; sourceTree = "<group>"; };
 		DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCurrentView.swift; sourceTree = "<group>"; };
 		DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStudyScoreView.swift; sourceTree = "<group>"; };
 		DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanHeaderView.swift; sourceTree = "<group>"; };
@@ -752,7 +754,7 @@
 			children = (
 				DE95A8AA2832117300809171 /* Cells */,
 				DE50438B2822775300C6B1C8 /* StepCollectionView.swift */,
-				DE50438F28227ACE00C6B1C8 /* StudyCollectionLayout.swift */,
+				DE50438F28227ACE00C6B1C8 /* StepCollectionLayout.swift */,
 				DE5043942822A85300C6B1C8 /* StepCollectionElement.swift */,
 			);
 			path = StepCollectionView;
@@ -1301,6 +1303,7 @@
 				DEE74EB527F41852002FE71D /* PlanTest.swift */,
 				DEE74EB727F41863002FE71D /* PlanStep.swift */,
 				DEE74EB927F41873002FE71D /* Plan.swift */,
+				DE95A8D62833703D00809171 /* PlanFinalStep.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1492,6 +1495,7 @@
 				DEC345FE2816FE070069A060 /* CoursesViewModel.swift in Sources */,
 				DED4724A27CE5CF000AEF8A6 /* OAgeView.swift in Sources */,
 				DE2B100C27D9F6CE005280DB /* OCreatingPlanSectionView.swift in Sources */,
+				DE95A8D72833703D00809171 /* PlanFinalStep.swift in Sources */,
 				DE93787B27C4B2600073F27C /* Toast.swift in Sources */,
 				DE93790427C4C0E90073F27C /* OnboardingView.swift in Sources */,
 				DE2B10C527DB14EE005280DB /* LoginRequest.swift in Sources */,
@@ -1560,7 +1564,7 @@
 				DEE74EB627F41852002FE71D /* PlanTest.swift in Sources */,
 				DE2B100427D8B5C6005280DB /* OCreatingPlanView.swift in Sources */,
 				DE2D7F1E282D2BB000B8952B /* StepTestsTableView.swift in Sources */,
-				DE50439028227ACE00C6B1C8 /* StudyCollectionLayout.swift in Sources */,
+				DE50439028227ACE00C6B1C8 /* StepCollectionLayout.swift in Sources */,
 				DED4724527CE4BF700AEF8A6 /* OMotivationView.swift in Sources */,
 				DE3FD61A27EA2AAE00E76844 /* PaygateViewControllerDelegate.swift in Sources */,
 				DE2B0FFE27D798F4005280DB /* ODailyView.swift in Sources */,

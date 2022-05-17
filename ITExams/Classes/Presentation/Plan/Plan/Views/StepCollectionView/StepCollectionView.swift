@@ -54,7 +54,7 @@ extension StepCollectionView: UICollectionViewDataSource {
             return cell
         case .final(let element):
             let cell = dequeueReusableCell(withReuseIdentifier: String(describing: StepCollectionFinalCell.self), for: indexPath) as! StepCollectionFinalCell
-            cell.setup(locked: element.locked)
+            cell.setup(progress: element.finalStep.progress ?? 0)
             return cell
         }
     }

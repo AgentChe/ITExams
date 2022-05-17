@@ -46,7 +46,7 @@ private extension PlanViewModel {
                           lockedStep: element.locked)
                 return .tests(tests)
             case .final(let element):
-                return .finalStep(element.locked)
+                return .finalStep(finalStep: element.finalStep, locked: element.locked)
             }
         }
     }
@@ -54,7 +54,7 @@ private extension PlanViewModel {
     func makePlanSteps() -> Driver<[StepCollectionElement]> {
         plan.map { plan -> [StepCollectionElement] in
             let steps = plan.steps.sorted(by: { $0.sort < $1.sort })
-            let elements = StepCollectionElement.from(steps: steps)
+            let elements = StepCollectionElement.from(steps: steps, finalStep: plan.finalStep)
             return elements
         }
     }

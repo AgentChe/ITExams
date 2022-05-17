@@ -158,8 +158,8 @@ private extension PlanViewController {
                                           activeSubscription: stepTests.activeSubscription,
                                           lockedStep: stepTests.lockedStep)
             hiddenTable(false)
-        case .finalStep(let locked):
-            mainView.finalStepView.setup(locked: locked)
+        case .finalStep(let finalStep, let locked):
+            mainView.finalStepView.setup(finalStep: finalStep, locked: locked)
             hiddenTable(true)
         }
     }

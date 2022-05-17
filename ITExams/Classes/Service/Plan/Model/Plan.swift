@@ -9,4 +9,5 @@ struct Plan: Codable, Hashable {
     let progress: Int
     let goal: String
     let steps: [PlanStep]
+    let finalStep: PlanFinalStep
 }

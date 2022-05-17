@@ -7,7 +7,7 @@
 
 enum StepContent {
     case tests(StepTests)
-    case finalStep(Bool)
+    case finalStep(finalStep: PlanFinalStep, locked: Bool)
 }
 
 struct StepTests {

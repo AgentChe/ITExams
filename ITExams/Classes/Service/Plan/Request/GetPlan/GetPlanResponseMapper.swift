@@ -23,12 +23,26 @@ final class GetPlanResponseMapper {
             let plan = data["plan"] as? [String: Any],
             let stepsArray = plan["steps"] as? [[String: Any]],
             let passRate = plan["pass_rate"] as? Int,
-            let goal = plan["goal"] as? String
+            let goal = plan["goal"] as? String,
+            let finalStepJSON = plan["final_exam"] as? [String: Any],
+            let finalStep = map(finalStepJSON: finalStepJSON)
         else {
             return nil
         }
         
-        let steps = stepsArray.compactMap { stepElement -> PlanStep? in
+        let steps = map(stepsArray: stepsArray)
+        
+        return Plan(progress: passRate,
+                    goal: goal,
+                    steps: steps,
+                    finalStep: finalStep)
+    }
+}
+
+// MARK: Private
+private extension GetPlanResponseMapper {
+    static func map(stepsArray: [[String: Any]]) -> [PlanStep] {
+        return stepsArray.compactMap { stepElement -> PlanStep? in
             guard
                 let name = stepElement["name"] as? String,
                 let sort = stepElement["sort"] as? Int,
@@ -63,9 +77,32 @@ final class GetPlanResponseMapper {
                      progress: progress,
                      tests: tests)
         }
+    }
+    
+    static func map(finalStepJSON: [String: Any]) -> PlanFinalStep? {
+        func status(code: Int) -> PlanFinalStep.Status? {
+            switch code {
+            case 0:
+                return .intact
+            case 1:
+                return .inProgress
+            case 2:
+                return .completed
+            default:
+                return nil
+            }
+        }
         
-        return Plan(progress: passRate,
-                    goal: goal,
-                    steps: steps)
+        guard
+            let statusCode = finalStepJSON["status"] as? Int,
+            let status = status(code: statusCode)
+        else {
+            return nil
+        }
+        
+        let progress = finalStepJSON["score"] as? Int
+        
+        return PlanFinalStep(status: status,
+                             progress: progress)
     }
 }

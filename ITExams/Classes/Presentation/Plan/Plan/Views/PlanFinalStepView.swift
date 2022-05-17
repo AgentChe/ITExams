@@ -8,8 +8,8 @@
 import UIKit
 
 final class PlanFinalStepView: UIView {
-    lazy var titleLabel = makeTitleLabel()
-    lazy var subTitleLabel = makeSubTitleLabel()
+    lazy var titleLabel = makeLabel()
+    lazy var subTitleLabel = makeLabel()
     lazy var button = makeButton()
     
     override init(frame: CGRect) {
@@ -25,8 +25,51 @@ final class PlanFinalStepView: UIView {
 
 // MARK: Make constraints
 extension PlanFinalStepView {
-    func setup(locked: Bool) {
-        // TODO: блокировать в соответствии с дизайном
+    func setup(finalStep: PlanFinalStep, locked: Bool) {
+        let titleAttrs = TextAttributes()
+            .textColor(Appearance.blackColor)
+            .font(Fonts.Inter.regular(size: 15.scale))
+            .lineHeight(22.5.scale)
+            .letterSpacing(-0.14.scale)
+            .textAlignment(.center)
+        
+        let subTitleAttrs = TextAttributes()
+            .textColor(Appearance.greyColor)
+            .font(Fonts.Inter.regular(size: 15.scale))
+            .lineHeight(22.5.scale)
+            .letterSpacing(-0.14.scale)
+            .textAlignment(.center)
+        
+        let buttonAttrs = TextAttributes()
+            .textColor(Appearance.whiteColor)
+            .font(Fonts.Inter.semiBold(size: 17.scale))
+            .letterSpacing(-0.44.scale)
+        
+        let title: String
+        let subTitle: String
+        let buttonText: String
+        
+        switch finalStep.status {
+        case .intact:
+            title = "Plan.FinalStep.Title1".localized
+            subTitle = "Plan.FinalStep.SubTitle1".localized
+            buttonText = "Plan.FinalStep.Button1".localized
+        case .inProgress:
+            title = "Plan.FinalStep.Title2".localized
+            subTitle = "Plan.FinalStep.SubTitle2".localized
+            buttonText = "Plan.FinalStep.Button2".localized
+        case .completed:
+            title = "Plan.FinalStep.Title3".localized
+            subTitle = String(format: "Plan.FinalStep.SubTitle3".localized, finalStep.progress ?? 0)
+            buttonText = "Plan.FinalStep.Button3".localized
+        }
+        
+        titleLabel.attributedText = title.attributed(with: titleAttrs)
+        subTitleLabel.attributedText = subTitle.attributed(with: subTitleAttrs)
+        button.setAttributedTitle(buttonText.attributed(with: buttonAttrs), for: .normal)
+        
+        button.isEnabled = !locked
+        button.alpha = locked ? 0.4 : 1
     }
 }
 
@@ -54,45 +97,16 @@ private extension PlanFinalStepView {
 
 // MARK: Lazy initialization
 private extension PlanFinalStepView {
-    func makeTitleLabel() -> UILabel {
-        let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
-            .font(Fonts.Inter.regular(size: 15.scale))
-            .lineHeight(22.5.scale)
-            .letterSpacing(-0.14.scale)
-            .textAlignment(.center)
-        
-        let view = UILabel()
-        view.attributedText = "Plan.FinalStep.Title".localized.attributed(with: attrs)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        return view
-    }
-    
-    func makeSubTitleLabel() -> UILabel {
-        let attrs = TextAttributes()
-            .textColor(Appearance.greyColor)
-            .font(Fonts.Inter.regular(size: 15.scale))
-            .lineHeight(22.5.scale)
-            .letterSpacing(-0.14.scale)
-            .textAlignment(.center)
-        
+    func makeLabel() -> UILabel {
         let view = UILabel()
         view.numberOfLines = 0
-        view.attributedText = "Plan.FinalStep.SubTitle".localized.attributed(with: attrs)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
     }
     
     func makeButton() -> UIButton {
-        let attrs = TextAttributes()
-            .textColor(Appearance.whiteColor)
-            .font(Fonts.Inter.semiBold(size: 17.scale))
-            .letterSpacing(-0.44.scale)
-        
         let view = UIButton()
-        view.setAttributedTitle("Plan.FinalStep.Button".localized.attributed(with: attrs), for: .normal)
         view.backgroundColor = Appearance.mainColor
         view.layer.cornerRadius = 8.scale
         view.translatesAutoresizingMaskIntoConstraints = false

@@ -8,6 +8,7 @@
 import UIKit
 
 final class StepCollectionFinalCell: UICollectionViewCell {
+    lazy var progressView = makeProgressView()
     lazy var imageView = makeImageView()
     
     override init(frame: CGRect) {
@@ -24,8 +25,8 @@ final class StepCollectionFinalCell: UICollectionViewCell {
 
 // MARK: Public
 extension StepCollectionFinalCell {
-    func setup(locked: Bool) {
-        
+    func setup(progress: Int) {
+        progressView.setup(progress: progress)
     }
 }
 
@@ -45,8 +46,15 @@ private extension StepCollectionFinalCell {
 private extension StepCollectionFinalCell {
     func makeConstraints() {
         NSLayoutConstraint.activate([
-            imageView.widthAnchor.constraint(equalToConstant: 136.scale),
-            imageView.heightAnchor.constraint(equalToConstant: 136.scale),
+            progressView.widthAnchor.constraint(equalToConstant: 136.scale),
+            progressView.heightAnchor.constraint(equalToConstant: 136.scale),
+            progressView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            progressView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            imageView.widthAnchor.constraint(equalToConstant: 96.scale),
+            imageView.heightAnchor.constraint(equalToConstant: 96.scale),
             imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
@@ -55,6 +63,14 @@ private extension StepCollectionFinalCell {
 
 // MARK: Lazy initialization
 private extension StepCollectionFinalCell {
+    func makeProgressView() -> StepProgressView {
+        let view = StepProgressView()
+        view.backgroundColor = UIColor.clear
+        view.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(view)
+        return view
+    }
+    
     func makeImageView() -> UIImageView {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
