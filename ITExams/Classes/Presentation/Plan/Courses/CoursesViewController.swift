@@ -22,6 +22,14 @@ final class CoursesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.tryAgain = { [weak self] error -> Observable<Void> in
+            guard let self = self else {
+                return .never()
+            }
+            
+            return self.openError()
+        }
+        
         viewModel.elements
             .drive(onNext: { [weak self] elements in
                 self?.mainView.tableView.setup(elements: elements)
@@ -62,14 +70,6 @@ final class CoursesViewController: UIViewController {
                 activity ? self.mainView.preloader.startAnimating() : self.mainView.preloader.stopAnimating()
             })
             .disposed(by: disposeBag)
-        
-        viewModel.tryAgain = { [weak self] error -> Observable<Void> in
-            guard let self = self else {
-                return .never()
-            }
-            
-            return self.openError()
-        }
     }
 }
 

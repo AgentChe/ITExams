@@ -11,5 +11,5 @@ enum MyProfileTableElement {
     case course(String)
     case studyMode(String)
     case dailyGoal(String)
-    case resetProgress
+    case resetProgress(Bool)
 }

@@ -64,8 +64,10 @@ extension MyProfileTableView: UITableViewDataSource {
             let cell = dequeueReusableCell(withIdentifier: String(describing: MyProfilePropertyCell.self)) as! MyProfilePropertyCell
             cell.setup(title: "MyProfile.DailyGoal".localized, value: value)
             return cell
-        case .resetProgress:
-            return dequeueReusableCell(withIdentifier: String(describing: MyProfileResetProgressCell.self))!
+        case .resetProgress(let activity):
+            let cell = dequeueReusableCell(withIdentifier: String(describing: MyProfileResetProgressCell.self)) as! MyProfileResetProgressCell
+            cell.setup(activity: activity)
+            return cell
         }
     }
 }

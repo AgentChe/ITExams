@@ -162,6 +162,9 @@
 		DE95A8CF2832902600809171 /* DailyGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8CE2832902600809171 /* DailyGoalView.swift */; };
 		DE95A8D3283299E100809171 /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8D2283299E100809171 /* DayOfWeek.swift */; };
 		DE95A8D72833703D00809171 /* PlanFinalStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8D62833703D00809171 /* PlanFinalStep.swift */; };
+		DEADEAF628351D380057AA44 /* ResetStatsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEADEAF528351D380057AA44 /* ResetStatsRequest.swift */; };
+		DEADEAFA28351DFE0057AA44 /* StatsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEADEAF928351DFE0057AA44 /* StatsManager.swift */; };
+		DEADEAFC28351EFF0057AA44 /* StatsMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEADEAFB28351EFF0057AA44 /* StatsMediator.swift */; };
 		DEC345F02816DADD0069A060 /* PlanCurrentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */; };
 		DEC345F22816DE200069A060 /* PlanStudyScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */; };
 		DEC345F42816E1EE0069A060 /* PlanHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */; };
@@ -365,6 +368,9 @@
 		DE95A8CE2832902600809171 /* DailyGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoalView.swift; sourceTree = "<group>"; };
 		DE95A8D2283299E100809171 /* DayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
 		DE95A8D62833703D00809171 /* PlanFinalStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanFinalStep.swift; sourceTree = "<group>"; };
+		DEADEAF528351D380057AA44 /* ResetStatsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetStatsRequest.swift; sourceTree = "<group>"; };
+		DEADEAF928351DFE0057AA44 /* StatsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsManager.swift; sourceTree = "<group>"; };
+		DEADEAFB28351EFF0057AA44 /* StatsMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsMediator.swift; sourceTree = "<group>"; };
 		DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCurrentView.swift; sourceTree = "<group>"; };
 		DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStudyScoreView.swift; sourceTree = "<group>"; };
 		DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanHeaderView.swift; sourceTree = "<group>"; };
@@ -541,6 +547,7 @@
 		DE2B101B27DB14ED005280DB /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				DEADEAF728351DE20057AA44 /* Stats */,
 				DEE74EB327F41526002FE71D /* Plan */,
 				DE1CA99F27F2FC1100C66DAD /* Paygate */,
 				DE2B104F27DB14ED005280DB /* Courses */,
@@ -1174,6 +1181,24 @@
 			path = DailyGoal;
 			sourceTree = "<group>";
 		};
+		DEADEAF728351DE20057AA44 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				DEADEAF828351DE80057AA44 /* Request */,
+				DEADEAF928351DFE0057AA44 /* StatsManager.swift */,
+				DEADEAFB28351EFF0057AA44 /* StatsMediator.swift */,
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
+		DEADEAF828351DE80057AA44 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				DEADEAF528351D380057AA44 /* ResetStatsRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		DEC345EE2816D5F80069A060 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1572,9 +1597,11 @@
 				DE95A87A282E307000809171 /* ProfileTabsView.swift in Sources */,
 				DEC346042817D5BF0069A060 /* CoursesTableView.swift in Sources */,
 				DE3FD5FF27E9D40600E76844 /* PaygateViewController.swift in Sources */,
+				DEADEAF628351D380057AA44 /* ResetStatsRequest.swift in Sources */,
 				DE2D7F22282D319B00B8952B /* StepTestsTableCell.swift in Sources */,
 				DE95A8A4282ED2E000809171 /* MyProfileTableElement.swift in Sources */,
 				DEE74EC727F41DE3002FE71D /* PlanViewController.swift in Sources */,
+				DEADEAFA28351DFE0057AA44 /* StatsManager.swift in Sources */,
 				DE1CA99027F2ED7100C66DAD /* MainView.swift in Sources */,
 				DE93787327C4B2600073F27C /* NumberLaunches.swift in Sources */,
 				DE93787827C4B2600073F27C /* SignError.swift in Sources */,
@@ -1640,6 +1667,7 @@
 				DE55A4B427D6538800B53B46 /* OExamDateView.swift in Sources */,
 				DE95A892282E910C00809171 /* SettingsAppCell.swift in Sources */,
 				DEC345F92816E6840069A060 /* PlanStudyScore.swift in Sources */,
+				DEADEAFC28351EFF0057AA44 /* StatsMediator.swift in Sources */,
 				DE2B101127DA4B49005280DB /* OPlanGridView.swift in Sources */,
 				DED4725A27D20F7800AEF8A6 /* OExamsView.swift in Sources */,
 				DEE74EC927F41DEC002FE71D /* PlanViewModel.swift in Sources */,

@@ -22,6 +22,14 @@ final class MyProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.tryAgain = { [weak self] error -> Observable<Void> in
+            guard let self = self else {
+                return .never()
+            }
+            
+            return self.openError()
+        }
+        
         viewModel.elements
             .drive(onNext: { [weak self] elements in
                 self?.mainView.tableView.setup(elements: elements)
@@ -60,8 +68,29 @@ extension MyProfileViewController: MyProfileTableViewDelegate {
         case .dailyGoal:
             let vc = DailyGoalViewController.make()
             present(vc, animated: true)
-        case .resetProgress:
-            break
+        case .resetProgress(let activity):
+            if !activity {
+                viewModel.resetStats.accept(Void())
+            }
         }
+    }
+}
+
+// MARK: Private
+private extension MyProfileViewController {
+    func openError() -> Observable<Void> {
+        Observable<Void>
+            .create { [weak self] observe in
+                guard let self = self else {
+                    return Disposables.create()
+                }
+                
+                let vc = TryAgainViewController.make {
+                    observe.onNext(())
+                }
+                self.present(vc, animated: true)
+                
+                return Disposables.create()
+            }
     }
 }

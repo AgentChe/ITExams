@@ -9,6 +9,10 @@ import RxSwift
 import RxCocoa
 
 final class MyProfileViewModel {
+    var tryAgain: ((Error) -> (Observable<Void>))?
+    
+    lazy var resetStats = PublishRelay<Void>()
+    
     lazy var elements = makeElements()
     
     private lazy var dateOfExam = makeDateOfExam()
@@ -16,8 +20,12 @@ final class MyProfileViewModel {
     private lazy var course = makeCourse()
     private lazy var studyMode = makeStudyMode()
     private lazy var dailyGoal = makeDailyGoal()
+    private lazy var resetedStats = makeResetStats()
     
     private lazy var profileManager = ProfileManager()
+    private lazy var statsManager = StatsManager()
+    
+    private lazy var observableRetrySingle = ObservableRetrySingle()
 }
 
 // MARK: Private
@@ -29,18 +37,19 @@ private extension MyProfileViewModel {
                 exam,
                 course,
                 studyMode,
-                dailyGoal
+                dailyGoal,
+                resetedStats
             )
             .map { stub -> [MyProfileTableElement] in
-                let (dateOfExam, exam, course, studyMode, dailyGoal) = stub
+                let (dateOfExam, exam, course, studyMode, dailyGoal, resetedStats) = stub
                 
                 return [
                     .dateOfExam(dateOfExam),
                     .exams(exam),
-                    .course(course),
+                    .course(course?.name ?? ""),
                     .studyMode(studyMode),
                     .dailyGoal(dailyGoal),
-                    .resetProgress
+                    .resetProgress(resetedStats)
                 ]
             }
     }
@@ -72,16 +81,17 @@ private extension MyProfileViewModel {
         return Driver.merge(initial, updated)
     }
     
-    func makeCourse() -> Driver<String> {
+    func makeCourse() -> Driver<Course?> {
         let initial = profileManager
             .obtainSelectedCourse()
-            .map { $0?.name ?? "" }
-            .asDriver(onErrorJustReturn: "")
+            .asDriver(onErrorJustReturn: nil)
         
         let updated = ProfileMediator.shared
             .changedCourse
-            .map { $0.name }
-            .asDriver(onErrorJustReturn: "")
+            .map { course -> Course? in
+                course
+            }
+            .asDriver(onErrorJustReturn: nil)
         
         return Driver.merge(initial, updated)
     }
@@ -136,5 +146,69 @@ private extension MyProfileViewModel {
                 
                 return String(format: "MyProfile.min".localized, testMinutes)
             }
+    }
+    
+    func test() -> Observable<Void> {
+        resetStats
+            .withLatestFrom(course)
+            .concatMap { [weak self] course -> Observable<Void> in
+                guard let self = self, let course = course else {
+                    return .never()
+                }
+
+                func source() -> Single<Void> {
+                    self.statsManager
+                        .resetStats(for: course.id)
+                }
+
+                func trigger(error: Error) -> Observable<Void> {
+                    guard let tryAgain = self.tryAgain?(error) else {
+                        return .empty()
+                    }
+
+                    return tryAgain
+                }
+
+                return self.observableRetrySingle
+                    .retry(source: { source() },
+                           trigger: { trigger(error: $0) })
+                    .asObservable()
+            }
+    }
+    
+    func makeResetStats() -> Driver<Bool> {
+        let start = resetStats.map { true }
+        
+        let action = resetStats
+            .withLatestFrom(course)
+            .flatMapLatest { [weak self] course -> Observable<Bool> in
+                guard let self = self, let course = course else {
+                    return .never()
+                }
+
+                func source() -> Single<Void> {
+                    self.statsManager
+                        .resetStats(for: course.id)
+                }
+
+                func trigger(error: Error) -> Observable<Void> {
+                    guard let tryAgain = self.tryAgain?(error) else {
+                        return .empty()
+                    }
+
+                    return tryAgain
+                }
+
+                return self.observableRetrySingle
+                    .retry(source: { source() },
+                           trigger: { trigger(error: $0) })
+                    .asObservable()
+                    .map { false }
+            }
+        
+        return Observable
+            .merge(start, action)
+            .asDriver(onErrorJustReturn: false)
+            .startWith(false)
     }
 }

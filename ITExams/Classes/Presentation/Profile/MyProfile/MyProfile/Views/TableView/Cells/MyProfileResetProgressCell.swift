@@ -9,6 +9,7 @@ import UIKit
 
 final class MyProfileResetProgressCell: UITableViewCell {
     lazy var label = makeLabel()
+    lazy var preloader = makePreloader()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -19,6 +20,14 @@ final class MyProfileResetProgressCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: Public
+extension MyProfileResetProgressCell {
+    func setup(activity: Bool) {
+        label.isHidden = activity
+        activity ? preloader.startAnimating() : preloader.stopAnimating()
     }
 }
 
@@ -39,6 +48,11 @@ private extension MyProfileResetProgressCell {
             label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16.scale),
             label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
+        
+        NSLayoutConstraint.activate([
+            preloader.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            preloader.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+        ])
     }
 }
 
@@ -53,6 +67,13 @@ private extension MyProfileResetProgressCell {
         
         let view = UILabel()
         view.attributedText = "MyProfile.ResetProgress".localized.attributed(with: attrs)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(view)
+        return view
+    }
+    
+    func makePreloader() -> Spinner {
+        let view = Spinner(size: CGSize(width: 35.scale, height: 35.scale))
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
         return view
