@@ -56,7 +56,7 @@ struct SetRequest: APIRequestBody {
         }
         
         if let testMinutes = self.testMinutes {
-            params["daily_goal"] = testMinutes
+            params["test_minutes"] = testMinutes
         }
         
         if let courseId = courseId {
