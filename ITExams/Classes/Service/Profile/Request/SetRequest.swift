@@ -13,17 +13,20 @@ struct SetRequest: APIRequestBody {
     private let testMode: Int?
     private let examDate: String?
     private let testMinutes: Int?
+    private let courseId: Int?
     
     init(userToken: String,
          level: Int? = nil,
          testMode: Int? = nil,
          examDate: String? = nil,
-         testMinutes: Int? = nil) {
+         testMinutes: Int? = nil,
+         courseId: Int? = nil) {
         self.userToken = userToken
         self.level = level
         self.testMode = testMode
         self.examDate = examDate
         self.testMinutes = testMinutes
+        self.courseId = courseId
     }
     
     var url: String {
@@ -53,7 +56,11 @@ struct SetRequest: APIRequestBody {
         }
         
         if let testMinutes = self.testMinutes {
-            params["test_minutes"] = testMinutes
+            params["daily_goal"] = testMinutes
+        }
+        
+        if let courseId = courseId {
+            params["current_application_course_id"] = courseId
         }
         
         return params

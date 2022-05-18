@@ -73,22 +73,16 @@ private extension OPlanView {
                     return .never()
                 }
                 
-                let remote = self.profileManager
+                return self.profileManager
                     .set(motivation: combineData.motivation.code,
                          examDate: combineData.examDate,
                          testMode: combineData.studyMode.code,
                          testMinutes: combineData.testMinutes,
-                         testDaysOfWeek: combineData.testDays)
+                         testDaysOfWeek: combineData.testDays,
+                         exam: combineData.exam,
+                         course: combineData.course)
                     .map { true }
                     .catchAndReturn(false)
-                
-                let local = self.profileManager
-                    .set(exam: combineData.exam, course: combineData.course)
-                    .map { true }
-                    .catchAndReturn(false)
-                
-                return Single
-                    .zip(remote, local) { $0 && $1 }
             }
             .subscribe(onNext: { [weak self] success in
                 guard let self = self else {

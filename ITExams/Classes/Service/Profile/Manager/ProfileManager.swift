@@ -13,8 +13,9 @@ protocol ProfileManagerProtocol {
              examDate: String?,
              testMode: TestMode?,
              testMinutes: Int?,
-             testDaysOfWeek: [DayOfWeek]?) -> Single<Void>
-    func set(exam: Exam?, course: Course?) -> Single<Void>
+             testDaysOfWeek: [DayOfWeek]?,
+             exam: Exam?,
+             course: Course?) -> Single<Void>
     func obtainDateOfExam(forceUpdate: Bool) -> Single<String?>
     func obtainExams() -> Single<[Exam]>
     func obtainSelectedExam() -> Single<Exam?>
@@ -47,7 +48,9 @@ extension ProfileManager {
              examDate: String? = nil,
              testMode: TestMode? = nil,
              testMinutes: Int? = nil,
-             testDaysOfWeek: [DayOfWeek]? = nil) -> Single<Void> {
+             testDaysOfWeek: [DayOfWeek]? = nil,
+             exam: Exam? = nil,
+             course: Course? = nil) -> Single<Void> {
         guard let userToken = sessionManager.getSession()?.userToken else {
             return .error(SignError.tokenNotFound)
         }
@@ -56,7 +59,8 @@ extension ProfileManager {
                                  level: motivation,
                                  testMode: testMode?.code(),
                                  examDate: examDate,
-                                 testMinutes: testMinutes)
+                                 testMinutes: testMinutes,
+                                 courseId: course?.id)
         
         return defaultRequestWrapper
             .callServerApi(requestBody: request)
@@ -70,23 +74,9 @@ extension ProfileManager {
                 self.store(testMode: testMode)
                 self.store(testMinutes: testMinutes)
                 self.store(testDaysOfWeek: testDaysOfWeek)
+                self.store(exam: exam)
+                self.store(course: course)
             })
-    }
-    
-    func set(exam: Exam?, course: Course?) -> Single<Void> {
-        Single<Void>.create { [weak self] event in
-            guard let self = self else {
-                event(.success(Void()))
-                return Disposables.create()
-            }
-            
-            self.store(exam: exam)
-            self.store(course: course)
-            
-            event(.success(Void()))
-            
-            return Disposables.create()
-        }
     }
     
     func obtainDateOfExam(forceUpdate: Bool) -> Single<String?> {
