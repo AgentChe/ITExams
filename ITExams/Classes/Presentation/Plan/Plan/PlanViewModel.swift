@@ -80,16 +80,27 @@ private extension PlanViewModel {
                     return .never()
                 }
                 
-                // TODO: Обновлять план после прохождения теста и сброса прогресса
-                func source() -> Single<Plan> {
-                    self.planManager
-                        .obtainPlan(for: course.id)
-                        .flatMap { plan -> Single<Plan> in
-                            guard let plan = plan else {
-                                return .error(ContentError(.notContent))
-                            }
-                            
-                            return .just(plan)
+                // TODO: Обновлять план после прохождения теста
+                func source() -> Observable<Plan> {
+                    let triggers = Signal
+                        .merge(
+                            StatsMediator.shared.resetedStats
+                        )
+                        .asObservable()
+                        .startWith(Void())
+                    
+                    return triggers
+                        .flatMapLatest {
+                            self.planManager
+                                .obtainPlan(for: course.id)
+                                .flatMap { plan -> Single<Plan> in
+                                    guard let plan = plan else {
+                                        return .error(ContentError(.notContent))
+                                    }
+                                    
+                                    return .just(plan)
+                                }
+                                .trackActivity(self.activity)
                         }
                 }
                 
@@ -101,10 +112,12 @@ private extension PlanViewModel {
                     return tryAgain
                 }
                 
-                return self.observableRetrySingle
-                    .retry(source: { source() },
-                           trigger: { trigger(error: $0) })
-                    .trackActivity(self.activity)
+                return source()
+                    .retry(when: { err in
+                        err.flatMapLatest {
+                            trigger(error: $0)
+                        }
+                    })
                     .asDriver(onErrorDriveWith: .never())
             }
     }
