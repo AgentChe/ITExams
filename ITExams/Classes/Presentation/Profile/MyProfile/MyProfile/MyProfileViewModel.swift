@@ -57,14 +57,27 @@ private extension MyProfileViewModel {
     func makeDateOfExam() -> Driver<String> {
         let initial = profileManager
             .obtainDateOfExam(forceUpdate: false)
-            .map { $0 ?? "" }
-            .asDriver(onErrorJustReturn: "")
+            .asDriver(onErrorJustReturn: nil)
         
         let updated = ProfileMediator.shared
             .changedDateOfExam
-            .asDriver(onErrorJustReturn: "")
+            .map { date -> Date? in
+                date
+            }
+            .asDriver(onErrorJustReturn: nil)
         
-        return Driver.merge(initial, updated)
+        return Driver
+            .merge(initial, updated)
+            .map { date -> String in
+                guard let date = date else {
+                    return ""
+                }
+                
+                let formatter = DateFormatter()
+                formatter.dateFormat = "MMM dd, yyyy"
+                formatter.locale = Locale.current
+                return formatter.string(from: date)
+            }
     }
     
     func makeExam() -> Driver<String> {

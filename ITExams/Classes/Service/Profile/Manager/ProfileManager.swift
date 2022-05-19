@@ -10,13 +10,14 @@ import Foundation
 
 protocol ProfileManagerProtocol {
     func set(motivation: Int?,
-             examDate: String?,
+             examDate: Date?,
              testMode: TestMode?,
              testMinutes: Int?,
              testDaysOfWeek: [DayOfWeek]?,
              exam: Exam?,
              course: Course?) -> Single<Void>
-    func obtainDateOfExam(forceUpdate: Bool) -> Single<String?>
+    func obtainProfile(forceUpdate: Bool) -> Single<Profile?>
+    func obtainDateOfExam(forceUpdate: Bool) -> Single<Date?>
     func obtainExams() -> Single<[Exam]>
     func obtainSelectedExam() -> Single<Exam?>
     func obtainSelectedCourse() -> Single<Course?>
@@ -45,7 +46,7 @@ final class ProfileManager: ProfileManagerProtocol {
 // MARK: Study
 extension ProfileManager {
     func set(motivation: Int? = nil,
-             examDate: String? = nil,
+             examDate: Date? = nil,
              testMode: TestMode? = nil,
              testMinutes: Int? = nil,
              testDaysOfWeek: [DayOfWeek]? = nil,
@@ -58,7 +59,7 @@ extension ProfileManager {
         let request = SetRequest(userToken: userToken,
                                  level: motivation,
                                  testMode: testMode?.code(),
-                                 examDate: examDate,
+                                 examDate: examDateStringFormatted(examDate),
                                  testMinutes: testMinutes,
                                  courseId: course?.id)
         
@@ -79,7 +80,11 @@ extension ProfileManager {
             })
     }
     
-    func obtainDateOfExam(forceUpdate: Bool) -> Single<String?> {
+    func obtainProfile(forceUpdate: Bool) -> Single<Profile?> {
+        forceUpdate ? loadProfile() : cachedProfile()
+    }
+    
+    func obtainDateOfExam(forceUpdate: Bool) -> Single<Date?> {
         forceUpdate ? loadDateOfExam() : cachedDateOfExam()
     }
     
@@ -184,7 +189,49 @@ extension ProfileManager {
 
 // MARK: Private
 private extension ProfileManager {
-    func store(dateOfExam: String?) {
+    func cachedProfile() -> Single<Profile?> {
+        let testMode = cachedTestMode()
+        let testMinutes = cachedTestMinutes()
+        let examDate = cachedDateOfExam()
+        let selectedCourse = obtainSelectedCourse()
+        
+        return Single
+            .zip(
+                testMode,
+                testMinutes,
+                examDate,
+                selectedCourse
+            ) { testMode, testMinutes, examDate, selectedCourse -> Profile in
+                Profile(testMode: testMode,
+                        testMinutes: testMinutes,
+                        examDate: examDate,
+                        selectedCourse: selectedCourse)
+            }
+    }
+    
+    func loadProfile() -> Single<Profile?> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
+            return .error(SignError.tokenNotFound)
+        }
+        
+        let request = GetProfileRequest(userToken: userToken)
+        
+        return defaultRequestWrapper
+            .callServerApi(requestBody: request)
+            .map { GetProfileResponseMapper.map(from: $0) }
+            .do(onSuccess: { [weak self] profile in
+                guard let self = self, let profile = profile else {
+                    return
+                }
+                
+                self.store(testMode: profile.testMode)
+                self.store(testMinutes: profile.testMinutes)
+                self.store(dateOfExam: profile.examDate)
+                self.store(course: profile.selectedCourse)
+            })
+    }
+    
+    func store(dateOfExam: Date?) {
         guard let dateOfExam = dateOfExam else {
             return
         }
@@ -194,10 +241,10 @@ private extension ProfileManager {
         ProfileMediator.shared.notifyAboutChanged(dateOfExam: dateOfExam)
     }
     
-    func cachedDateOfExam() -> Single<String?> {
-        Single<String?>
+    func cachedDateOfExam() -> Single<Date?> {
+        Single<Date?>
             .create { event in
-                guard let dateOfExam = UserDefaults.standard.string(forKey: Constants.dateOfExamKey) else {
+                guard let dateOfExam = UserDefaults.standard.value(forKey: Constants.dateOfExamKey) as? Date else {
                     event(.success(nil))
                     return Disposables.create()
                 }
@@ -208,27 +255,16 @@ private extension ProfileManager {
             }
     }
     
-    // TODO: загружать с сервера, когда будет реализован запрос
-    func loadDateOfExam() -> Single<String?> {
-        Single<String?>
-            .create { event in
-                guard let dateOfExam = UserDefaults.standard.string(forKey: Constants.dateOfExamKey) else {
-                    event(.success(nil))
-                    return Disposables.create()
-                }
-                
-                event(.success(dateOfExam))
-                
-                return Disposables.create()
-            }
+    func loadDateOfExam() -> Single<Date?> {
+        loadProfile()
+            .map { $0?.examDate }
             .do(onSuccess: { [weak self] dateOfExam in
-                guard let self = self else {
+                guard let self = self, let dateOfExam = dateOfExam else {
                     return
                 }
                 
                 self.store(dateOfExam: dateOfExam)
             })
-            .delay(RxTimeInterval.seconds(2), scheduler: MainScheduler.asyncInstance)
     }
     
     func store(exam: Exam?) {
@@ -279,17 +315,10 @@ private extension ProfileManager {
     }
     
     func loadTestMode() -> Single<TestMode?> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
-        let request = GetTestModeRequest(userToken: userToken)
-        
-        return defaultRequestWrapper
-            .callServerApi(requestBody: request)
-            .map { GetTestModeResponseMapper.map(from: $0) }
+        loadProfile()
+            .map { $0?.testMode }
             .do(onSuccess: { [weak self] testMode in
-                guard let self = self else {
+                guard let self = self, let testMode = testMode else {
                     return
                 }
                 
@@ -321,27 +350,16 @@ private extension ProfileManager {
             }
     }
     
-    // TODO: загружать с сервера, когда будет реализован запрос
     func loadTestMinutes() -> Single<Int?> {
-        Single<Int?>
-            .create { event in
-                guard let testMinutes = UserDefaults.standard.value(forKey: Constants.testMinutesKey) as? Int else {
-                    event(.success(nil))
-                    return Disposables.create()
-                }
-                
-                event(.success(testMinutes))
-                
-                return Disposables.create()
-            }
+        loadProfile()
+            .map { $0?.testMinutes }
             .do(onSuccess: { [weak self] testMinutes in
-                guard let self = self else {
+                guard let self = self, let testMinutes = testMinutes else {
                     return
                 }
                 
                 self.store(testMinutes: testMinutes)
             })
-            .delay(RxTimeInterval.seconds(2), scheduler: MainScheduler.asyncInstance)
     }
     
     func store(testDaysOfWeek: [DayOfWeek]?) {
@@ -355,5 +373,17 @@ private extension ProfileManager {
         UserDefaults.standard.set(data, forKey: Constants.testDaysOfWeekKey)
         
         ProfileMediator.shared.notifyAboutChanged(testDaysOfWeek: testDaysOfWeek)
+    }
+    
+    func examDateStringFormatted(_ date: Date?) -> String? {
+        guard let date = date else {
+            return nil
+        }
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        formatter.locale = Locale.current
+        
+        return formatter.string(from: date)
     }
 }

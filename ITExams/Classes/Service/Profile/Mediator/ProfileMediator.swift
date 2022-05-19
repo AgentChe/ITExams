@@ -10,7 +10,7 @@ import RxCocoa
 final class ProfileMediator {
     static let shared = ProfileMediator()
     
-    private let changedDateOfExamTrigger = PublishRelay<String>()
+    private let changedDateOfExamTrigger = PublishRelay<Date>()
     private let changedExamTrigger = PublishRelay<Exam>()
     private let changedCourseTrigger = PublishRelay<Course>()
     private let changedTestModeTrigger = PublishRelay<TestMode>()
@@ -24,7 +24,7 @@ final class ProfileMediator {
 
 // MARK: API
 extension ProfileMediator {
-    func notifyAboutChanged(dateOfExam: String) {
+    func notifyAboutChanged(dateOfExam: Date) {
         DispatchQueue.main.async { [weak self] in
             self?.delegates.forEach {
                 $0.weak?.prodileMediatorDidChanged(dateOfExam: dateOfExam)
@@ -87,7 +87,7 @@ extension ProfileMediator {
 
 // MARK: Triggers(Rx)
 extension ProfileMediator {
-    var changedDateOfExam: Signal<String> {
+    var changedDateOfExam: Signal<Date> {
         changedDateOfExamTrigger.asSignal()
     }
     

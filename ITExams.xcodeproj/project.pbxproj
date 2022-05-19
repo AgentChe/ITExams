@@ -45,8 +45,8 @@
 		DE2B10C327DB14EE005280DB /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B106727DB14ED005280DB /* ProfileManager.swift */; };
 		DE2B10C527DB14EE005280DB /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B106A27DB14ED005280DB /* LoginRequest.swift */; };
 		DE2B10C627DB14EE005280DB /* SyncTokensRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B106B27DB14ED005280DB /* SyncTokensRequest.swift */; };
-		DE2B10C727DB14EE005280DB /* GetTestModeResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B106D27DB14ED005280DB /* GetTestModeResponseMapper.swift */; };
-		DE2B10C827DB14EE005280DB /* GetTestModeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B106E27DB14ED005280DB /* GetTestModeRequest.swift */; };
+		DE2B10C727DB14EE005280DB /* GetProfileResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B106D27DB14ED005280DB /* GetProfileResponseMapper.swift */; };
+		DE2B10C827DB14EE005280DB /* GetProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B106E27DB14ED005280DB /* GetProfileRequest.swift */; };
 		DE2B10C927DB14EE005280DB /* SetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B106F27DB14EE005280DB /* SetRequest.swift */; };
 		DE2B10CC27DB14EE005280DB /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B107427DB14EE005280DB /* IAPManager.swift */; };
 		DE2B10CD27DB14EE005280DB /* PurchaseValidationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B107527DB14EE005280DB /* PurchaseValidationObserver.swift */; };
@@ -153,7 +153,6 @@
 		DE95A8B42832787D00809171 /* DateOfExamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8B32832787D00809171 /* DateOfExamViewController.swift */; };
 		DE95A8B62832788600809171 /* DateOfExamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8B52832788600809171 /* DateOfExamViewModel.swift */; };
 		DE95A8B82832789300809171 /* DateOfExamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8B72832789300809171 /* DateOfExamView.swift */; };
-		DE95A8BA283280BF00809171 /* DateFormatter+DateOfExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8B9283280BF00809171 /* DateFormatter+DateOfExam.swift */; };
 		DE95A8C42832892600809171 /* StudyModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8C32832892600809171 /* StudyModeViewController.swift */; };
 		DE95A8C62832893000809171 /* StudyModeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8C52832893000809171 /* StudyModeViewModel.swift */; };
 		DE95A8C82832893800809171 /* StudyModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A8C72832893800809171 /* StudyModeView.swift */; };
@@ -165,6 +164,7 @@
 		DEADEAF628351D380057AA44 /* ResetStatsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEADEAF528351D380057AA44 /* ResetStatsRequest.swift */; };
 		DEADEAFA28351DFE0057AA44 /* StatsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEADEAF928351DFE0057AA44 /* StatsManager.swift */; };
 		DEADEAFC28351EFF0057AA44 /* StatsMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEADEAFB28351EFF0057AA44 /* StatsMediator.swift */; };
+		DEADEAFE283563510057AA44 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEADEAFD283563510057AA44 /* Profile.swift */; };
 		DEC345F02816DADD0069A060 /* PlanCurrentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */; };
 		DEC345F22816DE200069A060 /* PlanStudyScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */; };
 		DEC345F42816E1EE0069A060 /* PlanHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */; };
@@ -249,8 +249,8 @@
 		DE2B106727DB14ED005280DB /* ProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
 		DE2B106A27DB14ED005280DB /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		DE2B106B27DB14ED005280DB /* SyncTokensRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncTokensRequest.swift; sourceTree = "<group>"; };
-		DE2B106D27DB14ED005280DB /* GetTestModeResponseMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTestModeResponseMapper.swift; sourceTree = "<group>"; };
-		DE2B106E27DB14ED005280DB /* GetTestModeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTestModeRequest.swift; sourceTree = "<group>"; };
+		DE2B106D27DB14ED005280DB /* GetProfileResponseMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetProfileResponseMapper.swift; sourceTree = "<group>"; };
+		DE2B106E27DB14ED005280DB /* GetProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetProfileRequest.swift; sourceTree = "<group>"; };
 		DE2B106F27DB14EE005280DB /* SetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetRequest.swift; sourceTree = "<group>"; };
 		DE2B107427DB14EE005280DB /* IAPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
 		DE2B107527DB14EE005280DB /* PurchaseValidationObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseValidationObserver.swift; sourceTree = "<group>"; };
@@ -359,7 +359,6 @@
 		DE95A8B32832787D00809171 /* DateOfExamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfExamViewController.swift; sourceTree = "<group>"; };
 		DE95A8B52832788600809171 /* DateOfExamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfExamViewModel.swift; sourceTree = "<group>"; };
 		DE95A8B72832789300809171 /* DateOfExamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfExamView.swift; sourceTree = "<group>"; };
-		DE95A8B9283280BF00809171 /* DateFormatter+DateOfExam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+DateOfExam.swift"; sourceTree = "<group>"; };
 		DE95A8C32832892600809171 /* StudyModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyModeViewController.swift; sourceTree = "<group>"; };
 		DE95A8C52832893000809171 /* StudyModeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyModeViewModel.swift; sourceTree = "<group>"; };
 		DE95A8C72832893800809171 /* StudyModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyModeView.swift; sourceTree = "<group>"; };
@@ -371,6 +370,7 @@
 		DEADEAF528351D380057AA44 /* ResetStatsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetStatsRequest.swift; sourceTree = "<group>"; };
 		DEADEAF928351DFE0057AA44 /* StatsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsManager.swift; sourceTree = "<group>"; };
 		DEADEAFB28351EFF0057AA44 /* StatsMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsMediator.swift; sourceTree = "<group>"; };
+		DEADEAFD283563510057AA44 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCurrentView.swift; sourceTree = "<group>"; };
 		DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStudyScoreView.swift; sourceTree = "<group>"; };
 		DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanHeaderView.swift; sourceTree = "<group>"; };
@@ -609,6 +609,7 @@
 				DE2B106527DB14ED005280DB /* TestMode.swift */,
 				DEE74EB027F34CB6002FE71D /* Exam.swift */,
 				DE95A8D2283299E100809171 /* DayOfWeek.swift */,
+				DEADEAFD283563510057AA44 /* Profile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -624,7 +625,7 @@
 		DE2B106927DB14ED005280DB /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				DE2B106C27DB14ED005280DB /* GetTestMode */,
+				DE2B106C27DB14ED005280DB /* GetProfile */,
 				DE2B106A27DB14ED005280DB /* LoginRequest.swift */,
 				DE2B106B27DB14ED005280DB /* SyncTokensRequest.swift */,
 				DE2B106F27DB14EE005280DB /* SetRequest.swift */,
@@ -632,13 +633,13 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
-		DE2B106C27DB14ED005280DB /* GetTestMode */ = {
+		DE2B106C27DB14ED005280DB /* GetProfile */ = {
 			isa = PBXGroup;
 			children = (
-				DE2B106D27DB14ED005280DB /* GetTestModeResponseMapper.swift */,
-				DE2B106E27DB14ED005280DB /* GetTestModeRequest.swift */,
+				DE2B106D27DB14ED005280DB /* GetProfileResponseMapper.swift */,
+				DE2B106E27DB14ED005280DB /* GetProfileRequest.swift */,
 			);
-			path = GetTestMode;
+			path = GetProfile;
 			sourceTree = "<group>";
 		};
 		DE2B107327DB14EE005280DB /* Purchase */ = {
@@ -860,7 +861,6 @@
 				DE93784727C4B2600073F27C /* StringExtension.swift */,
 				DE93789627C4BDED0073F27C /* UIEdgeInsets+Extension.swift */,
 				DEE74EAE27F3275D002FE71D /* ObservableAndSingleExtension.swift */,
-				DE95A8B9283280BF00809171 /* DateFormatter+DateOfExam.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1575,11 +1575,12 @@
 				DEE74EC127F41AAA002FE71D /* GetPlanResponseMapper.swift in Sources */,
 				DE95A8A7282ED3F600809171 /* MyProfilePropertyCell.swift in Sources */,
 				DE93788227C4B2600073F27C /* CircleView.swift in Sources */,
+				DEADEAFE283563510057AA44 /* Profile.swift in Sources */,
 				DE2B100A27D9F441005280DB /* OCreatingPlanRowView.swift in Sources */,
 				DEE74EBF27F41960002FE71D /* GetPlanRequest.swift in Sources */,
 				DEC345F72816E4BD0069A060 /* PlanCurrent.swift in Sources */,
 				DE2B10CD27DB14EE005280DB /* PurchaseValidationObserver.swift in Sources */,
-				DE2B10C727DB14EE005280DB /* GetTestModeResponseMapper.swift in Sources */,
+				DE2B10C727DB14EE005280DB /* GetProfileResponseMapper.swift in Sources */,
 				DE2B100027D876A0005280DB /* OStudyModeView.swift in Sources */,
 				DE3FD60C27EA02F500E76844 /* PaygateProductButton.swift in Sources */,
 				DEE74EB827F41863002FE71D /* PlanStep.swift in Sources */,
@@ -1614,7 +1615,6 @@
 				DE1CA9A227F2FC2E00C66DAD /* Monetization.swift in Sources */,
 				DE2B10D027DB14EE005280DB /* IAPError.swift in Sources */,
 				DE95A8B02832261A00809171 /* PlanFinalStepView.swift in Sources */,
-				DE95A8BA283280BF00809171 /* DateFormatter+DateOfExam.swift in Sources */,
 				DE2B10C327DB14EE005280DB /* ProfileManager.swift in Sources */,
 				DEC34618281979350069A060 /* ContentError.swift in Sources */,
 				DE1CA9AD27F3017C00C66DAD /* SplashReceiptValidationObserver.swift in Sources */,
@@ -1629,7 +1629,7 @@
 				DED4724827CE4C4B00AEF8A6 /* OMotivationCell.swift in Sources */,
 				DE95A8CB2832901500809171 /* DailyGoalViewController.swift in Sources */,
 				DE3FD61027EA097E00E76844 /* ProductPrice.swift in Sources */,
-				DE2B10C827DB14EE005280DB /* GetTestModeRequest.swift in Sources */,
+				DE2B10C827DB14EE005280DB /* GetProfileRequest.swift in Sources */,
 				DE55A4B227D64CB300B53B46 /* OProgressView.swift in Sources */,
 				DE2B101627DB139D005280DB /* RestAPITransport.swift in Sources */,
 				DE93786D27C4B2600073F27C /* UITapGestureRecognizerExtension.swift in Sources */,

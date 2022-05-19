@@ -5,7 +5,7 @@
 //  Created by Andrey Chernyshev on 09.07.2021.
 //
 
-enum TestMode: Int, Codable {
+enum TestMode: Int, Codable, Hashable {
     case fullComplect, noExplanations, onAnExam
 }
 

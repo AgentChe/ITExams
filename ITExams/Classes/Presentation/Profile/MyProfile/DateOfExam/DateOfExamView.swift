@@ -50,7 +50,9 @@ private extension DateOfExamView {
     func dateDidChanged() {
         let date = datePicker.date
         
-        let formatter = DateFormatter.dateOfExamDisplayFormmater()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd, yyyy"
+        formatter.locale = Locale.current
         
         let attrs = TextAttributes()
             .textColor(Appearance.blackColor)

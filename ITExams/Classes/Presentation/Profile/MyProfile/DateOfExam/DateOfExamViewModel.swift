@@ -27,15 +27,7 @@ private extension DateOfExamViewModel {
     func makeCurrentDate() -> Driver<Date> {
         profileManager
             .obtainDateOfExam(forceUpdate: false)
-            .compactMap { formattedDate -> Date? in
-                guard let formattedDate = formattedDate else {
-                    return nil
-                }
-                
-                let formatter = DateFormatter.dateOfExamDisplayFormmater()
-                
-                return formatter.date(from: formattedDate)
-            }
+            .compactMap { $0 }
             .asDriver(onErrorDriveWith: .empty())
     }
     
@@ -46,12 +38,9 @@ private extension DateOfExamViewModel {
                     return .never()
                 }
                 
-                let formatter = DateFormatter.dateOfExamDisplayFormmater()
-                let formattedDate = formatter.string(from: date)
-                
                 func source() -> Single<Void> {
                     self.profileManager
-                        .set(examDate: formattedDate)
+                        .set(examDate: date)
                         .mapToVoid()
                 }
                 

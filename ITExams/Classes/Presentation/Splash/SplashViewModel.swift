@@ -103,23 +103,13 @@ private extension SplashViewModel {
                 .retrieveMonetization(forceUpdate: true)
                 .mapToVoid()
             
-            let dateOfExam = profileManager
-                .obtainDateOfExam(forceUpdate: true)
-                .mapToVoid()
-            
-            let testMode = profileManager
-                .obtainTestMode(forceUpdate: true)
-                .mapToVoid()
-            
-            let testMinutes = profileManager
-                .obtainTestMinutes(forceUpdate: true)
+            let profile = profileManager
+                .obtainProfile(forceUpdate: true)
                 .mapToVoid()
             
             return Single.zip(
                 monetization,
-                dateOfExam,
-                testMode,
-                testMinutes
+                profile
             ).mapToVoid()
         }
         

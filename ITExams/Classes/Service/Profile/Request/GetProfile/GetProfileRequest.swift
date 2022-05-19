@@ -7,7 +7,7 @@
 
 import Alamofire
 
-struct GetTestModeRequest: APIRequestBody {
+struct GetProfileRequest: APIRequestBody {
     let userToken: String
     
     var url: String {

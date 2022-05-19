@@ -12,7 +12,7 @@ struct OCombineData {
     let age: String
     let exam: Exam
     let course: Course
-    let examDate: String?
+    let examDate: Date?
     let studyMode: OStudyModeElement
     let testMinutes: Int
     let testDays: [DayOfWeek]
@@ -23,7 +23,7 @@ final class OnboardingCombineData {
     private var age: String?
     private var exam: Exam?
     private var course: Course?
-    private var examDate: String?
+    private var examDate: Date?
     private var studyMode: OStudyModeElement?
     private var testMinutes: Int?
     private var testDays: [DayOfWeek]?
@@ -83,13 +83,7 @@ extension OnboardingCombineData: OCourseViewDelegate {
 // MARK: OExamDateViewDelegate
 extension OnboardingCombineData: OExamDateViewDelegate {
     func examDateDidSelected(date: Date?) {
-        guard let date = date else {
-            return
-        }
-        
-        let formatter = DateFormatter.dateOfExamDisplayFormmater()
-        
-        self.examDate = formatter.string(from: date)
+        self.examDate = date
     }
 }
 
