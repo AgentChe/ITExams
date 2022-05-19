@@ -31,7 +31,7 @@ extension CoursesViewModel {
 private extension CoursesViewModel {
     func makeElements() -> Driver<[CoursesTableElement]> {
         let currentCourse = profileManager
-            .obtainSelectedCourse()
+            .obtainSelectedCourse(forceUpdate: false)
             .asObservable()
         
         let zipped = profileManager.obtainExams()

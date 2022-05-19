@@ -96,7 +96,7 @@ private extension MyProfileViewModel {
     
     func makeCourse() -> Driver<Course?> {
         let initial = profileManager
-            .obtainSelectedCourse()
+            .obtainSelectedCourse(forceUpdate: false)
             .asDriver(onErrorJustReturn: nil)
         
         let updated = ProfileMediator.shared

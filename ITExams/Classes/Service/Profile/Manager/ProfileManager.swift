@@ -20,7 +20,7 @@ protocol ProfileManagerProtocol {
     func obtainDateOfExam(forceUpdate: Bool) -> Single<Date?>
     func obtainExams() -> Single<[Exam]>
     func obtainSelectedExam() -> Single<Exam?>
-    func obtainSelectedCourse() -> Single<Course?>
+    func obtainSelectedCourse(forceUpdate: Bool) -> Single<Course?>
     func obtainTestMode(forceUpdate: Bool) -> Single<TestMode?>
     func obtainTestMinutes(forceUpdate: Bool) -> Single<Int?>
     func obtainTestDaysOfWeek() -> Single<[DayOfWeek]?>
@@ -131,20 +131,8 @@ extension ProfileManager {
             }
     }
     
-    func obtainSelectedCourse() -> Single<Course?> {
-        Single<Course?>
-            .create { event in
-                guard let data = UserDefaults.standard.data(forKey: Constants.courseKey) else {
-                    event(.success(nil))
-                    return Disposables.create()
-                }
-                
-                let course = try? JSONDecoder().decode(Course.self, from: data)
-                
-                event(.success(course))
-                
-                return Disposables.create()
-            }
+    func obtainSelectedCourse(forceUpdate: Bool) -> Single<Course?> {
+        forceUpdate ? loadSelectedCourse() : cachedSelectedCourse()
     }
     
     func obtainTestMode(forceUpdate: Bool) -> Single<TestMode?> {
@@ -193,7 +181,7 @@ private extension ProfileManager {
         let testMode = cachedTestMode()
         let testMinutes = cachedTestMinutes()
         let examDate = cachedDateOfExam()
-        let selectedCourse = obtainSelectedCourse()
+        let selectedCourse = cachedSelectedCourse()
         
         return Single
             .zip(
@@ -285,6 +273,34 @@ private extension ProfileManager {
         UserDefaults.standard.set(data, forKey: Constants.courseKey)
         
         ProfileMediator.shared.notifyAboutChanged(course: course)
+    }
+    
+    func cachedSelectedCourse() -> Single<Course?> {
+        Single<Course?>
+            .create { event in
+                guard let data = UserDefaults.standard.data(forKey: Constants.courseKey) else {
+                    event(.success(nil))
+                    return Disposables.create()
+                }
+                
+                let course = try? JSONDecoder().decode(Course.self, from: data)
+                
+                event(.success(course))
+                
+                return Disposables.create()
+            }
+    }
+    
+    func loadSelectedCourse() -> Single<Course?> {
+        loadProfile()
+            .map { $0?.selectedCourse }
+            .do(onSuccess: { [weak self] course in
+                guard let self = self, let course = course else {
+                    return
+                }
+                
+                self.store(course: course)
+            })
     }
     
     func store(testMode: TestMode?) {

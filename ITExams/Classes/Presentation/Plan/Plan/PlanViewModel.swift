@@ -124,7 +124,7 @@ private extension PlanViewModel {
     
     func makeCurrentCourse() -> Driver<Course> {
         let initial = profileManager
-            .obtainSelectedCourse()
+            .obtainSelectedCourse(forceUpdate: false)
             .compactMap { $0 }
             .asDriver(onErrorDriveWith: .never())
         
