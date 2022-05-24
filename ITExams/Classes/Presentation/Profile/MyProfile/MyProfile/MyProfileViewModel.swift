@@ -161,34 +161,6 @@ private extension MyProfileViewModel {
             }
     }
     
-    func test() -> Observable<Void> {
-        resetStats
-            .withLatestFrom(course)
-            .concatMap { [weak self] course -> Observable<Void> in
-                guard let self = self, let course = course else {
-                    return .never()
-                }
-
-                func source() -> Single<Void> {
-                    self.statsManager
-                        .resetStats(for: course.id)
-                }
-
-                func trigger(error: Error) -> Observable<Void> {
-                    guard let tryAgain = self.tryAgain?(error) else {
-                        return .empty()
-                    }
-
-                    return tryAgain
-                }
-
-                return self.observableRetrySingle
-                    .retry(source: { source() },
-                           trigger: { trigger(error: $0) })
-                    .asObservable()
-            }
-    }
-    
     func makeResetStats() -> Driver<Bool> {
         let start = resetStats.map { true }
         
