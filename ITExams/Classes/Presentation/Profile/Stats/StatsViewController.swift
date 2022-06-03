@@ -29,6 +29,18 @@ final class StatsViewController: UIViewController {
             
             return self.openError()
         }
+        
+        viewModel.elements
+            .drive(Binder(self) { base, elements in
+                base.mainView.tableView.setup(elements: elements)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.activity
+            .drive(Binder(self) { base, activity in
+                base.activity(activity)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -55,5 +67,10 @@ private extension StatsViewController {
                 
                 return Disposables.create()
             }
+    }
+    
+    func activity(_ activity: Bool) {
+        let showAnimating = activity && mainView.tableView.elements.isEmpty
+        showAnimating ? mainView.preloader.startAnimating() : mainView.preloader.stopAnimating()
     }
 }

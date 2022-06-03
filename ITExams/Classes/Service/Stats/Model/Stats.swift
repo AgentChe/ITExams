@@ -9,6 +9,7 @@ struct Stats: Codable, Hashable {
     let questionsTaken: Int
     let answeredQuestionsCount: Int
     let correctAnswersCount: Int
+    let correntAnswersPercent: Int
     let totalQuestions: Int
     let streak: Int
     let longestStreak: Int

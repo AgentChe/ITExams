@@ -24,6 +24,13 @@
 "DayOfWeek.Short.Th" = "Th";
 "DayOfWeek.Short.Fr" = "Fr";
 "DayOfWeek.Short.Sa" = "Sa";
+"DayOfWeek.OneLetter.Su" = "S";
+"DayOfWeek.OneLetter.Mn" = "M";
+"DayOfWeek.OneLetter.Tu" = "T";
+"DayOfWeek.OneLetter.We" = "W";
+"DayOfWeek.OneLetter.Th" = "T";
+"DayOfWeek.OneLetter.Fr" = "F";
+"DayOfWeek.OneLetter.Sa" = "S";
 
 // MARK: Onboarding
 "Onboarding.Start.Header" = "Personal Plan";
@@ -186,3 +193,21 @@
 "MyProfile.StudyMode.FullSupport" = "Full support";
 "MyProfile.StudyMode.WithoutExplanations" = "Without explanations";
 "MyProfile.StudyMode.Exam-style" = "Exam-style";
+
+// MARK: Stats
+"Stats.Main.Answered" = "Answered";
+"Stats.Main.Correct" = "Correct";
+"Stats.Main.Total" = "Total";
+"Stats.UnlockPremiumButton.Text" = "Unlock %i+ questions";
+"Stats.DailyMetrics.Title" = "Daily metrics";
+"Stats.DailyMetrics.CurrentStreak" = "Current streak";
+"Stats.DailyMetrics.LongestStreak" = "Longest streak";
+"Stats.DailyMetrics.Days" = " days";
+"Stats.PassRate.Title" = "Pass rate progress";
+"Stats.PassRate.PassRate" = "pass rate";
+"Stats.PassRate.0Percent" = "0%";
+"Stats.PassRate.25Percent" = "25%";
+"Stats.PassRate.50Percent" = "50%";
+"Stats.PassRate.100Percent" = "100%";
+"Stats.UnlockPremiumView.Text" = "Get the unlimited access to unlock all insights";
+"Stats.UnlockPremiumView.Button" = "Get Premium";
