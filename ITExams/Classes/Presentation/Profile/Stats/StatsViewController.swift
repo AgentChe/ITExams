@@ -41,6 +41,8 @@ final class StatsViewController: UIViewController {
                 base.activity(activity)
             })
             .disposed(by: disposeBag)
+        
+        mainView.tableView.mainDelegate = self
     }
 }
 
@@ -48,6 +50,14 @@ final class StatsViewController: UIViewController {
 extension StatsViewController {
     static func make() -> StatsViewController {
         StatsViewController()
+    }
+}
+
+// MARK: StatsTableViewDelegate
+extension StatsViewController: StatsTableViewDelegate {
+    func statsTableDidTappedUnlock() {
+        let vc = PaygateViewController.make()
+        present(vc, animated: true)
     }
 }
 

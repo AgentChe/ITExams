@@ -63,12 +63,26 @@ private extension StatsViewModel {
                         .offset(28.scale),
                         .title("Stats.PassRate.Title".localized),
                         .offset(16.scale),
-                        .passRate(stats.passRateProgress),
-                        .offset(32.scale),
+                        .passRate(stats.passRateProgress)
                     ])
+                    
+                    if !stats.subjectsProgress.isEmpty {
+                        result.append(contentsOf: [
+                            .offset(32.scale),
+                            .title("Stats.Subject.Title".localized)
+                        ])
+                        
+                        stats.subjectsProgress.forEach { subject in
+                            result.append(contentsOf: [
+                                .offset(16.scale),
+                                .subject(subject)
+                            ])
+                        }
+                    }
                 } else {
                     result.append(contentsOf: [
                         .offset(16.scale),
+                        .unlockPremiumFake
                     ])
                 }
                 

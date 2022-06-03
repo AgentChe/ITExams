@@ -14,6 +14,8 @@ enum StatsTableElement {
     case unlockPremiumButton(Int)
     case dailyMetrics(StatsTableDailyMetrics)
     case passRate([PassRateProgress])
+    case subject(SubjectProgress)
+    case unlockPremiumFake
 }
 
 struct StatsTableMain {

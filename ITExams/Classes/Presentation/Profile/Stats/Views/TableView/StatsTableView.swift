@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol StatsTableViewDelegate: AnyObject {
+    func statsTableDidTappedUnlock()
+}
+
 final class StatsTableView: UITableView {
+    weak var mainDelegate: StatsTableViewDelegate?
+    
     private(set) lazy var elements = [StatsTableElement]()
     
     override init(frame: CGRect, style: UITableView.Style) {
@@ -64,6 +70,12 @@ extension StatsTableView: UITableViewDataSource {
             let cell = dequeueReusableCell(withIdentifier: String(describing: StatsTablePassRateCell.self)) as! StatsTablePassRateCell
             cell.setup(element: element)
             return cell
+        case .subject(let element):
+            let cell = dequeueReusableCell(withIdentifier: String(describing: StatsTableSubjectCell.self)) as! StatsTableSubjectCell
+            cell.setup(element: element)
+            return cell
+        case .unlockPremiumFake:
+            return dequeueReusableCell(withIdentifier: String(describing: StatsTableUnlockPremiumFakeCell.self))!
         }
     }
 }
@@ -84,6 +96,19 @@ extension StatsTableView: UITableViewDelegate {
             return 192.scale
         case .passRate:
             return 271.scale
+        case .subject:
+            return 152.scale
+        case .unlockPremiumFake:
+            return 1087.scale
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch elements[indexPath.row] {
+        case .unlockPremiumButton, .unlockPremiumFake:
+            mainDelegate?.statsTableDidTappedUnlock()
+        default:
+            return
         }
     }
 }
@@ -97,6 +122,8 @@ private extension StatsTableView {
         register(StatsTableUnlockPremiumButtonCell.self, forCellReuseIdentifier: String(describing: StatsTableUnlockPremiumButtonCell.self))
         register(StatsTableDailyMetricsCell.self, forCellReuseIdentifier: String(describing: StatsTableDailyMetricsCell.self))
         register(StatsTablePassRateCell.self, forCellReuseIdentifier: String(describing: StatsTablePassRateCell.self))
+        register(StatsTableSubjectCell.self, forCellReuseIdentifier: String(describing: StatsTableSubjectCell.self))
+        register(StatsTableUnlockPremiumFakeCell.self, forCellReuseIdentifier: String(describing: StatsTableUnlockPremiumFakeCell.self))
         
         dataSource = self
         delegate = self

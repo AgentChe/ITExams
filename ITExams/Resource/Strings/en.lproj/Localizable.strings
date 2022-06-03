@@ -209,5 +209,7 @@
 "Stats.PassRate.25Percent" = "25%";
 "Stats.PassRate.50Percent" = "50%";
 "Stats.PassRate.100Percent" = "100%";
-"Stats.UnlockPremiumView.Text" = "Get the unlimited access to unlock all insights";
-"Stats.UnlockPremiumView.Button" = "Get Premium";
+"Stats.Subject.Title" = "Subject Progress";
+"Stats.Subject.Correct" = "Correct %i/%i";
+"Stats.UnlockPremiumFake.Text" = "Get the unlimited access\nto unlock all insights";
+"Stats.UnlockPremiumFake.Button" = "Get Premium";

@@ -64,6 +64,8 @@
 		DE3BDBE7284A3BE40091230F /* StatsTableUnlockPremiumButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3BDBE6284A3BE40091230F /* StatsTableUnlockPremiumButtonCell.swift */; };
 		DE3BDBE9284A46580091230F /* StatsTablePassRateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3BDBE8284A46580091230F /* StatsTablePassRateCell.swift */; };
 		DE3BDBEB284A52440091230F /* StatsPassRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3BDBEA284A52440091230F /* StatsPassRateView.swift */; };
+		DE3BDBED284A962A0091230F /* StatsTableSubjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3BDBEC284A962A0091230F /* StatsTableSubjectCell.swift */; };
+		DE3BDBEF284A9B4A0091230F /* StatsTableUnlockPremiumFakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3BDBEE284A9B4A0091230F /* StatsTableUnlockPremiumFakeCell.swift */; };
 		DE3FD5FF27E9D40600E76844 /* PaygateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3FD5FE27E9D40600E76844 /* PaygateViewController.swift */; };
 		DE3FD60127E9D41000E76844 /* PaygateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3FD60027E9D41000E76844 /* PaygateViewModel.swift */; };
 		DE3FD60527E9D4C200E76844 /* PaygateTrialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3FD60427E9D4C200E76844 /* PaygateTrialView.swift */; };
@@ -285,6 +287,8 @@
 		DE3BDBE6284A3BE40091230F /* StatsTableUnlockPremiumButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableUnlockPremiumButtonCell.swift; sourceTree = "<group>"; };
 		DE3BDBE8284A46580091230F /* StatsTablePassRateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTablePassRateCell.swift; sourceTree = "<group>"; };
 		DE3BDBEA284A52440091230F /* StatsPassRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsPassRateView.swift; sourceTree = "<group>"; };
+		DE3BDBEC284A962A0091230F /* StatsTableSubjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableSubjectCell.swift; sourceTree = "<group>"; };
+		DE3BDBEE284A9B4A0091230F /* StatsTableUnlockPremiumFakeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableUnlockPremiumFakeCell.swift; sourceTree = "<group>"; };
 		DE3FD5FE27E9D40600E76844 /* PaygateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaygateViewController.swift; sourceTree = "<group>"; };
 		DE3FD60027E9D41000E76844 /* PaygateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaygateViewModel.swift; sourceTree = "<group>"; };
 		DE3FD60427E9D4C200E76844 /* PaygateTrialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaygateTrialView.swift; sourceTree = "<group>"; };
@@ -1285,6 +1289,8 @@
 				DE3BDBE6284A3BE40091230F /* StatsTableUnlockPremiumButtonCell.swift */,
 				DEBCD18B284A0C9A000C08A9 /* StatsTableDailyMetricsCell.swift */,
 				DE3BDBE8284A46580091230F /* StatsTablePassRateCell.swift */,
+				DE3BDBEC284A962A0091230F /* StatsTableSubjectCell.swift */,
+				DE3BDBEE284A9B4A0091230F /* StatsTableUnlockPremiumFakeCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1643,6 +1649,8 @@
 				DE93788527C4B2600073F27C /* RxActivityIndicator.swift in Sources */,
 				DE93788727C4B2600073F27C /* Appearance.swift in Sources */,
 				DE93787A27C4B2600073F27C /* ImagePicker.swift in Sources */,
+				DE3BDBEF284A9B4A0091230F /* StatsTableUnlockPremiumFakeCell.swift in Sources */,
+				DE3BDBED284A962A0091230F /* StatsTableSubjectCell.swift in Sources */,
 				DE2B10B727DB14EE005280DB /* Course.swift in Sources */,
 				DE95A885282E633600809171 /* SettingsView.swift in Sources */,
 				DEBCD16E28494472000C08A9 /* PassRateProgress.swift in Sources */,
