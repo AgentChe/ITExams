@@ -23,8 +23,8 @@ final class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         viewModel.elements
-            .drive(onNext: { [weak self] elements in
-                self?.mainView.tableView.setup(elements: elements)
+            .drive(Binder(self) { base, elements in
+                base.mainView.tableView.setup(elements: elements)
             })
             .disposed(by: disposeBag)
         

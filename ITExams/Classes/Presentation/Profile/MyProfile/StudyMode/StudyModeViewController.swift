@@ -23,16 +23,6 @@ final class StudyModeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.currentMode
-            .drive(onNext: { [weak self] currentMode in
-                guard let self = self else {
-                    return
-                }
-                
-                self.mainView.setup(mode: currentMode)
-            })
-            .disposed(by: disposeBag)
-        
         viewModel.tryAgain = { [weak self] error -> Observable<Void> in
             guard let self = self else {
                 return .never()
@@ -41,33 +31,27 @@ final class StudyModeViewController: UIViewController {
             return self.openError()
         }
         
+        viewModel.currentMode
+            .drive(Binder(self) { base, currentMode in
+                base.mainView.setup(mode: currentMode)
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.activity
-            .drive(onNext: { [weak self] activity in
-                guard let self = self else {
-                    return
-                }
-                
-                self.activity(activity)
+            .drive(Binder(self) { base, activity in
+                base.activity(activity)
             })
             .disposed(by: disposeBag)
         
         viewModel.saved
-            .drive(onNext: { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                
-                self.dismiss()
+            .drive(Binder(self) { base, void in
+                base.dismiss()
             })
             .disposed(by: disposeBag)
         
         mainView.button.rx.tap
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                
-                self.setNewMode()
+            .bind(to: Binder(self) { base, void in
+                base.setNewMode()
             })
             .disposed(by: disposeBag)
     }

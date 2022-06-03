@@ -9,6 +9,7 @@ import RxSwift
 
 protocol StatsManagerProtocol {
     func resetStats(for courseId: Int) -> Single<Void>
+    func obtainStats(for courseId: Int) -> Single<Stats?>
 }
 
 final class StatsManager: StatsManagerProtocol {
@@ -32,5 +33,17 @@ extension StatsManager {
             .do(onSuccess: {
                 StatsMediator.shared.notifyAboutResetedStats()
             })
+    }
+    
+    func obtainStats(for courseId: Int) -> Single<Stats?> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
+            return .error(SignError.tokenNotFound)
+        }
+        
+        let request = GetStatsRequest(userToken: userToken, courseId: courseId)
+        
+        return defaultRequestWrapper
+            .callServerApi(requestBody: request)
+            .map { try GetStatsResponseMapper.map(from: $0) }
     }
 }

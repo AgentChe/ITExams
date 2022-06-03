@@ -32,22 +32,14 @@ final class DateOfExamViewController: UIViewController {
         }
         
         viewModel.currentDate
-            .drive(onNext: { [weak self] currentDate in
-                guard let self = self else {
-                    return
-                }
-                
-                self.mainView.setup(date: currentDate)
+            .drive(Binder(self) { base, currentDate in
+                base.mainView.setup(date: currentDate)
             })
             .disposed(by: disposeBag)
         
         viewModel.activity
-            .drive(onNext: { [weak self] activity in
-                guard let self = self else {
-                    return
-                }
-                
-                self.activity(activity)
+            .drive(Binder(self) { base, activity in
+                base.activity(activity)
             })
             .disposed(by: disposeBag)
         
@@ -56,23 +48,15 @@ final class DateOfExamViewController: UIViewController {
                 mainView.skipButton.rx.tap.asDriver(),
                 viewModel.saved
             )
-            .drive(onNext: { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                
-                self.dismiss()
+            .drive(Binder(self) { base, void in
+                base.dismiss()
             })
             .disposed(by: disposeBag)
         
         mainView.button.rx.tap
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                
-                let date = self.mainView.datePicker.date
-                self.viewModel.newDate.accept(date)
+            .bind(to: Binder(self) { base, void in
+                let date = base.mainView.datePicker.date
+                base.viewModel.newDate.accept(date)
             })
             .disposed(by: disposeBag)
     }

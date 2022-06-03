@@ -26,8 +26,8 @@ final class ProfileViewController: UIViewController {
         
         rx.methodInvoked(#selector(UIViewController.viewDidLayoutSubviews))
             .take(1)
-            .subscribe(onNext: { [weak self] _ in
-                self?.update(selectedTab: .stats)
+            .bind(to: Binder(self) { base, _ in
+                base.update(selectedTab: .stats)
             })
             .disposed(by: disposeBag)
         

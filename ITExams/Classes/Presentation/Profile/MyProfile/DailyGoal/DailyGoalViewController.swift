@@ -23,26 +23,6 @@ final class DailyGoalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.currentTestMinutes
-            .drive(onNext: { [weak self] testMinutes in
-                guard let self = self else {
-                    return
-                }
-                
-                self.mainView.setup(minutes: testMinutes)
-            })
-            .disposed(by: disposeBag)
-        
-        viewModel.currentTestDaysOfWeek
-            .drive(onNext: { [weak self] daysOfWeek in
-                guard let self = self else {
-                    return
-                }
-                
-                self.mainView.setup(daysOfWeek: daysOfWeek)
-            })
-            .disposed(by: disposeBag)
-        
         viewModel.tryAgain = { [weak self] error -> Observable<Void> in
             guard let self = self else {
                 return .never()
@@ -51,33 +31,33 @@ final class DailyGoalViewController: UIViewController {
             return self.openError()
         }
         
+        viewModel.currentTestMinutes
+            .drive(Binder(self) { base, testMinutes in
+                base.mainView.setup(minutes: testMinutes)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.currentTestDaysOfWeek
+            .drive(Binder(self) { base, daysOfWeek in
+                base.mainView.setup(daysOfWeek: daysOfWeek)
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.activity
-            .drive(onNext: { [weak self] activity in
-                guard let self = self else {
-                    return
-                }
-                
-                self.activity(activity)
+            .drive(Binder(self) { base, activity in
+                base.activity(activity)
             })
             .disposed(by: disposeBag)
         
         viewModel.saved
-            .drive(onNext: { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                
-                self.dismiss()
+            .drive(Binder(self) { base, void in
+                base.dismiss()
             })
             .disposed(by: disposeBag)
         
         mainView.button.rx.tap
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                
-                self.save()
+            .subscribe(Binder(self) { base, void in
+                base.save()
             })
             .disposed(by: disposeBag)
     }

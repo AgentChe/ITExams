@@ -165,6 +165,14 @@
 		DEADEAFA28351DFE0057AA44 /* StatsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEADEAF928351DFE0057AA44 /* StatsManager.swift */; };
 		DEADEAFC28351EFF0057AA44 /* StatsMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEADEAFB28351EFF0057AA44 /* StatsMediator.swift */; };
 		DEADEAFE283563510057AA44 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEADEAFD283563510057AA44 /* Profile.swift */; };
+		DEBCD16C28493CC4000C08A9 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCD16B28493CC4000C08A9 /* Stats.swift */; };
+		DEBCD16E28494472000C08A9 /* PassRateProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCD16D28494472000C08A9 /* PassRateProgress.swift */; };
+		DEBCD1702849452D000C08A9 /* SubjectProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCD16F2849452D000C08A9 /* SubjectProgress.swift */; };
+		DEBCD1732849458D000C08A9 /* GetStatsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCD1722849458D000C08A9 /* GetStatsRequest.swift */; };
+		DEBCD175284945EF000C08A9 /* GetStatsResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCD174284945EF000C08A9 /* GetStatsResponseMapper.swift */; };
+		DEBCD178284949E7000C08A9 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCD177284949E7000C08A9 /* StatsViewController.swift */; };
+		DEBCD17A284949F1000C08A9 /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCD179284949F1000C08A9 /* StatsViewModel.swift */; };
+		DEBCD17C284949FA000C08A9 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBCD17B284949F9000C08A9 /* StatsView.swift */; };
 		DEC345F02816DADD0069A060 /* PlanCurrentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */; };
 		DEC345F22816DE200069A060 /* PlanStudyScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */; };
 		DEC345F42816E1EE0069A060 /* PlanHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */; };
@@ -193,7 +201,6 @@
 		DED4725627D20B2300AEF8A6 /* OExamsTableElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4725527D20B2300AEF8A6 /* OExamsTableElement.swift */; };
 		DED4725827D20C4C00AEF8A6 /* OExamsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4725727D20C4C00AEF8A6 /* OExamsTable.swift */; };
 		DED4725A27D20F7800AEF8A6 /* OExamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4725927D20F7800AEF8A6 /* OExamsView.swift */; };
-		DEE74EAB27F32479002FE71D /* ProfileMediatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE74EAA27F32479002FE71D /* ProfileMediatorDelegate.swift */; };
 		DEE74EAD27F32486002FE71D /* ProfileMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE74EAC27F32486002FE71D /* ProfileMediator.swift */; };
 		DEE74EAF27F3275D002FE71D /* ObservableAndSingleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE74EAE27F3275D002FE71D /* ObservableAndSingleExtension.swift */; };
 		DEE74EB127F34CB6002FE71D /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE74EB027F34CB6002FE71D /* Exam.swift */; };
@@ -371,6 +378,14 @@
 		DEADEAF928351DFE0057AA44 /* StatsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsManager.swift; sourceTree = "<group>"; };
 		DEADEAFB28351EFF0057AA44 /* StatsMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsMediator.swift; sourceTree = "<group>"; };
 		DEADEAFD283563510057AA44 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		DEBCD16B28493CC4000C08A9 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		DEBCD16D28494472000C08A9 /* PassRateProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassRateProgress.swift; sourceTree = "<group>"; };
+		DEBCD16F2849452D000C08A9 /* SubjectProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectProgress.swift; sourceTree = "<group>"; };
+		DEBCD1722849458D000C08A9 /* GetStatsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStatsRequest.swift; sourceTree = "<group>"; };
+		DEBCD174284945EF000C08A9 /* GetStatsResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStatsResponseMapper.swift; sourceTree = "<group>"; };
+		DEBCD177284949E7000C08A9 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		DEBCD179284949F1000C08A9 /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
+		DEBCD17B284949F9000C08A9 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		DEC345EF2816DADD0069A060 /* PlanCurrentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCurrentView.swift; sourceTree = "<group>"; };
 		DEC345F12816DE200069A060 /* PlanStudyScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStudyScoreView.swift; sourceTree = "<group>"; };
 		DEC345F32816E1EE0069A060 /* PlanHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanHeaderView.swift; sourceTree = "<group>"; };
@@ -399,7 +414,6 @@
 		DED4725527D20B2300AEF8A6 /* OExamsTableElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OExamsTableElement.swift; sourceTree = "<group>"; };
 		DED4725727D20C4C00AEF8A6 /* OExamsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OExamsTable.swift; sourceTree = "<group>"; };
 		DED4725927D20F7800AEF8A6 /* OExamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OExamsView.swift; sourceTree = "<group>"; };
-		DEE74EAA27F32479002FE71D /* ProfileMediatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMediatorDelegate.swift; sourceTree = "<group>"; };
 		DEE74EAC27F32486002FE71D /* ProfileMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMediator.swift; sourceTree = "<group>"; };
 		DEE74EAE27F3275D002FE71D /* ObservableAndSingleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableAndSingleExtension.swift; sourceTree = "<group>"; };
 		DEE74EB027F34CB6002FE71D /* Exam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exam.swift; sourceTree = "<group>"; };
@@ -595,7 +609,6 @@
 		DE2B106327DB14ED005280DB /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				DEE74EA927F32470002FE71D /* Mediator */,
 				DE2B106427DB14ED005280DB /* Models */,
 				DE2B106627DB14ED005280DB /* Manager */,
 				DE2B106927DB14ED005280DB /* Request */,
@@ -618,6 +631,7 @@
 			isa = PBXGroup;
 			children = (
 				DE2B106727DB14ED005280DB /* ProfileManager.swift */,
+				DEE74EAC27F32486002FE71D /* ProfileMediator.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1015,6 +1029,7 @@
 		DE95A870282E2DF700809171 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				DEBCD176284949DC000C08A9 /* Stats */,
 				DE95A898282ECF9500809171 /* MyProfile */,
 				DE95A87F282E631800809171 /* Settings */,
 				DE95A871282E2E0500809171 /* Profile */,
@@ -1184,6 +1199,7 @@
 		DEADEAF728351DE20057AA44 /* Stats */ = {
 			isa = PBXGroup;
 			children = (
+				DEBCD16A28493CB7000C08A9 /* Model */,
 				DEADEAF828351DE80057AA44 /* Request */,
 				DEADEAF928351DFE0057AA44 /* StatsManager.swift */,
 				DEADEAFB28351EFF0057AA44 /* StatsMediator.swift */,
@@ -1194,9 +1210,39 @@
 		DEADEAF828351DE80057AA44 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				DEBCD17128494582000C08A9 /* GetStats */,
 				DEADEAF528351D380057AA44 /* ResetStatsRequest.swift */,
 			);
 			path = Request;
+			sourceTree = "<group>";
+		};
+		DEBCD16A28493CB7000C08A9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DEBCD16B28493CC4000C08A9 /* Stats.swift */,
+				DEBCD16D28494472000C08A9 /* PassRateProgress.swift */,
+				DEBCD16F2849452D000C08A9 /* SubjectProgress.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DEBCD17128494582000C08A9 /* GetStats */ = {
+			isa = PBXGroup;
+			children = (
+				DEBCD1722849458D000C08A9 /* GetStatsRequest.swift */,
+				DEBCD174284945EF000C08A9 /* GetStatsResponseMapper.swift */,
+			);
+			path = GetStats;
+			sourceTree = "<group>";
+		};
+		DEBCD176284949DC000C08A9 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				DEBCD177284949E7000C08A9 /* StatsViewController.swift */,
+				DEBCD179284949F1000C08A9 /* StatsViewModel.swift */,
+				DEBCD17B284949F9000C08A9 /* StatsView.swift */,
+			);
+			path = Stats;
 			sourceTree = "<group>";
 		};
 		DEC345EE2816D5F80069A060 /* Views */ = {
@@ -1292,15 +1338,6 @@
 				DED4725727D20C4C00AEF8A6 /* OExamsTable.swift */,
 			);
 			path = ExamsTable;
-			sourceTree = "<group>";
-		};
-		DEE74EA927F32470002FE71D /* Mediator */ = {
-			isa = PBXGroup;
-			children = (
-				DEE74EAA27F32479002FE71D /* ProfileMediatorDelegate.swift */,
-				DEE74EAC27F32486002FE71D /* ProfileMediator.swift */,
-			);
-			path = Mediator;
 			sourceTree = "<group>";
 		};
 		DEE74EB227F3553E002FE71D /* GetCourses */ = {
@@ -1549,6 +1586,7 @@
 				DE93787A27C4B2600073F27C /* ImagePicker.swift in Sources */,
 				DE2B10B727DB14EE005280DB /* Course.swift in Sources */,
 				DE95A885282E633600809171 /* SettingsView.swift in Sources */,
+				DEBCD16E28494472000C08A9 /* PassRateProgress.swift in Sources */,
 				DE93789F27C4BF120073F27C /* SplashView.swift in Sources */,
 				DE93790527C4C0E90073F27C /* OnboardingViewModel.swift in Sources */,
 				DE2B10DC27DB14EE005280DB /* SessionManager.swift in Sources */,
@@ -1563,6 +1601,7 @@
 				DE2B0FFA27D77546005280DB /* OQuizResultView.swift in Sources */,
 				DE2B100727D9E857005280DB /* OnboardingCombineData.swift in Sources */,
 				DE93788327C4B2600073F27C /* GradientView.swift in Sources */,
+				DEBCD178284949E7000C08A9 /* StatsViewController.swift in Sources */,
 				DE3FD61F27EADB7200E76844 /* PaygatePrice.swift in Sources */,
 				DE2B10B827DB14EE005280DB /* GetCourcesRequest.swift in Sources */,
 				DE95A8B82832789300809171 /* DateOfExamView.swift in Sources */,
@@ -1575,15 +1614,20 @@
 				DEE74EC127F41AAA002FE71D /* GetPlanResponseMapper.swift in Sources */,
 				DE95A8A7282ED3F600809171 /* MyProfilePropertyCell.swift in Sources */,
 				DE93788227C4B2600073F27C /* CircleView.swift in Sources */,
+				DEBCD175284945EF000C08A9 /* GetStatsResponseMapper.swift in Sources */,
+				DEBCD1702849452D000C08A9 /* SubjectProgress.swift in Sources */,
 				DEADEAFE283563510057AA44 /* Profile.swift in Sources */,
 				DE2B100A27D9F441005280DB /* OCreatingPlanRowView.swift in Sources */,
 				DEE74EBF27F41960002FE71D /* GetPlanRequest.swift in Sources */,
+				DEBCD17C284949FA000C08A9 /* StatsView.swift in Sources */,
 				DEC345F72816E4BD0069A060 /* PlanCurrent.swift in Sources */,
+				DEBCD1732849458D000C08A9 /* GetStatsRequest.swift in Sources */,
 				DE2B10CD27DB14EE005280DB /* PurchaseValidationObserver.swift in Sources */,
 				DE2B10C727DB14EE005280DB /* GetProfileResponseMapper.swift in Sources */,
 				DE2B100027D876A0005280DB /* OStudyModeView.swift in Sources */,
 				DE3FD60C27EA02F500E76844 /* PaygateProductButton.swift in Sources */,
 				DEE74EB827F41863002FE71D /* PlanStep.swift in Sources */,
+				DEBCD17A284949F1000C08A9 /* StatsViewModel.swift in Sources */,
 				DE95A897282E940000809171 /* SettingsAppButton.swift in Sources */,
 				DE95A8C82832893800809171 /* StudyModeView.swift in Sources */,
 				DE55A4AE27D6458000B53B46 /* OCourseView.swift in Sources */,
@@ -1592,6 +1636,7 @@
 				DE2D7F1E282D2BB000B8952B /* StepTestsTableView.swift in Sources */,
 				DE50439028227ACE00C6B1C8 /* StepCollectionLayout.swift in Sources */,
 				DED4724527CE4BF700AEF8A6 /* OMotivationView.swift in Sources */,
+				DEBCD16C28493CC4000C08A9 /* Stats.swift in Sources */,
 				DE3FD61A27EA2AAE00E76844 /* PaygateViewControllerDelegate.swift in Sources */,
 				DE2B0FFE27D798F4005280DB /* ODailyView.swift in Sources */,
 				DE1CA9A827F2FC6200C66DAD /* GetMonetizationResponseMapper.swift in Sources */,
@@ -1620,7 +1665,6 @@
 				DE1CA9AD27F3017C00C66DAD /* SplashReceiptValidationObserver.swift in Sources */,
 				DEC3460B2817D8950069A060 /* CoursesTableCourseCell.swift in Sources */,
 				DE95A87E282E5ADA00809171 /* ProfileViewCoordinator.swift in Sources */,
-				DEE74EAB27F32479002FE71D /* ProfileMediatorDelegate.swift in Sources */,
 				DEC34612281971160069A060 /* TryAgainViewController.swift in Sources */,
 				DE3FD61527EA09E400E76844 /* DefaultRequestWrapper.swift in Sources */,
 				DE95A8CF2832902600809171 /* DailyGoalView.swift in Sources */,
