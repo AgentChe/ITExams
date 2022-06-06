@@ -12,7 +12,7 @@ final class GlobalDefinitions {
     static let awsDomainUrl = "https://exams.korrekted.com"
     static let awsApiKey = "hQFvAU5TpF65gGhj"
     
-    static let comptiaDomainUrl = "exams2.quantresear.ch"
+    static let comptiaDomainUrl = "https://exams2.quantresear.ch"
     static let comptiaApiKey = "Cjw5UyCSSpL2CnjV"
     
     static let cisspDomainUrl = "https://exams.korrekted.com"
