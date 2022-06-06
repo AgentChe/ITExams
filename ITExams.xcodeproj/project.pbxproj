@@ -88,6 +88,23 @@
 		DE55A4B027D64C7700B53B46 /* ODetermingSkillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4AF27D64C7600B53B46 /* ODetermingSkillView.swift */; };
 		DE55A4B227D64CB300B53B46 /* OProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4B127D64CB300B53B46 /* OProgressView.swift */; };
 		DE55A4B427D6538800B53B46 /* OExamDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4B327D6538800B53B46 /* OExamDateView.swift */; };
+		DE6BFD9F284E021A00F5CF20 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */; };
+		DE6BFDA1284E022200F5CF20 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */; };
+		DE6BFDA5284E023400F5CF20 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDA4284E023400F5CF20 /* ReviewView.swift */; };
+		DE6BFDA8284E03C400F5CF20 /* ReviewFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDA7284E03C400F5CF20 /* ReviewFilterView.swift */; };
+		DE6BFDAA284E06FA00F5CF20 /* ReviewFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDA9284E06FA00F5CF20 /* ReviewFilterButton.swift */; };
+		DE6BFDAD284E093700F5CF20 /* ReviewTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDAC284E093700F5CF20 /* ReviewTableView.swift */; };
+		DE6BFDAF284E095500F5CF20 /* ReviewTableElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDAE284E095500F5CF20 /* ReviewTableElement.swift */; };
+		DE6BFDB2284E09DD00F5CF20 /* ReviewTableQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDB1284E09DD00F5CF20 /* ReviewTableQuestionCell.swift */; };
+		DE6BFDB4284E09E700F5CF20 /* ReviewTableSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDB3284E09E700F5CF20 /* ReviewTableSeparatorCell.swift */; };
+		DE6BFDB7284E0DFF00F5CF20 /* QuestionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDB6284E0DFF00F5CF20 /* QuestionManager.swift */; };
+		DE6BFDBA284E0E4300F5CF20 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDB9284E0E4300F5CF20 /* Question.swift */; };
+		DE6BFDBC284E0E4F00F5CF20 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDBB284E0E4F00F5CF20 /* Answer.swift */; };
+		DE6BFDC0284E0EEA00F5CF20 /* QuestionMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDBF284E0EEA00F5CF20 /* QuestionMapper.swift */; };
+		DE6BFDC2284E0F3400F5CF20 /* AnswerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDC1284E0F3400F5CF20 /* AnswerMapper.swift */; };
+		DE6BFDC5284E110800F5CF20 /* GetReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDC4284E110800F5CF20 /* GetReviewRequest.swift */; };
+		DE6BFDC7284E127600F5CF20 /* GetReviewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDC6284E127600F5CF20 /* GetReviewResponse.swift */; };
+		DE6BFDC9284E128400F5CF20 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDC8284E128400F5CF20 /* Review.swift */; };
 		DE93782D27C4AF380073F27C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE93782C27C4AF380073F27C /* Assets.xcassets */; };
 		DE93783027C4AF380073F27C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE93782E27C4AF380073F27C /* LaunchScreen.storyboard */; };
 		DE93783B27C4B0440073F27C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE93783D27C4B0440073F27C /* Localizable.strings */; };
@@ -311,6 +328,23 @@
 		DE55A4AF27D64C7600B53B46 /* ODetermingSkillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ODetermingSkillView.swift; sourceTree = "<group>"; };
 		DE55A4B127D64CB300B53B46 /* OProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OProgressView.swift; sourceTree = "<group>"; };
 		DE55A4B327D6538800B53B46 /* OExamDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OExamDateView.swift; sourceTree = "<group>"; };
+		DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
+		DE6BFDA4284E023400F5CF20 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		DE6BFDA7284E03C400F5CF20 /* ReviewFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewFilterView.swift; sourceTree = "<group>"; };
+		DE6BFDA9284E06FA00F5CF20 /* ReviewFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewFilterButton.swift; sourceTree = "<group>"; };
+		DE6BFDAC284E093700F5CF20 /* ReviewTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableView.swift; sourceTree = "<group>"; };
+		DE6BFDAE284E095500F5CF20 /* ReviewTableElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableElement.swift; sourceTree = "<group>"; };
+		DE6BFDB1284E09DD00F5CF20 /* ReviewTableQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableQuestionCell.swift; sourceTree = "<group>"; };
+		DE6BFDB3284E09E700F5CF20 /* ReviewTableSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableSeparatorCell.swift; sourceTree = "<group>"; };
+		DE6BFDB6284E0DFF00F5CF20 /* QuestionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionManager.swift; sourceTree = "<group>"; };
+		DE6BFDB9284E0E4300F5CF20 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		DE6BFDBB284E0E4F00F5CF20 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		DE6BFDBF284E0EEA00F5CF20 /* QuestionMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionMapper.swift; sourceTree = "<group>"; };
+		DE6BFDC1284E0F3400F5CF20 /* AnswerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerMapper.swift; sourceTree = "<group>"; };
+		DE6BFDC4284E110800F5CF20 /* GetReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReviewRequest.swift; sourceTree = "<group>"; };
+		DE6BFDC6284E127600F5CF20 /* GetReviewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReviewResponse.swift; sourceTree = "<group>"; };
+		DE6BFDC8284E128400F5CF20 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		DE93782027C4AF350073F27C /* ITExams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITExams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE93782C27C4AF380073F27C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE93782F27C4AF380073F27C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -585,6 +619,7 @@
 		DE2B101B27DB14ED005280DB /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				DE6BFDB5284E0DF200F5CF20 /* Question */,
 				DEADEAF728351DE20057AA44 /* Stats */,
 				DEE74EB327F41526002FE71D /* Plan */,
 				DE1CA99F27F2FC1100C66DAD /* Paygate */,
@@ -804,6 +839,93 @@
 				DE504392282291F400C6B1C8 /* StepProgressView.swift */,
 			);
 			path = Atoms;
+			sourceTree = "<group>";
+		};
+		DE6BFD9D284E020900F5CF20 /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFDAB284E08F700F5CF20 /* TableView */,
+				DE6BFDA6284E02FD00F5CF20 /* Views */,
+				DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */,
+				DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */,
+				DE6BFDA4284E023400F5CF20 /* ReviewView.swift */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
+		DE6BFDA6284E02FD00F5CF20 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFDA7284E03C400F5CF20 /* ReviewFilterView.swift */,
+				DE6BFDA9284E06FA00F5CF20 /* ReviewFilterButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DE6BFDAB284E08F700F5CF20 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFDB0284E09D000F5CF20 /* Cells */,
+				DE6BFDAC284E093700F5CF20 /* ReviewTableView.swift */,
+				DE6BFDAE284E095500F5CF20 /* ReviewTableElement.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		DE6BFDB0284E09D000F5CF20 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFDB1284E09DD00F5CF20 /* ReviewTableQuestionCell.swift */,
+				DE6BFDB3284E09E700F5CF20 /* ReviewTableSeparatorCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		DE6BFDB5284E0DF200F5CF20 /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFDBD284E0EBD00F5CF20 /* Request */,
+				DE6BFDB8284E0E1A00F5CF20 /* Model */,
+				DE6BFDB6284E0DFF00F5CF20 /* QuestionManager.swift */,
+			);
+			path = Question;
+			sourceTree = "<group>";
+		};
+		DE6BFDB8284E0E1A00F5CF20 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFDB9284E0E4300F5CF20 /* Question.swift */,
+				DE6BFDBB284E0E4F00F5CF20 /* Answer.swift */,
+				DE6BFDC8284E128400F5CF20 /* Review.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DE6BFDBD284E0EBD00F5CF20 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFDC3284E10FC00F5CF20 /* GetReview */,
+				DE6BFDBE284E0ECF00F5CF20 /* GetTest */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		DE6BFDBE284E0ECF00F5CF20 /* GetTest */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFDBF284E0EEA00F5CF20 /* QuestionMapper.swift */,
+				DE6BFDC1284E0F3400F5CF20 /* AnswerMapper.swift */,
+			);
+			path = GetTest;
+			sourceTree = "<group>";
+		};
+		DE6BFDC3284E10FC00F5CF20 /* GetReview */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFDC4284E110800F5CF20 /* GetReviewRequest.swift */,
+				DE6BFDC6284E127600F5CF20 /* GetReviewResponse.swift */,
+			);
+			path = GetReview;
 			sourceTree = "<group>";
 		};
 		DE93781727C4AF350073F27C = {
@@ -1045,6 +1167,7 @@
 		DE95A870282E2DF700809171 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				DE6BFD9D284E020900F5CF20 /* Review */,
 				DEBCD176284949DC000C08A9 /* Stats */,
 				DE95A898282ECF9500809171 /* MyProfile */,
 				DE95A87F282E631800809171 /* Settings */,
@@ -1590,10 +1713,12 @@
 			files = (
 				DE50438C2822775300C6B1C8 /* StepCollectionView.swift in Sources */,
 				DE1CA98C27F2ED4600C66DAD /* MainViewController.swift in Sources */,
+				DE6BFD9F284E021A00F5CF20 /* ReviewViewController.swift in Sources */,
 				DED4725627D20B2300AEF8A6 /* OExamsTableElement.swift in Sources */,
 				DE504393282291F400C6B1C8 /* StepProgressView.swift in Sources */,
 				DE95A8AC283219D000809171 /* StepCollectionFinalCell.swift in Sources */,
 				DE95A8CD2832901E00809171 /* DailyGoalViewModel.swift in Sources */,
+				DE6BFDBC284E0E4F00F5CF20 /* Answer.swift in Sources */,
 				DE2B10C227DB14EE005280DB /* TestMode.swift in Sources */,
 				DE93789B27C4BF070073F27C /* SplashViewController.swift in Sources */,
 				DE93787527C4B2600073F27C /* ScreenSize.swift in Sources */,
@@ -1664,13 +1789,16 @@
 				DE3FD60A27E9FFEE00E76844 /* PaygatePlansCell.swift in Sources */,
 				DEE74EB127F34CB6002FE71D /* Exam.swift in Sources */,
 				DED4725827D20C4C00AEF8A6 /* OExamsTable.swift in Sources */,
+				DE6BFDA8284E03C400F5CF20 /* ReviewFilterView.swift in Sources */,
 				DE95A8A2282ED2D200809171 /* MyProfileTableView.swift in Sources */,
+				DE6BFDAF284E095500F5CF20 /* ReviewTableElement.swift in Sources */,
 				DEC3460F28196AE90069A060 /* Spinner.swift in Sources */,
 				DE2B0FFA27D77546005280DB /* OQuizResultView.swift in Sources */,
 				DE2B100727D9E857005280DB /* OnboardingCombineData.swift in Sources */,
 				DE93788327C4B2600073F27C /* GradientView.swift in Sources */,
 				DEBCD178284949E7000C08A9 /* StatsViewController.swift in Sources */,
 				DE3FD61F27EADB7200E76844 /* PaygatePrice.swift in Sources */,
+				DE6BFDA5284E023400F5CF20 /* ReviewView.swift in Sources */,
 				DE2B10B827DB14EE005280DB /* GetCourcesRequest.swift in Sources */,
 				DE95A8B82832789300809171 /* DateOfExamView.swift in Sources */,
 				DED4725027D1DE6700AEF8A6 /* OQuizSolutionView.swift in Sources */,
@@ -1679,12 +1807,15 @@
 				DE95A873282E2E1900809171 /* ProfileViewController.swift in Sources */,
 				DE1CA99827F2F7C600C66DAD /* BranchManager.swift in Sources */,
 				DEBCD18E284A1190000C08A9 /* StatsDayMetricView.swift in Sources */,
+				DE6BFDB7284E0DFF00F5CF20 /* QuestionManager.swift in Sources */,
 				DE2D7F25282D367000B8952B /* StepTestProgressView.swift in Sources */,
 				DEE74EC127F41AAA002FE71D /* GetPlanResponseMapper.swift in Sources */,
 				DE95A8A7282ED3F600809171 /* MyProfilePropertyCell.swift in Sources */,
 				DE93788227C4B2600073F27C /* CircleView.swift in Sources */,
 				DEBCD175284945EF000C08A9 /* GetStatsResponseMapper.swift in Sources */,
+				DE6BFDAD284E093700F5CF20 /* ReviewTableView.swift in Sources */,
 				DEBCD1702849452D000C08A9 /* SubjectProgress.swift in Sources */,
+				DE6BFDB4284E09E700F5CF20 /* ReviewTableSeparatorCell.swift in Sources */,
 				DEADEAFE283563510057AA44 /* Profile.swift in Sources */,
 				DE2B100A27D9F441005280DB /* OCreatingPlanRowView.swift in Sources */,
 				DEE74EBF27F41960002FE71D /* GetPlanRequest.swift in Sources */,
@@ -1712,7 +1843,9 @@
 				DE95A87A282E307000809171 /* ProfileTabsView.swift in Sources */,
 				DEC346042817D5BF0069A060 /* CoursesTableView.swift in Sources */,
 				DE3FD5FF27E9D40600E76844 /* PaygateViewController.swift in Sources */,
+				DE6BFDAA284E06FA00F5CF20 /* ReviewFilterButton.swift in Sources */,
 				DEADEAF628351D380057AA44 /* ResetStatsRequest.swift in Sources */,
+				DE6BFDB2284E09DD00F5CF20 /* ReviewTableQuestionCell.swift in Sources */,
 				DE2D7F22282D319B00B8952B /* StepTestsTableCell.swift in Sources */,
 				DE95A8A4282ED2E000809171 /* MyProfileTableElement.swift in Sources */,
 				DEE74EC727F41DE3002FE71D /* PlanViewController.swift in Sources */,
@@ -1745,15 +1878,18 @@
 				DE3FD61027EA097E00E76844 /* ProductPrice.swift in Sources */,
 				DE2B10C827DB14EE005280DB /* GetProfileRequest.swift in Sources */,
 				DE55A4B227D64CB300B53B46 /* OProgressView.swift in Sources */,
+				DE6BFDA1284E022200F5CF20 /* ReviewViewModel.swift in Sources */,
 				DE2B101627DB139D005280DB /* RestAPITransport.swift in Sources */,
 				DE93786D27C4B2600073F27C /* UITapGestureRecognizerExtension.swift in Sources */,
 				DE93786E27C4B2600073F27C /* UIDeviceExtension.swift in Sources */,
 				DED4724E27D1DA6B00AEF8A6 /* OWhyView.swift in Sources */,
+				DE6BFDC5284E110800F5CF20 /* GetReviewRequest.swift in Sources */,
 				DE95A8D3283299E100809171 /* DayOfWeek.swift in Sources */,
 				DE55A4B027D64C7700B53B46 /* ODetermingSkillView.swift in Sources */,
 				DE93788127C4B2600073F27C /* GradientButton.swift in Sources */,
 				DE95A89A282ECFA200809171 /* MyProfileViewController.swift in Sources */,
 				DE93788627C4B2600073F27C /* UIViewRxExtension.swift in Sources */,
+				DE6BFDC7284E127600F5CF20 /* GetReviewResponse.swift in Sources */,
 				DE93787927C4B2600073F27C /* Weak.swift in Sources */,
 				DE93787027C4B2600073F27C /* StringExtension.swift in Sources */,
 				DEC345F22816DE200069A060 /* PlanStudyScoreView.swift in Sources */,
@@ -1761,17 +1897,21 @@
 				DEC345F42816E1EE0069A060 /* PlanHeaderView.swift in Sources */,
 				DE3FD61727EA09F300E76844 /* XORRequestWrapper.swift in Sources */,
 				DE3FD60127E9D41000E76844 /* PaygateViewModel.swift in Sources */,
+				DE6BFDC2284E0F3400F5CF20 /* AnswerMapper.swift in Sources */,
 				DE95A8A9282ED40500809171 /* MyProfileResetProgressCell.swift in Sources */,
 				DE95A87C282E310200809171 /* ProfileTabView.swift in Sources */,
+				DE6BFDBA284E0E4300F5CF20 /* Question.swift in Sources */,
 				DE2B10CF27DB14EE005280DB /* IAPProduct.swift in Sources */,
 				DE2B10C627DB14EE005280DB /* SyncTokensRequest.swift in Sources */,
 				DE93787F27C4B2600073F27C /* PaddingLabel.swift in Sources */,
 				DE93787C27C4B2600073F27C /* NavigationController.swift in Sources */,
 				DE9378D827C4C0E90073F27C /* OnboardingViewController.swift in Sources */,
+				DE6BFDC9284E128400F5CF20 /* Review.swift in Sources */,
 				DED4724327CE406600AEF8A6 /* OStartView.swift in Sources */,
 				DEC346062817D5CD0069A060 /* CoursesTableElement.swift in Sources */,
 				DE93786B27C4B2600073F27C /* Collection+Extension.swift in Sources */,
 				DE93787127C4B2600073F27C /* GlobalDefinitions.swift in Sources */,
+				DE6BFDC0284E0EEA00F5CF20 /* QuestionMapper.swift in Sources */,
 				DE95A875282E2E2F00809171 /* ProfileViewModel.swift in Sources */,
 				DE93786A27C4B2600073F27C /* UIColorExtension.swift in Sources */,
 				DE95A88E282E81F000809171 /* SettingsPremiumCell.swift in Sources */,

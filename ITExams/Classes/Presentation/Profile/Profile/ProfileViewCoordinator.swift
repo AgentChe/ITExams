@@ -11,7 +11,7 @@ final class ProfileViewCoordinator {
     weak var parentVC: ProfileViewController?
     
     lazy var statsVC = StatsViewController.make()
-    lazy var reviewVC = UIViewController()
+    lazy var reviewVC = ReviewViewController.make()
     lazy var settingsVC = SettingsViewController.make()
     
     private var previousVC: UIViewController?

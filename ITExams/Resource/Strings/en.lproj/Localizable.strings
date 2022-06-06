@@ -213,3 +213,9 @@
 "Stats.Subject.Correct" = "Correct %i/%i";
 "Stats.UnlockPremiumFake.Text" = "Get the unlimited access\nto unlock all insights";
 "Stats.UnlockPremiumFake.Button" = "Get Premium";
+
+// MARK: Review
+"Review.All" = "All";
+"Review.Incorrect" = "Incorrect";
+"Review.Correct" = "Correct";
+"Review.Saved" = "Saved";
