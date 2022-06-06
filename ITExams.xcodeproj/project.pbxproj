@@ -105,6 +105,8 @@
 		DE6BFDC5284E110800F5CF20 /* GetReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDC4284E110800F5CF20 /* GetReviewRequest.swift */; };
 		DE6BFDC7284E127600F5CF20 /* GetReviewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDC6284E127600F5CF20 /* GetReviewResponse.swift */; };
 		DE6BFDC9284E128400F5CF20 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDC8284E128400F5CF20 /* Review.swift */; };
+		DE6BFDD2284E3CDB00F5CF20 /* ReviewDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDD1284E3CDB00F5CF20 /* ReviewDataLoader.swift */; };
+		DE6BFDD5284E460E00F5CF20 /* PaginatedDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDD4284E460E00F5CF20 /* PaginatedDataLoader.swift */; };
 		DE93782D27C4AF380073F27C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE93782C27C4AF380073F27C /* Assets.xcassets */; };
 		DE93783027C4AF380073F27C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE93782E27C4AF380073F27C /* LaunchScreen.storyboard */; };
 		DE93783B27C4B0440073F27C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE93783D27C4B0440073F27C /* Localizable.strings */; };
@@ -345,6 +347,8 @@
 		DE6BFDC4284E110800F5CF20 /* GetReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReviewRequest.swift; sourceTree = "<group>"; };
 		DE6BFDC6284E127600F5CF20 /* GetReviewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReviewResponse.swift; sourceTree = "<group>"; };
 		DE6BFDC8284E128400F5CF20 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		DE6BFDD1284E3CDB00F5CF20 /* ReviewDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDataLoader.swift; sourceTree = "<group>"; };
+		DE6BFDD4284E460E00F5CF20 /* PaginatedDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedDataLoader.swift; sourceTree = "<group>"; };
 		DE93782027C4AF350073F27C /* ITExams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITExams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE93782C27C4AF380073F27C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE93782F27C4AF380073F27C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -844,7 +848,7 @@
 		DE6BFD9D284E020900F5CF20 /* Review */ = {
 			isa = PBXGroup;
 			children = (
-				DE6BFDAB284E08F700F5CF20 /* TableView */,
+				DE6BFDD3284E422600F5CF20 /* Utils */,
 				DE6BFDA6284E02FD00F5CF20 /* Views */,
 				DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */,
 				DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */,
@@ -856,8 +860,8 @@
 		DE6BFDA6284E02FD00F5CF20 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DE6BFDA7284E03C400F5CF20 /* ReviewFilterView.swift */,
-				DE6BFDA9284E06FA00F5CF20 /* ReviewFilterButton.swift */,
+				DE6BFDCC284E2CCF00F5CF20 /* Filter */,
+				DE6BFDAB284E08F700F5CF20 /* TableView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -926,6 +930,23 @@
 				DE6BFDC6284E127600F5CF20 /* GetReviewResponse.swift */,
 			);
 			path = GetReview;
+			sourceTree = "<group>";
+		};
+		DE6BFDCC284E2CCF00F5CF20 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFDA9284E06FA00F5CF20 /* ReviewFilterButton.swift */,
+				DE6BFDA7284E03C400F5CF20 /* ReviewFilterView.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		DE6BFDD3284E422600F5CF20 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFDD1284E3CDB00F5CF20 /* ReviewDataLoader.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		DE93781727C4AF350073F27C = {
@@ -1048,6 +1069,7 @@
 			children = (
 				DE93785427C4B2600073F27C /* ImagePicker.swift */,
 				DE93785527C4B2600073F27C /* Toast.swift */,
+				DE6BFDD4284E460E00F5CF20 /* PaginatedDataLoader.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1823,6 +1845,7 @@
 				DEC345F72816E4BD0069A060 /* PlanCurrent.swift in Sources */,
 				DEBCD1732849458D000C08A9 /* GetStatsRequest.swift in Sources */,
 				DE2B10CD27DB14EE005280DB /* PurchaseValidationObserver.swift in Sources */,
+				DE6BFDD2284E3CDB00F5CF20 /* ReviewDataLoader.swift in Sources */,
 				DE2B10C727DB14EE005280DB /* GetProfileResponseMapper.swift in Sources */,
 				DE2B100027D876A0005280DB /* OStudyModeView.swift in Sources */,
 				DE3FD60C27EA02F500E76844 /* PaygateProductButton.swift in Sources */,
@@ -1880,6 +1903,7 @@
 				DE55A4B227D64CB300B53B46 /* OProgressView.swift in Sources */,
 				DE6BFDA1284E022200F5CF20 /* ReviewViewModel.swift in Sources */,
 				DE2B101627DB139D005280DB /* RestAPITransport.swift in Sources */,
+				DE6BFDD5284E460E00F5CF20 /* PaginatedDataLoader.swift in Sources */,
 				DE93786D27C4B2600073F27C /* UITapGestureRecognizerExtension.swift in Sources */,
 				DE93786E27C4B2600073F27C /* UIDeviceExtension.swift in Sources */,
 				DED4724E27D1DA6B00AEF8A6 /* OWhyView.swift in Sources */,

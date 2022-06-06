@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol ReviewTableViewDelegate: AnyObject {
+    func reviewTableDidReachedBottom()
+}
+
 final class ReviewTableView: UITableView {
+    weak var mainDelegate: ReviewTableViewDelegate?
+    
     private lazy var elements = [ReviewTableElement]()
     
     override init(frame: CGRect, style: UITableView.Style) {
@@ -56,6 +62,12 @@ extension ReviewTableView: UITableViewDelegate {
             return UITableView.automaticDimension
         case .separator:
             return 1.scale
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if (elements.count - 1) == indexPath.row {
+            mainDelegate?.reviewTableDidReachedBottom()
         }
     }
 }

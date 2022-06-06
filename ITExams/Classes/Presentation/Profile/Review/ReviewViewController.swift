@@ -28,7 +28,15 @@ final class ReviewViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        viewModel.activity
+            .drive(Binder(self) { base, activity in
+                base.activity(activity)
+            })
+            .disposed(by: disposeBag)
+        
         addFilterTappedActions()
+        
+        mainView.tableView.mainDelegate = self
     }
 }
 
@@ -36,6 +44,13 @@ final class ReviewViewController: UIViewController {
 extension ReviewViewController {
     static func make() -> ReviewViewController {
         ReviewViewController()
+    }
+}
+
+// MARK: ReviewTableViewDelegate
+extension ReviewViewController: ReviewTableViewDelegate {
+    func reviewTableDidReachedBottom() {
+        viewModel.nextPage.accept(Void())
     }
 }
 
@@ -49,9 +64,31 @@ private extension ReviewViewController {
                 mainView.filterView.correctButton.rx.tap.map { ReviewFilter.correct },
                 mainView.filterView.savedButton.rx.tap.map { ReviewFilter.saved }
             )
+            .startWith(.all)
             .bind(to: Binder(self) { base, filter in
                 base.mainView.filterView.filter = filter
+                base.viewModel.filter.accept(filter)
+                base.mainView.tableView.setup(elements: [])
             })
             .disposed(by: disposeBag)
+    }
+    
+    func activity(_ activity: Bool) {
+        if activity {
+            let footerView = UIView()
+            footerView.frame.size = CGSize(width: 335.scale, height: 50.scale)
+            footerView.backgroundColor = UIColor.clear
+            
+            let preloader = Spinner(size: CGSize(width: 24.scale, height: 24.scale))
+            preloader.frame.origin = CGPoint(x: footerView.frame.width / 2 - preloader.intrinsicContentSize.width / 2,
+                                             y: footerView.frame.height / 2 - preloader.intrinsicContentSize.height / 2)
+            footerView.addSubview(preloader)
+            
+            mainView.tableView.tableFooterView = footerView
+            
+            preloader.startAnimating()
+        } else {
+            mainView.tableView.tableFooterView = nil
+        }
     }
 }

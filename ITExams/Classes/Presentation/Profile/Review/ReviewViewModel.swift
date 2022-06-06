@@ -9,26 +9,35 @@ import RxSwift
 import RxCocoa
 
 final class ReviewViewModel {
-    lazy var elements = makeElements()
+    lazy var filter = PublishRelay<ReviewFilter>()
+    lazy var nextPage = PublishRelay<Void>()
     
+    lazy var elements = makeElements()
+    lazy var activity = RxActivityIndicator()
+    
+    private lazy var currentFilter = makeCurrentFilter()
     private lazy var currentCourse = makeCurrentCourse()
     
     private lazy var profileManager = ProfileManager()
     private lazy var questionManager = QuestionManager()
+    
+    private lazy var paginationLoader = ReviewDataLoader(nextPage: nextPage.asObservable())
 }
 
 // MARK: Private
 private extension ReviewViewModel {
     func makeElements() -> Driver<[ReviewTableElement]> {
-        currentCourse
-            .flatMapLatest { [weak self] course -> Driver<[Review]> in
+        // TODO: добавить триггер прохождения теста 
+        Driver.combineLatest(currentCourse, currentFilter)
+            .flatMapLatest { [weak self] args -> Driver<[Review]> in
                 guard let self = self else {
                     return .never()
                 }
                 
-                return self.questionManager
-                    .obtainReview(for: course.id, mode: 1, offset: 0)
-                    .asDriver(onErrorJustReturn: [])
+                let (course, filter) = args
+                
+                return self.makeLoader(courseId: course.id, filter: filter)
+                    .scan([]) { $0 + $1 }
             }
             .map { reviews -> [ReviewTableElement] in
                 var result = [ReviewTableElement]()
@@ -45,6 +54,34 @@ private extension ReviewViewModel {
                 
                 return result
             }
+    }
+    
+    func makeLoader(courseId: Int, filter: Int) -> Driver<[Review]> {
+        paginationLoader.load { [weak self] page -> Observable<Page<Review>> in
+            guard let self = self else {
+                return .empty()
+            }
+
+            return self.questionManager
+                .obtainReview(for: courseId, mode: filter, offset: page * 20)
+                .trackActivity(self.activity)
+                .map { Page(page: page, data: $0) }
+                .asObservable()
+        }
+    }
+    
+    func makeCurrentFilter() -> Driver<Int> {
+        filter
+            .map { filter -> Int in
+                switch filter {
+                case .all: return 0
+                case .incorrect: return 1
+                case .correct: return 2
+                case .saved: return 3
+                }
+            }
+            .distinctUntilChanged()
+            .asDriver(onErrorDriveWith: .never())
     }
     
     func makeCurrentCourse() -> Driver<Course> {
