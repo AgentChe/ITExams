@@ -23,17 +23,18 @@ final class GetStatsResponseMapper {
         
         guard
             let main = data["main"] as? [String: Any],
-            let questionsTaken = main["questions_taken"] as? Int,
-            let answeredQuestionsCount = main["answered_questions"] as? Int,
-            let correctAnswersCount = main["correct_answers_num"] as? Int,
-            let correntAnswersPercent = main["correct_answers"] as? Int,
             let totalQuestions = main["total_questions"] as? Int,
-            let streak = main["streak"] as? Int,
-            let longestStreak = main["longest_streak"] as? Int,
             let week = main["calendar"] as? [Bool]
         else {
             return nil
         }
+        
+        let questionsTaken = main["questions_taken"] as? Int ?? 0
+        let answeredQuestionsCount = main["answered_questions"] as? Int ?? 0
+        let correctAnswersCount = main["correct_answers_num"] as? Int ?? 0
+        let correntAnswersPercent = main["correct_answers"] as? Int ?? 0
+        let streak = main["streak"] as? Int ?? 0
+        let longestStreak = main["longest_streak"] as? Int ?? 0
         
         let passRateProgressArray = main["pass_rate_progress"] as? [[String: Any]] ?? []
         let passRateProgress = passRateProgressArray.compactMap { json -> PassRateProgress? in
