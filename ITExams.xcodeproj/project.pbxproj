@@ -107,6 +107,7 @@
 		DE6BFDC9284E128400F5CF20 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDC8284E128400F5CF20 /* Review.swift */; };
 		DE6BFDD2284E3CDB00F5CF20 /* ReviewDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDD1284E3CDB00F5CF20 /* ReviewDataLoader.swift */; };
 		DE6BFDD5284E460E00F5CF20 /* PaginatedDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDD4284E460E00F5CF20 /* PaginatedDataLoader.swift */; };
+		DE6BFDD9284E579400F5CF20 /* ReviewEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDD8284E579400F5CF20 /* ReviewEmptyView.swift */; };
 		DE93782D27C4AF380073F27C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE93782C27C4AF380073F27C /* Assets.xcassets */; };
 		DE93783027C4AF380073F27C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE93782E27C4AF380073F27C /* LaunchScreen.storyboard */; };
 		DE93783B27C4B0440073F27C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE93783D27C4B0440073F27C /* Localizable.strings */; };
@@ -349,6 +350,7 @@
 		DE6BFDC8284E128400F5CF20 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		DE6BFDD1284E3CDB00F5CF20 /* ReviewDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDataLoader.swift; sourceTree = "<group>"; };
 		DE6BFDD4284E460E00F5CF20 /* PaginatedDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedDataLoader.swift; sourceTree = "<group>"; };
+		DE6BFDD8284E579400F5CF20 /* ReviewEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewEmptyView.swift; sourceTree = "<group>"; };
 		DE93782027C4AF350073F27C /* ITExams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITExams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE93782C27C4AF380073F27C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE93782F27C4AF380073F27C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -862,6 +864,7 @@
 			children = (
 				DE6BFDCC284E2CCF00F5CF20 /* Filter */,
 				DE6BFDAB284E08F700F5CF20 /* TableView */,
+				DE6BFDD8284E579400F5CF20 /* ReviewEmptyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1959,6 +1962,7 @@
 				DED4725427D2091600AEF8A6 /* OExamsTableCell.swift in Sources */,
 				DE95A895282E920400809171 /* SettingsTitleCell.swift in Sources */,
 				DE3BDBE9284A46580091230F /* StatsTablePassRateCell.swift in Sources */,
+				DE6BFDD9284E579400F5CF20 /* ReviewEmptyView.swift in Sources */,
 				DEC34616281971E50069A060 /* ObservableRetrySingle.swift in Sources */,
 				DEBCD1852849F1C5000C08A9 /* StatsTableMainCell.swift in Sources */,
 			);

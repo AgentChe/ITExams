@@ -25,6 +25,7 @@ final class ReviewViewController: UIViewController {
         viewModel.elements
             .drive(Binder(self) { base, elements in
                 base.mainView.tableView.setup(elements: elements)
+                base.isEmpty(elements.isEmpty)
             })
             .disposed(by: disposeBag)
         
@@ -34,7 +35,14 @@ final class ReviewViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        mainView.emptyView.button.rx.tap
+            .bind(to: Binder(self) { base, void in
+                // TODO: открывать тест quick
+            })
+            .disposed(by: disposeBag)
+        
         addFilterTappedActions()
+        isEmpty(false)
         
         mainView.tableView.mainDelegate = self
     }
@@ -65,6 +73,7 @@ private extension ReviewViewController {
                 mainView.filterView.savedButton.rx.tap.map { ReviewFilter.saved }
             )
             .startWith(.all)
+            .distinctUntilChanged()
             .bind(to: Binder(self) { base, filter in
                 base.mainView.filterView.filter = filter
                 base.viewModel.filter.accept(filter)
@@ -90,5 +99,10 @@ private extension ReviewViewController {
         } else {
             mainView.tableView.tableFooterView = nil
         }
+    }
+    
+    func isEmpty(_ isEmpty: Bool) {
+        mainView.tableView.isHidden = isEmpty
+        mainView.emptyView.isHidden = !isEmpty
     }
 }

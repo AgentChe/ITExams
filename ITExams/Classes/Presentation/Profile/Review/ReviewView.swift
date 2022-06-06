@@ -10,6 +10,7 @@ import UIKit
 final class ReviewView: UIView {
     lazy var filterView = makeFilterView()
     lazy var tableView = makeTableView()
+    lazy var emptyView = makeEmptyView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,6 +47,13 @@ private extension ReviewView {
             tableView.topAnchor.constraint(equalTo: filterView.bottomAnchor, constant: 24.scale),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12.scale)
         ])
+        
+        NSLayoutConstraint.activate([
+            emptyView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            emptyView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            emptyView.topAnchor.constraint(equalTo: filterView.bottomAnchor, constant: 44.scale),
+            emptyView.heightAnchor.constraint(equalToConstant: 281.scale)
+        ])
     }
 }
 
@@ -70,6 +78,14 @@ private extension ReviewView {
         view.backgroundColor = Appearance.whiteColor
         view.layer.cornerRadius = 12.scale
         view.layer.masksToBounds = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeEmptyView() -> ReviewEmptyView {
+        let view = ReviewEmptyView()
+        view.backgroundColor = UIColor.clear
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
