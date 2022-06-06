@@ -9,6 +9,7 @@ import UIKit
 
 protocol ReviewTableViewDelegate: AnyObject {
     func reviewTableDidReachedBottom()
+    func reviewTableDidTapped(element: ReviewTableQuestion)
 }
 
 final class ReviewTableView: UITableView {
@@ -69,6 +70,14 @@ extension ReviewTableView: UITableViewDelegate {
         if (elements.count - 1) == indexPath.row {
             mainDelegate?.reviewTableDidReachedBottom()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard case let .question(element) = elements[indexPath.row] else {
+            return
+        }
+        
+        mainDelegate?.reviewTableDidTapped(element: element)
     }
 }
 

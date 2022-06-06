@@ -60,6 +60,10 @@ extension ReviewViewController: ReviewTableViewDelegate {
     func reviewTableDidReachedBottom() {
         viewModel.nextPage.accept(Void())
     }
+    
+    func reviewTableDidTapped(element: ReviewTableQuestion) {
+        //TODO: открыть вопрос для просмотра
+    }
 }
 
 // MARK: Private
