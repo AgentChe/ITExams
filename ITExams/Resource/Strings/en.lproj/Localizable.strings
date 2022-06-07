@@ -16,6 +16,12 @@
 "ImagePicker.CameraRoll" = "Camera roll";
 "ImagePicker.PhotoLibrary" = "Photo library";
 
+// MARK: Splash
+"Splash.Preloader1" = "Checking your account...";
+"Splash.Preloader2" = "Syncing the question bank...";
+"Splash.Preloader3" = "Setting up the onboarding...";
+"Splash.Preloader4" = "Setting up your account...";
+
 // MARK: Day of week
 "DayOfWeek.Short.Su" = "Su";
 "DayOfWeek.Short.Mn" = "Mn";

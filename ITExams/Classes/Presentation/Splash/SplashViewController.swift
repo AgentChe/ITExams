@@ -18,6 +18,7 @@ final class SplashViewController: UIViewController {
     private lazy var disposeBag = DisposeBag()
     
     private lazy var validationObserver = SplashReceiptValidationObserver()
+    private lazy var prepareOnboarding = SplashPrepareOnboarding(vc: self)
     
     override func loadView() {
         view = mainView
@@ -26,12 +27,15 @@ final class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        activity(state: .sdkInitialize)
+        
         viewModel.step()
             .drive(onNext: { [weak self] step in
                 guard let self = self else {
                     return
                 }
                 
+                self.activity(state: step == .onboarding ? .prepareOnboarding : .none)
                 self.goNext(at: step)
             })
             .disposed(by: disposeBag)
@@ -41,6 +45,7 @@ final class SplashViewController: UIViewController {
                 return
             }
             
+            self.activity(state: .library)
             self.viewModel.validationComplete.accept(Void())
         }
         
@@ -73,7 +78,20 @@ private extension SplashViewController {
     func goNext(at step: SplashViewModel.Step) {
         switch step {
         case .onboarding:
-            UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = OnboardingViewController.make()
+            prepareOnboarding.prepare { [weak self] progress in
+                guard let self = self else {
+                    return
+                }
+                
+                switch progress {
+                case .error:
+                    self.activity(state: .none)
+                case .downloading:
+                    self.activity(state: .prepareOnboarding)
+                case .complete:
+                    UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = OnboardingViewController.make()
+                }
+            }
         case .main:
             UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = MainViewController.make()
         case .paygate:
@@ -81,6 +99,17 @@ private extension SplashViewController {
             vc.delegate = self
             present(vc, animated: true)
         }
+    }
+    
+    func activity(state: SplashActivity) {
+        state == .none ? mainView.preloader.stopAnimating() : mainView.preloader.startAnimating()
+        
+        let attrs = TextAttributes()
+            .textColor(Appearance.greyColor)
+            .font(Fonts.Inter.regular(size: 17.scale))
+            .lineHeight(23.8.scale)
+            .textAlignment(.center)
+        mainView.preloaderLabel.attributedText = state.text.attributed(with: attrs)
     }
     
     func openError() -> Observable<Void> {

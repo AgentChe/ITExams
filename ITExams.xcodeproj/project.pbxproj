@@ -108,6 +108,11 @@
 		DE6BFDD2284E3CDB00F5CF20 /* ReviewDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDD1284E3CDB00F5CF20 /* ReviewDataLoader.swift */; };
 		DE6BFDD5284E460E00F5CF20 /* PaginatedDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDD4284E460E00F5CF20 /* PaginatedDataLoader.swift */; };
 		DE6BFDD9284E579400F5CF20 /* ReviewEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDD8284E579400F5CF20 /* ReviewEmptyView.swift */; };
+		DE6BFDDB284E897500F5CF20 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDDA284E897500F5CF20 /* Test.swift */; };
+		DE6BFDDD284E899B00F5CF20 /* GetOnboardingTestRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDDC284E899B00F5CF20 /* GetOnboardingTestRequest.swift */; };
+		DE6BFDDF284E89E900F5CF20 /* GetTestResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDDE284E89E900F5CF20 /* GetTestResponseMapper.swift */; };
+		DE6BFDE1284F307A00F5CF20 /* SplashActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDE0284F307A00F5CF20 /* SplashActivity.swift */; };
+		DE6BFDE3284F312000F5CF20 /* SplashPrepareOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDE2284F312000F5CF20 /* SplashPrepareOnboarding.swift */; };
 		DE93782D27C4AF380073F27C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE93782C27C4AF380073F27C /* Assets.xcassets */; };
 		DE93783027C4AF380073F27C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE93782E27C4AF380073F27C /* LaunchScreen.storyboard */; };
 		DE93783B27C4B0440073F27C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE93783D27C4B0440073F27C /* Localizable.strings */; };
@@ -351,6 +356,11 @@
 		DE6BFDD1284E3CDB00F5CF20 /* ReviewDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDataLoader.swift; sourceTree = "<group>"; };
 		DE6BFDD4284E460E00F5CF20 /* PaginatedDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedDataLoader.swift; sourceTree = "<group>"; };
 		DE6BFDD8284E579400F5CF20 /* ReviewEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewEmptyView.swift; sourceTree = "<group>"; };
+		DE6BFDDA284E897500F5CF20 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		DE6BFDDC284E899B00F5CF20 /* GetOnboardingTestRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOnboardingTestRequest.swift; sourceTree = "<group>"; };
+		DE6BFDDE284E89E900F5CF20 /* GetTestResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTestResponseMapper.swift; sourceTree = "<group>"; };
+		DE6BFDE0284F307A00F5CF20 /* SplashActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashActivity.swift; sourceTree = "<group>"; };
+		DE6BFDE2284F312000F5CF20 /* SplashPrepareOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPrepareOnboarding.swift; sourceTree = "<group>"; };
 		DE93782027C4AF350073F27C /* ITExams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITExams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE93782C27C4AF380073F27C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE93782F27C4AF380073F27C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -591,6 +601,8 @@
 			isa = PBXGroup;
 			children = (
 				DE1CA9AC27F3017C00C66DAD /* SplashReceiptValidationObserver.swift */,
+				DE6BFDE0284F307A00F5CF20 /* SplashActivity.swift */,
+				DE6BFDE2284F312000F5CF20 /* SplashPrepareOnboarding.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -904,6 +916,7 @@
 				DE6BFDB9284E0E4300F5CF20 /* Question.swift */,
 				DE6BFDBB284E0E4F00F5CF20 /* Answer.swift */,
 				DE6BFDC8284E128400F5CF20 /* Review.swift */,
+				DE6BFDDA284E897500F5CF20 /* Test.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -922,6 +935,8 @@
 			children = (
 				DE6BFDBF284E0EEA00F5CF20 /* QuestionMapper.swift */,
 				DE6BFDC1284E0F3400F5CF20 /* AnswerMapper.swift */,
+				DE6BFDDE284E89E900F5CF20 /* GetTestResponseMapper.swift */,
+				DE6BFDDC284E899B00F5CF20 /* GetOnboardingTestRequest.swift */,
 			);
 			path = GetTest;
 			sourceTree = "<group>";
@@ -1736,6 +1751,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE6BFDDD284E899B00F5CF20 /* GetOnboardingTestRequest.swift in Sources */,
 				DE50438C2822775300C6B1C8 /* StepCollectionView.swift in Sources */,
 				DE1CA98C27F2ED4600C66DAD /* MainViewController.swift in Sources */,
 				DE6BFD9F284E021A00F5CF20 /* ReviewViewController.swift in Sources */,
@@ -1788,6 +1804,7 @@
 				DE95A889282E81D000809171 /* SettingsTableView.swift in Sources */,
 				DE1CA99C27F2F80100C66DAD /* FirebaseManager.swift in Sources */,
 				DE2B10C927DB14EE005280DB /* SetRequest.swift in Sources */,
+				DE6BFDE3284F312000F5CF20 /* SplashPrepareOnboarding.swift in Sources */,
 				DEBCD1872849F6F8000C08A9 /* StatsTableTitleCell.swift in Sources */,
 				DE95A89E282ECFD800809171 /* MyProfileView.swift in Sources */,
 				DE95A88B282E81DF00809171 /* SettingsTableElement.swift in Sources */,
@@ -1843,6 +1860,7 @@
 				DE6BFDB4284E09E700F5CF20 /* ReviewTableSeparatorCell.swift in Sources */,
 				DEADEAFE283563510057AA44 /* Profile.swift in Sources */,
 				DE2B100A27D9F441005280DB /* OCreatingPlanRowView.swift in Sources */,
+				DE6BFDDB284E897500F5CF20 /* Test.swift in Sources */,
 				DEE74EBF27F41960002FE71D /* GetPlanRequest.swift in Sources */,
 				DEBCD17C284949FA000C08A9 /* StatsView.swift in Sources */,
 				DEC345F72816E4BD0069A060 /* PlanCurrent.swift in Sources */,
@@ -1888,6 +1906,7 @@
 				DE1CA9A227F2FC2E00C66DAD /* Monetization.swift in Sources */,
 				DE2B10D027DB14EE005280DB /* IAPError.swift in Sources */,
 				DE95A8B02832261A00809171 /* PlanFinalStepView.swift in Sources */,
+				DE6BFDE1284F307A00F5CF20 /* SplashActivity.swift in Sources */,
 				DE3BDBEB284A52440091230F /* StatsPassRateView.swift in Sources */,
 				DE2B10C327DB14EE005280DB /* ProfileManager.swift in Sources */,
 				DEC34618281979350069A060 /* ContentError.swift in Sources */,
@@ -1936,6 +1955,7 @@
 				DE6BFDC9284E128400F5CF20 /* Review.swift in Sources */,
 				DED4724327CE406600AEF8A6 /* OStartView.swift in Sources */,
 				DEC346062817D5CD0069A060 /* CoursesTableElement.swift in Sources */,
+				DE6BFDDF284E89E900F5CF20 /* GetTestResponseMapper.swift in Sources */,
 				DE93786B27C4B2600073F27C /* Collection+Extension.swift in Sources */,
 				DE93787127C4B2600073F27C /* GlobalDefinitions.swift in Sources */,
 				DE6BFDC0284E0EEA00F5CF20 /* QuestionMapper.swift in Sources */,
