@@ -9,7 +9,7 @@ import UIKit
 
 final class OnboardingView: UIView {
     enum Step: Int {
-        case start, motivation, age, why, exams, course, quizSolution, determingSkill, quizResult, examDate, dailyGoal, studyMode, creatingPlan, plan
+        case start, motivation, age, why, exams, course, quizSolution, test, determingSkill, quizResult, examDate, dailyGoal, studyMode, creatingPlan, plan
     }
     
     var didFinish: (() -> Void)?
@@ -19,6 +19,7 @@ final class OnboardingView: UIView {
     lazy var examsView = OExamsView(step: .exams)
     lazy var courseView = OCourseView(step: .course)
     lazy var quizSolutionView = OQuizSolutionView(step: .quizSolution)
+    lazy var testView = OTestView(step: .test)
     lazy var examDateView = OExamDateView(step: .examDate)
     lazy var dailyGoalView = ODailyGoalView(step: .dailyGoal)
     lazy var studyModeView = OStudyModeView(step: .studyMode)
@@ -34,6 +35,7 @@ final class OnboardingView: UIView {
             examsView,
             courseView,
             quizSolutionView,
+            testView,
             ODetermingSkillView(step: .determingSkill),
             OQuizResultView(step: .quizResult),
             examDateView,
@@ -91,7 +93,13 @@ extension OnboardingView: OQuizSolutionViewDelegate {
     }
     
     func quizSolutionDidStart() {
-        // TODO: на тест
+        scroll(to: .test)
+    }
+}
+
+// MARK: OTestViewDelegate
+extension OnboardingView: OTestViewDelegate {
+    func testViewDidFinished() {
         scroll(to: .determingSkill)
     }
 }
@@ -120,6 +128,7 @@ private extension OnboardingView {
         examsView.add(delegate: combineData)
         courseView.courseDelegate = combineData
         quizSolutionView.quizSolutionDelegate = self
+        testView.testViewDelegate = self
         examDateView.examDateDelegate = combineData
         dailyGoalView.dailyGoalDelegate = combineData
         studyModeView.studyModeDelegate = combineData

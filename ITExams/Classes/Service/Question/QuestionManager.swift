@@ -10,6 +10,8 @@ import RxSwift
 protocol QuestionManagerProtocol {
     func obtainOnboardingTest(forceUpdate: Bool) -> Single<Test?>
     func obtainReview(for courseId: Int, mode: Int, offset: Int) -> Single<[Review]>
+    func saveQuestion(questionId: Int) -> Single<Void>
+    func removeSavedQuestion(questionId: Int) -> Single<Void>
 }
 
 final class QuestionManager: QuestionManagerProtocol {
@@ -42,6 +44,32 @@ extension QuestionManager {
         return defaultRequestWrapper
             .callServerApi(requestBody: request)
             .map { GetReviewResponse.map(from: $0) }
+    }
+    
+    func saveQuestion(questionId: Int) -> Single<Void> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
+            return .error(SignError.tokenNotFound)
+        }
+        
+        let request = SaveQuestionRequest(userToken: userToken,
+                                          questionId: questionId)
+        
+        return defaultRequestWrapper
+            .callServerApi(requestBody: request)
+            .mapToVoid()
+    }
+    
+    func removeSavedQuestion(questionId: Int) -> Single<Void> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
+            return .error(SignError.tokenNotFound)
+        }
+        
+        let request = RemoveSavedQuestionRequest(userToken: userToken,
+                                                 questionId: questionId)
+        
+        return defaultRequestWrapper
+            .callServerApi(requestBody: request)
+            .mapToVoid()
     }
 }
 

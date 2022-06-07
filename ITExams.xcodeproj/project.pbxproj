@@ -113,6 +113,14 @@
 		DE6BFDDF284E89E900F5CF20 /* GetTestResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDDE284E89E900F5CF20 /* GetTestResponseMapper.swift */; };
 		DE6BFDE1284F307A00F5CF20 /* SplashActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDE0284F307A00F5CF20 /* SplashActivity.swift */; };
 		DE6BFDE3284F312000F5CF20 /* SplashPrepareOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDE2284F312000F5CF20 /* SplashPrepareOnboarding.swift */; };
+		DE6BFDE5284F571600F5CF20 /* OTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDE4284F571600F5CF20 /* OTestView.swift */; };
+		DE6BFDE8284F5D4D00F5CF20 /* OQuestionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDE7284F5D4D00F5CF20 /* OQuestionTableView.swift */; };
+		DE6BFDEA284F5D6300F5CF20 /* OQuestionTableElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDE9284F5D6300F5CF20 /* OQuestionTableElement.swift */; };
+		DE6BFDED284F5DD200F5CF20 /* OQuestionTableQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDEC284F5DD200F5CF20 /* OQuestionTableQuestionCell.swift */; };
+		DE6BFDEF284F5DE200F5CF20 /* OQuestionTableAnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDEE284F5DE200F5CF20 /* OQuestionTableAnswerCell.swift */; };
+		DE6BFDF2284F8E5400F5CF20 /* OQuestionFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDF1284F8E5400F5CF20 /* OQuestionFavoriteButton.swift */; };
+		DE6BFDF4284F942A00F5CF20 /* SaveQuestionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDF3284F942A00F5CF20 /* SaveQuestionRequest.swift */; };
+		DE6BFDF6284F946900F5CF20 /* RemoveSavedQuestionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDF5284F946900F5CF20 /* RemoveSavedQuestionRequest.swift */; };
 		DE93782D27C4AF380073F27C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE93782C27C4AF380073F27C /* Assets.xcassets */; };
 		DE93783027C4AF380073F27C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE93782E27C4AF380073F27C /* LaunchScreen.storyboard */; };
 		DE93783B27C4B0440073F27C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE93783D27C4B0440073F27C /* Localizable.strings */; };
@@ -361,6 +369,14 @@
 		DE6BFDDE284E89E900F5CF20 /* GetTestResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTestResponseMapper.swift; sourceTree = "<group>"; };
 		DE6BFDE0284F307A00F5CF20 /* SplashActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashActivity.swift; sourceTree = "<group>"; };
 		DE6BFDE2284F312000F5CF20 /* SplashPrepareOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPrepareOnboarding.swift; sourceTree = "<group>"; };
+		DE6BFDE4284F571600F5CF20 /* OTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTestView.swift; sourceTree = "<group>"; };
+		DE6BFDE7284F5D4D00F5CF20 /* OQuestionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OQuestionTableView.swift; sourceTree = "<group>"; };
+		DE6BFDE9284F5D6300F5CF20 /* OQuestionTableElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OQuestionTableElement.swift; sourceTree = "<group>"; };
+		DE6BFDEC284F5DD200F5CF20 /* OQuestionTableQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OQuestionTableQuestionCell.swift; sourceTree = "<group>"; };
+		DE6BFDEE284F5DE200F5CF20 /* OQuestionTableAnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OQuestionTableAnswerCell.swift; sourceTree = "<group>"; };
+		DE6BFDF1284F8E5400F5CF20 /* OQuestionFavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OQuestionFavoriteButton.swift; sourceTree = "<group>"; };
+		DE6BFDF3284F942A00F5CF20 /* SaveQuestionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveQuestionRequest.swift; sourceTree = "<group>"; };
+		DE6BFDF5284F946900F5CF20 /* RemoveSavedQuestionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSavedQuestionRequest.swift; sourceTree = "<group>"; };
 		DE93782027C4AF350073F27C /* ITExams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITExams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE93782C27C4AF380073F27C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE93782F27C4AF380073F27C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -926,6 +942,8 @@
 			children = (
 				DE6BFDC3284E10FC00F5CF20 /* GetReview */,
 				DE6BFDBE284E0ECF00F5CF20 /* GetTest */,
+				DE6BFDF3284F942A00F5CF20 /* SaveQuestionRequest.swift */,
+				DE6BFDF5284F946900F5CF20 /* RemoveSavedQuestionRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -965,6 +983,34 @@
 				DE6BFDD1284E3CDB00F5CF20 /* ReviewDataLoader.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		DE6BFDE6284F5D3A00F5CF20 /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFDF0284F8E3900F5CF20 /* TableView */,
+				DE6BFDF1284F8E5400F5CF20 /* OQuestionFavoriteButton.swift */,
+			);
+			path = Question;
+			sourceTree = "<group>";
+		};
+		DE6BFDEB284F5D6900F5CF20 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFDEC284F5DD200F5CF20 /* OQuestionTableQuestionCell.swift */,
+				DE6BFDEE284F5DE200F5CF20 /* OQuestionTableAnswerCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		DE6BFDF0284F8E3900F5CF20 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFDEB284F5D6900F5CF20 /* Cell */,
+				DE6BFDE9284F5D6300F5CF20 /* OQuestionTableElement.swift */,
+				DE6BFDE7284F5D4D00F5CF20 /* OQuestionTableView.swift */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 		DE93781727C4AF350073F27C = {
@@ -1193,6 +1239,7 @@
 				DED4725927D20F7800AEF8A6 /* OExamsView.swift */,
 				DE55A4AD27D6458000B53B46 /* OCourseView.swift */,
 				DED4724F27D1DE6700AEF8A6 /* OQuizSolutionView.swift */,
+				DE6BFDE4284F571600F5CF20 /* OTestView.swift */,
 				DE55A4AF27D64C7600B53B46 /* ODetermingSkillView.swift */,
 				DE2B0FF927D77546005280DB /* OQuizResultView.swift */,
 				DE55A4B327D6538800B53B46 /* OExamDateView.swift */,
@@ -1542,6 +1589,7 @@
 		DED4724627CE4C4300AEF8A6 /* Atoms */ = {
 			isa = PBXGroup;
 			children = (
+				DE6BFDE6284F5D3A00F5CF20 /* Question */,
 				DE2B100827D9F42A005280DB /* CreatingPlan */,
 				DED4725127D208B100AEF8A6 /* ExamsTable */,
 				DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */,
@@ -1752,6 +1800,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE6BFDDD284E899B00F5CF20 /* GetOnboardingTestRequest.swift in Sources */,
+				DE6BFDE8284F5D4D00F5CF20 /* OQuestionTableView.swift in Sources */,
 				DE50438C2822775300C6B1C8 /* StepCollectionView.swift in Sources */,
 				DE1CA98C27F2ED4600C66DAD /* MainViewController.swift in Sources */,
 				DE6BFD9F284E021A00F5CF20 /* ReviewViewController.swift in Sources */,
@@ -1761,6 +1810,7 @@
 				DE95A8CD2832901E00809171 /* DailyGoalViewModel.swift in Sources */,
 				DE6BFDBC284E0E4F00F5CF20 /* Answer.swift in Sources */,
 				DE2B10C227DB14EE005280DB /* TestMode.swift in Sources */,
+				DE6BFDF2284F8E5400F5CF20 /* OQuestionFavoriteButton.swift in Sources */,
 				DE93789B27C4BF070073F27C /* SplashViewController.swift in Sources */,
 				DE93787527C4B2600073F27C /* ScreenSize.swift in Sources */,
 				DE2B100E27DA47AE005280DB /* OPlanView.swift in Sources */,
@@ -1800,6 +1850,7 @@
 				DE95A8B62832788600809171 /* DateOfExamViewModel.swift in Sources */,
 				DE1CA9AA27F2FCAE00C66DAD /* PaygateManager.swift in Sources */,
 				DE1CA9A627F2FC5900C66DAD /* GetMonetizationRequest.swift in Sources */,
+				DE6BFDE5284F571600F5CF20 /* OTestView.swift in Sources */,
 				DEE74EBA27F41873002FE71D /* Plan.swift in Sources */,
 				DE95A889282E81D000809171 /* SettingsTableView.swift in Sources */,
 				DE1CA99C27F2F80100C66DAD /* FirebaseManager.swift in Sources */,
@@ -1830,6 +1881,7 @@
 				DEC3460D28185EBB0069A060 /* CourseCurrentView.swift in Sources */,
 				DE3FD60A27E9FFEE00E76844 /* PaygatePlansCell.swift in Sources */,
 				DEE74EB127F34CB6002FE71D /* Exam.swift in Sources */,
+				DE6BFDF6284F946900F5CF20 /* RemoveSavedQuestionRequest.swift in Sources */,
 				DED4725827D20C4C00AEF8A6 /* OExamsTable.swift in Sources */,
 				DE6BFDA8284E03C400F5CF20 /* ReviewFilterView.swift in Sources */,
 				DE95A8A2282ED2D200809171 /* MyProfileTableView.swift in Sources */,
@@ -1883,6 +1935,7 @@
 				DEBCD16C28493CC4000C08A9 /* Stats.swift in Sources */,
 				DE3FD61A27EA2AAE00E76844 /* PaygateViewControllerDelegate.swift in Sources */,
 				DE2B0FFE27D798F4005280DB /* ODailyView.swift in Sources */,
+				DE6BFDEA284F5D6300F5CF20 /* OQuestionTableElement.swift in Sources */,
 				DE1CA9A827F2FC6200C66DAD /* GetMonetizationResponseMapper.swift in Sources */,
 				DE95A87A282E307000809171 /* ProfileTabsView.swift in Sources */,
 				DEC346042817D5BF0069A060 /* CoursesTableView.swift in Sources */,
@@ -1916,6 +1969,7 @@
 				DEC34612281971160069A060 /* TryAgainViewController.swift in Sources */,
 				DE3FD61527EA09E400E76844 /* DefaultRequestWrapper.swift in Sources */,
 				DE95A8CF2832902600809171 /* DailyGoalView.swift in Sources */,
+				DE6BFDED284F5DD200F5CF20 /* OQuestionTableQuestionCell.swift in Sources */,
 				DE93788027C4B2600073F27C /* PaddingPickerView.swift in Sources */,
 				DE93787227C4B2600073F27C /* Scalable.swift in Sources */,
 				DED4724827CE4C4B00AEF8A6 /* OMotivationCell.swift in Sources */,
@@ -1951,6 +2005,7 @@
 				DE2B10C627DB14EE005280DB /* SyncTokensRequest.swift in Sources */,
 				DE93787F27C4B2600073F27C /* PaddingLabel.swift in Sources */,
 				DE93787C27C4B2600073F27C /* NavigationController.swift in Sources */,
+				DE6BFDEF284F5DE200F5CF20 /* OQuestionTableAnswerCell.swift in Sources */,
 				DE9378D827C4C0E90073F27C /* OnboardingViewController.swift in Sources */,
 				DE6BFDC9284E128400F5CF20 /* Review.swift in Sources */,
 				DED4724327CE406600AEF8A6 /* OStartView.swift in Sources */,
@@ -1982,6 +2037,7 @@
 				DED4725427D2091600AEF8A6 /* OExamsTableCell.swift in Sources */,
 				DE95A895282E920400809171 /* SettingsTitleCell.swift in Sources */,
 				DE3BDBE9284A46580091230F /* StatsTablePassRateCell.swift in Sources */,
+				DE6BFDF4284F942A00F5CF20 /* SaveQuestionRequest.swift in Sources */,
 				DE6BFDD9284E579400F5CF20 /* ReviewEmptyView.swift in Sources */,
 				DEC34616281971E50069A060 /* ObservableRetrySingle.swift in Sources */,
 				DEBCD1852849F1C5000C08A9 /* StatsTableMainCell.swift in Sources */,

@@ -38,6 +38,7 @@ final class OnboardingViewController: UIViewController {
         }
         
         mainView.courseView.vc = self
+        mainView.testView.vc = self
         mainView.planView.vc = self
     }
 }
