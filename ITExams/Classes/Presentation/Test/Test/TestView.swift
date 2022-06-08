@@ -71,7 +71,7 @@ private extension TestView {
             bottomView.leadingAnchor.constraint(equalTo: leadingAnchor),
             bottomView.trailingAnchor.constraint(equalTo: trailingAnchor),
             bottomView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            bottomView.heightAnchor.constraint(equalToConstant: 148.scale)
+            bottomView.heightAnchor.constraint(equalToConstant: ScreenSize.isIphoneXFamily ? 148.scale : 110.scale)
         ])
         
         NSLayoutConstraint.activate([
@@ -112,7 +112,7 @@ private extension TestView {
         view.layer.cornerRadius = 12.scale
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.layer.masksToBounds = true
-        view.contentInset = UIEdgeInsets(top: 32.scale, left: 0, bottom: 148.scale, right: 0)
+        view.contentInset = UIEdgeInsets(top: 32.scale, left: 0, bottom: ScreenSize.isIphoneXFamily ? 148.scale : 110.scale, right: 0)
         view.backgroundColor = Appearance.backgroundColor
         view.separatorStyle = .none
         view.contentInsetAdjustmentBehavior = .never
