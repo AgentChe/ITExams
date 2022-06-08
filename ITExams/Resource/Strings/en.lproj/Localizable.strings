@@ -228,3 +228,11 @@
 "Review.Empty.Title" = "No questions";
 "Review.Empty.SubTitle" = "Take a quick test below to review all of your answered questions ";
 "Review.Empty.Button" = "Take a quick test";
+
+// MARK: Question
+"Question.Explanation" = "Explanation";
+"Question.Continue" = "Continue";
+"Question.Submit" = "Submit test";
+"Question.BackToStudying" = "Back to studying";
+"Question.NextQuestion" = "Next";
+"Question.TodayTitle" = "Today’s question";

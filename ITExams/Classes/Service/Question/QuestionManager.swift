@@ -8,10 +8,19 @@
 import RxSwift
 
 protocol QuestionManagerProtocol {
+    func obtainTest(courseId: Int, testId: Int?, time: Int?, activeSubscription: Bool) -> Single<Test?>
+    func obtainTenTest(courseId: Int, activeSubscription: Bool) -> Single<Test?>
+    func obtainFailedTest(courseId: Int, activeSubscription: Bool) -> Single<Test?>
+    func obtainQotdTest(courseId: Int, activeSubscription: Bool) -> Single<Test?>
+    func obtainRandomTest(courseId: Int, activeSubscription: Bool) -> Single<Test?>
+    func obtainSavedTest(courseId: Int, activeSubscription: Bool) -> Single<Test?>
     func obtainOnboardingTest(forceUpdate: Bool) -> Single<Test?>
     func obtainReview(for courseId: Int, mode: Int, offset: Int) -> Single<[Review]>
     func saveQuestion(questionId: Int) -> Single<Void>
     func removeSavedQuestion(questionId: Int) -> Single<Void>
+    func obtainAgainTest(userTestId: Int) -> Single<Test?>
+    func finishTest(userTestId: Int) -> Single<Void>
+    func sendAnswer(questionId: Int, userTestId: Int, answerIds: [Int]) -> Single<Bool?>
 }
 
 final class QuestionManager: QuestionManagerProtocol {
@@ -27,8 +36,96 @@ final class QuestionManager: QuestionManagerProtocol {
 
 // MARK: Public
 extension QuestionManager {
+    func obtainTest(courseId: Int, testId: Int?, time: Int?, activeSubscription: Bool) -> Single<Test?> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
+            return .error(SignError.tokenNotFound)
+        }
+        
+        let request = GetTestRequest(
+            userToken: userToken,
+            courseId: courseId,
+            testId: testId,
+            time: time,
+            activeSubscription: activeSubscription
+        )
+        
+        return xorRequestWrapper
+            .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
+            .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
+    }
+    
+    func obtainTenTest(courseId: Int, activeSubscription: Bool) -> Single<Test?> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
+            return .error(SignError.tokenNotFound)
+        }
+        
+        let request = GetTenTestRequest(userToken: userToken,
+                                        courseId: courseId,
+                                        activeSubscription: activeSubscription)
+        
+        return xorRequestWrapper
+            .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
+            .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
+    }
+    
+    func obtainFailedTest(courseId: Int, activeSubscription: Bool) -> Single<Test?> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
+            return .error(SignError.tokenNotFound)
+        }
+        
+        let request = GetFailedTestRequest(userToken: userToken,
+                                           courseId: courseId,
+                                           activeSubscription: activeSubscription)
+        
+        return xorRequestWrapper
+            .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
+            .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
+    }
+    
+    func obtainQotdTest(courseId: Int, activeSubscription: Bool) -> Single<Test?> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
+            return .error(SignError.tokenNotFound)
+        }
+        
+        let request = GetQotdTestRequest(userToken: userToken,
+                                         courseId: courseId,
+                                         activeSubscription: activeSubscription)
+        
+        return xorRequestWrapper
+            .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
+            .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
+    }
+    
+    func obtainRandomTest(courseId: Int, activeSubscription: Bool) -> Single<Test?> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
+            return .error(SignError.tokenNotFound)
+        }
+        
+        let request = GetRandomTestRequest(userToken: userToken,
+                                           courseId: courseId,
+                                           activeSubscription: activeSubscription)
+        
+        return xorRequestWrapper
+            .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
+            .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
+    }
+    
+    func obtainSavedTest(courseId: Int, activeSubscription: Bool) -> Single<Test?> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
+            return .error(SignError.tokenNotFound)
+        }
+        
+        let request = GetSavedTestRequest(userToken: userToken,
+                                          courseId: courseId,
+                                          activeSubscription: activeSubscription)
+        
+        return defaultRequestWrapper
+            .callServerApi(requestBody: request)
+            .map { GetTestResponseMapper.map(from: $0, isEncryption: false) }
+    }
+    
     func obtainOnboardingTest(forceUpdate: Bool) -> Single<Test?> {
-        forceUpdate ? loadOnboardingTest() : cachedOnboardingTest()
+        forceUpdate ? loadOnboardingTest(encryptionKey: GlobalDefinitions.apiKey) : cachedOnboardingTest()
     }
     
     func obtainReview(for courseId: Int, mode: Int, offset: Int) -> Single<[Review]> {
@@ -71,11 +168,59 @@ extension QuestionManager {
             .callServerApi(requestBody: request)
             .mapToVoid()
     }
+    
+    func obtainAgainTest(userTestId: Int) -> Single<Test?> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
+            return .error(SignError.tokenNotFound)
+        }
+        
+        let request = AgainTestRequest(userToken: userToken,
+                                       userTestId: userTestId)
+        
+        return xorRequestWrapper
+            .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
+            .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
+    }
+    
+    func finishTest(userTestId: Int) -> Single<Void> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
+            return .error(SignError.tokenNotFound)
+        }
+        
+        let request = FinishTestRequest(userToken: userToken,
+                                        userTestId: userTestId)
+        
+        return defaultRequestWrapper
+            .callServerApi(requestBody: request)
+            .mapToVoid()
+    }
+    
+    func sendAnswer(questionId: Int, userTestId: Int, answerIds: [Int]) -> Single<Bool?> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
+            return .error(SignError.tokenNotFound)
+        }
+        
+        let request = SendAnswerRequest(
+            userToken: userToken,
+            questionId: questionId,
+            answerIds: answerIds,
+            userTestId: userTestId
+        )
+        
+        return defaultRequestWrapper
+            .callServerApi(requestBody: request)
+            .map { SendAnswerResponseMapper.map(from: $0) }
+            .do(onSuccess: { isEndOfTest in
+                if isEndOfTest == true {
+                    QuestionMediator.shared.notidyAboutTestPassed()
+                }
+            })
+    }
 }
 
 // MARK: Private
 private extension QuestionManager {
-    func loadOnboardingTest() -> Single<Test?> {
+    func loadOnboardingTest(encryptionKey: String) -> Single<Test?> {
         guard let userToken = sessionManager.getSession()?.userToken else {
             return .error(SignError.tokenNotFound)
         }
@@ -83,7 +228,7 @@ private extension QuestionManager {
         let request = GetOnboardingTestRequest(userToken: userToken)
         
         return xorRequestWrapper
-            .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
+            .callServerStringApi(requestBody: request, key: encryptionKey)
             .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
             .do(onSuccess: { test in
                 guard let test = test, let data = try? JSONEncoder().encode(test) else {
