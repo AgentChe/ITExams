@@ -80,11 +80,11 @@ private extension PlanViewModel {
                     return .never()
                 }
                 
-                // TODO: Обновлять план после прохождения теста
                 func source() -> Observable<Plan> {
                     let triggers = Signal
                         .merge(
-                            StatsMediator.shared.resetedStats
+                            StatsMediator.shared.resetedStats,
+                            QuestionMediator.shared.testPassed
                         )
                         .asObservable()
                         .startWith(Void())

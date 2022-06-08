@@ -27,14 +27,18 @@ final class ReviewViewModel {
 // MARK: Private
 private extension ReviewViewModel {
     func makeElements() -> Driver<[ReviewTableElement]> {
-        // TODO: добавить триггер прохождения теста 
-        Driver.combineLatest(currentCourse, currentFilter)
+        let passTestTrigger = QuestionMediator.shared.testPassed
+            .asDriver(onErrorDriveWith: .never())
+            .startWith(Void())
+         
+        return Driver
+            .combineLatest(currentCourse, currentFilter, passTestTrigger)
             .flatMapLatest { [weak self] args -> Driver<[Review]> in
                 guard let self = self else {
                     return .never()
                 }
                 
-                let (course, filter) = args
+                let (course, filter, _) = args
                 
                 return self.makeLoader(courseId: course.id, filter: filter)
                     .scan([]) { $0 + $1 }
