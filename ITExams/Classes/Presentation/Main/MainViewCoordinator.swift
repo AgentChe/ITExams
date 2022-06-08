@@ -12,7 +12,6 @@ final class MainViewCoordinator {
     
     lazy var planVC = NavigationController(rootViewController: PlanViewController.make())
     lazy var practiceVC = NavigationController(rootViewController: UIViewController())
-    lazy var flashcardsVC = NavigationController(rootViewController: UIViewController())
     lazy var profileVC = NavigationController(rootViewController: ProfileViewController.make())
     
     private var previousVC: UIViewController?
@@ -31,10 +30,6 @@ final class MainViewCoordinator {
             parentVC?.mainView.tabView.selectedTab = tab
             
             changeVC(on: practiceVC)
-        case .flashcards:
-            parentVC?.mainView.tabView.selectedTab = tab
-            
-            changeVC(on: flashcardsVC)
         case .profile:
             parentVC?.mainView.tabView.selectedTab = tab
             
