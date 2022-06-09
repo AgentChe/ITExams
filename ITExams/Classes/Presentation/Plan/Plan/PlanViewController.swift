@@ -34,60 +34,6 @@ final class PlanViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.planSteps
-            .drive(onNext: { [weak self] planSteps in
-                guard let self = self else {
-                    return
-                }
-                
-                self.mainView.stepCollectionView.setup(elements: planSteps)
-                self.determineCurrentStep(elements: planSteps)
-            })
-            .disposed(by: disposeBag)
-        
-        viewModel.stepContent
-            .drive(onNext: { [weak self] stepContent in
-                guard let self = self else {
-                    return
-                }
-                
-                self.handle(stepContent: stepContent)
-            })
-            .disposed(by: disposeBag)
-        
-        viewModel.planCurrent
-            .drive(onNext: { [weak self] current in
-                guard let self = self else {
-                    return
-                }
-
-                self.mainView.headerView.currentView.setup(exam: current.exam,
-                                                           course: current.course)
-            })
-            .disposed(by: disposeBag)
-
-        viewModel.planStudyScore
-            .drive(onNext: { [weak self] studyScore in
-                guard let self = self else {
-                    return
-                }
-
-                self.mainView.headerView.studyScoreView.setup(goal: studyScore.goal,
-                                                              progress: studyScore.progress)
-            })
-            .disposed(by: disposeBag)
-        
-        mainView.headerView.currentView.rx.tap
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                
-                let vc = CoursesViewController.make()
-                self.present(vc, animated: true)
-            })
-            .disposed(by: disposeBag)
-        
         viewModel.tryAgain = { [weak self] error -> Observable<Void> in
             guard let self = self else {
                 return .never()
@@ -97,12 +43,42 @@ final class PlanViewController: UIViewController {
         }
         
         viewModel.activity
-            .drive(onNext: { [weak self] activity in
-                guard let self = self else {
-                    return
-                }
-                
-                self.activity(activity)
+            .drive(Binder(self) { base, activity in
+                base.activity(activity)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.planSteps
+            .drive(Binder(self) { base, planSteps in
+                base.mainView.stepCollectionView.setup(elements: planSteps)
+                base.determineCurrentStep(elements: planSteps)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.stepContent
+            .drive(Binder(self) { base, stepContent in
+                base.handle(stepContent: stepContent)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.planCurrent
+            .drive(Binder(self) { base, current in
+                base.mainView.headerView.currentView.setup(exam: current.exam,
+                                                           course: current.course)
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.planStudyScore
+            .drive(Binder(self) { base, studyScore in
+                base.mainView.headerView.studyScoreView.setup(goal: studyScore.goal,
+                                                              progress: studyScore.progress)
+            })
+            .disposed(by: disposeBag)
+        
+        mainView.headerView.currentView.rx.tap
+            .subscribe(Binder(self) { base, void in
+                let vc = CoursesViewController.make()
+                base.present(vc, animated: true)
             })
             .disposed(by: disposeBag)
         

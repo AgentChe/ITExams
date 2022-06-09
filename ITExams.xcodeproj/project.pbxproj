@@ -87,6 +87,13 @@
 		DE55A4B027D64C7700B53B46 /* ODetermingSkillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4AF27D64C7600B53B46 /* ODetermingSkillView.swift */; };
 		DE55A4B227D64CB300B53B46 /* OProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4B127D64CB300B53B46 /* OProgressView.swift */; };
 		DE55A4B427D6538800B53B46 /* OExamDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4B327D6538800B53B46 /* OExamDateView.swift */; };
+		DE5D0BC2285281B3000A1C9B /* PracticeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BC1285281B3000A1C9B /* PracticeTableView.swift */; };
+		DE5D0BC4285281BE000A1C9B /* PracticeTableElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BC3285281BE000A1C9B /* PracticeTableElement.swift */; };
+		DE5D0BC7285281EF000A1C9B /* PracticeTableExamDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BC6285281EF000A1C9B /* PracticeTableExamDateCell.swift */; };
+		DE5D0BC9285281FB000A1C9B /* PracticeTableTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BC8285281FB000A1C9B /* PracticeTableTitleCell.swift */; };
+		DE5D0BCB2852820C000A1C9B /* PracticeTableDailyQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BCA2852820C000A1C9B /* PracticeTableDailyQuestionCell.swift */; };
+		DE5D0BCD2852822E000A1C9B /* PracticeTableTestsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BCC2852822E000A1C9B /* PracticeTableTestsCell.swift */; };
+		DE5D0BCF2852823F000A1C9B /* PracticeTableUnlockPremiumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BCE2852823F000A1C9B /* PracticeTableUnlockPremiumCell.swift */; };
 		DE6BFD9F284E021A00F5CF20 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */; };
 		DE6BFDA1284E022200F5CF20 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */; };
 		DE6BFDA5284E023400F5CF20 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDA4284E023400F5CF20 /* ReviewView.swift */; };
@@ -180,6 +187,9 @@
 		DE6BFE872851FA8800F5CF20 /* TestStatsInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE862851FA8800F5CF20 /* TestStatsInfoCell.swift */; };
 		DE6BFE8928524FE500F5CF20 /* TestCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE8828524FE500F5CF20 /* TestCoordinator.swift */; };
 		DE6BFE8B28525F8F00F5CF20 /* GetPlanTestRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE8A28525F8F00F5CF20 /* GetPlanTestRequest.swift */; };
+		DE6BFE8F2852804A00F5CF20 /* PracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE8E2852804A00F5CF20 /* PracticeViewController.swift */; };
+		DE6BFE912852808300F5CF20 /* PracticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE902852808300F5CF20 /* PracticeViewModel.swift */; };
+		DE6BFE93285280B800F5CF20 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE92285280B800F5CF20 /* PracticeView.swift */; };
 		DE93782D27C4AF380073F27C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE93782C27C4AF380073F27C /* Assets.xcassets */; };
 		DE93783027C4AF380073F27C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE93782E27C4AF380073F27C /* LaunchScreen.storyboard */; };
 		DE93783B27C4B0440073F27C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE93783D27C4B0440073F27C /* Localizable.strings */; };
@@ -402,6 +412,13 @@
 		DE55A4AF27D64C7600B53B46 /* ODetermingSkillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ODetermingSkillView.swift; sourceTree = "<group>"; };
 		DE55A4B127D64CB300B53B46 /* OProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OProgressView.swift; sourceTree = "<group>"; };
 		DE55A4B327D6538800B53B46 /* OExamDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OExamDateView.swift; sourceTree = "<group>"; };
+		DE5D0BC1285281B3000A1C9B /* PracticeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeTableView.swift; sourceTree = "<group>"; };
+		DE5D0BC3285281BE000A1C9B /* PracticeTableElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeTableElement.swift; sourceTree = "<group>"; };
+		DE5D0BC6285281EF000A1C9B /* PracticeTableExamDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeTableExamDateCell.swift; sourceTree = "<group>"; };
+		DE5D0BC8285281FB000A1C9B /* PracticeTableTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeTableTitleCell.swift; sourceTree = "<group>"; };
+		DE5D0BCA2852820C000A1C9B /* PracticeTableDailyQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeTableDailyQuestionCell.swift; sourceTree = "<group>"; };
+		DE5D0BCC2852822E000A1C9B /* PracticeTableTestsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeTableTestsCell.swift; sourceTree = "<group>"; };
+		DE5D0BCE2852823F000A1C9B /* PracticeTableUnlockPremiumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeTableUnlockPremiumCell.swift; sourceTree = "<group>"; };
 		DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		DE6BFDA4284E023400F5CF20 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
@@ -495,6 +512,9 @@
 		DE6BFE862851FA8800F5CF20 /* TestStatsInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStatsInfoCell.swift; sourceTree = "<group>"; };
 		DE6BFE8828524FE500F5CF20 /* TestCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoordinator.swift; sourceTree = "<group>"; };
 		DE6BFE8A28525F8F00F5CF20 /* GetPlanTestRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlanTestRequest.swift; sourceTree = "<group>"; };
+		DE6BFE8E2852804A00F5CF20 /* PracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewController.swift; sourceTree = "<group>"; };
+		DE6BFE902852808300F5CF20 /* PracticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewModel.swift; sourceTree = "<group>"; };
+		DE6BFE92285280B800F5CF20 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
 		DE93782027C4AF350073F27C /* ITExams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITExams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE93782C27C4AF380073F27C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE93782F27C4AF380073F27C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -985,6 +1005,36 @@
 			path = StepCollectionView;
 			sourceTree = "<group>";
 		};
+		DE5D0BBF2852819E000A1C9B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DE5D0BC0285281A4000A1C9B /* TableView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DE5D0BC0285281A4000A1C9B /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				DE5D0BC5285281C8000A1C9B /* Cells */,
+				DE5D0BC1285281B3000A1C9B /* PracticeTableView.swift */,
+				DE5D0BC3285281BE000A1C9B /* PracticeTableElement.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		DE5D0BC5285281C8000A1C9B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DE5D0BC6285281EF000A1C9B /* PracticeTableExamDateCell.swift */,
+				DE5D0BC8285281FB000A1C9B /* PracticeTableTitleCell.swift */,
+				DE5D0BCA2852820C000A1C9B /* PracticeTableDailyQuestionCell.swift */,
+				DE5D0BCC2852822E000A1C9B /* PracticeTableTestsCell.swift */,
+				DE5D0BCE2852823F000A1C9B /* PracticeTableUnlockPremiumCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		DE6BFD9D284E020900F5CF20 /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -1345,6 +1395,25 @@
 			path = Atoms;
 			sourceTree = "<group>";
 		};
+		DE6BFE8C2852803200F5CF20 /* Practice */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFE8D2852804000F5CF20 /* Practice */,
+			);
+			path = Practice;
+			sourceTree = "<group>";
+		};
+		DE6BFE8D2852804000F5CF20 /* Practice */ = {
+			isa = PBXGroup;
+			children = (
+				DE5D0BBF2852819E000A1C9B /* Views */,
+				DE6BFE8E2852804A00F5CF20 /* PracticeViewController.swift */,
+				DE6BFE902852808300F5CF20 /* PracticeViewModel.swift */,
+				DE6BFE92285280B800F5CF20 /* PracticeView.swift */,
+			);
+			path = Practice;
+			sourceTree = "<group>";
+		};
 		DE93781727C4AF350073F27C = {
 			isa = PBXGroup;
 			children = (
@@ -1526,6 +1595,7 @@
 		DE93789827C4BEF20073F27C /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				DE6BFE8C2852803200F5CF20 /* Practice */,
 				DE6BFE4F2850B95D00F5CF20 /* Photo */,
 				DE6BFE1628509CA000F5CF20 /* Test */,
 				DE95A870282E2DF700809171 /* Profile */,
@@ -2140,6 +2210,7 @@
 				DE6BFDE8284F5D4D00F5CF20 /* OQuestionTableView.swift in Sources */,
 				DE6BFE7F285141F600F5CF20 /* CircleProgressView.swift in Sources */,
 				DE50438C2822775300C6B1C8 /* StepCollectionView.swift in Sources */,
+				DE5D0BC9285281FB000A1C9B /* PracticeTableTitleCell.swift in Sources */,
 				DE1CA98C27F2ED4600C66DAD /* MainViewController.swift in Sources */,
 				DE6BFD9F284E021A00F5CF20 /* ReviewViewController.swift in Sources */,
 				DE6BFE6B28512A5800F5CF20 /* TestStatsTableView.swift in Sources */,
@@ -2155,6 +2226,7 @@
 				DE2B100E27DA47AE005280DB /* OPlanView.swift in Sources */,
 				DE3BDBE7284A3BE40091230F /* StatsTableUnlockPremiumButtonCell.swift in Sources */,
 				DEBCD18A284A02FC000C08A9 /* StatsMainProgressView.swift in Sources */,
+				DE5D0BCB2852820C000A1C9B /* PracticeTableDailyQuestionCell.swift in Sources */,
 				DE6BFE2C2850A05F00F5CF20 /* QuestionContentCollectionCell.swift in Sources */,
 				DE95A8C42832892600809171 /* StudyModeViewController.swift in Sources */,
 				DE6BFE5F285128A100F5CF20 /* GetTestStatsRequest.swift in Sources */,
@@ -2173,6 +2245,7 @@
 				DEE74ECB27F41DF3002FE71D /* PlanView.swift in Sources */,
 				DE6BFE6328512A3300F5CF20 /* TestStatsViewController.swift in Sources */,
 				DE6BFE7628512AF300F5CF20 /* TestStatsTableTitleCell.swift in Sources */,
+				DE6BFE912852808300F5CF20 /* PracticeViewModel.swift in Sources */,
 				DE93787E27C4B2600073F27C /* TapAreaButton.swift in Sources */,
 				DE6BFE4C2850B0FA00F5CF20 /* TestBottomSpinner.swift in Sources */,
 				DE6BFE832851D3EA00F5CF20 /* TestStatsFilterButton.swift in Sources */,
@@ -2193,6 +2266,7 @@
 				DE2B101A27DB13E0005280DB /* NetworkError.swift in Sources */,
 				DE95A881282E632400809171 /* SettingsViewController.swift in Sources */,
 				DE6BFE392850A81700F5CF20 /* QuestionTableContentCell.swift in Sources */,
+				DE6BFE8F2852804A00F5CF20 /* PracticeViewController.swift in Sources */,
 				DE2B10BF27DB14EE005280DB /* CoursesManager.swift in Sources */,
 				DE1CA98E27F2ED6800C66DAD /* MainViewCoordinator.swift in Sources */,
 				DE5043952822A85300C6B1C8 /* StepCollectionElement.swift in Sources */,
@@ -2203,6 +2277,7 @@
 				DE1CA9A627F2FC5900C66DAD /* GetMonetizationRequest.swift in Sources */,
 				DE6BFE312850A0C500F5CF20 /* AVPlayerView.swift in Sources */,
 				DE6BFDE5284F571600F5CF20 /* OTestView.swift in Sources */,
+				DE5D0BC7285281EF000A1C9B /* PracticeTableExamDateCell.swift in Sources */,
 				DEE74EBA27F41873002FE71D /* Plan.swift in Sources */,
 				DE95A889282E81D000809171 /* SettingsTableView.swift in Sources */,
 				DE6BFE0A285096AB00F5CF20 /* GetFailedTestRequest.swift in Sources */,
@@ -2217,6 +2292,7 @@
 				DEE74EC327F41CFF002FE71D /* PlanManager.swift in Sources */,
 				DE6BFE852851E6E600F5CF20 /* TestStatsAnswerContainer.swift in Sources */,
 				DE2B100227D8789F005280DB /* OStudyModeCell.swift in Sources */,
+				DE5D0BC2285281B3000A1C9B /* PracticeTableView.swift in Sources */,
 				DE6BFE362850A7BA00F5CF20 /* QuestionTableElement.swift in Sources */,
 				DEBCD18C284A0C9A000C08A9 /* StatsTableDailyMetricsCell.swift in Sources */,
 				DE93788527C4B2600073F27C /* RxActivityIndicator.swift in Sources */,
@@ -2241,6 +2317,7 @@
 				DE2B10CE27DB14EE005280DB /* IAPActionResult.swift in Sources */,
 				DEC3460D28185EBB0069A060 /* CourseCurrentView.swift in Sources */,
 				DE3FD60A27E9FFEE00E76844 /* PaygatePlansCell.swift in Sources */,
+				DE5D0BCD2852822E000A1C9B /* PracticeTableTestsCell.swift in Sources */,
 				DE6BFE6728512A4500F5CF20 /* TestStatsView.swift in Sources */,
 				DEE74EB127F34CB6002FE71D /* Exam.swift in Sources */,
 				DE6BFDF6284F946900F5CF20 /* RemoveSavedQuestionRequest.swift in Sources */,
@@ -2265,6 +2342,7 @@
 				DE95A873282E2E1900809171 /* ProfileViewController.swift in Sources */,
 				DE1CA99827F2F7C600C66DAD /* BranchManager.swift in Sources */,
 				DEBCD18E284A1190000C08A9 /* StatsDayMetricView.swift in Sources */,
+				DE6BFE93285280B800F5CF20 /* PracticeView.swift in Sources */,
 				DE6BFDB7284E0DFF00F5CF20 /* QuestionManager.swift in Sources */,
 				DE2D7F25282D367000B8952B /* StepTestProgressView.swift in Sources */,
 				DEE74EC127F41AAA002FE71D /* GetPlanResponseMapper.swift in Sources */,
@@ -2331,6 +2409,7 @@
 				DE1CA99527F2ED8F00C66DAD /* TabView.swift in Sources */,
 				DE3FD61C27EA312800E76844 /* PaygateInteractor.swift in Sources */,
 				DE95A890282E89B500809171 /* SettingsProfileCell.swift in Sources */,
+				DE5D0BCF2852823F000A1C9B /* PracticeTableUnlockPremiumCell.swift in Sources */,
 				DE6BFE452850A8C200F5CF20 /* QuestionTableQuestionReferenceCell.swift in Sources */,
 				DE3FD60527E9D4C200E76844 /* PaygateTrialView.swift in Sources */,
 				DE2B0FFC27D7960E005280DB /* ODailyGoalView.swift in Sources */,
@@ -2374,6 +2453,7 @@
 				DE93788627C4B2600073F27C /* UIViewRxExtension.swift in Sources */,
 				DE6BFDC7284E127600F5CF20 /* GetReviewResponse.swift in Sources */,
 				DE6BFE61285128B100F5CF20 /* GetTestStatsResponseMapper.swift in Sources */,
+				DE5D0BC4285281BE000A1C9B /* PracticeTableElement.swift in Sources */,
 				DE93787927C4B2600073F27C /* Weak.swift in Sources */,
 				DE93787027C4B2600073F27C /* StringExtension.swift in Sources */,
 				DEC345F22816DE200069A060 /* PlanStudyScoreView.swift in Sources */,

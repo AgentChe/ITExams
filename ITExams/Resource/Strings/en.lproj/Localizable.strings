@@ -249,3 +249,7 @@
 "TestStats.All" = "All";
 "TestStats.Incorrect" = "Incorrect";
 "TestStats.Correct" = "Correct";
+
+// MARK: Practice
+"Practice.Title" = "Practice";
+"Practice.ChangeExamDate" = "Change date";
