@@ -17,6 +17,8 @@
 "ImagePicker.PhotoLibrary" = "Photo library";
 
 // MARK: Splash
+"Splash.Name" = "IT Exams";
+"Splash.Text" = "Personalized study prep";
 "Splash.Preloader1" = "Checking your account...";
 "Splash.Preloader2" = "Syncing the question bank...";
 "Splash.Preloader3" = "Setting up the onboarding...";

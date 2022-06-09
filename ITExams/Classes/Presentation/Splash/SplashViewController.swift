@@ -20,6 +20,8 @@ final class SplashViewController: UIViewController {
     private lazy var validationObserver = SplashReceiptValidationObserver()
     private lazy var prepareOnboarding = SplashPrepareOnboarding(vc: self)
     
+    private var wasAnimated = false
+    
     override func loadView() {
         view = mainView
     }
@@ -28,6 +30,14 @@ final class SplashViewController: UIViewController {
         super.viewDidLoad()
         
         activity(state: .sdkInitialize)
+        
+        viewModel.tryAgain = { [weak self] error -> Observable<Void> in
+            guard let self = self else {
+                return .never()
+            }
+            
+            return self.openError()
+        }
         
         viewModel.step()
             .drive(onNext: { [weak self] step in
@@ -48,13 +58,19 @@ final class SplashViewController: UIViewController {
             self.activity(state: .library)
             self.viewModel.validationComplete.accept(Void())
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        viewModel.tryAgain = { [weak self] error -> Observable<Void> in
-            guard let self = self else {
-                return .never()
-            }
-            
-            return self.openError()
+        guard !wasAnimated else {
+            return
+        }
+        
+        wasAnimated = true
+        
+        mainView.compressImage { [weak self] in
+            self?.mainView.wave()
         }
     }
 }
@@ -82,7 +98,7 @@ private extension SplashViewController {
                 guard let self = self else {
                     return
                 }
-                
+
                 switch progress {
                 case .error:
                     self.activity(state: .none)
@@ -106,8 +122,9 @@ private extension SplashViewController {
         
         let attrs = TextAttributes()
             .textColor(Appearance.greyColor)
-            .font(Fonts.Inter.regular(size: 17.scale))
-            .lineHeight(23.8.scale)
+            .font(Fonts.Inter.regular(size: 15.scale))
+            .lineHeight(22.5.scale)
+            .letterSpacing(-0.14.scale)
             .textAlignment(.center)
         mainView.preloaderLabel.attributedText = state.text.attributed(with: attrs)
     }
