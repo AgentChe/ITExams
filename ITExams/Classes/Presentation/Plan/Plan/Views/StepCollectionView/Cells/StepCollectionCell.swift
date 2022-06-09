@@ -89,8 +89,12 @@ private extension StepCollectionCell {
 
 // MARK: Lazy initialization
 private extension StepCollectionCell {
-    func makeProgressView() -> StepProgressView {
-        let view = StepProgressView()
+    func makeProgressView() -> CircleProgressView {
+        let view = CircleProgressView(arcCenter: CGPoint(x: 68.scale, y: 68.scale),
+                                      radius: 62.scale,
+                                      lineWidth: 12.scale,
+                                      circleColor: Appearance.fourthColor.withAlphaComponent(0.5),
+                                      trackColor: Appearance.mainColor)
         view.backgroundColor = UIColor.clear
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)

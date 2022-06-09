@@ -236,3 +236,14 @@
 "Question.BackToStudying" = "Back to studying";
 "Question.NextQuestion" = "Next";
 "Question.TodayTitle" = "Today’s question";
+
+// MARK: TestStats
+"TestStats.CorrectAnswers" = "Correct answers";
+"TestStats.QuizTime" = "Quiz time";
+"TestStats.WeakSubject" = "Weak subject";
+"TestStats.Restart" = "Restart";
+"TestStats.NextTest" = "Next test";
+"TestStats.Review" = "Review";
+"TestStats.All" = "All";
+"TestStats.Incorrect" = "Incorrect";
+"TestStats.Correct" = "Correct";

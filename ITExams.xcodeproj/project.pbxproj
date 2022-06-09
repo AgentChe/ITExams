@@ -82,7 +82,6 @@
 		DE50438C2822775300C6B1C8 /* StepCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE50438B2822775300C6B1C8 /* StepCollectionView.swift */; };
 		DE50438E2822780100C6B1C8 /* StepCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE50438D2822780100C6B1C8 /* StepCollectionCell.swift */; };
 		DE50439028227ACE00C6B1C8 /* StepCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE50438F28227ACE00C6B1C8 /* StepCollectionLayout.swift */; };
-		DE504393282291F400C6B1C8 /* StepProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE504392282291F400C6B1C8 /* StepProgressView.swift */; };
 		DE5043952822A85300C6B1C8 /* StepCollectionElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5043942822A85300C6B1C8 /* StepCollectionElement.swift */; };
 		DE55A4AE27D6458000B53B46 /* OCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4AD27D6458000B53B46 /* OCourseView.swift */; };
 		DE55A4B027D64C7700B53B46 /* ODetermingSkillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4AF27D64C7600B53B46 /* ODetermingSkillView.swift */; };
@@ -159,6 +158,26 @@
 		DE6BFE512850B96900F5CF20 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE502850B96900F5CF20 /* PhotoViewController.swift */; };
 		DE6BFE532850B97500F5CF20 /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE522850B97500F5CF20 /* ImageScrollView.swift */; };
 		DE6BFE572850C26100F5CF20 /* TestRateUs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE562850C26100F5CF20 /* TestRateUs.swift */; };
+		DE6BFE5A2851283A00F5CF20 /* TestStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE592851283A00F5CF20 /* TestStats.swift */; };
+		DE6BFE5C2851285800F5CF20 /* TestStatsAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE5B2851285800F5CF20 /* TestStatsAnswer.swift */; };
+		DE6BFE5F285128A100F5CF20 /* GetTestStatsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE5E285128A100F5CF20 /* GetTestStatsRequest.swift */; };
+		DE6BFE61285128B100F5CF20 /* GetTestStatsResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE60285128B100F5CF20 /* GetTestStatsResponseMapper.swift */; };
+		DE6BFE6328512A3300F5CF20 /* TestStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE6228512A3300F5CF20 /* TestStatsViewController.swift */; };
+		DE6BFE6528512A3D00F5CF20 /* TestStatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE6428512A3D00F5CF20 /* TestStatsViewModel.swift */; };
+		DE6BFE6728512A4500F5CF20 /* TestStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE6628512A4500F5CF20 /* TestStatsView.swift */; };
+		DE6BFE6B28512A5800F5CF20 /* TestStatsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE6A28512A5800F5CF20 /* TestStatsTableView.swift */; };
+		DE6BFE6D28512A6300F5CF20 /* TestStatsTableElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE6C28512A6300F5CF20 /* TestStatsTableElement.swift */; };
+		DE6BFE7028512ABB00F5CF20 /* TestStatsTableProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE6F28512ABB00F5CF20 /* TestStatsTableProgressCell.swift */; };
+		DE6BFE7228512AC700F5CF20 /* TestStatsTableInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE7128512AC700F5CF20 /* TestStatsTableInfoCell.swift */; };
+		DE6BFE7428512AE000F5CF20 /* TestStatsTableActionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE7328512AE000F5CF20 /* TestStatsTableActionsCell.swift */; };
+		DE6BFE7628512AF300F5CF20 /* TestStatsTableTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE7528512AF300F5CF20 /* TestStatsTableTitleCell.swift */; };
+		DE6BFE7828512AFF00F5CF20 /* TestStatsTableFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE7728512AFF00F5CF20 /* TestStatsTableFilterCell.swift */; };
+		DE6BFE7A28512B1800F5CF20 /* TestStatsTableAnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE7928512B1800F5CF20 /* TestStatsTableAnswerCell.swift */; };
+		DE6BFE7D2851397C00F5CF20 /* TestStatsFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE7C2851397C00F5CF20 /* TestStatsFilter.swift */; };
+		DE6BFE7F285141F600F5CF20 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE7E285141F600F5CF20 /* CircleProgressView.swift */; };
+		DE6BFE832851D3EA00F5CF20 /* TestStatsFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE822851D3EA00F5CF20 /* TestStatsFilterButton.swift */; };
+		DE6BFE852851E6E600F5CF20 /* TestStatsAnswerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE842851E6E600F5CF20 /* TestStatsAnswerContainer.swift */; };
+		DE6BFE872851FA8800F5CF20 /* TestStatsInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE862851FA8800F5CF20 /* TestStatsInfoCell.swift */; };
 		DE93782D27C4AF380073F27C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE93782C27C4AF380073F27C /* Assets.xcassets */; };
 		DE93783027C4AF380073F27C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE93782E27C4AF380073F27C /* LaunchScreen.storyboard */; };
 		DE93783B27C4B0440073F27C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE93783D27C4B0440073F27C /* Localizable.strings */; };
@@ -376,7 +395,6 @@
 		DE50438B2822775300C6B1C8 /* StepCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCollectionView.swift; sourceTree = "<group>"; };
 		DE50438D2822780100C6B1C8 /* StepCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCollectionCell.swift; sourceTree = "<group>"; };
 		DE50438F28227ACE00C6B1C8 /* StepCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCollectionLayout.swift; sourceTree = "<group>"; };
-		DE504392282291F400C6B1C8 /* StepProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepProgressView.swift; sourceTree = "<group>"; };
 		DE5043942822A85300C6B1C8 /* StepCollectionElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCollectionElement.swift; sourceTree = "<group>"; };
 		DE55A4AD27D6458000B53B46 /* OCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCourseView.swift; sourceTree = "<group>"; };
 		DE55A4AF27D64C7600B53B46 /* ODetermingSkillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ODetermingSkillView.swift; sourceTree = "<group>"; };
@@ -453,6 +471,26 @@
 		DE6BFE502850B96900F5CF20 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		DE6BFE522850B97500F5CF20 /* ImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 		DE6BFE562850C26100F5CF20 /* TestRateUs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRateUs.swift; sourceTree = "<group>"; };
+		DE6BFE592851283A00F5CF20 /* TestStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStats.swift; sourceTree = "<group>"; };
+		DE6BFE5B2851285800F5CF20 /* TestStatsAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStatsAnswer.swift; sourceTree = "<group>"; };
+		DE6BFE5E285128A100F5CF20 /* GetTestStatsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTestStatsRequest.swift; sourceTree = "<group>"; };
+		DE6BFE60285128B100F5CF20 /* GetTestStatsResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTestStatsResponseMapper.swift; sourceTree = "<group>"; };
+		DE6BFE6228512A3300F5CF20 /* TestStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStatsViewController.swift; sourceTree = "<group>"; };
+		DE6BFE6428512A3D00F5CF20 /* TestStatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStatsViewModel.swift; sourceTree = "<group>"; };
+		DE6BFE6628512A4500F5CF20 /* TestStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStatsView.swift; sourceTree = "<group>"; };
+		DE6BFE6A28512A5800F5CF20 /* TestStatsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStatsTableView.swift; sourceTree = "<group>"; };
+		DE6BFE6C28512A6300F5CF20 /* TestStatsTableElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStatsTableElement.swift; sourceTree = "<group>"; };
+		DE6BFE6F28512ABB00F5CF20 /* TestStatsTableProgressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStatsTableProgressCell.swift; sourceTree = "<group>"; };
+		DE6BFE7128512AC700F5CF20 /* TestStatsTableInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStatsTableInfoCell.swift; sourceTree = "<group>"; };
+		DE6BFE7328512AE000F5CF20 /* TestStatsTableActionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStatsTableActionsCell.swift; sourceTree = "<group>"; };
+		DE6BFE7528512AF300F5CF20 /* TestStatsTableTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStatsTableTitleCell.swift; sourceTree = "<group>"; };
+		DE6BFE7728512AFF00F5CF20 /* TestStatsTableFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStatsTableFilterCell.swift; sourceTree = "<group>"; };
+		DE6BFE7928512B1800F5CF20 /* TestStatsTableAnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStatsTableAnswerCell.swift; sourceTree = "<group>"; };
+		DE6BFE7C2851397C00F5CF20 /* TestStatsFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStatsFilter.swift; sourceTree = "<group>"; };
+		DE6BFE7E285141F600F5CF20 /* CircleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
+		DE6BFE822851D3EA00F5CF20 /* TestStatsFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStatsFilterButton.swift; sourceTree = "<group>"; };
+		DE6BFE842851E6E600F5CF20 /* TestStatsAnswerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStatsAnswerContainer.swift; sourceTree = "<group>"; };
+		DE6BFE862851FA8800F5CF20 /* TestStatsInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStatsInfoCell.swift; sourceTree = "<group>"; };
 		DE93782027C4AF350073F27C /* ITExams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITExams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE93782C27C4AF380073F27C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE93782F27C4AF380073F27C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -943,14 +981,6 @@
 			path = StepCollectionView;
 			sourceTree = "<group>";
 		};
-		DE504391282291E600C6B1C8 /* Atoms */ = {
-			isa = PBXGroup;
-			children = (
-				DE504392282291F400C6B1C8 /* StepProgressView.swift */,
-			);
-			path = Atoms;
-			sourceTree = "<group>";
-		};
 		DE6BFD9D284E020900F5CF20 /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -1111,6 +1141,7 @@
 		DE6BFE1628509CA000F5CF20 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				DE6BFE5828511D9800F5CF20 /* TestStats */,
 				DE6BFE4D2850B92E00F5CF20 /* Test */,
 			);
 			path = Test;
@@ -1235,6 +1266,77 @@
 				DE6BFE562850C26100F5CF20 /* TestRateUs.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		DE6BFE5828511D9800F5CF20 /* TestStats */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFE7B2851397200F5CF20 /* Model */,
+				DE6BFE6828512A4900F5CF20 /* Views */,
+				DE6BFE6228512A3300F5CF20 /* TestStatsViewController.swift */,
+				DE6BFE6428512A3D00F5CF20 /* TestStatsViewModel.swift */,
+				DE6BFE6628512A4500F5CF20 /* TestStatsView.swift */,
+			);
+			path = TestStats;
+			sourceTree = "<group>";
+		};
+		DE6BFE5D2851289900F5CF20 /* GetTestStats */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFE5E285128A100F5CF20 /* GetTestStatsRequest.swift */,
+				DE6BFE60285128B100F5CF20 /* GetTestStatsResponseMapper.swift */,
+			);
+			path = GetTestStats;
+			sourceTree = "<group>";
+		};
+		DE6BFE6828512A4900F5CF20 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFE6928512A4D00F5CF20 /* TableView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DE6BFE6928512A4D00F5CF20 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFE6E28512A6A00F5CF20 /* Cells */,
+				DE6BFE6A28512A5800F5CF20 /* TestStatsTableView.swift */,
+				DE6BFE6C28512A6300F5CF20 /* TestStatsTableElement.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		DE6BFE6E28512A6A00F5CF20 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFE812851D3DE00F5CF20 /* Atoms */,
+				DE6BFE6F28512ABB00F5CF20 /* TestStatsTableProgressCell.swift */,
+				DE6BFE7128512AC700F5CF20 /* TestStatsTableInfoCell.swift */,
+				DE6BFE7328512AE000F5CF20 /* TestStatsTableActionsCell.swift */,
+				DE6BFE7528512AF300F5CF20 /* TestStatsTableTitleCell.swift */,
+				DE6BFE7728512AFF00F5CF20 /* TestStatsTableFilterCell.swift */,
+				DE6BFE7928512B1800F5CF20 /* TestStatsTableAnswerCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		DE6BFE7B2851397200F5CF20 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFE7C2851397C00F5CF20 /* TestStatsFilter.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DE6BFE812851D3DE00F5CF20 /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+				DE6BFE822851D3EA00F5CF20 /* TestStatsFilterButton.swift */,
+				DE6BFE842851E6E600F5CF20 /* TestStatsAnswerContainer.swift */,
+				DE6BFE862851FA8800F5CF20 /* TestStatsInfoCell.swift */,
+			);
+			path = Atoms;
 			sourceTree = "<group>";
 		};
 		DE93781727C4AF350073F27C = {
@@ -1373,6 +1475,7 @@
 				DE93785E27C4B2600073F27C /* CircleView.swift */,
 				DE93785F27C4B2600073F27C /* GradientView.swift */,
 				DEC3460E28196AE90069A060 /* Spinner.swift */,
+				DE6BFE7E285141F600F5CF20 /* CircleProgressView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -1600,7 +1703,6 @@
 		DE95A8AA2832117300809171 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				DE504391282291E600C6B1C8 /* Atoms */,
 				DE50438D2822780100C6B1C8 /* StepCollectionCell.swift */,
 				DE95A8AB283219D000809171 /* StepCollectionFinalCell.swift */,
 			);
@@ -1662,6 +1764,7 @@
 		DEADEAF828351DE80057AA44 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				DE6BFE5D2851289900F5CF20 /* GetTestStats */,
 				DEBCD17128494582000C08A9 /* GetStats */,
 				DEADEAF528351D380057AA44 /* ResetStatsRequest.swift */,
 			);
@@ -1674,6 +1777,8 @@
 				DEBCD16B28493CC4000C08A9 /* Stats.swift */,
 				DEBCD16D28494472000C08A9 /* PassRateProgress.swift */,
 				DEBCD16F2849452D000C08A9 /* SubjectProgress.swift */,
+				DE6BFE592851283A00F5CF20 /* TestStats.swift */,
+				DE6BFE5B2851285800F5CF20 /* TestStatsAnswer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2027,11 +2132,12 @@
 			files = (
 				DE6BFDDD284E899B00F5CF20 /* GetOnboardingTestRequest.swift in Sources */,
 				DE6BFDE8284F5D4D00F5CF20 /* OQuestionTableView.swift in Sources */,
+				DE6BFE7F285141F600F5CF20 /* CircleProgressView.swift in Sources */,
 				DE50438C2822775300C6B1C8 /* StepCollectionView.swift in Sources */,
 				DE1CA98C27F2ED4600C66DAD /* MainViewController.swift in Sources */,
 				DE6BFD9F284E021A00F5CF20 /* ReviewViewController.swift in Sources */,
+				DE6BFE6B28512A5800F5CF20 /* TestStatsTableView.swift in Sources */,
 				DED4725627D20B2300AEF8A6 /* OExamsTableElement.swift in Sources */,
-				DE504393282291F400C6B1C8 /* StepProgressView.swift in Sources */,
 				DE6BFE482850AA1D00F5CF20 /* AnswerView.swift in Sources */,
 				DE95A8AC283219D000809171 /* StepCollectionFinalCell.swift in Sources */,
 				DE95A8CD2832901E00809171 /* DailyGoalViewModel.swift in Sources */,
@@ -2045,6 +2151,7 @@
 				DEBCD18A284A02FC000C08A9 /* StatsMainProgressView.swift in Sources */,
 				DE6BFE2C2850A05F00F5CF20 /* QuestionContentCollectionCell.swift in Sources */,
 				DE95A8C42832892600809171 /* StudyModeViewController.swift in Sources */,
+				DE6BFE5F285128A100F5CF20 /* GetTestStatsRequest.swift in Sources */,
 				DE2B101827DB13AC005280DB /* APIRequestBody.swift in Sources */,
 				DEC346092817D8890069A060 /* CoursesTableExamCell.swift in Sources */,
 				DE93787727C4B2600073F27C /* Fonts.swift in Sources */,
@@ -2055,15 +2162,20 @@
 				DE2B10DF27DB16F2005280DB /* XOREncryption.swift in Sources */,
 				DEC345FC2816FDFA0069A060 /* CoursesViewController.swift in Sources */,
 				DE93789727C4BDED0073F27C /* UIEdgeInsets+Extension.swift in Sources */,
+				DE6BFE7828512AFF00F5CF20 /* TestStatsTableFilterCell.swift in Sources */,
 				DE6BFE152850976400F5CF20 /* QuestionMediator.swift in Sources */,
 				DEE74ECB27F41DF3002FE71D /* PlanView.swift in Sources */,
+				DE6BFE6328512A3300F5CF20 /* TestStatsViewController.swift in Sources */,
+				DE6BFE7628512AF300F5CF20 /* TestStatsTableTitleCell.swift in Sources */,
 				DE93787E27C4B2600073F27C /* TapAreaButton.swift in Sources */,
 				DE6BFE4C2850B0FA00F5CF20 /* TestBottomSpinner.swift in Sources */,
+				DE6BFE832851D3EA00F5CF20 /* TestStatsFilterButton.swift in Sources */,
 				DE2B10D127DB14EE005280DB /* IAPErrorHelper.swift in Sources */,
 				DE2B10BE27DB14EE005280DB /* GetCourcesResponseMapper.swift in Sources */,
 				DE95A89C282ECFD000809171 /* MyProfileViewModel.swift in Sources */,
 				DEC345FE2816FE070069A060 /* CoursesViewModel.swift in Sources */,
 				DE6BFE132850974A00F5CF20 /* TestCloseObserver.swift in Sources */,
+				DE6BFE7228512AC700F5CF20 /* TestStatsTableInfoCell.swift in Sources */,
 				DED4724A27CE5CF000AEF8A6 /* OAgeView.swift in Sources */,
 				DE2B100C27D9F6CE005280DB /* OCreatingPlanSectionView.swift in Sources */,
 				DEBCD1802849EC39000C08A9 /* StatsTableView.swift in Sources */,
@@ -2097,11 +2209,13 @@
 				DEC34614281971200069A060 /* TryAgainView.swift in Sources */,
 				DE95A883282E632F00809171 /* SettingsViewModel.swift in Sources */,
 				DEE74EC327F41CFF002FE71D /* PlanManager.swift in Sources */,
+				DE6BFE852851E6E600F5CF20 /* TestStatsAnswerContainer.swift in Sources */,
 				DE2B100227D8789F005280DB /* OStudyModeCell.swift in Sources */,
 				DE6BFE362850A7BA00F5CF20 /* QuestionTableElement.swift in Sources */,
 				DEBCD18C284A0C9A000C08A9 /* StatsTableDailyMetricsCell.swift in Sources */,
 				DE93788527C4B2600073F27C /* RxActivityIndicator.swift in Sources */,
 				DE93788727C4B2600073F27C /* Appearance.swift in Sources */,
+				DE6BFE7A28512B1800F5CF20 /* TestStatsTableAnswerCell.swift in Sources */,
 				DE6BFE2E2850A07000F5CF20 /* QuestionContentCollectionType.swift in Sources */,
 				DE6BFE1828509CB200F5CF20 /* TestViewController.swift in Sources */,
 				DE93787A27C4B2600073F27C /* ImagePicker.swift in Sources */,
@@ -2121,6 +2235,7 @@
 				DE2B10CE27DB14EE005280DB /* IAPActionResult.swift in Sources */,
 				DEC3460D28185EBB0069A060 /* CourseCurrentView.swift in Sources */,
 				DE3FD60A27E9FFEE00E76844 /* PaygatePlansCell.swift in Sources */,
+				DE6BFE6728512A4500F5CF20 /* TestStatsView.swift in Sources */,
 				DEE74EB127F34CB6002FE71D /* Exam.swift in Sources */,
 				DE6BFDF6284F946900F5CF20 /* RemoveSavedQuestionRequest.swift in Sources */,
 				DED4725827D20C4C00AEF8A6 /* OExamsTable.swift in Sources */,
@@ -2173,10 +2288,12 @@
 				DEBCD17A284949F1000C08A9 /* StatsViewModel.swift in Sources */,
 				DE95A897282E940000809171 /* SettingsAppButton.swift in Sources */,
 				DE95A8C82832893800809171 /* StudyModeView.swift in Sources */,
+				DE6BFE7028512ABB00F5CF20 /* TestStatsTableProgressCell.swift in Sources */,
 				DE55A4AE27D6458000B53B46 /* OCourseView.swift in Sources */,
 				DEE74EB627F41852002FE71D /* PlanTest.swift in Sources */,
 				DE2B100427D8B5C6005280DB /* OCreatingPlanView.swift in Sources */,
 				DE2D7F1E282D2BB000B8952B /* StepTestsTableView.swift in Sources */,
+				DE6BFE7428512AE000F5CF20 /* TestStatsTableActionsCell.swift in Sources */,
 				DE6BFE0028507A7B00F5CF20 /* SendAnswerResponseMapper.swift in Sources */,
 				DE50439028227ACE00C6B1C8 /* StepCollectionLayout.swift in Sources */,
 				DED4724527CE4BF700AEF8A6 /* OMotivationView.swift in Sources */,
@@ -2184,6 +2301,7 @@
 				DE3FD61A27EA2AAE00E76844 /* PaygateViewControllerDelegate.swift in Sources */,
 				DE2B0FFE27D798F4005280DB /* ODailyView.swift in Sources */,
 				DE6BFE412850A8A700F5CF20 /* QuestionTableExplanationTextCell.swift in Sources */,
+				DE6BFE5A2851283A00F5CF20 /* TestStats.swift in Sources */,
 				DE6BFDEA284F5D6300F5CF20 /* OQuestionTableElement.swift in Sources */,
 				DE1CA9A827F2FC6200C66DAD /* GetMonetizationResponseMapper.swift in Sources */,
 				DE6BFE062850966500F5CF20 /* GetQotdTestRequest.swift in Sources */,
@@ -2215,6 +2333,8 @@
 				DE95A8B02832261A00809171 /* PlanFinalStepView.swift in Sources */,
 				DE6BFDE1284F307A00F5CF20 /* SplashActivity.swift in Sources */,
 				DE3BDBEB284A52440091230F /* StatsPassRateView.swift in Sources */,
+				DE6BFE6D28512A6300F5CF20 /* TestStatsTableElement.swift in Sources */,
+				DE6BFE5C2851285800F5CF20 /* TestStatsAnswer.swift in Sources */,
 				DE2B10C327DB14EE005280DB /* ProfileManager.swift in Sources */,
 				DEC34618281979350069A060 /* ContentError.swift in Sources */,
 				DE6BFE3B2850A83300F5CF20 /* QuestionTableAnswersCell.swift in Sources */,
@@ -2246,6 +2366,7 @@
 				DE95A89A282ECFA200809171 /* MyProfileViewController.swift in Sources */,
 				DE93788627C4B2600073F27C /* UIViewRxExtension.swift in Sources */,
 				DE6BFDC7284E127600F5CF20 /* GetReviewResponse.swift in Sources */,
+				DE6BFE61285128B100F5CF20 /* GetTestStatsResponseMapper.swift in Sources */,
 				DE93787927C4B2600073F27C /* Weak.swift in Sources */,
 				DE93787027C4B2600073F27C /* StringExtension.swift in Sources */,
 				DEC345F22816DE200069A060 /* PlanStudyScoreView.swift in Sources */,
@@ -2280,6 +2401,7 @@
 				DEE74EAD27F32486002FE71D /* ProfileMediator.swift in Sources */,
 				DE6BFE042850964400F5CF20 /* GetTenTestRequest.swift in Sources */,
 				DE55A4B427D6538800B53B46 /* OExamDateView.swift in Sources */,
+				DE6BFE7D2851397C00F5CF20 /* TestStatsFilter.swift in Sources */,
 				DE6BFE2428509D4B00F5CF20 /* TestAnalytics.swift in Sources */,
 				DE95A892282E910C00809171 /* SettingsAppCell.swift in Sources */,
 				DEC345F92816E6840069A060 /* PlanStudyScore.swift in Sources */,
@@ -2292,6 +2414,7 @@
 				DE6BFE0E2850970800F5CF20 /* AgainTestRequest.swift in Sources */,
 				DE1CA99327F2ED8300C66DAD /* TabItemView.swift in Sources */,
 				DE95A877282E2E4300809171 /* ProfileView.swift in Sources */,
+				DE6BFE6528512A3D00F5CF20 /* TestStatsViewModel.swift in Sources */,
 				DE50438E2822780100C6B1C8 /* StepCollectionCell.swift in Sources */,
 				DE3FD62127EB280100E76844 /* PaygateView.swift in Sources */,
 				DEE74EAF27F3275D002FE71D /* ObservableAndSingleExtension.swift in Sources */,
@@ -2303,6 +2426,7 @@
 				DE3BDBE9284A46580091230F /* StatsTablePassRateCell.swift in Sources */,
 				DE6BFDF4284F942A00F5CF20 /* SaveQuestionRequest.swift in Sources */,
 				DE6BFDD9284E579400F5CF20 /* ReviewEmptyView.swift in Sources */,
+				DE6BFE872851FA8800F5CF20 /* TestStatsInfoCell.swift in Sources */,
 				DEC34616281971E50069A060 /* ObservableRetrySingle.swift in Sources */,
 				DEBCD1852849F1C5000C08A9 /* StatsTableMainCell.swift in Sources */,
 			);

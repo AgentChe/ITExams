@@ -220,7 +220,7 @@ final class TestViewController: UIViewController {
             .drive(Binder(self) { base, element in
                 base.logTapAnalytics(courseName: element.courseName, what: "finish test")
                 
-                base.dismiss(animated: true)
+                base.finishTest(element)
             })
             .disposed(by: disposeBag)
     }
@@ -259,6 +259,12 @@ private extension TestViewController {
         default:
             mainView.titleLabel.attributedText = progress.attributed(with: attrs)
         }
+    }
+    
+    // TODO: обрабатывать close, tryAgain и nextTest
+    func finishTest(_ element: TestFinish) {
+        let vc = TestStatsViewController.make(finish: element)
+        present(vc, animated: true)
     }
     
     func logAnalytics(courseName: String) {

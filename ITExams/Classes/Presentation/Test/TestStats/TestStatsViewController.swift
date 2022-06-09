@@ -1,0 +1,101 @@
+//
+//  TestStatsViewController.swift
+//  ITExams
+//
+//  Created by Андрей Чернышев on 08.06.2022.
+//
+
+import UIKit
+import RxSwift
+
+final class TestStatsViewController: UIViewController {
+    lazy var mainView = TestStatsView()
+    
+    private lazy var disposeBag = DisposeBag()
+    
+    private lazy var viewModel = TestStatsViewModel()
+    
+    override func loadView() {
+        view = mainView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        viewModel.tryAgain = { [weak self] error -> Observable<Void> in
+            guard let self = self else {
+                return .never()
+            }
+            
+            return self.openError()
+        }
+        
+        viewModel.elements
+            .drive(Binder(self) { base, elements in
+                base.mainView.tableView.setup(elements: elements)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.activity
+            .drive(Binder(self) { base, activity in
+                base.activity(activity)
+            })
+            .disposed(by: disposeBag)
+        
+        mainView.closeButton.rx.tap
+            .bind(to: Binder(self) { base, void in
+                base.dismiss(animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        mainView.tableView.mainDelegate = self
+    }
+}
+
+// MARK: Make
+extension TestStatsViewController {
+    static func make(finish: TestFinish) -> TestStatsViewController {
+        let vc = TestStatsViewController()
+        vc.viewModel.userTestId.accept(finish.userTestId)
+        vc.modalPresentationStyle = .fullScreen
+        return vc
+    }
+}
+
+// MARK: TestStatsTableViewDelegate
+extension TestStatsViewController: TestStatsTableViewDelegate {
+    func testStatsTableDidTappedRestart() {
+        
+    }
+    
+    func testStatsTableDidTappedNextTest() {
+        
+    }
+    
+    func testStatsTableDidTapped(filter: TestStatsFilter) {
+        viewModel.filter.accept(filter)
+    }
+}
+
+// MARK: Private
+private extension TestStatsViewController {
+    func openError() -> Observable<Void> {
+        Observable<Void>
+            .create { [weak self] observe in
+                guard let self = self else {
+                    return Disposables.create()
+                }
+                
+                let vc = TryAgainViewController.make {
+                    observe.onNext(())
+                }
+                self.present(vc, animated: true)
+                
+                return Disposables.create()
+            }
+    }
+    
+    func activity(_ activity: Bool) {
+        activity ? mainView.preloader.startAnimating() : mainView.preloader.stopAnimating()
+    }
+}

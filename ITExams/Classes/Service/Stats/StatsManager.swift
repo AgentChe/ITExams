@@ -10,6 +10,7 @@ import RxSwift
 protocol StatsManagerProtocol {
     func resetStats(for courseId: Int) -> Single<Void>
     func obtainStats(for courseId: Int) -> Single<Stats?>
+    func obtainTestStats(userTestId: Int) -> Single<TestStats?>
 }
 
 final class StatsManager: StatsManagerProtocol {
@@ -45,5 +46,19 @@ extension StatsManager {
         return defaultRequestWrapper
             .callServerApi(requestBody: request)
             .map { try GetStatsResponseMapper.map(from: $0) }
+    }
+    
+    func obtainTestStats(userTestId: Int) -> Single<TestStats?> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
+            return .error(SignError.tokenNotFound)
+        }
+        
+        let request = GetTestStatsRequest(userToken: userToken,
+                                          userTestId: userTestId,
+                                          peek: true)
+        
+        return defaultRequestWrapper
+            .callServerApi(requestBody: request)
+            .map { GetTestStatsResponseMapper.map(from: $0) }
     }
 }
