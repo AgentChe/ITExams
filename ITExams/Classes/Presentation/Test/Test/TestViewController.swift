@@ -11,7 +11,16 @@ import RxCocoa
 import AVFoundation
 import AVKit
 
+protocol TestViewControllerDelegate: AnyObject {
+    func testViewControllerDismiss()
+    func testViewControllerClose(finish: TestFinish)
+    func testViewControllerNeedPayment()
+    func testViewController(finish: TestFinish)
+}
+
 final class TestViewController: UIViewController {
+    weak var delegate: TestViewControllerDelegate?
+    
     lazy var mainView = TestView(testType: testType)
     
     private lazy var disposeBag = DisposeBag()
@@ -115,7 +124,7 @@ final class TestViewController: UIViewController {
         currentButtonState
             .filter { $0 == .back }
             .bind(to: Binder(self) { base, _ in
-                base.dismiss(animated: true)
+                base.delegate?.testViewControllerDismiss()
                 FirebaseManager.shared.logEvent(name: "client_test_finished")
             })
             .disposed(by: disposeBag)
@@ -164,12 +173,9 @@ final class TestViewController: UIViewController {
 
         viewModel.needPayment
             .filter { $0 }
-            .emit { [weak self] _ in
-                self?.dismiss(animated: true) {
-                    let rootVC = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController
-                    rootVC?.present(PaygateViewController.make(), animated: true)
-                }
-            }
+            .emit(to: Binder(self) { base, needPayment in
+                base.delegate?.testViewControllerNeedPayment()
+            })
             .disposed(by: disposeBag)
             
         viewModel.needPayment
@@ -204,9 +210,7 @@ final class TestViewController: UIViewController {
                 
                 base.logTapAnalytics(courseName: courseName, what: "close")
                 
-                base.dismiss(animated: true) {
-                    TestCloseMediator.shared.notifyAboudTestClosed(with: finish)
-                }
+                base.delegate?.testViewControllerClose(finish: finish)
             })
             .disposed(by: disposeBag)
         
@@ -214,7 +218,7 @@ final class TestViewController: UIViewController {
             .drive(Binder(self) { base, element in
                 base.logTapAnalytics(courseName: element.courseName, what: "finish test")
                 
-                base.finishTest(element)
+                base.delegate?.testViewController(finish: element)
             })
             .disposed(by: disposeBag)
     }
@@ -231,19 +235,10 @@ extension TestViewController {
     }
 }
 
-// MARK: TestStatsViewControllerDelegate
-extension TestViewController: TestStatsViewControllerDelegate {
-    func testStatsViewControllerDidTapped(event: TestStatsViewController.Event, vc: TestStatsViewController) {
-        vc.dismiss(animated: true) { [weak self] in
-            switch event {
-            case .close:
-                self?.dismiss(animated: false)
-            case .restart(let userTestId):
-                self?.viewModel.didTapRestart.accept(userTestId)
-            case .nextTest:
-                break // TODO
-            }
-        }
+// MARK: Public
+extension TestViewController {
+    func restart(userTestId: Int) {
+        viewModel.didTapRestart.accept(userTestId)
     }
 }
 
@@ -269,12 +264,6 @@ private extension TestViewController {
         default:
             mainView.titleLabel.attributedText = progress.attributed(with: attrs)
         }
-    }
-    
-    func finishTest(_ element: TestFinish) {
-        let vc = TestStatsViewController.make(finish: element)
-        vc.delegate = self
-        present(vc, animated: true)
     }
     
     func logAnalytics(courseName: String) {

@@ -140,8 +140,7 @@ extension PlanViewController: StepTestsTableViewDelegate {
             present(vc, animated: true)
         } else {
             // TODO: Open test
-            let vc = TestViewController.make(testType: .tenSet, activeSubscription: true)
-            present(vc, animated: true)
+            TestCoordinator.shared.start(testType: .tenSet, from: self)
         }
     }
 }

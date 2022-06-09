@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 
 protocol TestStatsViewControllerDelegate: AnyObject {
-    func testStatsViewControllerDidTapped(event: TestStatsViewController.Event, vc: TestStatsViewController)
+    func testStatsViewControllerDidTapped(event: TestStatsViewController.Event)
 }
 
 final class TestStatsViewController: UIViewController {
@@ -56,7 +56,7 @@ final class TestStatsViewController: UIViewController {
         
         mainView.closeButton.rx.tap
             .bind(to: Binder(self) { base, void in
-                base.delegate?.testStatsViewControllerDidTapped(event: .close, vc: base)
+                base.delegate?.testStatsViewControllerDidTapped(event: .close)
             })
             .disposed(by: disposeBag)
         
@@ -81,11 +81,11 @@ extension TestStatsViewController: TestStatsTableViewDelegate {
             return
         }
         
-        delegate?.testStatsViewControllerDidTapped(event: .restart(userTestId), vc: self)
+        delegate?.testStatsViewControllerDidTapped(event: .restart(userTestId))
     }
     
     func testStatsTableDidTappedNextTest() {
-        delegate?.testStatsViewControllerDidTapped(event: .nextTest, vc: self)
+        delegate?.testStatsViewControllerDidTapped(event: .nextTest)
     }
     
     func testStatsTableDidTapped(filter: TestStatsFilter) {
