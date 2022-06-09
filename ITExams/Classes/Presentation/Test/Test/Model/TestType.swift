@@ -13,6 +13,7 @@ enum TestType {
     case randomSet
     case saved
     case timed(minutes: Int)
+    case plan(testId: Int)
 }
 
 // MARK: Public

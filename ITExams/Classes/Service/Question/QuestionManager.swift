@@ -14,6 +14,7 @@ protocol QuestionManagerProtocol {
     func obtainQotdTest(courseId: Int, activeSubscription: Bool) -> Single<Test?>
     func obtainRandomTest(courseId: Int, activeSubscription: Bool) -> Single<Test?>
     func obtainSavedTest(courseId: Int, activeSubscription: Bool) -> Single<Test?>
+    func obtainPlanTest(testId: Int) -> Single<Test?>
     func obtainOnboardingTest(forceUpdate: Bool) -> Single<Test?>
     func obtainReview(for courseId: Int, mode: Int, offset: Int) -> Single<[Review]>
     func saveQuestion(questionId: Int) -> Single<Void>
@@ -122,6 +123,19 @@ extension QuestionManager {
         return defaultRequestWrapper
             .callServerApi(requestBody: request)
             .map { GetTestResponseMapper.map(from: $0, isEncryption: false) }
+    }
+    
+    func obtainPlanTest(testId: Int) -> Single<Test?> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
+            return .error(SignError.tokenNotFound)
+        }
+        
+        let request = GetPlanTestRequest(userToken: userToken,
+                                         testId: testId)
+        
+        return xorRequestWrapper
+            .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
+            .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
     }
     
     func obtainOnboardingTest(forceUpdate: Bool) -> Single<Test?> {

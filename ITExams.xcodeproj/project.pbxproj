@@ -179,6 +179,7 @@
 		DE6BFE852851E6E600F5CF20 /* TestStatsAnswerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE842851E6E600F5CF20 /* TestStatsAnswerContainer.swift */; };
 		DE6BFE872851FA8800F5CF20 /* TestStatsInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE862851FA8800F5CF20 /* TestStatsInfoCell.swift */; };
 		DE6BFE8928524FE500F5CF20 /* TestCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE8828524FE500F5CF20 /* TestCoordinator.swift */; };
+		DE6BFE8B28525F8F00F5CF20 /* GetPlanTestRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFE8A28525F8F00F5CF20 /* GetPlanTestRequest.swift */; };
 		DE93782D27C4AF380073F27C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE93782C27C4AF380073F27C /* Assets.xcassets */; };
 		DE93783027C4AF380073F27C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE93782E27C4AF380073F27C /* LaunchScreen.storyboard */; };
 		DE93783B27C4B0440073F27C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE93783D27C4B0440073F27C /* Localizable.strings */; };
@@ -493,6 +494,7 @@
 		DE6BFE842851E6E600F5CF20 /* TestStatsAnswerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStatsAnswerContainer.swift; sourceTree = "<group>"; };
 		DE6BFE862851FA8800F5CF20 /* TestStatsInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStatsInfoCell.swift; sourceTree = "<group>"; };
 		DE6BFE8828524FE500F5CF20 /* TestCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoordinator.swift; sourceTree = "<group>"; };
+		DE6BFE8A28525F8F00F5CF20 /* GetPlanTestRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlanTestRequest.swift; sourceTree = "<group>"; };
 		DE93782027C4AF350073F27C /* ITExams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITExams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE93782C27C4AF380073F27C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE93782F27C4AF380073F27C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -1073,6 +1075,7 @@
 				DE6BFE072850968B00F5CF20 /* GetRandomTestRequest.swift */,
 				DE6BFE09285096AB00F5CF20 /* GetFailedTestRequest.swift */,
 				DE6BFE0B285096D300F5CF20 /* GetSavedTestRequest.swift */,
+				DE6BFE8A28525F8F00F5CF20 /* GetPlanTestRequest.swift */,
 			);
 			path = GetTest;
 			sourceTree = "<group>";
@@ -2411,6 +2414,7 @@
 				DEC345F92816E6840069A060 /* PlanStudyScore.swift in Sources */,
 				DEADEAFC28351EFF0057AA44 /* StatsMediator.swift in Sources */,
 				DE6BFE342850A7AD00F5CF20 /* QuestionTableView.swift in Sources */,
+				DE6BFE8B28525F8F00F5CF20 /* GetPlanTestRequest.swift in Sources */,
 				DE2B101127DA4B49005280DB /* OPlanGridView.swift in Sources */,
 				DE6BFE3F2850A89A00F5CF20 /* QuestionTableExplanationImageCell.swift in Sources */,
 				DED4725A27D20F7800AEF8A6 /* OExamsView.swift in Sources */,

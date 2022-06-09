@@ -22,6 +22,8 @@ final class TestAnalytics {
             return "saved"
         case .timed:
             return "timed"
+        case .plan:
+            return "plan"
         }
     }
 }

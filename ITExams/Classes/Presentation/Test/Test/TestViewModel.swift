@@ -266,6 +266,8 @@ private extension TestViewModel {
                                                            testId: nil,
                                                            time: minutes,
                                                            activeSubscription: self.sessionManager.hasActiveSubscriptions())
+                case .plan(let testId):
+                    test = self.questionManager.obtainPlanTest(testId: testId)
                 }
                 
                 return test

@@ -139,8 +139,7 @@ extension PlanViewController: StepTestsTableViewDelegate {
             let vc = PaygateViewController.make()
             present(vc, animated: true)
         } else {
-            // TODO: Open test
-            TestCoordinator.shared.start(testType: .tenSet, from: self)
+            TestCoordinator.shared.start(testType: .plan(testId: element.id), from: self)
         }
     }
 }
