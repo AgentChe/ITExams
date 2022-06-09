@@ -8,7 +8,17 @@
 import UIKit
 import RxSwift
 
+protocol TestStatsViewControllerDelegate: AnyObject {
+    func testStatsViewControllerDidTapped(event: TestStatsViewController.Event, vc: TestStatsViewController)
+}
+
 final class TestStatsViewController: UIViewController {
+    enum Event {
+        case close, restart, nextTest
+    }
+    
+    weak var delegate: TestStatsViewControllerDelegate?
+    
     lazy var mainView = TestStatsView()
     
     private lazy var disposeBag = DisposeBag()
@@ -44,7 +54,7 @@ final class TestStatsViewController: UIViewController {
         
         mainView.closeButton.rx.tap
             .bind(to: Binder(self) { base, void in
-                base.dismiss(animated: true)
+                base.delegate?.testStatsViewControllerDidTapped(event: .close, vc: base)
             })
             .disposed(by: disposeBag)
         
@@ -65,15 +75,19 @@ extension TestStatsViewController {
 // MARK: TestStatsTableViewDelegate
 extension TestStatsViewController: TestStatsTableViewDelegate {
     func testStatsTableDidTappedRestart() {
-        
+        delegate?.testStatsViewControllerDidTapped(event: .restart, vc: self)
     }
     
     func testStatsTableDidTappedNextTest() {
-        
+        delegate?.testStatsViewControllerDidTapped(event: .nextTest, vc: self)
     }
     
     func testStatsTableDidTapped(filter: TestStatsFilter) {
         viewModel.filter.accept(filter)
+    }
+    
+    func testStatsTableDidTapped(question: TestStatsTableAnswer) {
+        // TODO: открыть вопрос для просмотра
     }
 }
 

@@ -237,6 +237,22 @@ extension TestViewController {
     }
 }
 
+// MARK: TestStatsViewControllerDelegate
+extension TestViewController: TestStatsViewControllerDelegate {
+    func testStatsViewControllerDidTapped(event: TestStatsViewController.Event, vc: TestStatsViewController) {
+        vc.dismiss(animated: true) { [weak self] in
+            switch event {
+            case .close:
+                self?.dismiss(animated: false)
+            case .restart:
+                break // TODO
+            case .nextTest:
+                break // TODO
+            }
+        }
+    }
+}
+
 // MARK: Private
 private extension TestViewController {
     func update(favorite: Bool) {
@@ -261,9 +277,9 @@ private extension TestViewController {
         }
     }
     
-    // TODO: обрабатывать close, tryAgain и nextTest
     func finishTest(_ element: TestFinish) {
         let vc = TestStatsViewController.make(finish: element)
+        vc.delegate = self
         present(vc, animated: true)
     }
     

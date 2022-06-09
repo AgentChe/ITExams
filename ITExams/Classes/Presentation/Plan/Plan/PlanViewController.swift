@@ -140,10 +140,7 @@ extension PlanViewController: StepTestsTableViewDelegate {
             present(vc, animated: true)
         } else {
             // TODO: Open test
-//            let vc = TestViewController.make(testType: .tenSet, activeSubscription: true)
-            let vc = TestStatsViewController.make(finish: TestFinish(userTestId: 865400,
-                                                                     courseName: "CompTIA CASP+",
-                                                                     testType: .tenSet))
+            let vc = TestViewController.make(testType: .tenSet, activeSubscription: true)
             present(vc, animated: true)
         }
     }

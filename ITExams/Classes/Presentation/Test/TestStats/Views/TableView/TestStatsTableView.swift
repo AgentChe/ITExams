@@ -11,6 +11,7 @@ protocol TestStatsTableViewDelegate: AnyObject {
     func testStatsTableDidTappedRestart()
     func testStatsTableDidTappedNextTest()
     func testStatsTableDidTapped(filter: TestStatsFilter)
+    func testStatsTableDidTapped(question: TestStatsTableAnswer)
 }
 
 final class TestStatsTableView: UITableView {
@@ -95,6 +96,14 @@ extension TestStatsTableView: UITableViewDelegate {
         case .info, .title, .answer:
             return UITableView.automaticDimension
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard case let .answer(element) = elements[indexPath.row] else {
+            return
+        }
+        
+        mainDelegate?.testStatsTableDidTapped(question: element)
     }
 }
 
