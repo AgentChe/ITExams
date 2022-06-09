@@ -226,10 +226,9 @@ final class TestViewController: UIViewController {
 
 // MARK: Make
 extension TestViewController {
-    static func make(testType: TestType, activeSubscription: Bool) -> TestViewController {
+    static func make(testType: TestType) -> TestViewController {
         let controller = TestViewController(testType: testType)
         controller.modalPresentationStyle = .fullScreen
-        controller.viewModel.activeSubscription = activeSubscription
         controller.viewModel.testType.accept(testType)
         return controller
     }

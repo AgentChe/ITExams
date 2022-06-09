@@ -11,8 +11,6 @@ import RxCocoa
 final class TestViewModel {
     var tryAgain: ((Error) -> (Observable<Void>))?
     
-    var activeSubscription = false
-    
     let testType = BehaviorRelay<TestType?>(value: nil)
     let didTapMark = PublishRelay<Bool>()
     let didTapNext = PublishRelay<Void>()
@@ -48,6 +46,7 @@ final class TestViewModel {
     
     private lazy var questionManager = QuestionManager()
     private lazy var profileManager = ProfileManager()
+    private lazy var sessionManager = SessionManager()
     
     private let answeredQuestionId = PublishRelay<Int>()
 }
@@ -246,27 +245,27 @@ private extension TestViewModel {
                     test = self.questionManager.obtainTest(courseId: courseId,
                                                            testId: testId,
                                                            time: nil,
-                                                           activeSubscription: self.activeSubscription)
+                                                           activeSubscription: self.sessionManager.hasActiveSubscriptions())
                 case .tenSet:
                     test = self.questionManager.obtainTenTest(courseId: courseId,
-                                                              activeSubscription: self.activeSubscription)
+                                                              activeSubscription: self.sessionManager.hasActiveSubscriptions())
                 case .failedSet:
                     test = self.questionManager.obtainFailedTest(courseId: courseId,
-                                                                 activeSubscription: self.activeSubscription)
+                                                                 activeSubscription: self.sessionManager.hasActiveSubscriptions())
                 case .qotd:
                     test = self.questionManager.obtainQotdTest(courseId: courseId,
-                                                               activeSubscription: self.activeSubscription)
+                                                               activeSubscription: self.sessionManager.hasActiveSubscriptions())
                 case .randomSet:
                     test = self.questionManager.obtainRandomTest(courseId: courseId,
-                                                                 activeSubscription: self.activeSubscription)
+                                                                 activeSubscription: self.sessionManager.hasActiveSubscriptions())
                 case .saved:
                     test = self.questionManager.obtainSavedTest(courseId: courseId,
-                                                                activeSubscription: self.activeSubscription)
+                                                                activeSubscription: self.sessionManager.hasActiveSubscriptions())
                 case .timed(let minutes):
                     test = self.questionManager.obtainTest(courseId: courseId,
                                                            testId: nil,
                                                            time: minutes,
-                                                           activeSubscription: self.activeSubscription)
+                                                           activeSubscription: self.sessionManager.hasActiveSubscriptions())
                 }
                 
                 return test
@@ -319,7 +318,7 @@ private extension TestViewModel {
         testElement
             .map { [weak self] element in
                 guard let self = self else { return false }
-                return self.activeSubscription ? false : element.paid ? true : false
+                return self.sessionManager.hasActiveSubscriptions() ? false : element.paid ? true : false
             }
             .asSignal(onErrorSignalWith: .empty())
     }

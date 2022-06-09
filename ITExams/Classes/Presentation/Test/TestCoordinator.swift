@@ -88,8 +88,7 @@ extension TestCoordinator: TestStatsViewControllerDelegate {
 // MARK: Private
 private extension TestCoordinator {
     func openTest(with testType: TestType) {
-        // TODO: activeSubscription получать внутри теста
-        testVC = TestViewController.make(testType: testType, activeSubscription: true)
+        testVC = TestViewController.make(testType: testType)
         testVC?.delegate = self
         from?.present(testVC!, animated: true)
     }
