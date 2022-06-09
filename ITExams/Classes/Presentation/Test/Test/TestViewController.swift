@@ -238,8 +238,8 @@ extension TestViewController: TestStatsViewControllerDelegate {
             switch event {
             case .close:
                 self?.dismiss(animated: false)
-            case .restart:
-                break // TODO
+            case .restart(let userTestId):
+                self?.viewModel.didTapRestart.accept(userTestId)
             case .nextTest:
                 break // TODO
             }

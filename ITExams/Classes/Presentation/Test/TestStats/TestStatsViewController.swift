@@ -14,7 +14,9 @@ protocol TestStatsViewControllerDelegate: AnyObject {
 
 final class TestStatsViewController: UIViewController {
     enum Event {
-        case close, restart, nextTest
+        case close
+        case restart(Int)
+        case nextTest
     }
     
     weak var delegate: TestStatsViewControllerDelegate?
@@ -75,7 +77,11 @@ extension TestStatsViewController {
 // MARK: TestStatsTableViewDelegate
 extension TestStatsViewController: TestStatsTableViewDelegate {
     func testStatsTableDidTappedRestart() {
-        delegate?.testStatsViewControllerDidTapped(event: .restart, vc: self)
+        guard let userTestId = viewModel.userTestId.value else {
+            return
+        }
+        
+        delegate?.testStatsViewControllerDidTapped(event: .restart(userTestId), vc: self)
     }
     
     func testStatsTableDidTappedNextTest() {
