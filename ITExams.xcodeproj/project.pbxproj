@@ -94,6 +94,7 @@
 		DE5D0BCB2852820C000A1C9B /* PracticeTableDailyQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BCA2852820C000A1C9B /* PracticeTableDailyQuestionCell.swift */; };
 		DE5D0BCD2852822E000A1C9B /* PracticeTableTestsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BCC2852822E000A1C9B /* PracticeTableTestsCell.swift */; };
 		DE5D0BCF2852823F000A1C9B /* PracticeTableUnlockPremiumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BCE2852823F000A1C9B /* PracticeTableUnlockPremiumCell.swift */; };
+		DE5D0BD228530211000A1C9B /* PracticeTestButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BD128530211000A1C9B /* PracticeTestButton.swift */; };
 		DE6BFD9F284E021A00F5CF20 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */; };
 		DE6BFDA1284E022200F5CF20 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */; };
 		DE6BFDA5284E023400F5CF20 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDA4284E023400F5CF20 /* ReviewView.swift */; };
@@ -419,6 +420,7 @@
 		DE5D0BCA2852820C000A1C9B /* PracticeTableDailyQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeTableDailyQuestionCell.swift; sourceTree = "<group>"; };
 		DE5D0BCC2852822E000A1C9B /* PracticeTableTestsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeTableTestsCell.swift; sourceTree = "<group>"; };
 		DE5D0BCE2852823F000A1C9B /* PracticeTableUnlockPremiumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeTableUnlockPremiumCell.swift; sourceTree = "<group>"; };
+		DE5D0BD128530211000A1C9B /* PracticeTestButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeTestButton.swift; sourceTree = "<group>"; };
 		DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		DE6BFDA4284E023400F5CF20 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
@@ -1026,6 +1028,7 @@
 		DE5D0BC5285281C8000A1C9B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				DE5D0BD028530200000A1C9B /* Atoms */,
 				DE5D0BC6285281EF000A1C9B /* PracticeTableExamDateCell.swift */,
 				DE5D0BC8285281FB000A1C9B /* PracticeTableTitleCell.swift */,
 				DE5D0BCA2852820C000A1C9B /* PracticeTableDailyQuestionCell.swift */,
@@ -1033,6 +1036,14 @@
 				DE5D0BCE2852823F000A1C9B /* PracticeTableUnlockPremiumCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		DE5D0BD028530200000A1C9B /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+				DE5D0BD128530211000A1C9B /* PracticeTestButton.swift */,
+			);
+			path = Atoms;
 			sourceTree = "<group>";
 		};
 		DE6BFD9D284E020900F5CF20 /* Review */ = {
@@ -2480,6 +2491,7 @@
 				DE93787127C4B2600073F27C /* GlobalDefinitions.swift in Sources */,
 				DE6BFE2028509CEE00F5CF20 /* TestType.swift in Sources */,
 				DE6BFDC0284E0EEA00F5CF20 /* QuestionMapper.swift in Sources */,
+				DE5D0BD228530211000A1C9B /* PracticeTestButton.swift in Sources */,
 				DE95A875282E2E2F00809171 /* ProfileViewModel.swift in Sources */,
 				DE93786A27C4B2600073F27C /* UIColorExtension.swift in Sources */,
 				DE95A88E282E81F000809171 /* SettingsPremiumCell.swift in Sources */,

@@ -35,6 +35,14 @@ final class PracticeViewController: UIViewController {
                 base.activity(activity)
             })
             .disposed(by: disposeBag)
+        
+        viewModel.elements
+            .drive(Binder(self) { base, elements in
+                base.mainView.tableView.setup(elements: elements)
+            })
+            .disposed(by: disposeBag)
+        
+        mainView.tableView.mainDelegate = self
     }
 }
 
@@ -42,6 +50,38 @@ final class PracticeViewController: UIViewController {
 extension PracticeViewController {
     static func make() -> PracticeViewController {
         PracticeViewController()
+    }
+}
+
+// MARK: PracticeTableViewDelegate
+extension PracticeViewController: PracticeTableViewDelegate {
+    func practiceTableDidTappedDailyQuestion() {
+        TestCoordinator.shared.start(testType: .qotd, from: self)
+    }
+    
+    func practiceTableDidTappedRandomTest() {
+        TestCoordinator.shared.start(testType: .randomSet, from: self)
+    }
+    
+    func practiceTableDidTappedMissedTest() {
+        TestCoordinator.shared.start(testType: .failedSet, from: self)
+    }
+    
+    func practiceTableDidTappedQuickTest() {
+        
+    }
+    
+    func practiceTableDidTappedSavedTest() {
+        TestCoordinator.shared.start(testType: .saved, from: self)
+    }
+    
+    func practiceTableDidTappedCusomTest() {
+        
+    }
+    
+    func practiceTableDidTappedUnlockPremium() {
+        let vc = PaygateViewController.make()
+        present(vc, animated: true)
     }
 }
 

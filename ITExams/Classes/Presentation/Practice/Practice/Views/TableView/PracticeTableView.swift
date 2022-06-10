@@ -7,7 +7,19 @@
 
 import UIKit
 
+protocol PracticeTableViewDelegate: AnyObject {
+    func practiceTableDidTappedDailyQuestion()
+    func practiceTableDidTappedRandomTest()
+    func practiceTableDidTappedMissedTest()
+    func practiceTableDidTappedQuickTest()
+    func practiceTableDidTappedSavedTest()
+    func practiceTableDidTappedCusomTest()
+    func practiceTableDidTappedUnlockPremium()
+}
+
 final class PracticeTableView: UITableView {
+    weak var mainDelegate: PracticeTableViewDelegate?
+    
     private(set) lazy var elements = [PracticeTableElement]()
     
     override init(frame: CGRect, style: UITableView.Style) {
@@ -44,22 +56,27 @@ extension PracticeTableView: UITableViewDataSource {
             cell.contentView.backgroundColor = UIColor.clear
             cell.selectionStyle = .none
             return cell
-        case .examDate:
+        case .examDate(let date):
             let cell = dequeueReusableCell(withIdentifier: String(describing: PracticeTableExamDateCell.self)) as! PracticeTableExamDateCell
+            cell.setup(element: date)
             return cell
         case .title(let element):
             let cell = dequeueReusableCell(withIdentifier: String(describing: PracticeTableTitleCell.self)) as! PracticeTableTitleCell
             cell.setup(element: element)
             return cell
-        case .dailyQuestion:
+        case .dailyQuestion(let element):
             let cell = dequeueReusableCell(withIdentifier: String(describing: PracticeTableDailyQuestionCell.self)) as! PracticeTableDailyQuestionCell
+            cell.setup(element: element)
             return cell
-        case .tests:
+        case .tests(let element):
             let cell = dequeueReusableCell(withIdentifier: String(describing: PracticeTableTestsCell.self)) as! PracticeTableTestsCell
+            cell.setup(element: element)
+            cell.mainDelegate = mainDelegate
             return cell
         case .unlockPremium(let element):
             let cell = dequeueReusableCell(withIdentifier: String(describing: PracticeTableUnlockPremiumCell.self)) as! PracticeTableUnlockPremiumCell
             cell.setup(element: element)
+            cell.mainDelegate = mainDelegate
             return cell
         }
     }
@@ -73,11 +90,21 @@ extension PracticeTableView: UITableViewDelegate {
             return offset
         case .examDate:
             return 224.scale
-        case .title, .dailyQuestion, .unlockPremium:
+        case .title, .dailyQuestion:
             return UITableView.automaticDimension
         case .tests:
             return 408.scale
+        case .unlockPremium:
+            return 194.scale
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard case .dailyQuestion = elements[indexPath.row] else {
+            return
+        }
+        
+        mainDelegate?.practiceTableDidTappedDailyQuestion()
     }
 }
 

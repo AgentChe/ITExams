@@ -22,7 +22,7 @@ final class PracticeTableExamDateCell: UITableViewCell {
 
 // MARK: Public
 extension PracticeTableExamDateCell {
-    func setup(element: String) {
+    func setup(element: Date?) {
         
     }
 }

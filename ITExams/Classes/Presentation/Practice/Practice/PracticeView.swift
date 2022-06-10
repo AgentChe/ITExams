@@ -51,7 +51,7 @@ private extension PracticeView {
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2.scale)
+            tableView.topAnchor.constraint(equalTo: changeExamDateButton.bottomAnchor, constant: 2.scale)
         ])
         
         NSLayoutConstraint.activate([

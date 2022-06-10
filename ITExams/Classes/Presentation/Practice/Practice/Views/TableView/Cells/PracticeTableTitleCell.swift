@@ -8,6 +8,8 @@
 import UIKit
 
 final class PracticeTableTitleCell: UITableViewCell {
+    lazy var label = makeLabel()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -23,7 +25,12 @@ final class PracticeTableTitleCell: UITableViewCell {
 // MARK: Public
 extension PracticeTableTitleCell {
     func setup(element: String) {
-        
+        let attrs = TextAttributes()
+            .textColor(Appearance.blackColor)
+            .font(Fonts.Inter.semiBold(size: 17.scale))
+            .lineHeight(20.scale)
+            .letterSpacing(-0.44.scale)
+        label.attributedText = element.attributed(with: attrs)
     }
 }
 
@@ -40,11 +47,22 @@ private extension PracticeTableTitleCell {
 // MARK: Make constraints
 private extension PracticeTableTitleCell {
     func makeConstraints() {
-        
+        NSLayoutConstraint.activate([
+            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24.scale),
+            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24.scale),
+            label.topAnchor.constraint(equalTo: contentView.topAnchor),
+            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
     }
 }
 
 // MARK: Lazy initialization
 private extension PracticeTableTitleCell {
-    
+    func makeLabel() -> UILabel {
+        let view = UILabel()
+        view.numberOfLines = 0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(view)
+        return view
+    }
 }

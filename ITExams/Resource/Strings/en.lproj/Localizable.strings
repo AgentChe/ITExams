@@ -235,7 +235,7 @@
 "Question.Explanation" = "Explanation";
 "Question.Continue" = "Continue";
 "Question.Submit" = "Submit test";
-"Question.BackToStudying" = "Back to studying";
+"Question.BackToStudying" = "Submit question";
 "Question.NextQuestion" = "Next";
 "Question.TodayTitle" = "Today’s question";
 
@@ -253,3 +253,18 @@
 // MARK: Practice
 "Practice.Title" = "Practice";
 "Practice.ChangeExamDate" = "Change date";
+"Practice.ExamDate.UpcomingExam" = "Upcoming exam";
+"Practice.ExamDate.DaysCount" = "%i days";
+"Practice.ExamDate.TrackDate" = "Track date";
+"Practice.DailyQuestion.Title" = "Daily question";
+"Practice.DailyQuestion.TapReview" = "Tap to review";
+"Practice.Tests.Title" = "Knowledge practice";
+"Practice.Tests.RandomTest" = "Random test";
+"Practice.Tests.MissedTest" = "Missed questions test";
+"Practice.Tests.QuickTest" = "Quick test";
+"Practice.Tests.SavedTest" = "Saved questions";
+"Practice.Tests.CustomMade" = "Custom made";
+"Practice.Tests.QuestionsCount" = "%i questions";
+"Practice.Tests.CustomMadeSubTitle" = "Create your own question pool";
+"Practice.UnlockPremium.Text" = "Get the unlimited access\nto %i+ questions";
+"Practice.UnlockPremium.Button" = "Get Premium";
