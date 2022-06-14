@@ -103,6 +103,9 @@
 		DE5D0BE1285870DC000A1C9B /* Paygate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BE0285870DC000A1C9B /* Paygate.swift */; };
 		DE5D0BE428587102000A1C9B /* GetPaygateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BE328587102000A1C9B /* GetPaygateRequest.swift */; };
 		DE5D0BE62858710A000A1C9B /* GetPaygateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BE52858710A000A1C9B /* GetPaygateResponse.swift */; };
+		DE5D0BE9285883A9000A1C9B /* PracticeDateOfExamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BE8285883A9000A1C9B /* PracticeDateOfExamViewController.swift */; };
+		DE5D0BEB285883B3000A1C9B /* PracticeDateOfExamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BEA285883B3000A1C9B /* PracticeDateOfExamViewModel.swift */; };
+		DE5D0BED285883BB000A1C9B /* PracticeDateOfExamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BEC285883BB000A1C9B /* PracticeDateOfExamView.swift */; };
 		DE6BFD9F284E021A00F5CF20 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */; };
 		DE6BFDA1284E022200F5CF20 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */; };
 		DE6BFDA5284E023400F5CF20 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDA4284E023400F5CF20 /* ReviewView.swift */; };
@@ -437,6 +440,9 @@
 		DE5D0BE0285870DC000A1C9B /* Paygate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paygate.swift; sourceTree = "<group>"; };
 		DE5D0BE328587102000A1C9B /* GetPaygateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPaygateRequest.swift; sourceTree = "<group>"; };
 		DE5D0BE52858710A000A1C9B /* GetPaygateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPaygateResponse.swift; sourceTree = "<group>"; };
+		DE5D0BE8285883A9000A1C9B /* PracticeDateOfExamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeDateOfExamViewController.swift; sourceTree = "<group>"; };
+		DE5D0BEA285883B3000A1C9B /* PracticeDateOfExamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeDateOfExamViewModel.swift; sourceTree = "<group>"; };
+		DE5D0BEC285883BB000A1C9B /* PracticeDateOfExamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeDateOfExamView.swift; sourceTree = "<group>"; };
 		DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		DE6BFDA4284E023400F5CF20 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
@@ -1082,6 +1088,16 @@
 			path = GetPaygate;
 			sourceTree = "<group>";
 		};
+		DE5D0BE72858839A000A1C9B /* PracticeDateOfExam */ = {
+			isa = PBXGroup;
+			children = (
+				DE5D0BE8285883A9000A1C9B /* PracticeDateOfExamViewController.swift */,
+				DE5D0BEA285883B3000A1C9B /* PracticeDateOfExamViewModel.swift */,
+				DE5D0BEC285883BB000A1C9B /* PracticeDateOfExamView.swift */,
+			);
+			path = PracticeDateOfExam;
+			sourceTree = "<group>";
+		};
 		DE6BFD9D284E020900F5CF20 /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -1449,6 +1465,7 @@
 		DE6BFE8C2852803200F5CF20 /* Practice */ = {
 			isa = PBXGroup;
 			children = (
+				DE5D0BE72858839A000A1C9B /* PracticeDateOfExam */,
 				DE6BFE8D2852804000F5CF20 /* Practice */,
 			);
 			path = Practice;
@@ -2331,6 +2348,7 @@
 				DE1CA9A627F2FC5900C66DAD /* GetMonetizationRequest.swift in Sources */,
 				DE6BFE312850A0C500F5CF20 /* AVPlayerView.swift in Sources */,
 				DE6BFDE5284F571600F5CF20 /* OTestView.swift in Sources */,
+				DE5D0BED285883BB000A1C9B /* PracticeDateOfExamView.swift in Sources */,
 				DE5D0BC7285281EF000A1C9B /* PracticeTableExamDateCell.swift in Sources */,
 				DEE74EBA27F41873002FE71D /* Plan.swift in Sources */,
 				DE95A889282E81D000809171 /* SettingsTableView.swift in Sources */,
@@ -2350,6 +2368,7 @@
 				DE6BFE362850A7BA00F5CF20 /* QuestionTableElement.swift in Sources */,
 				DEBCD18C284A0C9A000C08A9 /* StatsTableDailyMetricsCell.swift in Sources */,
 				DE93788527C4B2600073F27C /* RxActivityIndicator.swift in Sources */,
+				DE5D0BEB285883B3000A1C9B /* PracticeDateOfExamViewModel.swift in Sources */,
 				DE93788727C4B2600073F27C /* Appearance.swift in Sources */,
 				DE5D0BDD285869EA000A1C9B /* TestsKit.swift in Sources */,
 				DE6BFE7A28512B1800F5CF20 /* TestStatsTableAnswerCell.swift in Sources */,
@@ -2445,6 +2464,7 @@
 				DE6BFE412850A8A700F5CF20 /* QuestionTableExplanationTextCell.swift in Sources */,
 				DE6BFE5A2851283A00F5CF20 /* TestStats.swift in Sources */,
 				DE6BFDEA284F5D6300F5CF20 /* OQuestionTableElement.swift in Sources */,
+				DE5D0BE9285883A9000A1C9B /* PracticeDateOfExamViewController.swift in Sources */,
 				DE1CA9A827F2FC6200C66DAD /* GetMonetizationResponseMapper.swift in Sources */,
 				DE6BFE062850966500F5CF20 /* GetQotdTestRequest.swift in Sources */,
 				DE95A87A282E307000809171 /* ProfileTabsView.swift in Sources */,

@@ -44,6 +44,18 @@ final class PracticeViewController: UIViewController {
         
         mainView.tableView.mainDelegate = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.navigationBar.isHidden = false
+    }
 }
 
 // MARK: Make
@@ -55,6 +67,16 @@ extension PracticeViewController {
 
 // MARK: PracticeTableViewDelegate
 extension PracticeViewController: PracticeTableViewDelegate {
+    func practiceTableDidTappedTrackExamDate() {
+        let vc = PracticeDateOfExamViewController.make(mode: .set)
+        present(vc, animated: false)
+    }
+    
+    func practiceTableDidTappedChangeExamDate() {
+        let vc = PracticeDateOfExamViewController.make(mode: .change)
+        present(vc, animated: false)
+    }
+    
     func practiceTableDidTappedDailyQuestion() {
         TestCoordinator.shared.start(testType: .qotd, from: self)
     }

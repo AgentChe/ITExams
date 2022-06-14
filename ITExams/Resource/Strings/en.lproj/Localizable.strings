@@ -268,3 +268,8 @@
 "Practice.Tests.CustomMadeSubTitle" = "Create your own question pool";
 "Practice.UnlockPremium.Text" = "Get the unlimited access\nto %i+ questions";
 "Practice.UnlockPremium.Button" = "Get Premium";
+
+// MARK: PracticeDateOfExam
+"PracticeDateOfExam.Title1" = "Change your exam’s date";
+"PracticeDateOfExam.Title2" = "Set your exam’s date";
+"PracticeDateOfExam.SaveButton" = "Save date";

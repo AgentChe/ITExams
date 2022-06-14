@@ -8,6 +8,8 @@
 import UIKit
 
 protocol PracticeTableViewDelegate: AnyObject {
+    func practiceTableDidTappedTrackExamDate()
+    func practiceTableDidTappedChangeExamDate()
     func practiceTableDidTappedDailyQuestion()
     func practiceTableDidTappedRandomTest()
     func practiceTableDidTappedMissedTest()
@@ -59,6 +61,7 @@ extension PracticeTableView: UITableViewDataSource {
         case .examDate(let date):
             let cell = dequeueReusableCell(withIdentifier: String(describing: PracticeTableExamDateCell.self)) as! PracticeTableExamDateCell
             cell.setup(element: date)
+            cell.mainDelegate = mainDelegate
             return cell
         case .title(let element):
             let cell = dequeueReusableCell(withIdentifier: String(describing: PracticeTableTitleCell.self)) as! PracticeTableTitleCell
@@ -89,7 +92,7 @@ extension PracticeTableView: UITableViewDelegate {
         case .offset(let offset):
             return offset
         case .examDate:
-            return 224.scale
+            return 358.scale
         case .title, .dailyQuestion:
             return UITableView.automaticDimension
         case .tests:
