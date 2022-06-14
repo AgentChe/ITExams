@@ -16,10 +16,14 @@ final class PracticeViewModel {
     lazy var elements = makeElements()
     
     private lazy var examDate = makeExamDate()
+    private lazy var dailyQiestion = makeDailyQuestion()
+    private lazy var testsCount = makeTestsCount()
+    private lazy var currentCourse = makeCurrentCourse()
     private lazy var activeSubscription = makeActiveSubscription()
     
     private lazy var sessionManager = SessionManager()
     private lazy var profileManager = ProfileManager()
+    private lazy var questionManager = QuestionManager()
     
     private lazy var observableRetrySingle = ObservableRetrySingle()
 }
@@ -28,23 +32,21 @@ final class PracticeViewModel {
 private extension PracticeViewModel {
     func makeElements() -> Driver<[PracticeTableElement]> {
         Driver
-            .combineLatest(examDate, activeSubscription)
-            .map { examDate, activeSubscription -> [PracticeTableElement] in
+            .combineLatest(examDate, dailyQiestion, testsCount, activeSubscription)
+            .map { examDate, dailyQiestion, testsCount, activeSubscription -> [PracticeTableElement] in
                 var result = [PracticeTableElement]()
                 
                 result.append(.examDate(examDate))
                 
-                result.append(contentsOf: [
-                    .offset(32.scale),
-                    .title("Practice.DailyQuestion.Title".localized),
-                    .offset(16.scale),
-                    .dailyQuestion("What cryptographic hash function is a common hashing algorithm that produced a 128-bit hash and was designed by Ron Rivest in 1992?")
-                ])
+                if let dailyQiestion = dailyQiestion {
+                    result.append(contentsOf: [
+                        .offset(32.scale),
+                        .title("Practice.DailyQuestion.Title".localized),
+                        .offset(16.scale),
+                        .dailyQuestion(dailyQiestion)
+                    ])
+                }
                 
-                let testsCount = PracticeTableTestsCount(random: 40,
-                                                         missed: 40,
-                                                         quick: 40,
-                                                         saved: 0)
                 result.append(contentsOf: [
                     .offset(32.scale),
                     .title("Practice.Tests.Title".localized),
@@ -74,6 +76,63 @@ private extension PracticeViewModel {
                 examDate
             }
             .asDriver(onErrorJustReturn: nil)
+        
+        return Driver.merge(initial, updated)
+    }
+    
+    func makeDailyQuestion() -> Driver<String?> {
+        currentCourse
+            .flatMap { [weak self] course -> Driver<String?> in
+                guard let self = self else {
+                    return .never()
+                }
+                
+                return self.questionManager
+                    .obtainQotdTest(courseId: course.id, activeSubscription: false)
+                    .map { qotdTest -> String? in
+                        qotdTest?.test.questions.first?.question
+                    }
+                    .asDriver(onErrorJustReturn: nil)
+            }
+    }
+    
+    func makeTestsCount() -> Driver<PracticeTableTestsCount> {
+        let trigger = QuestionMediator.shared.testPassed
+            .asDriver(onErrorDriveWith: .never())
+            .startWith(Void())
+        
+        return Driver
+            .combineLatest(trigger, currentCourse) { $1 }
+            .flatMap { [weak self] course -> Driver<TestsKit?> in
+                guard let self = self else {
+                    return .never()
+                }
+                
+                return self.questionManager
+                    .obtainTestsKit(courseId: course.id)
+                    .asDriver(onErrorJustReturn: nil)
+            }
+            .compactMap { testsKit -> PracticeTableTestsCount? in
+                guard let testsKit = testsKit else {
+                    return nil
+                }
+                
+                return PracticeTableTestsCount(random: testsKit.randomCount,
+                                               missed: testsKit.missedCount,
+                                               quick: testsKit.quickCount,
+                                               saved: testsKit.savedCount)
+            }
+    }
+    
+    func makeCurrentCourse() -> Driver<Course> {
+        let initial = profileManager
+            .obtainSelectedCourse(forceUpdate: false)
+            .compactMap { $0 }
+            .asDriver(onErrorDriveWith: .never())
+        
+        let updated = ProfileMediator.shared
+            .changedCourse
+            .asDriver(onErrorDriveWith: .never())
         
         return Driver.merge(initial, updated)
     }

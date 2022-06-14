@@ -8,6 +8,7 @@
 import RxSwift
 
 protocol QuestionManagerProtocol {
+    func obtainTestsKit(courseId: Int) -> Single<TestsKit?>
     func obtainTest(courseId: Int, testId: Int?, time: Int?, activeSubscription: Bool) -> Single<Test?>
     func obtainTenTest(courseId: Int, activeSubscription: Bool) -> Single<Test?>
     func obtainFailedTest(courseId: Int, activeSubscription: Bool) -> Single<Test?>
@@ -40,6 +41,18 @@ final class QuestionManager: QuestionManagerProtocol {
 
 // MARK: Public
 extension QuestionManager {
+    func obtainTestsKit(courseId: Int) -> Single<TestsKit?> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
+            return .error(SignError.tokenNotFound)
+        }
+        
+        let request = GetTestsKitRequest(userToken: userToken, courseId: courseId)
+        
+        return defaultRequestWrapper
+            .callServerApi(requestBody: request)
+            .map { GetTestsKitResponse.map(from: $0) }
+    }
+    
     func obtainTest(courseId: Int, testId: Int?, time: Int?, activeSubscription: Bool) -> Single<Test?> {
         guard let userToken = sessionManager.getSession()?.userToken else {
             return .error(SignError.tokenNotFound)

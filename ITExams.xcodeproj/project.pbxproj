@@ -96,6 +96,10 @@
 		DE5D0BCF2852823F000A1C9B /* PracticeTableUnlockPremiumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BCE2852823F000A1C9B /* PracticeTableUnlockPremiumCell.swift */; };
 		DE5D0BD228530211000A1C9B /* PracticeTestButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BD128530211000A1C9B /* PracticeTestButton.swift */; };
 		DE5D0BD628585057000A1C9B /* QotdTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BD528585057000A1C9B /* QotdTest.swift */; };
+		DE5D0BD9285869C7000A1C9B /* GetTestsKitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BD8285869C7000A1C9B /* GetTestsKitRequest.swift */; };
+		DE5D0BDB285869D4000A1C9B /* GetTestsKitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BDA285869D4000A1C9B /* GetTestsKitResponse.swift */; };
+		DE5D0BDD285869EA000A1C9B /* TestsKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BDC285869EA000A1C9B /* TestsKit.swift */; };
+		DE5D0BDF28586A24000A1C9B /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BDE28586A24000A1C9B /* Subject.swift */; };
 		DE6BFD9F284E021A00F5CF20 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */; };
 		DE6BFDA1284E022200F5CF20 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */; };
 		DE6BFDA5284E023400F5CF20 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDA4284E023400F5CF20 /* ReviewView.swift */; };
@@ -423,6 +427,10 @@
 		DE5D0BCE2852823F000A1C9B /* PracticeTableUnlockPremiumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeTableUnlockPremiumCell.swift; sourceTree = "<group>"; };
 		DE5D0BD128530211000A1C9B /* PracticeTestButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeTestButton.swift; sourceTree = "<group>"; };
 		DE5D0BD528585057000A1C9B /* QotdTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QotdTest.swift; sourceTree = "<group>"; };
+		DE5D0BD8285869C7000A1C9B /* GetTestsKitRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTestsKitRequest.swift; sourceTree = "<group>"; };
+		DE5D0BDA285869D4000A1C9B /* GetTestsKitResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTestsKitResponse.swift; sourceTree = "<group>"; };
+		DE5D0BDC285869EA000A1C9B /* TestsKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsKit.swift; sourceTree = "<group>"; };
+		DE5D0BDE28586A24000A1C9B /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
 		DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		DE6BFDA4284E023400F5CF20 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
@@ -1048,6 +1056,15 @@
 			path = Atoms;
 			sourceTree = "<group>";
 		};
+		DE5D0BD7285869B1000A1C9B /* GetTestsKit */ = {
+			isa = PBXGroup;
+			children = (
+				DE5D0BD8285869C7000A1C9B /* GetTestsKitRequest.swift */,
+				DE5D0BDA285869D4000A1C9B /* GetTestsKitResponse.swift */,
+			);
+			path = GetTestsKit;
+			sourceTree = "<group>";
+		};
 		DE6BFD9D284E020900F5CF20 /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -1108,6 +1125,8 @@
 				DE6BFDC8284E128400F5CF20 /* Review.swift */,
 				DE6BFDDA284E897500F5CF20 /* Test.swift */,
 				DE5D0BD528585057000A1C9B /* QotdTest.swift */,
+				DE5D0BDC285869EA000A1C9B /* TestsKit.swift */,
+				DE5D0BDE28586A24000A1C9B /* Subject.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1115,6 +1134,7 @@
 		DE6BFDBD284E0EBD00F5CF20 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				DE5D0BD7285869B1000A1C9B /* GetTestsKit */,
 				DE6BFDFC28507A3F00F5CF20 /* SendAnswer */,
 				DE6BFDC3284E10FC00F5CF20 /* GetReview */,
 				DE6BFDBE284E0ECF00F5CF20 /* GetTest */,
@@ -2237,6 +2257,7 @@
 				DE6BFDF2284F8E5400F5CF20 /* OQuestionFavoriteButton.swift in Sources */,
 				DE93789B27C4BF070073F27C /* SplashViewController.swift in Sources */,
 				DE93787527C4B2600073F27C /* ScreenSize.swift in Sources */,
+				DE5D0BD9285869C7000A1C9B /* GetTestsKitRequest.swift in Sources */,
 				DE2B100E27DA47AE005280DB /* OPlanView.swift in Sources */,
 				DE3BDBE7284A3BE40091230F /* StatsTableUnlockPremiumButtonCell.swift in Sources */,
 				DEBCD18A284A02FC000C08A9 /* StatsMainProgressView.swift in Sources */,
@@ -2311,6 +2332,7 @@
 				DEBCD18C284A0C9A000C08A9 /* StatsTableDailyMetricsCell.swift in Sources */,
 				DE93788527C4B2600073F27C /* RxActivityIndicator.swift in Sources */,
 				DE93788727C4B2600073F27C /* Appearance.swift in Sources */,
+				DE5D0BDD285869EA000A1C9B /* TestsKit.swift in Sources */,
 				DE6BFE7A28512B1800F5CF20 /* TestStatsTableAnswerCell.swift in Sources */,
 				DE6BFE2E2850A07000F5CF20 /* QuestionContentCollectionType.swift in Sources */,
 				DE6BFE1828509CB200F5CF20 /* TestViewController.swift in Sources */,
@@ -2330,6 +2352,7 @@
 				DE6BFE102850971900F5CF20 /* FinishTestRequest.swift in Sources */,
 				DE2B10CE27DB14EE005280DB /* IAPActionResult.swift in Sources */,
 				DEC3460D28185EBB0069A060 /* CourseCurrentView.swift in Sources */,
+				DE5D0BDB285869D4000A1C9B /* GetTestsKitResponse.swift in Sources */,
 				DE3FD60A27E9FFEE00E76844 /* PaygatePlansCell.swift in Sources */,
 				DE5D0BCD2852822E000A1C9B /* PracticeTableTestsCell.swift in Sources */,
 				DE6BFE6728512A4500F5CF20 /* TestStatsView.swift in Sources */,
@@ -2421,6 +2444,7 @@
 				DE93787327C4B2600073F27C /* NumberLaunches.swift in Sources */,
 				DE93787827C4B2600073F27C /* SignError.swift in Sources */,
 				DE93789D27C4BF0D0073F27C /* SplashViewModel.swift in Sources */,
+				DE5D0BDF28586A24000A1C9B /* Subject.swift in Sources */,
 				DE1CA99527F2ED8F00C66DAD /* TabView.swift in Sources */,
 				DE3FD61C27EA312800E76844 /* PaygateInteractor.swift in Sources */,
 				DE95A890282E89B500809171 /* SettingsProfileCell.swift in Sources */,

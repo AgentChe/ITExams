@@ -14,7 +14,7 @@ struct GetReviewRequest: APIRequestBody {
     let offset: Int
     
     var url: String {
-        GlobalDefinitions.domainUrl + "/api/review/get"
+        GlobalDefinitions.domainUrl + "/api/review/course"
     }
     
     var method: HTTPMethod {
