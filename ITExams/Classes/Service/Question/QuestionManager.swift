@@ -11,7 +11,7 @@ protocol QuestionManagerProtocol {
     func obtainTest(courseId: Int, testId: Int?, time: Int?, activeSubscription: Bool) -> Single<Test?>
     func obtainTenTest(courseId: Int, activeSubscription: Bool) -> Single<Test?>
     func obtainFailedTest(courseId: Int, activeSubscription: Bool) -> Single<Test?>
-    func obtainQotdTest(courseId: Int, activeSubscription: Bool) -> Single<Test?>
+    func obtainQotdTest(courseId: Int, activeSubscription: Bool) -> Single<QotdTest?>
     func obtainRandomTest(courseId: Int, activeSubscription: Bool) -> Single<Test?>
     func obtainSavedTest(courseId: Int, activeSubscription: Bool) -> Single<Test?>
     func obtainPlanTest(testId: Int) -> Single<Test?>
@@ -26,6 +26,9 @@ protocol QuestionManagerProtocol {
 
 final class QuestionManager: QuestionManagerProtocol {
     enum Constants {
+        static func qotdTestKey(courseId: Int) -> String {
+            String(format: "%@_%i", "question_manager_qotd_test_key", courseId)
+        }
         static let onboardingSetKey = "question_manager_onboarding_test_key"
     }
     
@@ -83,18 +86,19 @@ extension QuestionManager {
             .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
     }
     
-    func obtainQotdTest(courseId: Int, activeSubscription: Bool) -> Single<Test?> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
-        let request = GetQotdTestRequest(userToken: userToken,
-                                         courseId: courseId,
-                                         activeSubscription: activeSubscription)
-        
-        return xorRequestWrapper
-            .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
-            .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
+    func obtainQotdTest(courseId: Int, activeSubscription: Bool) -> Single<QotdTest?> {
+        cachedQotdTest(courseId: courseId)
+            .flatMap { [weak self] test -> Single<QotdTest?> in
+                guard let self = self else {
+                    return .never()
+                }
+                
+                if let test = test, Calendar.current.isDateInToday(test.creation) {
+                    return .just(test)
+                }
+                
+                return self.loadQotdTest(courseId: courseId, activeSubscription: activeSubscription)
+            }
     }
     
     func obtainRandomTest(courseId: Int, activeSubscription: Bool) -> Single<Test?> {
@@ -259,6 +263,51 @@ private extension QuestionManager {
                 guard
                     let data = UserDefaults.standard.data(forKey: Constants.onboardingSetKey),
                     let test = try? JSONDecoder().decode(Test.self, from: data)
+                else {
+                    event(.success(nil))
+                    return Disposables.create()
+                }
+                
+                event(.success(test))
+                
+                return Disposables.create()
+            }
+    }
+    
+    func loadQotdTest(courseId: Int, activeSubscription: Bool) -> Single<QotdTest?> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
+            return .error(SignError.tokenNotFound)
+        }
+        
+        let request = GetQotdTestRequest(userToken: userToken,
+                                         courseId: courseId,
+                                         activeSubscription: activeSubscription)
+        
+        return xorRequestWrapper
+            .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
+            .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
+            .map { test -> QotdTest? in
+                guard let test = test else {
+                    return nil
+                }
+                
+                return QotdTest(creation: Date(), test: test)
+            }
+            .do(onSuccess: { test in
+                guard let test = test, let data = try? JSONEncoder().encode(test) else {
+                    return
+                }
+                
+                UserDefaults.standard.set(data, forKey: Constants.qotdTestKey(courseId: courseId))
+            })
+    }
+    
+    func cachedQotdTest(courseId: Int) -> Single<QotdTest?> {
+        Single<QotdTest?>
+            .create { event in
+                guard
+                    let data = UserDefaults.standard.data(forKey: Constants.qotdTestKey(courseId: courseId)),
+                    let test = try? JSONDecoder().decode(QotdTest.self, from: data)
                 else {
                     event(.success(nil))
                     return Disposables.create()

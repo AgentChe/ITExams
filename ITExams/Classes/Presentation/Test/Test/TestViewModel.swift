@@ -247,6 +247,7 @@ private extension TestViewModel {
                 case .qotd:
                     test = self.questionManager.obtainQotdTest(courseId: courseId,
                                                                activeSubscription: self.sessionManager.hasActiveSubscriptions())
+                                               .map { $0?.test }
                 case .randomSet:
                     test = self.questionManager.obtainRandomTest(courseId: courseId,
                                                                  activeSubscription: self.sessionManager.hasActiveSubscriptions())
