@@ -12,9 +12,9 @@ protocol PracticeTableViewDelegate: AnyObject {
     func practiceTableDidTappedChangeExamDate()
     func practiceTableDidTappedDailyQuestion()
     func practiceTableDidTappedRandomTest()
-    func practiceTableDidTappedMissedTest()
+    func practiceTableDidTappedMissedTest(questionsCount: Int)
     func practiceTableDidTappedQuickTest()
-    func practiceTableDidTappedSavedTest()
+    func practiceTableDidTappedSavedTest(questionsCount: Int)
     func practiceTableDidTappedCusomTest()
     func practiceTableDidTappedUnlockPremium()
 }

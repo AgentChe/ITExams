@@ -106,6 +106,9 @@
 		DE5D0BE9285883A9000A1C9B /* PracticeDateOfExamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BE8285883A9000A1C9B /* PracticeDateOfExamViewController.swift */; };
 		DE5D0BEB285883B3000A1C9B /* PracticeDateOfExamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BEA285883B3000A1C9B /* PracticeDateOfExamViewModel.swift */; };
 		DE5D0BED285883BB000A1C9B /* PracticeDateOfExamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BEC285883BB000A1C9B /* PracticeDateOfExamView.swift */; };
+		DE5D0BF0285894A2000A1C9B /* TestEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BEF285894A2000A1C9B /* TestEmptyViewController.swift */; };
+		DE5D0BF228589562000A1C9B /* NoSavedQuestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BF128589562000A1C9B /* NoSavedQuestionsView.swift */; };
+		DE5D0BF42858956F000A1C9B /* NoMissedQuestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BF32858956F000A1C9B /* NoMissedQuestionsView.swift */; };
 		DE6BFD9F284E021A00F5CF20 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */; };
 		DE6BFDA1284E022200F5CF20 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */; };
 		DE6BFDA5284E023400F5CF20 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDA4284E023400F5CF20 /* ReviewView.swift */; };
@@ -443,6 +446,9 @@
 		DE5D0BE8285883A9000A1C9B /* PracticeDateOfExamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeDateOfExamViewController.swift; sourceTree = "<group>"; };
 		DE5D0BEA285883B3000A1C9B /* PracticeDateOfExamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeDateOfExamViewModel.swift; sourceTree = "<group>"; };
 		DE5D0BEC285883BB000A1C9B /* PracticeDateOfExamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeDateOfExamView.swift; sourceTree = "<group>"; };
+		DE5D0BEF285894A2000A1C9B /* TestEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEmptyViewController.swift; sourceTree = "<group>"; };
+		DE5D0BF128589562000A1C9B /* NoSavedQuestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSavedQuestionsView.swift; sourceTree = "<group>"; };
+		DE5D0BF32858956F000A1C9B /* NoMissedQuestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoMissedQuestionsView.swift; sourceTree = "<group>"; };
 		DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		DE6BFDA4284E023400F5CF20 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
@@ -1098,6 +1104,16 @@
 			path = PracticeDateOfExam;
 			sourceTree = "<group>";
 		};
+		DE5D0BEE2858948A000A1C9B /* TestEmpty */ = {
+			isa = PBXGroup;
+			children = (
+				DE5D0BEF285894A2000A1C9B /* TestEmptyViewController.swift */,
+				DE5D0BF128589562000A1C9B /* NoSavedQuestionsView.swift */,
+				DE5D0BF32858956F000A1C9B /* NoMissedQuestionsView.swift */,
+			);
+			path = TestEmpty;
+			sourceTree = "<group>";
+		};
 		DE6BFD9D284E020900F5CF20 /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -1263,6 +1279,7 @@
 		DE6BFE1628509CA000F5CF20 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				DE5D0BEE2858948A000A1C9B /* TestEmpty */,
 				DE6BFE5828511D9800F5CF20 /* TestStats */,
 				DE6BFE4D2850B92E00F5CF20 /* Test */,
 				DE6BFE8828524FE500F5CF20 /* TestCoordinator.swift */,
@@ -2294,6 +2311,7 @@
 				DE5D0BD9285869C7000A1C9B /* GetTestsKitRequest.swift in Sources */,
 				DE2B100E27DA47AE005280DB /* OPlanView.swift in Sources */,
 				DE3BDBE7284A3BE40091230F /* StatsTableUnlockPremiumButtonCell.swift in Sources */,
+				DE5D0BF42858956F000A1C9B /* NoMissedQuestionsView.swift in Sources */,
 				DEBCD18A284A02FC000C08A9 /* StatsMainProgressView.swift in Sources */,
 				DE5D0BCB2852820C000A1C9B /* PracticeTableDailyQuestionCell.swift in Sources */,
 				DE6BFE2C2850A05F00F5CF20 /* QuestionContentCollectionCell.swift in Sources */,
@@ -2449,6 +2467,7 @@
 				DEBCD17A284949F1000C08A9 /* StatsViewModel.swift in Sources */,
 				DE95A897282E940000809171 /* SettingsAppButton.swift in Sources */,
 				DE95A8C82832893800809171 /* StudyModeView.swift in Sources */,
+				DE5D0BF228589562000A1C9B /* NoSavedQuestionsView.swift in Sources */,
 				DE6BFE7028512ABB00F5CF20 /* TestStatsTableProgressCell.swift in Sources */,
 				DE55A4AE27D6458000B53B46 /* OCourseView.swift in Sources */,
 				DEE74EB627F41852002FE71D /* PlanTest.swift in Sources */,
@@ -2540,6 +2559,7 @@
 				DEC345F42816E1EE0069A060 /* PlanHeaderView.swift in Sources */,
 				DE3FD61727EA09F300E76844 /* XORRequestWrapper.swift in Sources */,
 				DE3FD60127E9D41000E76844 /* PaygateViewModel.swift in Sources */,
+				DE5D0BF0285894A2000A1C9B /* TestEmptyViewController.swift in Sources */,
 				DE6BFDC2284E0F3400F5CF20 /* AnswerMapper.swift in Sources */,
 				DE95A8A9282ED40500809171 /* MyProfileResetProgressCell.swift in Sources */,
 				DE95A87C282E310200809171 /* ProfileTabView.swift in Sources */,

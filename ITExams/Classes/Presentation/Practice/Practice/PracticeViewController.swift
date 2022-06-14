@@ -85,18 +85,28 @@ extension PracticeViewController: PracticeTableViewDelegate {
         TestCoordinator.shared.start(testType: .randomSet, from: self)
     }
     
-    func practiceTableDidTappedMissedTest() {
-        // TODO: empty screen
-        TestCoordinator.shared.start(testType: .failedSet, from: self)
+    func practiceTableDidTappedMissedTest(questionsCount: Int) {
+        if questionsCount == 0 {
+            let vc = TestEmptyViewController.make(mode: .noMissed)
+            vc.delegate = self
+            present(vc, animated: true)
+        } else {
+            TestCoordinator.shared.start(testType: .failedSet, from: self)
+        }
     }
     
     func practiceTableDidTappedQuickTest() {
         
     }
     
-    func practiceTableDidTappedSavedTest() {
-        // TODO: empty screen
-        TestCoordinator.shared.start(testType: .saved, from: self)
+    func practiceTableDidTappedSavedTest(questionsCount: Int) {
+        if questionsCount == 0 {
+            let vc = TestEmptyViewController.make(mode: .noSaved)
+            vc.delegate = self
+            present(vc, animated: true)
+        } else {
+            TestCoordinator.shared.start(testType: .saved, from: self)
+        }
     }
     
     func practiceTableDidTappedCusomTest() {
@@ -106,6 +116,13 @@ extension PracticeViewController: PracticeTableViewDelegate {
     func practiceTableDidTappedUnlockPremium() {
         let vc = PaygateViewController.make()
         present(vc, animated: true)
+    }
+}
+
+// MARK: TestEmptyViewControllerDelegate
+extension PracticeViewController: TestEmptyViewControllerDelegate {
+    func testEmptyDidTappedTakeTest() {
+        // TODO: открыть quick тест
     }
 }
 

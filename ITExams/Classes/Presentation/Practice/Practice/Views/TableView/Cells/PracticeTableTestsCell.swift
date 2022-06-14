@@ -17,6 +17,8 @@ final class PracticeTableTestsCell: UITableViewCell {
     lazy var savedButton = makeButton(icon: "Practice.SavedTest", name: "Practice.Tests.SavedTest".localized)
     lazy var customButton = makeButton(icon: "Practice.CustomTest", name: "Practice.Tests.CustomMade".localized)
     
+    private var element: PracticeTableTestsCount!
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -32,6 +34,8 @@ final class PracticeTableTestsCell: UITableViewCell {
 // MARK: Public
 extension PracticeTableTestsCell {
     func setup(element: PracticeTableTestsCount) {
+        self.element = element
+        
         let attrs = TextAttributes()
             .textColor(Appearance.greyColor.withAlphaComponent(0.7))
             .font(Fonts.Inter.regular(size: 14.scale))
@@ -65,11 +69,11 @@ private extension PracticeTableTestsCell {
         if button === randomButton {
             mainDelegate?.practiceTableDidTappedRandomTest()
         } else if button === missedButton {
-            mainDelegate?.practiceTableDidTappedMissedTest()
+            mainDelegate?.practiceTableDidTappedMissedTest(questionsCount: element.missed)
         } else if button === quickButton {
             mainDelegate?.practiceTableDidTappedQuickTest()
         } else if button === savedButton {
-            mainDelegate?.practiceTableDidTappedSavedTest()
+            mainDelegate?.practiceTableDidTappedSavedTest(questionsCount: element.saved)
         } else if button === customButton {
             mainDelegate?.practiceTableDidTappedCusomTest()
         }

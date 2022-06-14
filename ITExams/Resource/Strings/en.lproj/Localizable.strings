@@ -273,3 +273,10 @@
 "PracticeDateOfExam.Title1" = "Change your exam’s date";
 "PracticeDateOfExam.Title2" = "Set your exam’s date";
 "PracticeDateOfExam.SaveButton" = "Save date";
+
+// MARK: TestEmpty
+"TestEmpty.NoSaved.Title" = "No saved questions";
+"TestEmpty.NoSaved.Text" = "Tap the bookmark icon at the top of any questions and you can review them here.";
+"TestEmpty.NoMissed.Title" = "No missed questions";
+"TestEmpty.NoMissed.Text" = "Take a quick test below and you can review them here";
+"TestEmpty.NoMissed.Button" = "Take a quick test";
