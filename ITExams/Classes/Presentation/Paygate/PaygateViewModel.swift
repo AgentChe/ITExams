@@ -33,7 +33,7 @@ final class PaygateViewModel {
 private extension PaygateViewModel {
     func makeMonetization() -> Driver<Monetization> {
         paygateManager
-            .retrieveMonetization()
+            .obtainMonetization()
             .asDriver(onErrorJustReturn: nil)
             .map { $0 ?? .suggest }
     }

@@ -100,16 +100,21 @@ private extension SplashViewModel {
     func library() -> Observable<Void> {
         func source() -> Single<Void> {
             let monetization = paygateManager
-                .retrieveMonetization(forceUpdate: true)
+                .obtainMonetization(forceUpdate: true)
                 .mapToVoid()
             
             let profile = profileManager
                 .obtainProfile(forceUpdate: true)
                 .mapToVoid()
             
+            let paygate = paygateManager
+                .obtainPaygate(forceUpdate: true)
+                .mapToVoid()
+            
             return Single.zip(
                 monetization,
-                profile
+                profile,
+                paygate
             ).mapToVoid()
         }
         

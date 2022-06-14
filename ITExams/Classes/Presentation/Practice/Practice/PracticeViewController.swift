@@ -64,6 +64,7 @@ extension PracticeViewController: PracticeTableViewDelegate {
     }
     
     func practiceTableDidTappedMissedTest() {
+        // TODO: empty screen
         TestCoordinator.shared.start(testType: .failedSet, from: self)
     }
     
@@ -72,6 +73,7 @@ extension PracticeViewController: PracticeTableViewDelegate {
     }
     
     func practiceTableDidTappedSavedTest() {
+        // TODO: empty screen
         TestCoordinator.shared.start(testType: .saved, from: self)
     }
     

@@ -100,6 +100,9 @@
 		DE5D0BDB285869D4000A1C9B /* GetTestsKitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BDA285869D4000A1C9B /* GetTestsKitResponse.swift */; };
 		DE5D0BDD285869EA000A1C9B /* TestsKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BDC285869EA000A1C9B /* TestsKit.swift */; };
 		DE5D0BDF28586A24000A1C9B /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BDE28586A24000A1C9B /* Subject.swift */; };
+		DE5D0BE1285870DC000A1C9B /* Paygate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BE0285870DC000A1C9B /* Paygate.swift */; };
+		DE5D0BE428587102000A1C9B /* GetPaygateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BE328587102000A1C9B /* GetPaygateRequest.swift */; };
+		DE5D0BE62858710A000A1C9B /* GetPaygateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BE52858710A000A1C9B /* GetPaygateResponse.swift */; };
 		DE6BFD9F284E021A00F5CF20 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */; };
 		DE6BFDA1284E022200F5CF20 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */; };
 		DE6BFDA5284E023400F5CF20 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDA4284E023400F5CF20 /* ReviewView.swift */; };
@@ -431,6 +434,9 @@
 		DE5D0BDA285869D4000A1C9B /* GetTestsKitResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTestsKitResponse.swift; sourceTree = "<group>"; };
 		DE5D0BDC285869EA000A1C9B /* TestsKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsKit.swift; sourceTree = "<group>"; };
 		DE5D0BDE28586A24000A1C9B /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
+		DE5D0BE0285870DC000A1C9B /* Paygate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paygate.swift; sourceTree = "<group>"; };
+		DE5D0BE328587102000A1C9B /* GetPaygateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPaygateRequest.swift; sourceTree = "<group>"; };
+		DE5D0BE52858710A000A1C9B /* GetPaygateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPaygateResponse.swift; sourceTree = "<group>"; };
 		DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		DE6BFDA4284E023400F5CF20 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
@@ -742,6 +748,7 @@
 			isa = PBXGroup;
 			children = (
 				DE1CA9A127F2FC2E00C66DAD /* Monetization.swift */,
+				DE5D0BE0285870DC000A1C9B /* Paygate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -749,6 +756,7 @@
 		DE1CA9A327F2FC4600C66DAD /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				DE5D0BE2285870F6000A1C9B /* GetPaygate */,
 				DE1CA9A427F2FC4C00C66DAD /* GetMonetization */,
 			);
 			path = Request;
@@ -1063,6 +1071,15 @@
 				DE5D0BDA285869D4000A1C9B /* GetTestsKitResponse.swift */,
 			);
 			path = GetTestsKit;
+			sourceTree = "<group>";
+		};
+		DE5D0BE2285870F6000A1C9B /* GetPaygate */ = {
+			isa = PBXGroup;
+			children = (
+				DE5D0BE328587102000A1C9B /* GetPaygateRequest.swift */,
+				DE5D0BE52858710A000A1C9B /* GetPaygateResponse.swift */,
+			);
+			path = GetPaygate;
 			sourceTree = "<group>";
 		};
 		DE6BFD9D284E020900F5CF20 /* Review */ = {
@@ -2285,11 +2302,13 @@
 				DE6BFE4C2850B0FA00F5CF20 /* TestBottomSpinner.swift in Sources */,
 				DE6BFE832851D3EA00F5CF20 /* TestStatsFilterButton.swift in Sources */,
 				DE2B10D127DB14EE005280DB /* IAPErrorHelper.swift in Sources */,
+				DE5D0BE62858710A000A1C9B /* GetPaygateResponse.swift in Sources */,
 				DE2B10BE27DB14EE005280DB /* GetCourcesResponseMapper.swift in Sources */,
 				DE95A89C282ECFD000809171 /* MyProfileViewModel.swift in Sources */,
 				DEC345FE2816FE070069A060 /* CoursesViewModel.swift in Sources */,
 				DE6BFE132850974A00F5CF20 /* TestCloseObserver.swift in Sources */,
 				DE6BFE7228512AC700F5CF20 /* TestStatsTableInfoCell.swift in Sources */,
+				DE5D0BE428587102000A1C9B /* GetPaygateRequest.swift in Sources */,
 				DED4724A27CE5CF000AEF8A6 /* OAgeView.swift in Sources */,
 				DE2B100C27D9F6CE005280DB /* OCreatingPlanSectionView.swift in Sources */,
 				DEBCD1802849EC39000C08A9 /* StatsTableView.swift in Sources */,
@@ -2357,6 +2376,7 @@
 				DE5D0BCD2852822E000A1C9B /* PracticeTableTestsCell.swift in Sources */,
 				DE6BFE6728512A4500F5CF20 /* TestStatsView.swift in Sources */,
 				DE5D0BD628585057000A1C9B /* QotdTest.swift in Sources */,
+				DE5D0BE1285870DC000A1C9B /* Paygate.swift in Sources */,
 				DEE74EB127F34CB6002FE71D /* Exam.swift in Sources */,
 				DE6BFDF6284F946900F5CF20 /* RemoveSavedQuestionRequest.swift in Sources */,
 				DED4725827D20C4C00AEF8A6 /* OExamsTable.swift in Sources */,

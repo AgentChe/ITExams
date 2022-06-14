@@ -18,12 +18,14 @@ final class PracticeViewModel {
     private lazy var examDate = makeExamDate()
     private lazy var dailyQiestion = makeDailyQuestion()
     private lazy var testsCount = makeTestsCount()
+    private lazy var questionsCount = makeQuestionsCount()
     private lazy var currentCourse = makeCurrentCourse()
     private lazy var activeSubscription = makeActiveSubscription()
     
     private lazy var sessionManager = SessionManager()
     private lazy var profileManager = ProfileManager()
     private lazy var questionManager = QuestionManager()
+    private lazy var paygateManager = PaygateManager()
     
     private lazy var observableRetrySingle = ObservableRetrySingle()
 }
@@ -32,8 +34,8 @@ final class PracticeViewModel {
 private extension PracticeViewModel {
     func makeElements() -> Driver<[PracticeTableElement]> {
         Driver
-            .combineLatest(examDate, dailyQiestion, testsCount, activeSubscription)
-            .map { examDate, dailyQiestion, testsCount, activeSubscription -> [PracticeTableElement] in
+            .combineLatest(examDate, dailyQiestion, testsCount, questionsCount)
+            .map { examDate, dailyQiestion, testsCount, questionsCount -> [PracticeTableElement] in
                 var result = [PracticeTableElement]()
                 
                 result.append(.examDate(examDate))
@@ -54,10 +56,10 @@ private extension PracticeViewModel {
                     .tests(testsCount)
                 ])
                 
-                if !activeSubscription {
+                if let questionsCount = questionsCount {
                     result.append(contentsOf: [
                         .offset(60.scale),
-                        .unlockPremium(8500)
+                        .unlockPremium(questionsCount)
                     ])
                 }
                 
@@ -87,11 +89,26 @@ private extension PracticeViewModel {
                     return .never()
                 }
                 
-                return self.questionManager
-                    .obtainQotdTest(courseId: course.id, activeSubscription: false)
-                    .map { qotdTest -> String? in
-                        qotdTest?.test.questions.first?.question
+                func source() -> Single<String?> {
+                    self.questionManager
+                        .obtainQotdTest(courseId: course.id, activeSubscription: false)
+                        .map { qotdTest -> String? in
+                            qotdTest?.test.questions.first?.question
+                        }
+                }
+                
+                func trigger(error: Error) -> Observable<Void> {
+                    guard let tryAgain = self.tryAgain?(error) else {
+                        return .empty()
                     }
+                    
+                    return tryAgain
+                }
+                
+                return self.observableRetrySingle
+                    .retry(source: { source() },
+                           trigger: { trigger(error: $0) })
+                    .trackActivity(self.activity)
                     .asDriver(onErrorJustReturn: nil)
             }
     }
@@ -108,8 +125,23 @@ private extension PracticeViewModel {
                     return .never()
                 }
                 
-                return self.questionManager
-                    .obtainTestsKit(courseId: course.id)
+                func source() -> Single<TestsKit?> {
+                    self.questionManager
+                        .obtainTestsKit(courseId: course.id)
+                }
+                
+                func trigger(error: Error) -> Observable<Void> {
+                    guard let tryAgain = self.tryAgain?(error) else {
+                        return .empty()
+                    }
+                    
+                    return tryAgain
+                }
+                
+                return self.observableRetrySingle
+                    .retry(source: { source() },
+                           trigger: { trigger(error: $0) })
+                    .trackActivity(self.activity)
                     .asDriver(onErrorJustReturn: nil)
             }
             .compactMap { testsKit -> PracticeTableTestsCount? in
@@ -121,6 +153,24 @@ private extension PracticeViewModel {
                                                missed: testsKit.missedCount,
                                                quick: testsKit.quickCount,
                                                saved: testsKit.savedCount)
+            }
+    }
+    
+    func makeQuestionsCount() -> Driver<Int?> {
+        activeSubscription
+            .flatMapLatest { [weak self] activeSubscription -> Driver<Int?> in
+                guard let self = self else {
+                    return .never()
+                }
+                
+                guard !activeSubscription else {
+                    return .just(nil)
+                }
+                
+                return self.paygateManager
+                    .obtainPaygate(forceUpdate: false)
+                    .map { $0?.questionsCount }
+                    .asDriver(onErrorJustReturn: nil)
             }
     }
     

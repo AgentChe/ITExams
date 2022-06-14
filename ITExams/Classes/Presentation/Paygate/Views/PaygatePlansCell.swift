@@ -7,6 +7,7 @@
 
 import UIKit
 
+// TODO: количество вопросов
 final class PaygatePlansCell: UIView {
     lazy var imageView = makeImageView()
     lazy var label = makeLabel()
