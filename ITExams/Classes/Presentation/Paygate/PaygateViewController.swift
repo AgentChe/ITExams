@@ -44,23 +44,21 @@ final class PaygateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.paygate
+            .drive(Binder(self) { base, paygate in
+                base.configure(paygate: paygate)
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.monetization
-            .drive(onNext: { [weak self] monetization in
-                guard let self = self else {
-                    return
-                }
-                
-                self.configure(monetization: monetization)
+            .drive(Binder(self) { base, monetization in
+                base.configure(monetization: monetization)
             })
             .disposed(by: disposeBag)
         
         viewModel.prices
-            .drive(onNext: { [weak self] prices in
-                guard let self = self else {
-                    return
-                }
-                
-                self.configure(prices: prices)
+            .drive(Binder(self) { base, prices in
+                base.configure(prices: prices)
             })
             .disposed(by: disposeBag)
         
@@ -83,12 +81,8 @@ final class PaygateViewController: UIViewController {
                 trialView.closeButton.rx.tap.asObservable(),
                 plansView.closeButton.rx.tap.asObservable()
             )
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                
-                self.dismiss(with: .cancelled)
+            .bind(to: Binder(self) { base, void in
+                base.dismiss(with: .cancelled)
             })
             .disposed(by: disposeBag)
         
@@ -117,12 +111,8 @@ final class PaygateViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.activityIndicator
-            .drive(onNext: { [weak self] active in
-                guard let self = self else {
-                    return
-                }
-            
-                self.activityIndicator(active: active)
+            .drive(Binder(self) { base, active in
+                base.activityIndicator(active: active)
             })
             .disposed(by: disposeBag)
         
@@ -132,21 +122,17 @@ final class PaygateViewController: UIViewController {
             .disposed(by: disposeBag)
         
         plansView.continueButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                
+            .bind(to: Binder(self) { base, void in
                 let id = [
-                    self.plansView.lifetimeButton,
-                    self.plansView.subscriptionButton
+                    base.plansView.lifetimeButton,
+                    base.plansView.subscriptionButton
                 ].first(where: { $0.isChecked })?.price?.price.id
                 
                 guard let id = id else {
                     return
                 }
                 
-                self.viewModel.buy.accept(id)
+                base.viewModel.buy.accept(id)
             })
             .disposed(by: disposeBag)
         
@@ -161,12 +147,8 @@ final class PaygateViewController: UIViewController {
             .disposed(by: disposeBag)
         
         plansView.backButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                
-                self.mainView.backToTrial()
+            .bind(to: Binder(self) { base, void in
+                base.mainView.backToTrial()
             })
             .disposed(by: disposeBag)
         
@@ -195,6 +177,11 @@ extension PaygateViewController {
 
 // MARK: Private
 private extension PaygateViewController {
+    func configure(paygate: Paygate) {
+        trialView.setup(questionsCount: paygate.questionsCount)
+        plansView.setup(questionsCount: paygate.questionsCount)
+    }
+    
     func configure(monetization: Monetization) {
         trialView.closeButton.isHidden = monetization == .block
         plansView.closeButton.isHidden = monetization == .block

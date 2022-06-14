@@ -7,17 +7,12 @@
 
 import UIKit
 
-// TODO: количество вопросов
 final class PaygatePlansCell: UIView {
     lazy var imageView = makeImageView()
     lazy var label = makeLabel()
     
-    private let text: String
-    
-    init(text: String) {
-        self.text = text
-        
-        super.init(frame: .zero)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         makeConstraints()
         initialize()
@@ -25,6 +20,18 @@ final class PaygatePlansCell: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: Public
+extension PaygatePlansCell {
+    func setup(text: String) {
+        let attrs = TextAttributes()
+            .textColor(Appearance.blackColor)
+            .font(Fonts.Inter.regular(size: 15.scale))
+            .lineHeight(22.5.scale)
+            .letterSpacing(-0.14.scale)
+        label.attributedText = text.attributed(with: attrs)
     }
 }
 
@@ -66,15 +73,8 @@ private extension PaygatePlansCell {
     }
     
     func makeLabel() -> UILabel {
-        let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
-            .font(Fonts.Inter.regular(size: 15.scale))
-            .lineHeight(22.5.scale)
-            .letterSpacing(-0.14.scale)
-        
         let view = UILabel()
         view.numberOfLines = 0
-        view.attributedText = text.attributed(with: attrs)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

@@ -11,21 +11,21 @@ final class PaygateTrialView: UIView {
     lazy var closeButton = makeCloseButton()
     lazy var titleLabel = makeTitleLabel()
     lazy var cell1TitleLabel = makeCell1TitleLabel()
-    lazy var cell1SubTitleLabel = makeCellSubTitleLabel(text: "Paygate.FreeTrial.Cell1.SubTitle".localized)
+    lazy var cell1SubTitleLabel = makeCellSubTitleLabel()
     lazy var cell1ImageView = makeImageView(image: "Paygate.Install")
     lazy var cell1LineView = makeLineView(color: Appearance.successColor)
     lazy var cell2TitleLabel = makeCellTitleLabel(text: "Paygate.FreeTrial.Cell2.Title".localized)
-    lazy var cell2SubTitleLabel = makeCellSubTitleLabel(text: "Paygate.FreeTrial.Cell2.SubTitle".localized)
+    lazy var cell2SubTitleLabel = makeCellSubTitleLabel()
     lazy var cell2ImageView = makeImageView(image: "Paygate.Today")
     lazy var cell2ImageBackView = makeCellImageBackView()
     lazy var cell2Line1View = makeLineView(color: Appearance.successColor)
     lazy var cell2Line2View = makeLineView(color: Appearance.successColor.withAlphaComponent(0.1))
     lazy var cell3TitleLabel = makeCellTitleLabel(text: "Paygate.FreeTrial.Cell3.Title".localized)
-    lazy var cell3SubTitleLabel = makeCellSubTitleLabel(text: "Paygate.FreeTrial.Cell3.SubTitle".localized)
+    lazy var cell3SubTitleLabel = makeCellSubTitleLabel()
     lazy var cell3ImageView = makeImageView(image: "Paygate.Day5")
     lazy var cell3LineView = makeLineView(color: Appearance.successColor.withAlphaComponent(0.1))
     lazy var cell4TitleLabel = makeCellTitleLabel(text: "Paygate.FreeTrial.Cell4.Title".localized)
-    lazy var cell4SubTitleLabel = makeCellSubTitleLabel(text: "Paygate.FreeTrial.Cell4.SubTitle".localized)
+    lazy var cell4SubTitleLabel = makeCellSubTitleLabel()
     lazy var cell4ImageView = makeImageView(image: "Paygate.Day7")
     lazy var priceLabel = makePriceLabel()
     lazy var trialButton = makeTrialButton()
@@ -46,6 +46,18 @@ final class PaygateTrialView: UIView {
 
 // MARK: Public
 extension PaygateTrialView {
+    func setup(questionsCount: Int) {
+        let attrs = TextAttributes()
+            .textColor(Appearance.greyColor)
+            .font(Fonts.Inter.regular(size: 15.scale))
+            .lineHeight(22.5.scale)
+            .letterSpacing(-0.14.scale)
+        cell1SubTitleLabel.attributedText = "Paygate.FreeTrial.Cell1.SubTitle".localized.attributed(with: attrs)
+        cell2SubTitleLabel.attributedText = String(format: "Paygate.FreeTrial.Cell2.SubTitle".localized, questionsCount).attributed(with: attrs)
+        cell3SubTitleLabel.attributedText = "Paygate.FreeTrial.Cell3.SubTitle".localized.attributed(with: attrs)
+        cell4SubTitleLabel.attributedText = "Paygate.FreeTrial.Cell4.SubTitle".localized.attributed(with: attrs)
+    }
+    
     func setup(price: PaygatePrice) {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
@@ -293,16 +305,9 @@ private extension PaygateTrialView {
         return view
     }
     
-    func makeCellSubTitleLabel(text: String) -> UILabel {
-        let attrs = TextAttributes()
-            .textColor(Appearance.greyColor)
-            .font(Fonts.Inter.regular(size: 15.scale))
-            .lineHeight(22.5.scale)
-            .letterSpacing(-0.14.scale)
-        
+    func makeCellSubTitleLabel() -> UILabel {
         let view = UILabel()
         view.numberOfLines = 0
-        view.attributedText = text.attributed(with: attrs)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

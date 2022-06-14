@@ -11,9 +11,9 @@ final class PaygatePlansView: UIView {
     lazy var backButton = makeBackButton()
     lazy var closeButton = makeCloseButton()
     lazy var titleLabel = makeTitleLabel()
-    lazy var cell1 = makeCell(text: "Paygate.Plans.Cell1".localized)
-    lazy var cell2 = makeCell(text: "Paygate.Plans.Cell2".localized)
-    lazy var cell3 = makeCell(text: "Paygate.Plans.Cell3".localized)
+    lazy var cell1 = makeCell()
+    lazy var cell2 = makeCell()
+    lazy var cell3 = makeCell()
     lazy var lifetimeButton = makeProductButton()
     lazy var subscriptionButton = makeProductButton()
     lazy var continueButton = makeContinueButton()
@@ -30,6 +30,15 @@ final class PaygatePlansView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: Public
+extension PaygatePlansView {
+    func setup(questionsCount: Int) {
+        cell1.setup(text: String(format: "Paygate.Plans.Cell1".localized, questionsCount))
+        cell2.setup(text: "Paygate.Plans.Cell2".localized)
+        cell3.setup(text: "Paygate.Plans.Cell3".localized)
     }
 }
 
@@ -166,8 +175,8 @@ private extension PaygatePlansView {
         return view
     }
     
-    func makeCell(text: String) -> PaygatePlansCell {
-        let view = PaygatePlansCell(text: text)
+    func makeCell() -> PaygatePlansCell {
+        let view = PaygatePlansCell()
         view.backgroundColor = UIColor.clear
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
