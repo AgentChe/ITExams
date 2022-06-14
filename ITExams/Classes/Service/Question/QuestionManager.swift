@@ -169,8 +169,8 @@ extension QuestionManager {
                                        mode: mode,
                                        offset: offset)
         
-        return defaultRequestWrapper
-            .callServerApi(requestBody: request)
+        return xorRequestWrapper
+            .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
             .map { GetReviewResponse.map(from: $0) }
     }
     
