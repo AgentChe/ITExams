@@ -261,6 +261,16 @@ private extension TestViewModel {
                                                            activeSubscription: self.sessionManager.hasActiveSubscriptions())
                 case .plan(let testId):
                     test = self.questionManager.obtainPlanTest(testId: testId)
+                case .quick:
+                    test = self.questionManager.obtainQuickTest(courseId: courseId,
+                                                                activeSubscription: self.sessionManager.hasActiveSubscriptions())
+                case .custom(let attributes):
+                    test = self.questionManager.obtainCustomTest(courseId: courseId,
+                                                                 activeSubscription: self.sessionManager.hasActiveSubscriptions(),
+                                                                 subjectsIds: attributes.subjects.map { $0.id },
+                                                                 includeMissedQuestions: attributes.isOnMissedQuestions,
+                                                                 includeAnsweredQuestions: attributes.isOnAnsweredQuestions,
+                                                                 questionsCount: attributes.questionsCount)
                 }
                 
                 return test

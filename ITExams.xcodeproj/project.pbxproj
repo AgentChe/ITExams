@@ -29,6 +29,7 @@
 		DE2A56962859DB63009259A2 /* QuestionsCountCollectionElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A56952859DB63009259A2 /* QuestionsCountCollectionElement.swift */; };
 		DE2A56982859DFC4009259A2 /* CustomMadeTestTableCountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A56972859DFC4009259A2 /* CustomMadeTestTableCountCell.swift */; };
 		DE2A569A2859F6D3009259A2 /* QuestionsCountCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A56992859F6D3009259A2 /* QuestionsCountCollectionLayout.swift */; };
+		DE2A569C2859FE62009259A2 /* GetCustomTestRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A569B2859FE62009259A2 /* GetCustomTestRequest.swift */; };
 		DE2B0FFA27D77546005280DB /* OQuizResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B0FF927D77546005280DB /* OQuizResultView.swift */; };
 		DE2B0FFC27D7960E005280DB /* ODailyGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B0FFB27D7960E005280DB /* ODailyGoalView.swift */; };
 		DE2B0FFE27D798F4005280DB /* ODailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B0FFD27D798F4005280DB /* ODailyView.swift */; };
@@ -386,6 +387,7 @@
 		DE2A56952859DB63009259A2 /* QuestionsCountCollectionElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsCountCollectionElement.swift; sourceTree = "<group>"; };
 		DE2A56972859DFC4009259A2 /* CustomMadeTestTableCountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMadeTestTableCountCell.swift; sourceTree = "<group>"; };
 		DE2A56992859F6D3009259A2 /* QuestionsCountCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsCountCollectionLayout.swift; sourceTree = "<group>"; };
+		DE2A569B2859FE62009259A2 /* GetCustomTestRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCustomTestRequest.swift; sourceTree = "<group>"; };
 		DE2B0FF927D77546005280DB /* OQuizResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OQuizResultView.swift; sourceTree = "<group>"; };
 		DE2B0FFB27D7960E005280DB /* ODailyGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ODailyGoalView.swift; sourceTree = "<group>"; };
 		DE2B0FFD27D798F4005280DB /* ODailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ODailyView.swift; sourceTree = "<group>"; };
@@ -1315,6 +1317,7 @@
 				DE6BFE09285096AB00F5CF20 /* GetFailedTestRequest.swift */,
 				DE6BFE0B285096D300F5CF20 /* GetSavedTestRequest.swift */,
 				DE6BFE8A28525F8F00F5CF20 /* GetPlanTestRequest.swift */,
+				DE2A569B2859FE62009259A2 /* GetCustomTestRequest.swift */,
 			);
 			path = GetTest;
 			sourceTree = "<group>";
@@ -2415,6 +2418,7 @@
 				DE6BFDF2284F8E5400F5CF20 /* OQuestionFavoriteButton.swift in Sources */,
 				DE93789B27C4BF070073F27C /* SplashViewController.swift in Sources */,
 				DE93787527C4B2600073F27C /* ScreenSize.swift in Sources */,
+				DE2A569C2859FE62009259A2 /* GetCustomTestRequest.swift in Sources */,
 				DE5D0BD9285869C7000A1C9B /* GetTestsKitRequest.swift in Sources */,
 				DE2B100E27DA47AE005280DB /* OPlanView.swift in Sources */,
 				DE3BDBE7284A3BE40091230F /* StatsTableUnlockPremiumButtonCell.swift in Sources */,

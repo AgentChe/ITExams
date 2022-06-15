@@ -14,6 +14,8 @@ enum TestType {
     case saved
     case timed(minutes: Int)
     case plan(testId: Int)
+    case quick
+    case custom(CustomTestAttributes)
 }
 
 // MARK: Public

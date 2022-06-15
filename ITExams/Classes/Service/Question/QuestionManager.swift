@@ -15,6 +15,13 @@ protocol QuestionManagerProtocol {
     func obtainQotdTest(courseId: Int, activeSubscription: Bool) -> Single<QotdTest?>
     func obtainRandomTest(courseId: Int, activeSubscription: Bool) -> Single<Test?>
     func obtainSavedTest(courseId: Int, activeSubscription: Bool) -> Single<Test?>
+    func obtainQuickTest(courseId: Int, activeSubscription: Bool) -> Single<Test?>
+    func obtainCustomTest(courseId: Int,
+                          activeSubscription: Bool,
+                          subjectsIds: [Int],
+                          includeMissedQuestions: Bool,
+                          includeAnsweredQuestions: Bool,
+                          questionsCount: Int) -> Single<Test?>
     func obtainPlanTest(testId: Int) -> Single<Test?>
     func obtainOnboardingTest(forceUpdate: Bool) -> Single<Test?>
     func obtainReview(for courseId: Int, mode: Int, offset: Int) -> Single<[Review]>
@@ -140,6 +147,47 @@ extension QuestionManager {
         return defaultRequestWrapper
             .callServerApi(requestBody: request)
             .map { GetTestResponseMapper.map(from: $0, isEncryption: false) }
+    }
+    
+    func obtainQuickTest(courseId: Int, activeSubscription: Bool) -> Single<Test?> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
+            return .error(SignError.tokenNotFound)
+        }
+        
+        let request = GetCustomTestRequest(userToken: userToken,
+                                           courseId: courseId,
+                                           activeSubscription: activeSubscription,
+                                           subjects: [],
+                                           includeMissedQuestions: true,
+                                           includeAnsweredQuestions: true,
+                                           questionsCount: 40)
+        
+        return xorRequestWrapper
+            .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
+            .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
+    }
+    
+    func obtainCustomTest(courseId: Int,
+                          activeSubscription: Bool,
+                          subjectsIds: [Int],
+                          includeMissedQuestions: Bool,
+                          includeAnsweredQuestions: Bool,
+                          questionsCount: Int) -> Single<Test?> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
+            return .error(SignError.tokenNotFound)
+        }
+        
+        let request = GetCustomTestRequest(userToken: userToken,
+                                           courseId: courseId,
+                                           activeSubscription: activeSubscription,
+                                           subjects: subjectsIds,
+                                           includeMissedQuestions: includeMissedQuestions,
+                                           includeAnsweredQuestions: includeAnsweredQuestions,
+                                           questionsCount: questionsCount)
+        
+        return xorRequestWrapper
+            .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
+            .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
     }
     
     func obtainPlanTest(testId: Int) -> Single<Test?> {

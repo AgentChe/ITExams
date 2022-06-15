@@ -24,6 +24,10 @@ final class TestAnalytics {
             return "timed"
         case .plan:
             return "plan"
+        case .quick:
+            return "quick"
+        case .custom:
+            return "custom"
         }
     }
 }

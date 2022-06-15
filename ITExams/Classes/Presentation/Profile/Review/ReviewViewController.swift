@@ -37,7 +37,7 @@ final class ReviewViewController: UIViewController {
         
         mainView.emptyView.button.rx.tap
             .bind(to: Binder(self) { base, void in
-                // TODO: открывать тест quick
+                TestCoordinator.shared.start(testType: .quick, from: base)
             })
             .disposed(by: disposeBag)
         

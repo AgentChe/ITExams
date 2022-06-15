@@ -36,6 +36,6 @@ final class GetTestsKitResponse {
                         missedCount: missedCount,
                         quickCount: quickCount,
                         savedCount: savedCount,
-                        subjects: subjects + subjects + subjects + subjects + subjects + subjects) // TODO
+                        subjects: subjects)
     }
 }

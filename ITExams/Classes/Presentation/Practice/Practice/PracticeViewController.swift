@@ -96,7 +96,7 @@ extension PracticeViewController: PracticeTableViewDelegate {
     }
     
     func practiceTableDidTappedQuickTest() {
-        // TODO: открыть quick тест
+        TestCoordinator.shared.start(testType: .quick, from: self)
     }
     
     func practiceTableDidTappedSavedTest(questionsCount: Int) {
@@ -124,14 +124,14 @@ extension PracticeViewController: PracticeTableViewDelegate {
 // MARK: TestEmptyViewControllerDelegate
 extension PracticeViewController: TestEmptyViewControllerDelegate {
     func testEmptyDidTappedTakeTest() {
-        // TODO: открыть quick тест
+        TestCoordinator.shared.start(testType: .quick, from: self)
     }
 }
 
 // MARK: CustomMadeTestViewControllerDelegate
 extension PracticeViewController: CustomMadeTestViewControllerDelegate {
     func customMadeTestViewControllerDidStart(attributes: CustomTestAttributes) {
-        // TODO: открыть custom test
+        TestCoordinator.shared.start(testType: .custom(attributes), from: self)
     }
 }
 
