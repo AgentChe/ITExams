@@ -38,7 +38,7 @@ extension TestStatsTableAnswerCell {
             .lineHeight(22.5.scale)
             .letterSpacing(-0.14.scale)
             .lineBreakMode(.byTruncatingTail)
-        label.attributedText = element.question.attributed(with: attrs)
+        label.attributedText = element.question.question.attributed(with: attrs)
         
         separator.isHidden = element.separatorHidden
         

@@ -10,10 +10,11 @@ import RxSwift
 protocol StatsManagerProtocol {
     func resetStats(for courseId: Int) -> Single<Void>
     func obtainStats(for courseId: Int) -> Single<Stats?>
-    func obtainTestStats(userTestId: Int) -> Single<TestStats?>
+    func obtainTestStats(courseId: Int, userTestId: Int) -> Single<TestStats?>
 }
 
 final class StatsManager: StatsManagerProtocol {
+    private lazy var xorRequestWrapper = XORRequestWrapper()
     private lazy var defaultRequestWrapper = DefaultRequestWrapper()
     
     private lazy var sessionManager = SessionManager()
@@ -48,17 +49,18 @@ extension StatsManager {
             .map { try GetStatsResponseMapper.map(from: $0) }
     }
     
-    func obtainTestStats(userTestId: Int) -> Single<TestStats?> {
+    func obtainTestStats(courseId: Int, userTestId: Int) -> Single<TestStats?> {
         guard let userToken = sessionManager.getSession()?.userToken else {
             return .error(SignError.tokenNotFound)
         }
         
         let request = GetTestStatsRequest(userToken: userToken,
+                                          courseId: courseId,
                                           userTestId: userTestId,
                                           peek: true)
         
-        return defaultRequestWrapper
-            .callServerApi(requestBody: request)
+        return xorRequestWrapper
+            .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
             .map { GetTestStatsResponseMapper.map(from: $0) }
     }
 }

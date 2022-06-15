@@ -10,31 +10,34 @@ import Foundation
 struct GetTestStatsResponseMapper {
     static func map(from response: Any) -> TestStats? {
         guard
-            let json = response as? [String: Any],
+            let string = response as? String,
+            let json = XOREncryption.toJSON(string, key: GlobalDefinitions.apiKey),
             let data = json["_data"] as? [String: Any],
-            let stats = data["stats"] as? [String: Any],
-            let correctNumber = stats["correct_number"] as? Int,
-            let incorrectNumber = stats["incorrect_number"] as? Int,
-            let userTime = stats["user_time"] as? String,
-            let userScore = stats["user_score"] as? Int,
-            let questions = stats["questions"] as? [[String: Any]]
+            let correctNumber = data["correct_number"] as? Int,
+            let incorrectNumber = data["incorrect_number"] as? Int,
+            let userTime = data["user_time"] as? String,
+            let userScore = data["user_score"] as? Int,
+            let questions = data["questions"] as? [[String: Any]]
         else {
             return nil
         }
         
-        let weakestSubject = stats["weakest_subject"] as? String
+        let weakestSubject = data["weakest_subject"] as? String
         
-        let elements = questions
-            .compactMap { questionJSON -> TestStatsAnswer? in
-                guard
-                    let question = questionJSON["question"] as? String,
-                    let correst = questionJSON["correct"] as? Bool
-                else {
-                    return nil
-                }
-                
-                return TestStatsAnswer(question: question, correct: correst)
+        let elements = questions.compactMap { elementJSON -> TestStatsAnswer? in
+            guard
+                let questionJSON = elementJSON["question"] as? [String: Any],
+                let question = QuestionMapper.map(from: questionJSON),
+                let isCorrectly = elementJSON["correctly_answered"] as? Bool,
+                let userAnswersIds = elementJSON["user_answers"] as? [Int]
+            else {
+                return nil
             }
+            
+            return TestStatsAnswer(question: question,
+                                   isCorrectly: isCorrectly,
+                                   userAnswersIds: userAnswersIds)
+        }
         
         return TestStats(correctNumbers: correctNumber,
                          incorrectNumbers: incorrectNumber,

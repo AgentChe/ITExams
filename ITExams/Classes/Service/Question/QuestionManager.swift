@@ -160,7 +160,7 @@ extension QuestionManager {
                                            subjects: [],
                                            includeMissedQuestions: true,
                                            includeAnsweredQuestions: true,
-                                           questionsCount: 40)
+                                           questionsCount: 10)
         
         return xorRequestWrapper
             .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)

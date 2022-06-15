@@ -6,6 +6,7 @@
 //
 
 struct TestStatsAnswer: Codable, Hashable {
-    let question: String
-    let correct: Bool
+    let question: Question
+    let isCorrectly: Bool
+    let userAnswersIds: [Int]
 }

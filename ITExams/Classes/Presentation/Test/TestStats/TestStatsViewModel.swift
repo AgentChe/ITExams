@@ -18,8 +18,10 @@ final class TestStatsViewModel {
     lazy var activity = RxActivityIndicator()
     
     private lazy var stats = makeStats()
+    private lazy var currentCourse = makeCurrentCourse()
     
     private lazy var statsManager = StatsManager()
+    private lazy var profileManager = ProfileManager()
     
     private lazy var observableRetrySingle = ObservableRetrySingle()
 }
@@ -53,16 +55,17 @@ private extension TestStatsViewModel {
                 case .all:
                     questions = element.questions
                 case .correct:
-                    questions = element.questions.filter { $0.correct }
+                    questions = element.questions.filter { $0.isCorrectly }
                 case .incorrect:
-                    questions = element.questions.filter { !$0.correct }
+                    questions = element.questions.filter { !$0.isCorrectly }
                 }
                 
                 questions.enumerated().forEach { index, question in
                     let isLast = index == (questions.count - 1)
                     
                     let element = TestStatsTableAnswer(question: question.question,
-                                                       correct: question.correct,
+                                                       answeredIds: question.userAnswersIds,
+                                                       correct: question.isCorrectly,
                                                        separatorHidden: isLast,
                                                        topCorners: index == 0,
                                                        bottomCorners: isLast)
@@ -75,16 +78,23 @@ private extension TestStatsViewModel {
     }
     
     func makeStats() -> Driver<TestStats> {
-        userTestId
-            .compactMap { $0 }
-            .flatMapLatest { [weak self] userTestId -> Observable<TestStats> in
+        Driver
+            .combineLatest(
+                userTestId.compactMap { $0 }
+                    .asDriver(onErrorDriveWith: .never()),
+                
+                currentCourse.map { $0.id }
+            )
+            .flatMapLatest { [weak self] args -> Driver<TestStats> in
                 guard let self = self else {
                     return .empty()
                 }
                 
+                let (userTestId, courseId) = args
+                
                 func source() -> Single<TestStats> {
                     self.statsManager
-                        .obtainTestStats(userTestId: userTestId)
+                        .obtainTestStats(courseId: courseId, userTestId: userTestId)
                         .flatMap { stats -> Single<TestStats> in
                             guard let stats = stats else {
                                 return .error(ContentError(.notContent))
@@ -106,7 +116,14 @@ private extension TestStatsViewModel {
                     .retry(source: { source() },
                            trigger: { trigger(error: $0) })
                     .trackActivity(self.activity)
+                    .asDriver(onErrorDriveWith: .never())
             }
+    }
+    
+    func makeCurrentCourse() -> Driver<Course> {
+        profileManager
+            .obtainSelectedCourse(forceUpdate: false)
+            .compactMap { $0 }
             .asDriver(onErrorDriveWith: .never())
     }
 }

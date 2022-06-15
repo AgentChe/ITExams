@@ -25,7 +25,8 @@ struct TestStatsInfo {
 }
 
 struct TestStatsTableAnswer {
-    let question: String
+    let question: Question
+    let answeredIds: [Int]
     let correct: Bool
     let separatorHidden: Bool
     let topCorners: Bool

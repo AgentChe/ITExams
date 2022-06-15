@@ -93,7 +93,9 @@ extension TestStatsViewController: TestStatsTableViewDelegate {
     }
     
     func testStatsTableDidTapped(question: TestStatsTableAnswer) {
-        // TODO: открыть вопрос для просмотра
+        let vc = QuestionViewerViewController.make(question: question.question,
+                                                   answeredIds: question.answeredIds)
+        present(vc, animated: true)
     }
 }
 
