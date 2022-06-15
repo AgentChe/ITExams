@@ -47,9 +47,7 @@ private extension ReviewViewModel {
                 var result = [ReviewTableElement]()
                 
                 reviews.enumerated().forEach { index, review in
-                    let question = ReviewTableQuestion(isCorrectly: review.isCorrectly,
-                                                       question: review.question.question)
-                    result.append(.question(question))
+                    result.append(.question(review))
                     
                     if index != (reviews.count - 1) {
                         result.append(.separator)

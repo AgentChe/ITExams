@@ -61,7 +61,7 @@ extension ReviewViewController: ReviewTableViewDelegate {
         viewModel.nextPage.accept(Void())
     }
     
-    func reviewTableDidTapped(element: ReviewTableQuestion) {
+    func reviewTableDidTapped(element: Review) {
         //TODO: открыть вопрос для просмотра
     }
 }

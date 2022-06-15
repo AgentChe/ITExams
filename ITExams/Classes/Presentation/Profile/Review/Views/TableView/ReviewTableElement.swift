@@ -6,11 +6,6 @@
 //
 
 enum ReviewTableElement {
-    case question(ReviewTableQuestion)
+    case question(Review)
     case separator
-}
-
-struct ReviewTableQuestion {
-    let isCorrectly: Bool
-    let question: String
 }

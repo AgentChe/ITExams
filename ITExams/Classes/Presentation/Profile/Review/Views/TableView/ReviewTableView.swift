@@ -9,7 +9,7 @@ import UIKit
 
 protocol ReviewTableViewDelegate: AnyObject {
     func reviewTableDidReachedBottom()
-    func reviewTableDidTapped(element: ReviewTableQuestion)
+    func reviewTableDidTapped(element: Review)
 }
 
 final class ReviewTableView: UITableView {
