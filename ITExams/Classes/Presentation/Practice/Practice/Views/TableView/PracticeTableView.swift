@@ -15,7 +15,7 @@ protocol PracticeTableViewDelegate: AnyObject {
     func practiceTableDidTappedMissedTest(questionsCount: Int)
     func practiceTableDidTappedQuickTest()
     func practiceTableDidTappedSavedTest(questionsCount: Int)
-    func practiceTableDidTappedCusomTest()
+    func practiceTableDidTappedCustomTest()
     func practiceTableDidTappedUnlockPremium()
 }
 

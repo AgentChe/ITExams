@@ -23,6 +23,12 @@
 		DE1CA9AA27F2FCAE00C66DAD /* PaygateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1CA9A927F2FCAE00C66DAD /* PaygateManager.swift */; };
 		DE1CA9AD27F3017C00C66DAD /* SplashReceiptValidationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1CA9AC27F3017C00C66DAD /* SplashReceiptValidationObserver.swift */; };
 		DE1CA9AF27F3069600C66DAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE1CA9AE27F3069600C66DAD /* GoogleService-Info.plist */; };
+		DE2A568C2859D3F9009259A2 /* CustomTestAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A568B2859D3F9009259A2 /* CustomTestAttributes.swift */; };
+		DE2A56922859DB44009259A2 /* QuestionsCountCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A56912859DB44009259A2 /* QuestionsCountCollectionView.swift */; };
+		DE2A56942859DB55009259A2 /* QuestionsCountCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A56932859DB55009259A2 /* QuestionsCountCollectionCell.swift */; };
+		DE2A56962859DB63009259A2 /* QuestionsCountCollectionElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A56952859DB63009259A2 /* QuestionsCountCollectionElement.swift */; };
+		DE2A56982859DFC4009259A2 /* CustomMadeTestTableCountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A56972859DFC4009259A2 /* CustomMadeTestTableCountCell.swift */; };
+		DE2A569A2859F6D3009259A2 /* QuestionsCountCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A56992859F6D3009259A2 /* QuestionsCountCollectionLayout.swift */; };
 		DE2B0FFA27D77546005280DB /* OQuizResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B0FF927D77546005280DB /* OQuizResultView.swift */; };
 		DE2B0FFC27D7960E005280DB /* ODailyGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B0FFB27D7960E005280DB /* ODailyGoalView.swift */; };
 		DE2B0FFE27D798F4005280DB /* ODailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B0FFD27D798F4005280DB /* ODailyView.swift */; };
@@ -109,6 +115,17 @@
 		DE5D0BF0285894A2000A1C9B /* TestEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BEF285894A2000A1C9B /* TestEmptyViewController.swift */; };
 		DE5D0BF228589562000A1C9B /* NoSavedQuestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BF128589562000A1C9B /* NoSavedQuestionsView.swift */; };
 		DE5D0BF42858956F000A1C9B /* NoMissedQuestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BF32858956F000A1C9B /* NoMissedQuestionsView.swift */; };
+		DE5D0BF72858A23C000A1C9B /* CustomMadeTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BF62858A23C000A1C9B /* CustomMadeTestViewController.swift */; };
+		DE5D0BF92858A247000A1C9B /* CustomMadeTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BF82858A247000A1C9B /* CustomMadeTestViewModel.swift */; };
+		DE5D0BFB2858A24E000A1C9B /* CustomMadeTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BFA2858A24E000A1C9B /* CustomMadeTestView.swift */; };
+		DE5D0BFF2858A273000A1C9B /* CustomMadeTestTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0BFE2858A273000A1C9B /* CustomMadeTestTableView.swift */; };
+		DE5D0C012858A27F000A1C9B /* CustomMadeTestTableElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0C002858A27F000A1C9B /* CustomMadeTestTableElement.swift */; };
+		DE5D0C042858AC98000A1C9B /* CustomMadeTestTableStartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0C032858AC98000A1C9B /* CustomMadeTestTableStartCell.swift */; };
+		DE5D0C062858AFE8000A1C9B /* CustomMadeTestTableTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0C052858AFE8000A1C9B /* CustomMadeTestTableTitleCell.swift */; };
+		DE5D0C0C2858DAD1000A1C9B /* CustomMadeTestTableSubjectsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0C0B2858DAD1000A1C9B /* CustomMadeTestTableSubjectsCell.swift */; };
+		DE5D0C0F2858DC7D000A1C9B /* SubjectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0C0E2858DC7D000A1C9B /* SubjectButton.swift */; };
+		DE5D0C112858DF69000A1C9B /* SubjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0C102858DF68000A1C9B /* SubjectsView.swift */; };
+		DE5D0C1328599828000A1C9B /* CustomMadeTestTableSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0C1228599828000A1C9B /* CustomMadeTestTableSwitchCell.swift */; };
 		DE6BFD9F284E021A00F5CF20 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */; };
 		DE6BFDA1284E022200F5CF20 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */; };
 		DE6BFDA5284E023400F5CF20 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDA4284E023400F5CF20 /* ReviewView.swift */; };
@@ -363,6 +380,12 @@
 		DE1CA9A927F2FCAE00C66DAD /* PaygateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaygateManager.swift; sourceTree = "<group>"; };
 		DE1CA9AC27F3017C00C66DAD /* SplashReceiptValidationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashReceiptValidationObserver.swift; sourceTree = "<group>"; };
 		DE1CA9AE27F3069600C66DAD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DE2A568B2859D3F9009259A2 /* CustomTestAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTestAttributes.swift; sourceTree = "<group>"; };
+		DE2A56912859DB44009259A2 /* QuestionsCountCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsCountCollectionView.swift; sourceTree = "<group>"; };
+		DE2A56932859DB55009259A2 /* QuestionsCountCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsCountCollectionCell.swift; sourceTree = "<group>"; };
+		DE2A56952859DB63009259A2 /* QuestionsCountCollectionElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsCountCollectionElement.swift; sourceTree = "<group>"; };
+		DE2A56972859DFC4009259A2 /* CustomMadeTestTableCountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMadeTestTableCountCell.swift; sourceTree = "<group>"; };
+		DE2A56992859F6D3009259A2 /* QuestionsCountCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsCountCollectionLayout.swift; sourceTree = "<group>"; };
 		DE2B0FF927D77546005280DB /* OQuizResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OQuizResultView.swift; sourceTree = "<group>"; };
 		DE2B0FFB27D7960E005280DB /* ODailyGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ODailyGoalView.swift; sourceTree = "<group>"; };
 		DE2B0FFD27D798F4005280DB /* ODailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ODailyView.swift; sourceTree = "<group>"; };
@@ -449,6 +472,17 @@
 		DE5D0BEF285894A2000A1C9B /* TestEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEmptyViewController.swift; sourceTree = "<group>"; };
 		DE5D0BF128589562000A1C9B /* NoSavedQuestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSavedQuestionsView.swift; sourceTree = "<group>"; };
 		DE5D0BF32858956F000A1C9B /* NoMissedQuestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoMissedQuestionsView.swift; sourceTree = "<group>"; };
+		DE5D0BF62858A23C000A1C9B /* CustomMadeTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMadeTestViewController.swift; sourceTree = "<group>"; };
+		DE5D0BF82858A247000A1C9B /* CustomMadeTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMadeTestViewModel.swift; sourceTree = "<group>"; };
+		DE5D0BFA2858A24E000A1C9B /* CustomMadeTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMadeTestView.swift; sourceTree = "<group>"; };
+		DE5D0BFE2858A273000A1C9B /* CustomMadeTestTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMadeTestTableView.swift; sourceTree = "<group>"; };
+		DE5D0C002858A27F000A1C9B /* CustomMadeTestTableElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMadeTestTableElement.swift; sourceTree = "<group>"; };
+		DE5D0C032858AC98000A1C9B /* CustomMadeTestTableStartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMadeTestTableStartCell.swift; sourceTree = "<group>"; };
+		DE5D0C052858AFE8000A1C9B /* CustomMadeTestTableTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMadeTestTableTitleCell.swift; sourceTree = "<group>"; };
+		DE5D0C0B2858DAD1000A1C9B /* CustomMadeTestTableSubjectsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMadeTestTableSubjectsCell.swift; sourceTree = "<group>"; };
+		DE5D0C0E2858DC7D000A1C9B /* SubjectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectButton.swift; sourceTree = "<group>"; };
+		DE5D0C102858DF68000A1C9B /* SubjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectsView.swift; sourceTree = "<group>"; };
+		DE5D0C1228599828000A1C9B /* CustomMadeTestTableSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMadeTestTableSwitchCell.swift; sourceTree = "<group>"; };
 		DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		DE6BFDA4284E023400F5CF20 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
@@ -793,6 +827,25 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		DE2A568A2859D3E9009259A2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DE2A568B2859D3F9009259A2 /* CustomTestAttributes.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DE2A56902859DB27009259A2 /* QuestionsCountCollection */ = {
+			isa = PBXGroup;
+			children = (
+				DE2A56912859DB44009259A2 /* QuestionsCountCollectionView.swift */,
+				DE2A56932859DB55009259A2 /* QuestionsCountCollectionCell.swift */,
+				DE2A56952859DB63009259A2 /* QuestionsCountCollectionElement.swift */,
+				DE2A56992859F6D3009259A2 /* QuestionsCountCollectionLayout.swift */,
+			);
+			path = QuestionsCountCollection;
+			sourceTree = "<group>";
+		};
 		DE2B100527D9E83A005280DB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -1114,6 +1167,59 @@
 			path = TestEmpty;
 			sourceTree = "<group>";
 		};
+		DE5D0BF52858A21C000A1C9B /* CustomMadeTest */ = {
+			isa = PBXGroup;
+			children = (
+				DE2A568A2859D3E9009259A2 /* Models */,
+				DE5D0BFC2858A254000A1C9B /* Views */,
+				DE5D0BF62858A23C000A1C9B /* CustomMadeTestViewController.swift */,
+				DE5D0BF82858A247000A1C9B /* CustomMadeTestViewModel.swift */,
+				DE5D0BFA2858A24E000A1C9B /* CustomMadeTestView.swift */,
+			);
+			path = CustomMadeTest;
+			sourceTree = "<group>";
+		};
+		DE5D0BFC2858A254000A1C9B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DE5D0BFD2858A269000A1C9B /* TableView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DE5D0BFD2858A269000A1C9B /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				DE5D0C022858AAB3000A1C9B /* Cells */,
+				DE5D0BFE2858A273000A1C9B /* CustomMadeTestTableView.swift */,
+				DE5D0C002858A27F000A1C9B /* CustomMadeTestTableElement.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		DE5D0C022858AAB3000A1C9B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DE5D0C0D2858DC5F000A1C9B /* Atoms */,
+				DE5D0C032858AC98000A1C9B /* CustomMadeTestTableStartCell.swift */,
+				DE5D0C052858AFE8000A1C9B /* CustomMadeTestTableTitleCell.swift */,
+				DE5D0C0B2858DAD1000A1C9B /* CustomMadeTestTableSubjectsCell.swift */,
+				DE5D0C1228599828000A1C9B /* CustomMadeTestTableSwitchCell.swift */,
+				DE2A56972859DFC4009259A2 /* CustomMadeTestTableCountCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		DE5D0C0D2858DC5F000A1C9B /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+				DE2A56902859DB27009259A2 /* QuestionsCountCollection */,
+				DE5D0C0E2858DC7D000A1C9B /* SubjectButton.swift */,
+				DE5D0C102858DF68000A1C9B /* SubjectsView.swift */,
+			);
+			path = Atoms;
+			sourceTree = "<group>";
+		};
 		DE6BFD9D284E020900F5CF20 /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -1279,6 +1385,7 @@
 		DE6BFE1628509CA000F5CF20 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				DE5D0BF52858A21C000A1C9B /* CustomMadeTest */,
 				DE5D0BEE2858948A000A1C9B /* TestEmpty */,
 				DE6BFE5828511D9800F5CF20 /* TestStats */,
 				DE6BFE4D2850B92E00F5CF20 /* Test */,
@@ -2343,11 +2450,13 @@
 				DEC345FE2816FE070069A060 /* CoursesViewModel.swift in Sources */,
 				DE6BFE132850974A00F5CF20 /* TestCloseObserver.swift in Sources */,
 				DE6BFE7228512AC700F5CF20 /* TestStatsTableInfoCell.swift in Sources */,
+				DE2A569A2859F6D3009259A2 /* QuestionsCountCollectionLayout.swift in Sources */,
 				DE5D0BE428587102000A1C9B /* GetPaygateRequest.swift in Sources */,
 				DED4724A27CE5CF000AEF8A6 /* OAgeView.swift in Sources */,
 				DE2B100C27D9F6CE005280DB /* OCreatingPlanSectionView.swift in Sources */,
 				DEBCD1802849EC39000C08A9 /* StatsTableView.swift in Sources */,
 				DE95A8D72833703D00809171 /* PlanFinalStep.swift in Sources */,
+				DE5D0C1328599828000A1C9B /* CustomMadeTestTableSwitchCell.swift in Sources */,
 				DE93787B27C4B2600073F27C /* Toast.swift in Sources */,
 				DE93790427C4C0E90073F27C /* OnboardingView.swift in Sources */,
 				DE2B10C527DB14EE005280DB /* LoginRequest.swift in Sources */,
@@ -2368,12 +2477,15 @@
 				DE6BFDE5284F571600F5CF20 /* OTestView.swift in Sources */,
 				DE5D0BED285883BB000A1C9B /* PracticeDateOfExamView.swift in Sources */,
 				DE5D0BC7285281EF000A1C9B /* PracticeTableExamDateCell.swift in Sources */,
+				DE5D0C012858A27F000A1C9B /* CustomMadeTestTableElement.swift in Sources */,
 				DEE74EBA27F41873002FE71D /* Plan.swift in Sources */,
 				DE95A889282E81D000809171 /* SettingsTableView.swift in Sources */,
 				DE6BFE0A285096AB00F5CF20 /* GetFailedTestRequest.swift in Sources */,
 				DE1CA99C27F2F80100C66DAD /* FirebaseManager.swift in Sources */,
+				DE5D0BFF2858A273000A1C9B /* CustomMadeTestTableView.swift in Sources */,
 				DE2B10C927DB14EE005280DB /* SetRequest.swift in Sources */,
 				DE6BFDE3284F312000F5CF20 /* SplashPrepareOnboarding.swift in Sources */,
+				DE2A56982859DFC4009259A2 /* CustomMadeTestTableCountCell.swift in Sources */,
 				DEBCD1872849F6F8000C08A9 /* StatsTableTitleCell.swift in Sources */,
 				DE95A89E282ECFD800809171 /* MyProfileView.swift in Sources */,
 				DE95A88B282E81DF00809171 /* SettingsTableElement.swift in Sources */,
@@ -2396,6 +2508,7 @@
 				DE3BDBEF284A9B4A0091230F /* StatsTableUnlockPremiumFakeCell.swift in Sources */,
 				DE3BDBED284A962A0091230F /* StatsTableSubjectCell.swift in Sources */,
 				DE2B10B727DB14EE005280DB /* Course.swift in Sources */,
+				DE5D0C062858AFE8000A1C9B /* CustomMadeTestTableTitleCell.swift in Sources */,
 				DE6BFE2228509D0B00F5CF20 /* TestFinish.swift in Sources */,
 				DE6BFE082850968B00F5CF20 /* GetRandomTestRequest.swift in Sources */,
 				DE95A885282E633600809171 /* SettingsView.swift in Sources */,
@@ -2406,8 +2519,11 @@
 				DEBCD1822849EC46000C08A9 /* StatsTableElement.swift in Sources */,
 				DE95A8C62832893000809171 /* StudyModeViewModel.swift in Sources */,
 				DE6BFE102850971900F5CF20 /* FinishTestRequest.swift in Sources */,
+				DE5D0C042858AC98000A1C9B /* CustomMadeTestTableStartCell.swift in Sources */,
 				DE2B10CE27DB14EE005280DB /* IAPActionResult.swift in Sources */,
 				DEC3460D28185EBB0069A060 /* CourseCurrentView.swift in Sources */,
+				DE5D0BF72858A23C000A1C9B /* CustomMadeTestViewController.swift in Sources */,
+				DE5D0BF92858A247000A1C9B /* CustomMadeTestViewModel.swift in Sources */,
 				DE5D0BDB285869D4000A1C9B /* GetTestsKitResponse.swift in Sources */,
 				DE3FD60A27E9FFEE00E76844 /* PaygatePlansCell.swift in Sources */,
 				DE5D0BCD2852822E000A1C9B /* PracticeTableTestsCell.swift in Sources */,
@@ -2419,6 +2535,7 @@
 				DED4725827D20C4C00AEF8A6 /* OExamsTable.swift in Sources */,
 				DE6BFDA8284E03C400F5CF20 /* ReviewFilterView.swift in Sources */,
 				DE95A8A2282ED2D200809171 /* MyProfileTableView.swift in Sources */,
+				DE2A568C2859D3F9009259A2 /* CustomTestAttributes.swift in Sources */,
 				DE6BFDAF284E095500F5CF20 /* ReviewTableElement.swift in Sources */,
 				DEC3460F28196AE90069A060 /* Spinner.swift in Sources */,
 				DE2B0FFA27D77546005280DB /* OQuizResultView.swift in Sources */,
@@ -2427,6 +2544,7 @@
 				DE93788327C4B2600073F27C /* GradientView.swift in Sources */,
 				DEBCD178284949E7000C08A9 /* StatsViewController.swift in Sources */,
 				DE3FD61F27EADB7200E76844 /* PaygatePrice.swift in Sources */,
+				DE5D0C0F2858DC7D000A1C9B /* SubjectButton.swift in Sources */,
 				DE6BFDA5284E023400F5CF20 /* ReviewView.swift in Sources */,
 				DE2B10B827DB14EE005280DB /* GetCourcesRequest.swift in Sources */,
 				DE95A8B82832789300809171 /* DateOfExamView.swift in Sources */,
@@ -2463,12 +2581,14 @@
 				DE6BFE2728509E6D00F5CF20 /* TestCloseMediator.swift in Sources */,
 				DE2B100027D876A0005280DB /* OStudyModeView.swift in Sources */,
 				DE3FD60C27EA02F500E76844 /* PaygateProductButton.swift in Sources */,
+				DE2A56942859DB55009259A2 /* QuestionsCountCollectionCell.swift in Sources */,
 				DEE74EB827F41863002FE71D /* PlanStep.swift in Sources */,
 				DEBCD17A284949F1000C08A9 /* StatsViewModel.swift in Sources */,
 				DE95A897282E940000809171 /* SettingsAppButton.swift in Sources */,
 				DE95A8C82832893800809171 /* StudyModeView.swift in Sources */,
 				DE5D0BF228589562000A1C9B /* NoSavedQuestionsView.swift in Sources */,
 				DE6BFE7028512ABB00F5CF20 /* TestStatsTableProgressCell.swift in Sources */,
+				DE2A56962859DB63009259A2 /* QuestionsCountCollectionElement.swift in Sources */,
 				DE55A4AE27D6458000B53B46 /* OCourseView.swift in Sources */,
 				DEE74EB627F41852002FE71D /* PlanTest.swift in Sources */,
 				DE2B100427D8B5C6005280DB /* OCreatingPlanView.swift in Sources */,
@@ -2503,6 +2623,7 @@
 				DE93787327C4B2600073F27C /* NumberLaunches.swift in Sources */,
 				DE93787827C4B2600073F27C /* SignError.swift in Sources */,
 				DE93789D27C4BF0D0073F27C /* SplashViewModel.swift in Sources */,
+				DE5D0C112858DF69000A1C9B /* SubjectsView.swift in Sources */,
 				DE5D0BDF28586A24000A1C9B /* Subject.swift in Sources */,
 				DE1CA99527F2ED8F00C66DAD /* TabView.swift in Sources */,
 				DE3FD61C27EA312800E76844 /* PaygateInteractor.swift in Sources */,
@@ -2558,6 +2679,7 @@
 				DE1CA99A27F2F7EF00C66DAD /* AmplitudeManager.swift in Sources */,
 				DEC345F42816E1EE0069A060 /* PlanHeaderView.swift in Sources */,
 				DE3FD61727EA09F300E76844 /* XORRequestWrapper.swift in Sources */,
+				DE2A56922859DB44009259A2 /* QuestionsCountCollectionView.swift in Sources */,
 				DE3FD60127E9D41000E76844 /* PaygateViewModel.swift in Sources */,
 				DE5D0BF0285894A2000A1C9B /* TestEmptyViewController.swift in Sources */,
 				DE6BFDC2284E0F3400F5CF20 /* AnswerMapper.swift in Sources */,
@@ -2586,6 +2708,7 @@
 				DE93787427C4B2600073F27C /* TextAttributes.swift in Sources */,
 				DE2B10DB27DB14EE005280DB /* Session.swift in Sources */,
 				DEE74EAD27F32486002FE71D /* ProfileMediator.swift in Sources */,
+				DE5D0BFB2858A24E000A1C9B /* CustomMadeTestView.swift in Sources */,
 				DE6BFE042850964400F5CF20 /* GetTenTestRequest.swift in Sources */,
 				DE55A4B427D6538800B53B46 /* OExamDateView.swift in Sources */,
 				DE6BFE7D2851397C00F5CF20 /* TestStatsFilter.swift in Sources */,
@@ -2610,6 +2733,7 @@
 				DE6BFE4A2850B05200F5CF20 /* TestBottomView.swift in Sources */,
 				DE3FD60727E9FEA400E76844 /* PaygatePlansView.swift in Sources */,
 				DED4725427D2091600AEF8A6 /* OExamsTableCell.swift in Sources */,
+				DE5D0C0C2858DAD1000A1C9B /* CustomMadeTestTableSubjectsCell.swift in Sources */,
 				DE95A895282E920400809171 /* SettingsTitleCell.swift in Sources */,
 				DE3BDBE9284A46580091230F /* StatsTablePassRateCell.swift in Sources */,
 				DE6BFDF4284F942A00F5CF20 /* SaveQuestionRequest.swift in Sources */,

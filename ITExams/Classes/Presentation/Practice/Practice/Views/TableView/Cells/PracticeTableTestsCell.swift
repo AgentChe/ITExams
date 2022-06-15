@@ -75,7 +75,7 @@ private extension PracticeTableTestsCell {
         } else if button === savedButton {
             mainDelegate?.practiceTableDidTappedSavedTest(questionsCount: element.saved)
         } else if button === customButton {
-            mainDelegate?.practiceTableDidTappedCusomTest()
+            mainDelegate?.practiceTableDidTappedCustomTest()
         }
     }
 }

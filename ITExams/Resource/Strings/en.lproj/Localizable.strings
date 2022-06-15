@@ -280,3 +280,14 @@
 "TestEmpty.NoMissed.Title" = "No missed questions";
 "TestEmpty.NoMissed.Text" = "Take a quick test below and you can review them here";
 "TestEmpty.NoMissed.Button" = "Take a quick test";
+
+// MARK: CustomMadeTest
+"CustomMadeTest.Title" = "Custom made";
+"CustomMadeTest.Cancel" = "Cancel";
+"CustomMadeTest.StartTest" = "Start test";
+"CustomMadeTest.Subjects" = "Subjects";
+"CustomMadeTest.More" = "More";
+"CustomMadeTest.QuestionType" = "Question Type";
+"CustomMadeTest.MissedQuestions" = "Missed questions";
+"CustomMadeTest.AnsweredQuestions" = "Answered questions";
+"CustomMadeTest.QuestionsCount" = "Questions count";
