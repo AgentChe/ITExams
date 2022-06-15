@@ -15,12 +15,8 @@ final class TestView: UIView {
     lazy var bottomView = makeBottomView()
     lazy var activityView = makeActivityView()
     
-    private let testType: TestType
-    
-    init(testType: TestType) {
-        self.testType = testType
-        
-        super.init(frame: .zero)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         makeConstraints()
         initialize()

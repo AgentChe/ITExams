@@ -30,6 +30,10 @@
 		DE2A56982859DFC4009259A2 /* CustomMadeTestTableCountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A56972859DFC4009259A2 /* CustomMadeTestTableCountCell.swift */; };
 		DE2A569A2859F6D3009259A2 /* QuestionsCountCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A56992859F6D3009259A2 /* QuestionsCountCollectionLayout.swift */; };
 		DE2A569C2859FE62009259A2 /* GetCustomTestRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A569B2859FE62009259A2 /* GetCustomTestRequest.swift */; };
+		DE2A569F285A0AB5009259A2 /* QuestionViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A569E285A0AB5009259A2 /* QuestionViewerViewController.swift */; };
+		DE2A56A1285A0AC1009259A2 /* QuestionViewerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A56A0285A0AC1009259A2 /* QuestionViewerViewModel.swift */; };
+		DE2A56A3285A0ACB009259A2 /* QuestionViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A56A2285A0ACB009259A2 /* QuestionViewerView.swift */; };
+		DE2A56A7285A17BB009259A2 /* QuestionViewerTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A56A6285A17BB009259A2 /* QuestionViewerTableView.swift */; };
 		DE2B0FFA27D77546005280DB /* OQuizResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B0FF927D77546005280DB /* OQuizResultView.swift */; };
 		DE2B0FFC27D7960E005280DB /* ODailyGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B0FFB27D7960E005280DB /* ODailyGoalView.swift */; };
 		DE2B0FFE27D798F4005280DB /* ODailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B0FFD27D798F4005280DB /* ODailyView.swift */; };
@@ -388,6 +392,10 @@
 		DE2A56972859DFC4009259A2 /* CustomMadeTestTableCountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMadeTestTableCountCell.swift; sourceTree = "<group>"; };
 		DE2A56992859F6D3009259A2 /* QuestionsCountCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsCountCollectionLayout.swift; sourceTree = "<group>"; };
 		DE2A569B2859FE62009259A2 /* GetCustomTestRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCustomTestRequest.swift; sourceTree = "<group>"; };
+		DE2A569E285A0AB5009259A2 /* QuestionViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewerViewController.swift; sourceTree = "<group>"; };
+		DE2A56A0285A0AC1009259A2 /* QuestionViewerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewerViewModel.swift; sourceTree = "<group>"; };
+		DE2A56A2285A0ACB009259A2 /* QuestionViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewerView.swift; sourceTree = "<group>"; };
+		DE2A56A6285A17BB009259A2 /* QuestionViewerTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewerTableView.swift; sourceTree = "<group>"; };
 		DE2B0FF927D77546005280DB /* OQuizResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OQuizResultView.swift; sourceTree = "<group>"; };
 		DE2B0FFB27D7960E005280DB /* ODailyGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ODailyGoalView.swift; sourceTree = "<group>"; };
 		DE2B0FFD27D798F4005280DB /* ODailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ODailyView.swift; sourceTree = "<group>"; };
@@ -846,6 +854,25 @@
 				DE2A56992859F6D3009259A2 /* QuestionsCountCollectionLayout.swift */,
 			);
 			path = QuestionsCountCollection;
+			sourceTree = "<group>";
+		};
+		DE2A569D285A0A91009259A2 /* QuestionViewer */ = {
+			isa = PBXGroup;
+			children = (
+				DE2A56A5285A17AE009259A2 /* Views */,
+				DE2A569E285A0AB5009259A2 /* QuestionViewerViewController.swift */,
+				DE2A56A0285A0AC1009259A2 /* QuestionViewerViewModel.swift */,
+				DE2A56A2285A0ACB009259A2 /* QuestionViewerView.swift */,
+			);
+			path = QuestionViewer;
+			sourceTree = "<group>";
+		};
+		DE2A56A5285A17AE009259A2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DE2A56A6285A17BB009259A2 /* QuestionViewerTableView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		DE2B100527D9E83A005280DB /* Utils */ = {
@@ -1388,6 +1415,7 @@
 		DE6BFE1628509CA000F5CF20 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				DE2A569D285A0A91009259A2 /* QuestionViewer */,
 				DE5D0BF52858A21C000A1C9B /* CustomMadeTest */,
 				DE5D0BEE2858948A000A1C9B /* TestEmpty */,
 				DE6BFE5828511D9800F5CF20 /* TestStats */,
@@ -2534,6 +2562,7 @@
 				DE6BFE6728512A4500F5CF20 /* TestStatsView.swift in Sources */,
 				DE5D0BD628585057000A1C9B /* QotdTest.swift in Sources */,
 				DE5D0BE1285870DC000A1C9B /* Paygate.swift in Sources */,
+				DE2A569F285A0AB5009259A2 /* QuestionViewerViewController.swift in Sources */,
 				DEE74EB127F34CB6002FE71D /* Exam.swift in Sources */,
 				DE6BFDF6284F946900F5CF20 /* RemoveSavedQuestionRequest.swift in Sources */,
 				DED4725827D20C4C00AEF8A6 /* OExamsTable.swift in Sources */,
@@ -2573,6 +2602,7 @@
 				DEADEAFE283563510057AA44 /* Profile.swift in Sources */,
 				DE6BFE532850B97500F5CF20 /* ImageScrollView.swift in Sources */,
 				DE2B100A27D9F441005280DB /* OCreatingPlanRowView.swift in Sources */,
+				DE2A56A3285A0ACB009259A2 /* QuestionViewerView.swift in Sources */,
 				DE6BFDDB284E897500F5CF20 /* Test.swift in Sources */,
 				DE6BFE432850A8B400F5CF20 /* QuestionTableExplanationTitleCell.swift in Sources */,
 				DEE74EBF27F41960002FE71D /* GetPlanRequest.swift in Sources */,
@@ -2580,6 +2610,7 @@
 				DEC345F72816E4BD0069A060 /* PlanCurrent.swift in Sources */,
 				DEBCD1732849458D000C08A9 /* GetStatsRequest.swift in Sources */,
 				DE2B10CD27DB14EE005280DB /* PurchaseValidationObserver.swift in Sources */,
+				DE2A56A1285A0AC1009259A2 /* QuestionViewerViewModel.swift in Sources */,
 				DE6BFDD2284E3CDB00F5CF20 /* ReviewDataLoader.swift in Sources */,
 				DE2B10C727DB14EE005280DB /* GetProfileResponseMapper.swift in Sources */,
 				DE6BFE2728509E6D00F5CF20 /* TestCloseMediator.swift in Sources */,
@@ -2691,6 +2722,7 @@
 				DE95A87C282E310200809171 /* ProfileTabView.swift in Sources */,
 				DE6BFDBA284E0E4300F5CF20 /* Question.swift in Sources */,
 				DE2B10CF27DB14EE005280DB /* IAPProduct.swift in Sources */,
+				DE2A56A7285A17BB009259A2 /* QuestionViewerTableView.swift in Sources */,
 				DE2B10C627DB14EE005280DB /* SyncTokensRequest.swift in Sources */,
 				DE93787F27C4B2600073F27C /* PaddingLabel.swift in Sources */,
 				DE6BFDFE28507A4E00F5CF20 /* SendAnswerRequest.swift in Sources */,

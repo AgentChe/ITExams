@@ -291,3 +291,6 @@
 "CustomMadeTest.MissedQuestions" = "Missed questions";
 "CustomMadeTest.AnsweredQuestions" = "Answered questions";
 "CustomMadeTest.QuestionsCount" = "Questions count";
+
+// MARK: TestViewer
+"TestViewer.Title" = "Question";

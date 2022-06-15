@@ -21,7 +21,7 @@ protocol TestViewControllerDelegate: AnyObject {
 final class TestViewController: UIViewController {
     weak var delegate: TestViewControllerDelegate?
     
-    lazy var mainView = TestView(testType: testType)
+    lazy var mainView = TestView()
     
     private lazy var disposeBag = DisposeBag()
     
