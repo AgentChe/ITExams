@@ -17,6 +17,7 @@ protocol ProfileManagerProtocol {
              exam: Exam?,
              course: Course?) -> Single<Void>
     func obtainProfile(forceUpdate: Bool) -> Single<Profile?>
+    func obtainReferenceDateOfExam() -> Single<Date?>
     func obtainDateOfExam(forceUpdate: Bool) -> Single<Date?>
     func obtainExams() -> Single<[Exam]>
     func obtainSelectedExam() -> Single<Exam?>
@@ -30,6 +31,7 @@ protocol ProfileManagerProtocol {
 
 final class ProfileManager: ProfileManagerProtocol {
     enum Constants {
+        static let referenceDateOfExamKey = "profile_manager_reference_date_of_exam_key"
         static let dateOfExamKey = "profile_manager_date_of_exam_key"
         static let examKey = "profile_manager_exam_key"
         static let courseKey = "profile_manager_course_key"
@@ -82,6 +84,20 @@ extension ProfileManager {
     
     func obtainProfile(forceUpdate: Bool) -> Single<Profile?> {
         forceUpdate ? loadProfile() : cachedProfile()
+    }
+    
+    func obtainReferenceDateOfExam() -> Single<Date?> {
+        Single<Date?>
+            .create { event in
+                guard let date = UserDefaults.standard.value(forKey: Constants.referenceDateOfExamKey) as? Date else {
+                    event(.success(nil))
+                    return Disposables.create()
+                }
+                
+                event(.success(date))
+                
+                return Disposables.create()
+            }
     }
     
     func obtainDateOfExam(forceUpdate: Bool) -> Single<Date?> {
@@ -225,6 +241,7 @@ private extension ProfileManager {
         }
         
         UserDefaults.standard.set(dateOfExam, forKey: Constants.dateOfExamKey)
+        UserDefaults.standard.set(Date(), forKey: Constants.referenceDateOfExamKey)
         
         ProfileMediator.shared.notifyAboutChanged(dateOfExam: dateOfExam)
     }

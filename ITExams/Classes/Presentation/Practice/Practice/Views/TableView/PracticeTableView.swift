@@ -58,9 +58,9 @@ extension PracticeTableView: UITableViewDataSource {
             cell.contentView.backgroundColor = UIColor.clear
             cell.selectionStyle = .none
             return cell
-        case .examDate(let date):
+        case .examDate(let element):
             let cell = dequeueReusableCell(withIdentifier: String(describing: PracticeTableExamDateCell.self)) as! PracticeTableExamDateCell
-            cell.setup(element: date)
+            cell.setup(element: element)
             cell.mainDelegate = mainDelegate
             return cell
         case .title(let element):
@@ -92,7 +92,7 @@ extension PracticeTableView: UITableViewDelegate {
         case .offset(let offset):
             return offset
         case .examDate:
-            return 358.scale
+            return 373.scale
         case .title, .dailyQuestion:
             return UITableView.automaticDimension
         case .tests:

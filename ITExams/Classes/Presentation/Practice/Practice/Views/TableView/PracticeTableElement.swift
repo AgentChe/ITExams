@@ -10,11 +10,16 @@ import CoreGraphics
 
 enum PracticeTableElement {
     case offset(CGFloat)
-    case examDate(Date?)
+    case examDate(PracticeTableExamDate)
     case title(String)
     case dailyQuestion(String)
     case tests(PracticeTableTestsCount)
     case unlockPremium(Int)
+}
+
+struct PracticeTableExamDate {
+    let referenceDateOfExam: Date?
+    let dateOfExam: Date?
 }
 
 struct PracticeTableTestsCount {

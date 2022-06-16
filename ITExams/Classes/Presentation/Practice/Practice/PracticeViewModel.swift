@@ -15,6 +15,7 @@ final class PracticeViewModel {
     
     lazy var elements = makeElements()
     
+    private lazy var referenceExamDate = makeReferenceExamDate()
     private lazy var examDate = makeExamDate()
     private lazy var dailyQiestion = makeDailyQuestion()
     private lazy var testsCount = makeTestsCount()
@@ -34,11 +35,13 @@ final class PracticeViewModel {
 private extension PracticeViewModel {
     func makeElements() -> Driver<[PracticeTableElement]> {
         Driver
-            .combineLatest(examDate, dailyQiestion, testsCount, questionsCount)
-            .map { examDate, dailyQiestion, testsCount, questionsCount -> [PracticeTableElement] in
+            .combineLatest(referenceExamDate, examDate, dailyQiestion, testsCount, questionsCount)
+            .map { referenceExamDate, examDate, dailyQiestion, testsCount, questionsCount -> [PracticeTableElement] in
                 var result = [PracticeTableElement]()
                 
-                result.append(.examDate(examDate))
+                let examDateElement = PracticeTableExamDate(referenceDateOfExam: referenceExamDate,
+                                                            dateOfExam: examDate)
+                result.append(.examDate(examDateElement))
                 
                 if let dailyQiestion = dailyQiestion {
                     result.append(contentsOf: [
@@ -65,6 +68,26 @@ private extension PracticeViewModel {
                 
                 return result
             }
+    }
+    
+    func makeReferenceExamDate() -> Driver<Date?> {
+        let initial = profileManager
+            .obtainReferenceDateOfExam()
+            .asDriver(onErrorJustReturn: nil)
+        
+        let updated = ProfileMediator.shared
+            .changedDateOfExam
+            .flatMapLatest { [weak self] examDate -> Driver<Date?> in
+                guard let self = self else {
+                    return .never()
+                }
+                
+                return self.profileManager
+                    .obtainReferenceDateOfExam()
+                    .asDriver(onErrorJustReturn: nil)
+            }
+        
+        return Driver.merge(initial, updated)
     }
     
     func makeExamDate() -> Driver<Date?> {

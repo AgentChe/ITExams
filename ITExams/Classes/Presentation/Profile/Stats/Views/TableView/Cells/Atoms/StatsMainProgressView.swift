@@ -70,4 +70,3 @@ private extension StatsMainProgressView {
         layer.addSublayer(correctLayer)
     }
 }
-

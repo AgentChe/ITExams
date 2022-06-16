@@ -38,7 +38,7 @@ final class CircleProgressView: UIView {
     }
 }
 
-// MARK: API
+// MARK: Public
 extension CircleProgressView {
     func setup(progress: Int) {
         trackLayer.strokeEnd = CGFloat(progress) / 100
