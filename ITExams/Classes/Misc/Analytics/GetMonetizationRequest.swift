@@ -8,20 +8,26 @@
 import Alamofire
 
 struct GetMonetizationRequest: APIRequestBody {
+    private let domain: String
+    private let apiKey: String
     private let userToken: String?
     private let version: String
     private let appAnonymousId: String
     
-    init(userToken: String? = nil,
+    init(domain: String,
+         apiKey: String,
+         userToken: String? = nil,
          version: String,
          appAnonymousId: String) {
+        self.domain = domain
+        self.apiKey = apiKey
         self.userToken = userToken
         self.version = version
         self.appAnonymousId = appAnonymousId
     }
     
     var url: String {
-        GlobalDefinitions.domainUrl + "/api/monetization"
+        domain + "/api/monetization"
     }
     
     var method: HTTPMethod {
@@ -30,7 +36,7 @@ struct GetMonetizationRequest: APIRequestBody {
     
     var parameters: Parameters? {
         var params: Parameters = [
-            "_api_key": GlobalDefinitions.apiKey,
+            "_api_key": apiKey,
             "anonymous_id": appAnonymousId,
             "version": version
         ]

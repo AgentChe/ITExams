@@ -44,6 +44,14 @@ final class PaygateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.tryAgain = { [weak self] error -> Observable<Void> in
+            guard let self = self else {
+                return .never()
+            }
+            
+            return self.openError()
+        }
+        
         viewModel.paygate
             .drive(Binder(self) { base, paygate in
                 base.configure(paygate: paygate)
@@ -227,5 +235,21 @@ private extension PaygateViewController {
         plansView.lifetimeButton.isHidden = active
         plansView.subscriptionButton.isHidden = active
         plansView.continueButton.isHidden = active
+    }
+    
+    func openError() -> Observable<Void> {
+        Observable<Void>
+            .create { [weak self] observe in
+                guard let self = self else {
+                    return Disposables.create()
+                }
+                
+                let vc = TryAgainViewController.make {
+                    observe.onNext(())
+                }
+                self.present(vc, animated: true)
+                
+                return Disposables.create()
+            }
     }
 }

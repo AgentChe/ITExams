@@ -23,13 +23,6 @@ final class CoursesViewModel {
     private lazy var observableRetrySingle = ObservableRetrySingle()
 }
 
-// MARK: Public
-extension CoursesViewModel {
-    func save(exam: Exam, course: Course) -> Single<Void> {
-        profileManager.set(exam: exam, course: course)
-    }
-}
-
 // MARK: Private
 private extension CoursesViewModel {
     func makeElements() -> Driver<[CoursesTableElement]> {
@@ -131,7 +124,25 @@ private extension CoursesViewModel {
                 
                 func source() -> Single<Void> {
                     self.profileManager
-                        .set(exam: exam, course: course)
+                        .obtainExams()
+                        .flatMap { [weak self] exams -> Single<Void> in
+                            guard let self = self else {
+                                return .never()
+                            }
+                            
+                            let requests = exams
+                                .map { environment -> Single<Void> in
+                                    self.profileManager.set(domain: environment.domain,
+                                                            apiKey: environment.api,
+                                                            exam: exam,
+                                                            course: course
+                                    )
+                                }
+                            
+                            return Single
+                                .zip(requests)
+                                .mapToVoid()
+                        }
                 }
                 
                 func trigger(error: Error) -> Observable<Void> {

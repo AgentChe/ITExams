@@ -159,7 +159,7 @@ extension QuestionManager {
         
         return defaultRequestWrapper
             .callServerApi(requestBody: request)
-            .map { GetTestResponseMapper.map(from: $0, key: GlobalDefinitions.apiKey) }
+            .map { GetTestResponseMapper.map(from: $0, key: apiKey) }
     }
     
     func obtainQuickTest(domain: String, apiKey: String, courseId: Int, activeSubscription: Bool) -> Single<Test?> {
@@ -241,8 +241,8 @@ extension QuestionManager {
                                        offset: offset)
         
         return xorRequestWrapper
-            .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
-            .map { GetReviewResponse.map(from: $0) }
+            .callServerStringApi(requestBody: request, key: apiKey)
+            .map { GetReviewResponse.map(from: $0, key: apiKey) }
     }
     
     func saveQuestion(domain: String, apiKey: String, questionId: Int) -> Single<Void> {
@@ -286,8 +286,8 @@ extension QuestionManager {
                                        userTestId: userTestId)
         
         return xorRequestWrapper
-            .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
-            .map { GetTestResponseMapper.map(from: $0, key: GlobalDefinitions.apiKey) }
+            .callServerStringApi(requestBody: request, key: apiKey)
+            .map { GetTestResponseMapper.map(from: $0, key: apiKey) }
     }
     
     func finishTest(domain: String, apiKey: String, userTestId: Int) -> Single<Void> {
@@ -380,8 +380,8 @@ private extension QuestionManager {
                                          activeSubscription: activeSubscription)
         
         return xorRequestWrapper
-            .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
-            .map { GetTestResponseMapper.map(from: $0, key: GlobalDefinitions.apiKey) }
+            .callServerStringApi(requestBody: request, key: apiKey)
+            .map { GetTestResponseMapper.map(from: $0, key: apiKey) }
             .map { test -> QotdTest? in
                 guard let test = test else {
                     return nil

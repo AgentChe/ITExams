@@ -8,11 +8,13 @@
 import Alamofire
 
 struct GetPaygateRequest: APIRequestBody {
+    let domain: String
+    let apiKey: String
     let userToken: String
     let userProducts: [String]
     
     var url: String {
-        GlobalDefinitions.domainUrl + "/api/payments/paygate"
+        domain + "/api/payments/paygate"
     }
     
     var method: HTTPMethod {
@@ -21,7 +23,7 @@ struct GetPaygateRequest: APIRequestBody {
     
     var parameters: Parameters? {
         [
-            "_api_key": GlobalDefinitions.apiKey,
+            "_api_key": apiKey,
             "_user_token": userToken,
             "platform": 1,
             "used_products": userProducts

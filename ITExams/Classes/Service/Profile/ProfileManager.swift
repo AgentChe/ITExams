@@ -9,7 +9,9 @@ import RxSwift
 import Foundation
 
 protocol ProfileManagerProtocol {
-    func set(motivation: Int?,
+    func set(domain: String,
+             apiKey: String,
+             motivation: Int?,
              examDate: Date?,
              testMode: TestMode?,
              testMinutes: Int?,
@@ -45,7 +47,9 @@ final class ProfileManager: ProfileManagerProtocol {
 
 // MARK: Study
 extension ProfileManager {
-    func set(motivation: Int? = nil,
+    func set(domain: String,
+             apiKey: String,
+             motivation: Int? = nil,
              examDate: Date? = nil,
              testMode: TestMode? = nil,
              testMinutes: Int? = nil,
@@ -56,7 +60,9 @@ extension ProfileManager {
             return .error(SignError.tokenNotFound)
         }
         
-        let request = SetRequest(userToken: userToken,
+        let request = SetRequest(domain: domain,
+                                 apiKey: apiKey,
+                                 userToken: userToken,
                                  level: motivation,
                                  testMode: testMode?.code(),
                                  examDate: examDateStringFormatted(examDate),
@@ -223,7 +229,9 @@ private extension ProfileManager {
             return .error(SignError.tokenNotFound)
         }
         
-        let request = GetProfileRequest(userToken: userToken)
+        let request = GetProfileRequest(domain: GlobalDefinitions.awsDomainUrl,
+                                        apiKey: GlobalDefinitions.awsApiKey,
+                                        userToken: userToken)
         
         return defaultRequestWrapper
             .callServerApi(requestBody: request)

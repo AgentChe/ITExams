@@ -40,8 +40,23 @@ private extension StudyModeViewModel {
                 
                 func source() -> Single<Void> {
                     self.profileManager
-                        .set(testMode: mode)
-                        .mapToVoid()
+                        .obtainExams()
+                        .flatMap { [weak self] exams -> Single<Void> in
+                            guard let self = self else {
+                                return .never()
+                            }
+                            
+                            let requests = exams
+                                .map { exam -> Single<Void> in
+                                    self.profileManager.set(domain: exam.domain,
+                                                            apiKey: exam.api,
+                                                            testMode: mode)
+                                }
+                            
+                            return Single
+                                .zip(requests)
+                                .mapToVoid()
+                        }
                 }
                 
                 func trigger(error: Error) -> Observable<Void> {

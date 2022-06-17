@@ -14,7 +14,7 @@ struct GetStatsRequest: APIRequestBody {
     let courseId: Int
     
     var url: String {
-        GlobalDefinitions.domainUrl + "/api/stats/full"
+        domain + "/api/stats/full"
     }
     
     var method: HTTPMethod {
@@ -23,7 +23,7 @@ struct GetStatsRequest: APIRequestBody {
     
     var parameters: Parameters? {
         [
-            "_api_key": GlobalDefinitions.apiKey,
+            "_api_key": apiKey,
             "_user_token": userToken,
             "course_id": courseId
         ]

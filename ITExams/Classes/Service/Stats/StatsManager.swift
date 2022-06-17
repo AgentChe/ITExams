@@ -68,7 +68,7 @@ extension StatsManager {
                                           peek: true)
         
         return xorRequestWrapper
-            .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
-            .map { GetTestStatsResponseMapper.map(from: $0) }
+            .callServerStringApi(requestBody: request, key: apiKey)
+            .map { GetTestStatsResponseMapper.map(from: $0, key: apiKey) }
     }
 }

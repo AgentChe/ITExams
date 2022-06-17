@@ -52,8 +52,24 @@ private extension DailyGoalViewModel {
                 
                 func source() -> Single<Void> {
                     self.profileManager
-                        .set(testMinutes: testMinutes, testDaysOfWeek: testDaysOfWeek)
-                        .mapToVoid()
+                        .obtainExams()
+                        .flatMap { [weak self] exams -> Single<Void> in
+                            guard let self = self else {
+                                return .never()
+                            }
+                            
+                            let requests = exams
+                                .map { exam -> Single<Void> in
+                                    self.profileManager.set(domain: exam.domain,
+                                                            apiKey: exam.api,
+                                                            testMinutes: testMinutes,
+                                                            testDaysOfWeek: testDaysOfWeek)
+                                }
+                            
+                            return Single
+                                .zip(requests)
+                                .mapToVoid()
+                        }
                 }
                 
                 func trigger(error: Error) -> Observable<Void> {

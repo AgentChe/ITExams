@@ -6,10 +6,10 @@
 //
 
 final class GetReviewResponse {
-    static func map(from response: Any) -> [Review] {
+    static func map(from response: Any, key: String) -> [Review] {
         guard
             let string = response as? String,
-            let json = XOREncryption.toJSON(string, key: GlobalDefinitions.apiKey),
+            let json = XOREncryption.toJSON(string, key: key),
             let data = json["_data"] as? [[String: Any]]
         else {
             return []

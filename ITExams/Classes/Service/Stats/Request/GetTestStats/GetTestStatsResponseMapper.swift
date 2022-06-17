@@ -8,10 +8,10 @@
 import Foundation
 
 struct GetTestStatsResponseMapper {
-    static func map(from response: Any) -> TestStats? {
+    static func map(from response: Any, key: String) -> TestStats? {
         guard
             let string = response as? String,
-            let json = XOREncryption.toJSON(string, key: GlobalDefinitions.apiKey),
+            let json = XOREncryption.toJSON(string, key: key),
             let data = json["_data"] as? [String: Any],
             let correctNumber = data["correct_number"] as? Int,
             let incorrectNumber = data["incorrect_number"] as? Int,

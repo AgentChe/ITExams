@@ -10,13 +10,12 @@ import OtterScaleiOS
 
 protocol PaygateManagerProtocol {
     func obtainMonetization(forceUpdate: Bool) -> Single<Monetization?>
-    func obtainPaygate(forceUpdate: Bool) -> Single<Paygate?>
+    func obtainPaygate(domain: String, apiKey: String) -> Single<Paygate?>
 }
 
 final class PaygateManager: PaygateManagerProtocol {
     enum Constants {
         static let monetizationKey = "paygate_manager_monetization_key"
-        static let paygateKey = "paygate_manager_paygate_key"
     }
     
     private let defaultRequestWrapper = DefaultRequestWrapper()
@@ -29,8 +28,24 @@ extension PaygateManager {
         forceUpdate ? loadAndStoreMonetization() : localMonetization()
     }
     
-    func obtainPaygate(forceUpdate: Bool) -> Single<Paygate?> {
-        forceUpdate ? loadPaygate() : cachedPaygate()
+    func obtainPaygate(domain: String, apiKey: String) -> Single<Paygate?> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
+            return .error(SignError.tokenNotFound)
+        }
+        
+        let usedProducts = OtterScale.shared.getUsedProducts()
+            .map { products -> [String] in
+                products.appleAppStore + products.googlePlay + products.stripe
+            }
+        
+        let request = GetPaygateRequest(domain: domain,
+                                        apiKey: apiKey,
+                                        userToken: userToken,
+                                        userProducts: usedProducts ?? [])
+        
+        return defaultRequestWrapper
+            .callServerApi(requestBody: request)
+            .map { GetPaygateResponse.map(response: $0) }
     }
 }
 
@@ -52,7 +67,9 @@ private extension PaygateManager {
     }
     
     func loadAndStoreMonetization() -> Single<Monetization?> {
-        let request = GetMonetizationRequest(userToken: sessionManager.getSession()?.userToken,
+        let request = GetMonetizationRequest(domain: GlobalDefinitions.awsDomainUrl,
+                                             apiKey: GlobalDefinitions.awsApiKey,
+                                             userToken: sessionManager.getSession()?.userToken,
                                              version: UIDevice.appVersion ?? "1",
                                              appAnonymousId: OtterScale.shared.getAnonymousID())
         
@@ -79,48 +96,6 @@ private extension PaygateManager {
                 UserDefaults.standard.setValue(rawValue, forKey: Constants.monetizationKey)
                 
                 event(.success(monetization))
-                
-                return Disposables.create()
-            }
-    }
-    
-    func loadPaygate() -> Single<Paygate?> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
-        let usedProducts = OtterScale.shared.getUsedProducts()
-            .map { products -> [String] in
-                products.appleAppStore + products.googlePlay + products.stripe
-            }
-        
-        let request = GetPaygateRequest(userToken: userToken,
-                                        userProducts: usedProducts ?? [])
-        
-        return defaultRequestWrapper
-            .callServerApi(requestBody: request)
-            .map { GetPaygateResponse.map(response: $0) }
-            .do(onSuccess: { paygate in
-                guard let paygate = paygate, let data = try? JSONEncoder().encode(paygate) else {
-                    return
-                }
-                
-                UserDefaults.standard.set(data, forKey: Constants.paygateKey)
-            })
-    }
-    
-    func cachedPaygate() -> Single<Paygate?> {
-        Single<Paygate?>
-            .create { event in
-                guard
-                    let data = UserDefaults.standard.data(forKey: Constants.paygateKey),
-                    let paygate = try? JSONDecoder().decode(Paygate.self, from: data)
-                else {
-                    event(.success(nil))
-                    return Disposables.create()
-                }
-                
-                event(.success(paygate))
                 
                 return Disposables.create()
             }

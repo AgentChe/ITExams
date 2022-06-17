@@ -40,8 +40,23 @@ private extension DateOfExamViewModel {
                 
                 func source() -> Single<Void> {
                     self.profileManager
-                        .set(examDate: date)
-                        .mapToVoid()
+                        .obtainExams()
+                        .flatMap { [weak self] exams -> Single<Void> in
+                            guard let self = self else {
+                                return .never()
+                            }
+                            
+                            let requests = exams
+                                .map { exam -> Single<Void> in
+                                    self.profileManager.set(domain: exam.domain,
+                                                            apiKey: exam.api,
+                                                            examDate: date)
+                                }
+                            
+                            return Single
+                                .zip(requests)
+                                .mapToVoid()
+                        }
                 }
                 
                 func trigger(error: Error) -> Observable<Void> {

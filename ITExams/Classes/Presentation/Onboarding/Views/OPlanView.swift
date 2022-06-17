@@ -74,15 +74,28 @@ private extension OPlanView {
                 }
                 
                 return self.profileManager
-                    .set(motivation: combineData.motivation.code,
-                         examDate: combineData.examDate,
-                         testMode: combineData.studyMode.code,
-                         testMinutes: combineData.testMinutes,
-                         testDaysOfWeek: combineData.testDays,
-                         exam: combineData.exam,
-                         course: combineData.course)
-                    .map { true }
-                    .catchAndReturn(false)
+                    .obtainExams()
+                    .flatMap { exams -> Single<Bool> in
+                        let requests = exams
+                            .map { exam -> Single<Bool> in
+                                self.profileManager
+                                    .set(domain: exam.domain,
+                                         apiKey: exam.api,
+                                         motivation: combineData.motivation.code,
+                                         examDate: combineData.examDate,
+                                         testMode: combineData.studyMode.code,
+                                         testMinutes: combineData.testMinutes,
+                                         testDaysOfWeek: combineData.testDays,
+                                         exam: combineData.exam,
+                                         course: combineData.course)
+                                    .map { true }
+                                    .catchAndReturn(false)
+                            }
+                        
+                        return Single
+                            .zip(requests)
+                            .map { !$0.contains(false) }
+                    }
             }
             .subscribe(onNext: { [weak self] success in
                 guard let self = self else {

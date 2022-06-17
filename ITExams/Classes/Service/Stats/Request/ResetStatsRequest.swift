@@ -14,7 +14,7 @@ struct ResetStatsRequest: APIRequestBody {
     let courseId: Int
 
     var url: String {
-        GlobalDefinitions.domainUrl + "/api/stats/reset"
+        domain + "/api/stats/reset"
     }
     
     var method: HTTPMethod {
@@ -23,7 +23,7 @@ struct ResetStatsRequest: APIRequestBody {
     
     var parameters: Parameters? {
         [
-            "_api_key": GlobalDefinitions.apiKey,
+            "_api_key": apiKey,
             "user_token": userToken,
             "course_id": courseId
         ]
