@@ -201,10 +201,17 @@ final class TestViewController: UIViewController {
         mainView.closeButton.rx.tap
             .withLatestFrom(viewModel.userTestId)
             .withLatestFrom(viewModel.courseName) { ($0, $1) }
+            .withLatestFrom(viewModel.examEnvironment) { ($0.0, $0.1, $1) }
             .bind(to: Binder(self) { base, args in
-                let (userTestId, courseName) = args
+                let (userTestId, courseName, examEnvironment) = args
                 
-                let finish = TestFinish(userTestId: userTestId,
+                guard let examEnvironment = examEnvironment else {
+                    return
+                }
+                
+                let finish = TestFinish(domain: examEnvironment.exam.domain,
+                                        apiKey: examEnvironment.exam.api,
+                                        userTestId: userTestId,
                                         courseName: courseName,
                                         testType: base.testType)
                 

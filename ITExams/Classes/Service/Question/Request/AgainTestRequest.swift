@@ -8,16 +8,13 @@
 import Alamofire
 
 struct AgainTestRequest: APIRequestBody {
+    let domain: String
+    let apiKey: String
     let userToken: String
     let userTestId: Int
     
-    init(userToken: String, userTestId: Int) {
-        self.userToken = userToken
-        self.userTestId = userTestId
-    }
-    
     var url: String {
-        GlobalDefinitions.domainUrl + "/api/testings/again"
+        domain + "/api/testings/again"
     }
     
     var method: HTTPMethod {
@@ -26,7 +23,7 @@ struct AgainTestRequest: APIRequestBody {
     
     var parameters: Parameters? {
         [
-            "_api_key": GlobalDefinitions.apiKey,
+            "_api_key": apiKey,
             "_user_token": userToken,
             "user_test_id": userTestId
         ]

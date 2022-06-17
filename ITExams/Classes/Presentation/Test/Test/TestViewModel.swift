@@ -66,15 +66,19 @@ private extension TestViewModel {
         
         let isSavedQuestion = didTapMark
             .withLatestFrom(question) { ($0, $1.id) }
-            .flatMapFirst { [weak self] isSaved, questionId -> Observable<Bool> in
-                guard let self = self else {
+            .withLatestFrom(examEnvironment) { ($0.0, $0.1, $1) }
+            .flatMapFirst { [weak self] isSaved, questionId, examEnvironment -> Observable<Bool> in
+                guard let self = self, let examEnvironment = examEnvironment else {
                     return .empty()
                 }
                 
+                let domain = examEnvironment.exam.domain
+                let apiKey = examEnvironment.exam.api
+                
                 func source() -> Single<Bool> {
                     let request = isSaved
-                        ? self.questionManager.removeSavedQuestion(questionId: questionId)
-                        : self.questionManager.saveQuestion(questionId: questionId)
+                        ? self.questionManager.removeSavedQuestion(domain: domain, apiKey: apiKey, questionId: questionId)
+                        : self.questionManager.saveQuestion(domain: domain, apiKey: apiKey, questionId: questionId)
 
                     return request
                         .map { !isSaved }
@@ -124,13 +128,16 @@ private extension TestViewModel {
         let didFinishTest = timer
             .compactMap { $0 == 0 ? () : nil }
             .withLatestFrom(userTestId)
-            .flatMap { [weak self] userTestId -> Single<Int> in
-                guard let self = self else {
+            .withLatestFrom(examEnvironment) { ($0, $1) }
+            .flatMap { [weak self] userTestId, examEnvironment -> Single<Int> in
+                guard let self = self, let examEnvironment = examEnvironment else {
                     return .never()
                 }
                 
                 return self.questionManager
-                    .finishTest(userTestId: userTestId)
+                    .finishTest(domain: examEnvironment.exam.domain,
+                                apiKey: examEnvironment.exam.api,
+                                userTestId: userTestId)
                     .map { userTestId }
             }
         
@@ -140,12 +147,15 @@ private extension TestViewModel {
         return Observable.merge(didFinishTest, submit)
             .withLatestFrom(courseName) { ($0, $1) }
             .withLatestFrom(testType) { ($0.0, $0.1, $1) }
-            .compactMap { userTestId, courseName, testType -> TestFinish? in
-                guard let testType = testType else {
+            .withLatestFrom(examEnvironment) { ($0.0, $0.1, $0.2, $1) }
+            .compactMap { userTestId, courseName, testType, examEnvironment -> TestFinish? in
+                guard let testType = testType, let examEnvironment = examEnvironment else {
                     return nil
                 }
                 
-                return TestFinish(userTestId: userTestId,
+                return TestFinish(domain: examEnvironment.exam.domain,
+                                  apiKey: examEnvironment.exam.api,
+                                  userTestId: userTestId,
                                   courseName: courseName,
                                   testType: testType)
             }
@@ -307,14 +317,17 @@ private extension TestViewModel {
     
     func restartTest() -> Observable<Test> {
         didTapRestart
-            .flatMapLatest { [weak self] userTestId -> Observable<Test> in
-                guard let self = self else {
+            .withLatestFrom(examEnvironment) { ($0, $1) }
+            .flatMapLatest { [weak self] userTestId, examEnvironment -> Observable<Test> in
+                guard let self = self, let examEnvironment = examEnvironment else {
                     return .empty()
                 }
                 
                 func source() -> Single<Test> {
                     self.questionManager
-                        .obtainAgainTest(userTestId: userTestId)
+                        .obtainAgainTest(domain: examEnvironment.exam.domain,
+                                         apiKey: examEnvironment.exam.api,
+                                         userTestId: userTestId)
                         .flatMap { test -> Single<Test> in
                             guard let test = test else {
                                 return .error(ContentError(.notContent))
@@ -367,21 +380,20 @@ private extension TestViewModel {
     func endOfTest() -> Observable<Bool> {
         selectedAnswers
             .compactMap { $0 }
-            .withLatestFrom(testElement) {
-                ($0, $1.userTestId)
-            }
-            .flatMapLatest { [weak self] element, userTestId -> Observable<Bool> in
-                guard let self = self else {
+            .withLatestFrom(testElement) { ($0, $1.userTestId) }
+            .withLatestFrom(examEnvironment) { ($0.0, $0.1, $1) }
+            .flatMapLatest { [weak self] element, userTestId, examEnvironment -> Observable<Bool> in
+                guard let self = self, let examEnvironment = examEnvironment else {
                     return .never()
                 }
                 
                 func source() -> Single<Bool?> {
                     self.questionManager
-                        .sendAnswer(
-                            questionId: element.questionId,
-                            userTestId: userTestId,
-                            answerIds: element.answerIds
-                        )
+                        .sendAnswer(domain: examEnvironment.exam.domain,
+                                    apiKey: examEnvironment.exam.api,
+                                    questionId: element.questionId,
+                                    userTestId: userTestId,
+                                    answerIds: element.answerIds)
                         .do(onSuccess: { [weak self] _ in
                             self?.answeredQuestionId.accept(element.questionId)
                         })

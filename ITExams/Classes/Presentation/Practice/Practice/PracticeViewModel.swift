@@ -153,7 +153,9 @@ private extension PracticeViewModel {
                 
                 func source() -> Single<TestsKit?> {
                     self.questionManager
-                        .obtainTestsKit(courseId: examEnvironment.course.id)
+                        .obtainTestsKit(domain: examEnvironment.exam.domain,
+                                        apiKey: examEnvironment.exam.api,
+                                        courseId: examEnvironment.course.id)
                 }
                 
                 func trigger(error: Error) -> Observable<Void> {

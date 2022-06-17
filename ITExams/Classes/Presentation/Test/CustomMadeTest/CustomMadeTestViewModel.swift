@@ -76,7 +76,9 @@ private extension CustomMadeTestViewModel {
                 
                 func source() -> Single<[Subject]> {
                     self.questionManager
-                        .obtainTestsKit(courseId: examEnvironment.course.id)
+                        .obtainTestsKit(domain: examEnvironment.exam.domain,
+                                        apiKey: examEnvironment.exam.api,
+                                        courseId: examEnvironment.course.id)
                         .map { $0?.subjects ?? [] }
                 }
                 

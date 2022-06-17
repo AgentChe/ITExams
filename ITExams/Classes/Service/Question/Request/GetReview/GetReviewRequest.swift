@@ -8,13 +8,15 @@
 import Alamofire
 
 struct GetReviewRequest: APIRequestBody {
+    let domain: String
+    let apiKey: String
     let userToken: String
     let courseId: Int
     let mode: Int
     let offset: Int
     
     var url: String {
-        GlobalDefinitions.domainUrl + "/api/review/course"
+        domain + "/api/review/course"
     }
     
     var method: HTTPMethod {
@@ -23,7 +25,7 @@ struct GetReviewRequest: APIRequestBody {
     
     var parameters: Parameters? {
         [
-            "_api_key": GlobalDefinitions.apiKey,
+            "_api_key": apiKey,
             "_user_token": userToken,
             "course_id": courseId,
             "mode": mode,

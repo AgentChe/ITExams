@@ -40,7 +40,10 @@ private extension ReviewViewModel {
                 
                 let (examEnvironment, filter, _) = args
                 
-                return self.makeLoader(courseId: examEnvironment.course.id, filter: filter)
+                return self.makeLoader(domain: examEnvironment.exam.domain,
+                                       apiKey: examEnvironment.exam.api,
+                                       courseId: examEnvironment.course.id,
+                                       filter: filter)
                     .scan([]) { $0 + $1 }
             }
             .map { reviews -> [ReviewTableElement] in
@@ -58,14 +61,14 @@ private extension ReviewViewModel {
             }
     }
     
-    func makeLoader(courseId: Int, filter: Int) -> Driver<[Review]> {
+    func makeLoader(domain: String, apiKey: String, courseId: Int, filter: Int) -> Driver<[Review]> {
         paginationLoader.load { [weak self] page -> Observable<Page<Review>> in
             guard let self = self else {
                 return .empty()
             }
 
             return self.questionManager
-                .obtainReview(for: courseId, mode: filter, offset: page * 20)
+                .obtainReview(domain: domain, apiKey: apiKey, courseId: courseId, mode: filter, offset: page * 20)
                 .trackActivity(self.activity)
                 .map { Page(page: page, data: $0) }
                 .asObservable()

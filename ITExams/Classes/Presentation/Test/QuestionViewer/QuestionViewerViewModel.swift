@@ -16,10 +16,13 @@ final class QuestionViewerViewModel {
     lazy var isSavedQuestion = makeIsSavedQuestion()
     lazy var elements = makeElements()
     
+    private lazy var examEnvironment = makeExamEnvironment()
+    
     private let question: BehaviorRelay<Question>
     private let answeredIds: BehaviorRelay<[Int]>
     
     private lazy var questionManager = QuestionManager()
+    private lazy var profileManager = ProfileManager()
     
     private lazy var observableRetrySingle = ObservableRetrySingle()
     
@@ -36,17 +39,24 @@ private extension QuestionViewerViewModel {
             .asDriver()
             .map { $0.isSaved }
         
-        let isSavedQuestion = didTapMark
+        let mark = didTapMark
             .withLatestFrom(question) { ($0, $1.id) }
-            .flatMapFirst { [weak self] isSaved, questionId -> Observable<Bool> in
+            .asDriver(onErrorDriveWith: .never())
+        
+        let isSavedQuestion = Driver
+            .combineLatest(mark, examEnvironment) { ($0.0, $0.1, $1) }
+            .flatMapFirst { [weak self] isSaved, questionId, examEnvironment -> Driver<Bool> in
                 guard let self = self else {
                     return .empty()
                 }
                 
+                let domain = examEnvironment.exam.domain
+                let apiKey = examEnvironment.exam.api
+                
                 func source() -> Single<Bool> {
                     let request = isSaved
-                        ? self.questionManager.removeSavedQuestion(questionId: questionId)
-                        : self.questionManager.saveQuestion(questionId: questionId)
+                        ? self.questionManager.removeSavedQuestion(domain: domain, apiKey: apiKey, questionId: questionId)
+                        : self.questionManager.saveQuestion(domain: domain, apiKey: apiKey, questionId: questionId)
 
                     return request
                         .map { !isSaved }
@@ -63,8 +73,8 @@ private extension QuestionViewerViewModel {
                 return self.observableRetrySingle
                     .retry(source: { source() },
                            trigger: { trigger(error: $0) })
+                    .asDriver(onErrorDriveWith: .never())
             }
-            .asDriver(onErrorDriveWith: .never())
         
         return Driver
             .merge(initial, isSavedQuestion)
@@ -143,5 +153,12 @@ private extension QuestionViewerViewModel {
         }
         
         return explanation
+    }
+    
+    func makeExamEnvironment() -> Driver<ExamEnvironment> {
+        profileManager
+            .obtainExamEnvironment()
+            .compactMap { $0 }
+            .asDriver(onErrorDriveWith: .never())
     }
 }

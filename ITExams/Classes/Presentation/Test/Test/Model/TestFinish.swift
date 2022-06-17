@@ -6,6 +6,8 @@
 //
 
 struct TestFinish {
+    let domain: String
+    let apiKey: String
     let userTestId: Int
     let courseName: String
     let testType: TestType

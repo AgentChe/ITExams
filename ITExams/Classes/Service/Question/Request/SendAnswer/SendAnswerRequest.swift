@@ -8,13 +8,15 @@
 import Alamofire
 
 struct SendAnswerRequest: APIRequestBody {
+    let domain: String
+    let apiKey: String
     let userToken: String
     let questionId: Int
     let answerIds: [Int]
     let userTestId: Int
 
     var url: String {
-        GlobalDefinitions.domainUrl + "/api/tests/answer"
+        domain + "/api/tests/answer"
     }
     
     var method: HTTPMethod {
@@ -23,7 +25,7 @@ struct SendAnswerRequest: APIRequestBody {
     
     var parameters: Parameters? {
         [
-            "_api_key": GlobalDefinitions.apiKey,
+            "_api_key": apiKey,
             "_user_token": userToken,
             "question_id": questionId,
             "user_test_id": userTestId,

@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxRelay
 
 protocol OTestViewDelegate: AnyObject {
     func testViewDidFinished()
@@ -29,6 +30,8 @@ final class OTestView: OSlideView {
     
     private lazy var observableRetrySingle = ObservableRetrySingle()
     
+    private lazy var selectedExam = BehaviorRelay<Exam?>(value: nil)
+    
     override init(step: OnboardingView.Step) {
         super.init(step: step)
         
@@ -44,6 +47,8 @@ final class OTestView: OSlideView {
 // MARK: OExamsViewDelegate
 extension OTestView: OExamsViewDelegate {
     func examsDidSelected(element: Exam) {
+        selectedExam.accept(element)
+        
         func source() -> Single<Test?> {
             questionManager
                 .obtainOnboardingTest(domain: element.domain,
@@ -82,8 +87,9 @@ private extension OTestView {
             .disposed(by: disposeBag)
         
         favoriteButton.rx.tap
-            .flatMapFirst { [weak self] void -> Observable<Bool> in
-                guard let self = self else {
+            .withLatestFrom(selectedExam)
+            .flatMapFirst { [weak self] exam -> Observable<Bool> in
+                guard let self = self, let exam = exam else {
                     return .empty()
                 }
                 
@@ -92,8 +98,8 @@ private extension OTestView {
                 
                 func source() -> Single<Bool> {
                     let request = isSaved
-                    ? self.questionManager.removeSavedQuestion(questionId: questionId)
-                    : self.questionManager.saveQuestion(questionId: questionId)
+                    ? self.questionManager.removeSavedQuestion(domain: exam.domain, apiKey: exam.api, questionId: questionId)
+                    : self.questionManager.saveQuestion(domain: exam.domain, apiKey: exam.api, questionId: questionId)
                     
                     return request
                         .map { !isSaved }

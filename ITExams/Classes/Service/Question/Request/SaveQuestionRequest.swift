@@ -8,16 +8,13 @@
 import Alamofire
 
 struct SaveQuestionRequest: APIRequestBody {
-    private let userToken: String
-    private let questionId: Int
-    
-    init(userToken: String, questionId: Int) {
-        self.userToken = userToken
-        self.questionId = questionId
-    }
+    let domain: String
+    let apiKey: String
+    let userToken: String
+    let questionId: Int
     
     var url: String {
-        GlobalDefinitions.domainUrl + "/api/tests/save"
+        domain + "/api/tests/save"
     }
     
     var method: HTTPMethod {
@@ -26,7 +23,7 @@ struct SaveQuestionRequest: APIRequestBody {
     
     var parameters: Parameters? {
          [
-            "_api_key": GlobalDefinitions.apiKey,
+            "_api_key": apiKey,
             "_user_token": userToken,
             "question_id": questionId
         ]
