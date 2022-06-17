@@ -23,7 +23,7 @@ protocol QuestionManagerProtocol {
                           includeAnsweredQuestions: Bool,
                           questionsCount: Int) -> Single<Test?>
     func obtainPlanTest(testId: Int) -> Single<Test?>
-    func obtainOnboardingTest(forceUpdate: Bool) -> Single<Test?>
+    func obtainOnboardingTest(domain: String, apiKey: String, forceUpdate: Bool) -> Single<Test?>
     func obtainReview(for courseId: Int, mode: Int, offset: Int) -> Single<[Review]>
     func saveQuestion(questionId: Int) -> Single<Void>
     func removeSavedQuestion(questionId: Int) -> Single<Void>
@@ -75,7 +75,7 @@ extension QuestionManager {
         
         return xorRequestWrapper
             .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
-            .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
+            .map { GetTestResponseMapper.map(from: $0, key: GlobalDefinitions.apiKey) }
     }
     
     func obtainTenTest(courseId: Int, activeSubscription: Bool) -> Single<Test?> {
@@ -89,7 +89,7 @@ extension QuestionManager {
         
         return xorRequestWrapper
             .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
-            .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
+            .map { GetTestResponseMapper.map(from: $0, key: GlobalDefinitions.apiKey) }
     }
     
     func obtainFailedTest(courseId: Int, activeSubscription: Bool) -> Single<Test?> {
@@ -103,7 +103,7 @@ extension QuestionManager {
         
         return xorRequestWrapper
             .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
-            .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
+            .map { GetTestResponseMapper.map(from: $0, key: GlobalDefinitions.apiKey) }
     }
     
     func obtainQotdTest(courseId: Int, activeSubscription: Bool) -> Single<QotdTest?> {
@@ -132,7 +132,7 @@ extension QuestionManager {
         
         return xorRequestWrapper
             .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
-            .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
+            .map { GetTestResponseMapper.map(from: $0, key: GlobalDefinitions.apiKey) }
     }
     
     func obtainSavedTest(courseId: Int, activeSubscription: Bool) -> Single<Test?> {
@@ -146,7 +146,7 @@ extension QuestionManager {
         
         return defaultRequestWrapper
             .callServerApi(requestBody: request)
-            .map { GetTestResponseMapper.map(from: $0, isEncryption: false) }
+            .map { GetTestResponseMapper.map(from: $0, key: GlobalDefinitions.apiKey) }
     }
     
     func obtainQuickTest(courseId: Int, activeSubscription: Bool) -> Single<Test?> {
@@ -164,7 +164,7 @@ extension QuestionManager {
         
         return xorRequestWrapper
             .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
-            .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
+            .map { GetTestResponseMapper.map(from: $0, key: GlobalDefinitions.apiKey) }
     }
     
     func obtainCustomTest(courseId: Int,
@@ -187,7 +187,7 @@ extension QuestionManager {
         
         return xorRequestWrapper
             .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
-            .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
+            .map { GetTestResponseMapper.map(from: $0, key: GlobalDefinitions.apiKey) }
     }
     
     func obtainPlanTest(testId: Int) -> Single<Test?> {
@@ -200,11 +200,11 @@ extension QuestionManager {
         
         return xorRequestWrapper
             .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
-            .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
+            .map { GetTestResponseMapper.map(from: $0, key: GlobalDefinitions.apiKey) }
     }
     
-    func obtainOnboardingTest(forceUpdate: Bool) -> Single<Test?> {
-        forceUpdate ? loadOnboardingTest(encryptionKey: GlobalDefinitions.apiKey) : cachedOnboardingTest()
+    func obtainOnboardingTest(domain: String, apiKey: String, forceUpdate: Bool) -> Single<Test?> {
+        forceUpdate ? loadOnboardingTest(domain: domain, apiKey: apiKey) : cachedOnboardingTest()
     }
     
     func obtainReview(for courseId: Int, mode: Int, offset: Int) -> Single<[Review]> {
@@ -258,7 +258,7 @@ extension QuestionManager {
         
         return xorRequestWrapper
             .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
-            .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
+            .map { GetTestResponseMapper.map(from: $0, key: GlobalDefinitions.apiKey) }
     }
     
     func finishTest(userTestId: Int) -> Single<Void> {
@@ -299,16 +299,18 @@ extension QuestionManager {
 
 // MARK: Private
 private extension QuestionManager {
-    func loadOnboardingTest(encryptionKey: String) -> Single<Test?> {
+    func loadOnboardingTest(domain: String, apiKey: String) -> Single<Test?> {
         guard let userToken = sessionManager.getSession()?.userToken else {
             return .error(SignError.tokenNotFound)
         }
         
-        let request = GetOnboardingTestRequest(userToken: userToken)
+        let request = GetOnboardingTestRequest(domain: domain,
+                                               apiKey: apiKey,
+                                               userToken: userToken)
         
         return xorRequestWrapper
-            .callServerStringApi(requestBody: request, key: encryptionKey)
-            .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
+            .callServerStringApi(requestBody: request, key: apiKey)
+            .map { GetTestResponseMapper.map(from: $0, key: apiKey) }
             .do(onSuccess: { test in
                 guard let test = test, let data = try? JSONEncoder().encode(test) else {
                     return
@@ -346,7 +348,7 @@ private extension QuestionManager {
         
         return xorRequestWrapper
             .callServerStringApi(requestBody: request, key: GlobalDefinitions.apiKey)
-            .map { GetTestResponseMapper.map(from: $0, isEncryption: true) }
+            .map { GetTestResponseMapper.map(from: $0, key: GlobalDefinitions.apiKey) }
             .map { test -> QotdTest? in
                 guard let test = test else {
                     return nil

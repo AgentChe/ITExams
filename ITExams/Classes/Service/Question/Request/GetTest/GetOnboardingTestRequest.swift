@@ -8,10 +8,12 @@
 import Alamofire
 
 struct GetOnboardingTestRequest: APIRequestBody {
+    let domain: String
+    let apiKey: String
     let userToken: String
     
     var url: String {
-        GlobalDefinitions.domainUrl + "/api/testings/onboarding_set"
+        domain + "/api/testings/onboarding_set"
     }
     
     var method: HTTPMethod {
@@ -20,7 +22,7 @@ struct GetOnboardingTestRequest: APIRequestBody {
     
     var parameters: Parameters? {
          [
-            "_api_key": GlobalDefinitions.apiKey,
+            "_api_key": apiKey,
             "_user_token": userToken,
             "course_id": 1
         ]

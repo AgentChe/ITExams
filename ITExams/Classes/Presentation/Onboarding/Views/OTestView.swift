@@ -19,10 +19,13 @@ final class OTestView: OSlideView {
     lazy var progressLabel = makeLabel()
     lazy var favoriteButton = makeFavoriteButton()
     lazy var tableView = makeTableView()
+    lazy var preloader = makePreloader()
     
     private lazy var questionManager = QuestionManager()
     
     private lazy var disposeBag = DisposeBag()
+    
+    private lazy var activity = RxActivityIndicator()
     
     private lazy var observableRetrySingle = ObservableRetrySingle()
     
@@ -38,19 +41,43 @@ final class OTestView: OSlideView {
     }
 }
 
-// MARK: Private
-private extension OTestView {
-    func initialize() {
-        backgroundColor = Appearance.mainColor
+// MARK: OExamsViewDelegate
+extension OTestView: OExamsViewDelegate {
+    func examsDidSelected(element: Exam) {
+        func source() -> Single<Test?> {
+            questionManager
+                .obtainOnboardingTest(domain: element.domain,
+                                      apiKey: element.api,
+                                      forceUpdate: true)
+        }
         
-        questionManager
-            .obtainOnboardingTest(forceUpdate: false)
+        func trigger(error: Error) -> Observable<Void> {
+            openError()
+        }
+        
+        observableRetrySingle
+            .retry(source: { source() },
+                   trigger: { trigger(error: $0) })
+            .trackActivity(activity)
             .asDriver(onErrorJustReturn: nil)
             .compactMap { $0?.questions }
             .drive(Binder(self) { base, questions in
                 base.start(questions: questions) {
                     base.testViewDelegate?.testViewDidFinished()
                 }
+            })
+            .disposed(by: disposeBag)
+    }
+}
+
+// MARK: Private
+private extension OTestView {
+    func initialize() {
+        backgroundColor = Appearance.mainColor
+        
+        activity
+            .drive(Binder(self) { base, activity in
+                activity ? base.preloader.startAnimating() : base.preloader.stopAnimating()
             })
             .disposed(by: disposeBag)
         
@@ -171,6 +198,11 @@ private extension OTestView {
             tableView.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 98.scale : 70.scale),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+        
+        NSLayoutConstraint.activate([
+            preloader.centerXAnchor.constraint(equalTo: centerXAnchor),
+            preloader.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
     }
 }
 
@@ -199,6 +231,13 @@ private extension OTestView {
         view.separatorStyle = .none
         view.showsVerticalScrollIndicator = false
         view.backgroundColor = Appearance.backgroundColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makePreloader() -> Spinner {
+        let view = Spinner(size: CGSize(width: 45.scale, height: 45.scale))
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

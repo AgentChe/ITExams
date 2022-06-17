@@ -6,8 +6,12 @@
 //
 
 final class GetTestResponseMapper {
-    static func map(from response: Any, isEncryption: Bool) -> Test? {
-        isEncryption ? encryptionMap(from: response) : defaultMap(from: response)
+    static func map(from response: Any, key: String? = nil) -> Test? {
+        if let key = key {
+            return encryptionMap(from: response, key: key)
+        }
+        
+        return defaultMap(from: response)
     }
     
     static func map(json: [String: Any]) -> Test? {
@@ -37,10 +41,10 @@ final class GetTestResponseMapper {
 
 // MARK: Private
 private extension GetTestResponseMapper {
-    static func encryptionMap(from response: Any) -> Test? {
+    static func encryptionMap(from response: Any, key: String) -> Test? {
         guard
             let string = response as? String,
-            let json = XOREncryption.toJSON(string, key: GlobalDefinitions.apiKey)
+            let json = XOREncryption.toJSON(string, key: key)
         else {
             return nil
         }

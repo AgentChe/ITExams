@@ -126,6 +126,7 @@ private extension OnboardingView {
         ageView.ageDelegate = combineData
         examsView.add(delegate: courseView)
         examsView.add(delegate: combineData)
+        examsView.add(delegate: testView)
         courseView.courseDelegate = combineData
         quizSolutionView.quizSolutionDelegate = self
         testView.testViewDelegate = self

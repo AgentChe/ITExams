@@ -18,7 +18,6 @@ final class SplashViewController: UIViewController {
     private lazy var disposeBag = DisposeBag()
     
     private lazy var validationObserver = SplashReceiptValidationObserver()
-    private lazy var prepareOnboarding = SplashPrepareOnboarding(vc: self)
     
     private var wasAnimated = false
     
@@ -45,7 +44,7 @@ final class SplashViewController: UIViewController {
                     return
                 }
                 
-                self.activity(state: step == .onboarding ? .prepareOnboarding : .none)
+                self.activity(state: .none)
                 self.goNext(at: step)
             })
             .disposed(by: disposeBag)
@@ -94,20 +93,7 @@ private extension SplashViewController {
     func goNext(at step: SplashViewModel.Step) {
         switch step {
         case .onboarding:
-            prepareOnboarding.prepare { [weak self] progress in
-                guard let self = self else {
-                    return
-                }
-
-                switch progress {
-                case .error:
-                    self.activity(state: .none)
-                case .downloading:
-                    self.activity(state: .prepareOnboarding)
-                case .complete:
-                    UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = OnboardingViewController.make()
-                }
-            }
+            UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = OnboardingViewController.make()
         case .main:
             UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = MainViewController.make()
         case .paygate:
