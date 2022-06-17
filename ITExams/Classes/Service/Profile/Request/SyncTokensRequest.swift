@@ -8,11 +8,13 @@
 import Alamofire
 
 struct SyncTokensRequest: APIRequestBody {
+    let domain: String
+    let apiKey: String
     let oldToken: String
     let newToken: String
     
     var url: String {
-        GlobalDefinitions.domainUrl + "/api/users/set"
+        domain + "/api/users/set"
     }
     
     var method: HTTPMethod {
@@ -21,7 +23,7 @@ struct SyncTokensRequest: APIRequestBody {
     
     var parameters: Parameters? {
         [
-            "_api_key": GlobalDefinitions.apiKey,
+            "_api_key": apiKey,
             "user_token": newToken,
             "_user_token": oldToken
         ]

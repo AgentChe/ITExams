@@ -25,8 +25,8 @@ protocol ProfileManagerProtocol {
     func obtainTestMode(forceUpdate: Bool) -> Single<TestMode?>
     func obtainTestMinutes(forceUpdate: Bool) -> Single<Int?>
     func obtainTestDaysOfWeek() -> Single<[DayOfWeek]?>
-    func syncTokens(oldToken: String, newToken: String) -> Single<Void>
-    func login(userToken: String) -> Single<Void>
+    func syncTokens(domain: String, apiKey: String, oldToken: String, newToken: String) -> Single<Void>
+    func login(domain: String, apiKey: String, userToken: String) -> Single<Void>
 }
 
 final class ProfileManager: ProfileManagerProtocol {
@@ -181,17 +181,24 @@ extension ProfileManager {
             }
     }
     
-    func syncTokens(oldToken: String, newToken: String) -> Single<Void> {
-        let request = SyncTokensRequest(oldToken: oldToken, newToken: newToken)
+    func syncTokens(domain: String, apiKey: String, oldToken: String, newToken: String) -> Single<Void> {
+        let request = SyncTokensRequest(domain: domain,
+                                        apiKey: apiKey,
+                                        oldToken: oldToken,
+                                        newToken: newToken)
         
         return defaultRequestWrapper
             .callServerApi(requestBody: request)
             .mapToVoid()
     }
     
-    func login(userToken: String) -> Single<Void> {
-        defaultRequestWrapper
-            .callServerApi(requestBody: LoginRequest(userToken: userToken))
+    func login(domain: String, apiKey: String, userToken: String) -> Single<Void> {
+        let request = LoginRequest(domain: domain,
+                                   apiKey: apiKey,
+                                   userToken: userToken)
+        
+        return defaultRequestWrapper
+            .callServerApi(requestBody: request)
             .mapToVoid()
     }
 }

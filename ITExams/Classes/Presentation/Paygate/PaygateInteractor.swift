@@ -81,12 +81,12 @@ extension PaygateInteractor: OtterScaleReceiptValidationDelegate {
         
         if let cachedToken = self.sessionManager.getSession()?.userToken {
             if cachedToken != otterScaleID {
-                complete = self.profileManager.syncTokens(oldToken: cachedToken, newToken: otterScaleID)
+                complete = self.syncTokens(oldToken: cachedToken, newToken: otterScaleID)
             } else {
                 complete = .deferred { .just(Void()) }
             }
         } else {
-            complete = self.profileManager.login(userToken: otterScaleID)
+            complete = self.login(userToken: otterScaleID)
         }
         
         let disposable = complete.subscribe(onSuccess: { [weak self] in
@@ -124,5 +124,48 @@ private extension PaygateInteractor {
         iapManager
             .restorePurchases()
             .subscribe()
+    }
+    
+    func syncTokens(oldToken: String, newToken: String) -> Single<Void> {
+        profileManager
+            .obtainExams()
+            .flatMap { [weak self] exams -> Single<Void> in
+                guard let self = self else {
+                    return .never()
+                }
+                
+                let requests = exams
+                    .map { exam -> Single<Void> in
+                        self.profileManager.syncTokens(domain: exam.domain,
+                                                       apiKey: exam.api,
+                                                       oldToken: oldToken,
+                                                       newToken: newToken)
+                    }
+                
+                return Single
+                    .zip(requests)
+                    .mapToVoid()
+            }
+    }
+    
+    func login(userToken: String) -> Single<Void> {
+        profileManager
+            .obtainExams()
+            .flatMap { [weak self] exams -> Single<Void> in
+                guard let self = self else {
+                    return .never()
+                }
+                
+                let requests = exams
+                    .map { exam -> Single<Void> in
+                        self.profileManager.login(domain: exam.domain,
+                                                  apiKey: exam.api,
+                                                  userToken: userToken)
+                    }
+                
+                return Single
+                    .zip(requests)
+                    .mapToVoid()
+            }
     }
 }
