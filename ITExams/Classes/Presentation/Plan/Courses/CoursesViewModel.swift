@@ -11,7 +11,10 @@ import RxCocoa
 final class CoursesViewModel {
     var tryAgain: ((Error) -> (Observable<Void>))?
     
+    lazy var save = PublishRelay<(Exam, Course)>()
+    
     lazy var elements = makeElements()
+    lazy var saved = makeSaved()
     lazy var activity = RxActivityIndicator()
     
     private lazy var profileManager = ProfileManager()
@@ -117,5 +120,32 @@ private extension CoursesViewModel {
         result.append(.offset(32.scale))
         
         return result
+    }
+    
+    func makeSaved() -> Driver<Void> {
+        save
+            .flatMapLatest { [weak self] exam, course -> Observable<Void> in
+                guard let self = self else {
+                    return .never()
+                }
+                
+                func source() -> Single<Void> {
+                    self.profileManager
+                        .set(exam: exam, course: course)
+                }
+                
+                func trigger(error: Error) -> Observable<Void> {
+                    guard let tryAgain = self.tryAgain?(error) else {
+                        return .empty()
+                    }
+                    
+                    return tryAgain
+                }
+                
+                return self.observableRetrySingle
+                    .retry(source: { source() },
+                           trigger: { trigger(error: $0) })
+            }
+            .asDriver(onErrorDriveWith: .never())
     }
 }

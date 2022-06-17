@@ -43,31 +43,21 @@ final class CoursesViewController: UIViewController {
             .disposed(by: disposeBag)
         
         mainView.saveButton.rx.tap
-            .flatMapLatest { [weak self] _ -> Single<Void> in
-                guard let self = self else {
-                    return .never()
-                }
-                
-                guard let (exam, course) = self.getSelected() else {
-                    return .never()
-                }
-                
-                return self.viewModel
-                    .save(exam: exam, course: course)
+            .compactMap { [weak self] _ -> (Exam, Course)? in
+                self?.getSelected()
             }
-            .asDriver(onErrorDriveWith: .never())
-            .drive(onNext: { [weak self] in
-                self?.dismiss(animated: true)
+            .bind(to: viewModel.save)
+            .disposed(by: disposeBag)
+        
+        viewModel.saved
+            .drive(Binder(self) { base, void in
+                base.dismiss(animated: true)
             })
             .disposed(by: disposeBag)
         
         viewModel.activity
-            .drive(onNext: { [weak self] activity in
-                guard let self = self else {
-                    return
-                }
-                
-                activity ? self.mainView.preloader.startAnimating() : self.mainView.preloader.stopAnimating()
+            .drive(Binder(self) { base, activity in
+                activity ? base.mainView.preloader.startAnimating() : base.mainView.preloader.stopAnimating()
             })
             .disposed(by: disposeBag)
     }
