@@ -2934,6 +2934,7 @@
 				DEVELOPMENT_TEAM = 2W4U9UWRKZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ITExams/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = IT;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -2966,6 +2967,7 @@
 				DEVELOPMENT_TEAM = 2W4U9UWRKZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ITExams/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = IT;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

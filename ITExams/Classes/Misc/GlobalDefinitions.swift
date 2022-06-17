@@ -18,6 +18,9 @@ final class GlobalDefinitions {
     static let cisspDomainUrl = "https://exams.korrekted.com"
     static let cisspApiKey = "dE5V8choEsHoVyEN"
     
+    static let acmaDomainUrl = "https://exams2.quantresear.ch"
+    static let acmaApiKey = "vCNncvW4FYcDPUFK"
+    
     static let otterScaleHost = "https://api.korrekted.com"
     static let otterScaleApiKey = "oCrVwRgejQISV560"
     

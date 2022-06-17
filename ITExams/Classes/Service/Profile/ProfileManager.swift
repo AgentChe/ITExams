@@ -122,7 +122,12 @@ extension ProfileManager {
                          title: "Onboarding.Exams.Exam3.Name".localized,
                          subTitle: "Onboarding.Exams.Exam3.Text".localized,
                          api: GlobalDefinitions.cisspApiKey,
-                         domain: GlobalDefinitions.cisspDomainUrl)
+                         domain: GlobalDefinitions.cisspDomainUrl),
+                    Exam(code: "ACMA",
+                         title: "Onboarding.Exams.Exam4.Name".localized,
+                         subTitle: "Onboarding.Exams.Exam4.Text".localized,
+                         api: GlobalDefinitions.acmaApiKey,
+                         domain: GlobalDefinitions.acmaDomainUrl)
                 ]
                 
                 event(.success(exams))
