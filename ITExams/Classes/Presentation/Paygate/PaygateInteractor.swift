@@ -8,6 +8,7 @@
 import RxSwift
 import RxCocoa
 import OtterScaleiOS
+import RushSDK
 
 final class PaygateInteractor {
     enum Action {
@@ -96,6 +97,9 @@ extension PaygateInteractor: OtterScaleReceiptValidationDelegate {
             
             let session = Session(userToken: otterScaleID)
             self.sessionManager.store(session: session)
+            
+            SDKStorage.shared.featureAppMediator.notifyAboutUpdate(userId: otterScaleID,
+                                                                   userToken: otterScaleID)
             
             let hasActiveSubscriptions = self.sessionManager.hasActiveSubscriptions()
             let result = PurchaseActionResult.completed(hasActiveSubscriptions)

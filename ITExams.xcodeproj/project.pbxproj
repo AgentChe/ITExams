@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B99EA73E9EE909CA219D5966 /* Pods_ITExams.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CAE425F2492CFBE02D3BA9C /* Pods_ITExams.framework */; };
 		DE1A7CF3285C9404003E35BC /* ExamEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1A7CF2285C9404003E35BC /* ExamEnvironment.swift */; };
+		DE1A7CF7285CE122003E35BC /* SplashSDKInitialize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1A7CF6285CE122003E35BC /* SplashSDKInitialize.swift */; };
+		DE1A7CF9285CE282003E35BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE1A7CF8285CE282003E35BC /* GoogleService-Info.plist */; };
 		DE1CA98C27F2ED4600C66DAD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1CA98B27F2ED4600C66DAD /* MainViewController.swift */; };
 		DE1CA98E27F2ED6800C66DAD /* MainViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1CA98D27F2ED6800C66DAD /* MainViewCoordinator.swift */; };
 		DE1CA99027F2ED7100C66DAD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1CA98F27F2ED7100C66DAD /* MainView.swift */; };
@@ -23,7 +25,6 @@
 		DE1CA9A827F2FC6200C66DAD /* GetMonetizationResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1CA9A727F2FC6200C66DAD /* GetMonetizationResponseMapper.swift */; };
 		DE1CA9AA27F2FCAE00C66DAD /* PaygateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1CA9A927F2FCAE00C66DAD /* PaygateManager.swift */; };
 		DE1CA9AD27F3017C00C66DAD /* SplashReceiptValidationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1CA9AC27F3017C00C66DAD /* SplashReceiptValidationObserver.swift */; };
-		DE1CA9AF27F3069600C66DAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE1CA9AE27F3069600C66DAD /* GoogleService-Info.plist */; };
 		DE2A568C2859D3F9009259A2 /* CustomTestAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A568B2859D3F9009259A2 /* CustomTestAttributes.swift */; };
 		DE2A56922859DB44009259A2 /* QuestionsCountCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A56912859DB44009259A2 /* QuestionsCountCollectionView.swift */; };
 		DE2A56942859DB55009259A2 /* QuestionsCountCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A56932859DB55009259A2 /* QuestionsCountCollectionCell.swift */; };
@@ -369,6 +370,8 @@
 		60A15AB3126C33013B05E7BD /* Pods-ITExams.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITExams.release.xcconfig"; path = "Target Support Files/Pods-ITExams/Pods-ITExams.release.xcconfig"; sourceTree = "<group>"; };
 		A13C46BD67BFF2A820848253 /* Pods-ITExams.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITExams.debug.xcconfig"; path = "Target Support Files/Pods-ITExams/Pods-ITExams.debug.xcconfig"; sourceTree = "<group>"; };
 		DE1A7CF2285C9404003E35BC /* ExamEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamEnvironment.swift; sourceTree = "<group>"; };
+		DE1A7CF6285CE122003E35BC /* SplashSDKInitialize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashSDKInitialize.swift; sourceTree = "<group>"; };
+		DE1A7CF8285CE282003E35BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DE1CA98B27F2ED4600C66DAD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DE1CA98D27F2ED6800C66DAD /* MainViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewCoordinator.swift; sourceTree = "<group>"; };
 		DE1CA98F27F2ED7100C66DAD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -383,7 +386,6 @@
 		DE1CA9A727F2FC6200C66DAD /* GetMonetizationResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetMonetizationResponseMapper.swift; path = ITExams/Classes/Misc/Analytics/GetMonetizationResponseMapper.swift; sourceTree = SOURCE_ROOT; };
 		DE1CA9A927F2FCAE00C66DAD /* PaygateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaygateManager.swift; sourceTree = "<group>"; };
 		DE1CA9AC27F3017C00C66DAD /* SplashReceiptValidationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashReceiptValidationObserver.swift; sourceTree = "<group>"; };
-		DE1CA9AE27F3069600C66DAD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DE2A568B2859D3F9009259A2 /* CustomTestAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTestAttributes.swift; sourceTree = "<group>"; };
 		DE2A56912859DB44009259A2 /* QuestionsCountCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsCountCollectionView.swift; sourceTree = "<group>"; };
 		DE2A56932859DB55009259A2 /* QuestionsCountCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsCountCollectionCell.swift; sourceTree = "<group>"; };
@@ -826,6 +828,7 @@
 			children = (
 				DE1CA9AC27F3017C00C66DAD /* SplashReceiptValidationObserver.swift */,
 				DE6BFDE0284F307A00F5CF20 /* SplashActivity.swift */,
+				DE1A7CF6285CE122003E35BC /* SplashSDKInitialize.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1656,7 +1659,7 @@
 				DE93788C27C4BB310073F27C /* Fonts */,
 				DE93783827C4B02D0073F27C /* Strings */,
 				DE93783127C4AF380073F27C /* Info.plist */,
-				DE1CA9AE27F3069600C66DAD /* GoogleService-Info.plist */,
+				DE1A7CF8285CE282003E35BC /* GoogleService-Info.plist */,
 				DE93782E27C4AF380073F27C /* LaunchScreen.storyboard */,
 				DE93782C27C4AF380073F27C /* Assets.xcassets */,
 			);
@@ -2356,7 +2359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE93789227C4BB740073F27C /* Inter-Regular.ttf in Resources */,
-				DE1CA9AF27F3069600C66DAD /* GoogleService-Info.plist in Resources */,
+				DE1A7CF9285CE282003E35BC /* GoogleService-Info.plist in Resources */,
 				DE93789327C4BB740073F27C /* Inter-SemiBold.ttf in Resources */,
 				DE93789427C4BB740073F27C /* Inter-Bold.ttf in Resources */,
 				DE93789527C4BB740073F27C /* Inter-Black.ttf in Resources */,
@@ -2477,6 +2480,7 @@
 				DE93790427C4C0E90073F27C /* OnboardingView.swift in Sources */,
 				DE2B10C527DB14EE005280DB /* LoginRequest.swift in Sources */,
 				DE9378F627C4C0E90073F27C /* OSlideView.swift in Sources */,
+				DE1A7CF7285CE122003E35BC /* SplashSDKInitialize.swift in Sources */,
 				DE2B101A27DB13E0005280DB /* NetworkError.swift in Sources */,
 				DE95A881282E632400809171 /* SettingsViewController.swift in Sources */,
 				DE6BFE392850A81700F5CF20 /* QuestionTableContentCell.swift in Sources */,

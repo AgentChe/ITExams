@@ -16,6 +16,7 @@ target 'ITExams' do
   
   pod 'SwiftyStoreKit'
 
+  pod 'RushSDK', :git => "https://github.com/AgentChe/RushSDK.git"
   pod 'OtterScaleiOS', :git => "https://github.com/AgentChe/OtterScaleiOS.git"
   
   pod 'FBSDKCoreKit'

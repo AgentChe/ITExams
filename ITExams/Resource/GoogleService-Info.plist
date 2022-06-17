@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>762922516706-95fh659dgqb4nnanlivgn57gui0qfm8g.apps.googleusercontent.com</string>
+	<string>618291986054-n03ie8ghgcahpq2oea3qvjfhovkhu3ln.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.762922516706-95fh659dgqb4nnanlivgn57gui0qfm8g</string>
+	<string>com.googleusercontent.apps.618291986054-n03ie8ghgcahpq2oea3qvjfhovkhu3ln</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCFsGNrUm5P8O8O0CojNPAaa8zFg9r8x-I</string>
+	<string>AIzaSyCWPNhZBMSOaxRNF4cOPnE-5dKWpMPlGCc</string>
 	<key>GCM_SENDER_ID</key>
-	<string>762922516706</string>
+	<string>618291986054</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>exam.nursing</string>
+	<string>prepbundle.it</string>
 	<key>PROJECT_ID</key>
-	<string>nursing-exam-24f2a</string>
+	<string>prepbundle-it</string>
 	<key>STORAGE_BUCKET</key>
-	<string>nursing-exam-24f2a.appspot.com</string>
+	<string>prepbundle-it.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:762922516706:ios:572535e25af9fe0ac61ebb</string>
+	<string>1:618291986054:ios:eddf1ef02c2ed502d59b07</string>
 </dict>
 </plist>

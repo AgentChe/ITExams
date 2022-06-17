@@ -17,9 +17,21 @@ final class SplashViewController: UIViewController {
     
     private lazy var disposeBag = DisposeBag()
     
-    private lazy var validationObserver = SplashReceiptValidationObserver()
+    private lazy var sdkInitialize = SplashSDKInitialize(vc: self, rushSDKSignal: generateStep)
     
     private var wasAnimated = false
+    
+    private let generateStep: Signal<Bool>
+    
+    private init(generateStep: Signal<Bool>) {
+        self.generateStep = generateStep
+        
+        super.init(nibName: nil, bundle: .main)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         view = mainView
@@ -27,8 +39,6 @@ final class SplashViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        activity(state: .sdkInitialize)
         
         viewModel.tryAgain = { [weak self] error -> Observable<Void> in
             guard let self = self else {
@@ -49,13 +59,20 @@ final class SplashViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        validationObserver.observe { [weak self] in
+        sdkInitialize.initialize { [weak self] progress in
             guard let self = self else {
                 return
             }
             
-            self.activity(state: .library)
-            self.viewModel.validationComplete.accept(Void())
+            switch progress {
+            case .error:
+                self.activity(state: .none)
+            case .initializing:
+                self.activity(state: .sdkInitialize)
+            case .complete:
+                self.activity(state: .library)
+                self.viewModel.validationComplete.accept(Void())
+            }
         }
     }
     
@@ -76,8 +93,8 @@ final class SplashViewController: UIViewController {
 
 // MARK: Make
 extension SplashViewController {
-    static func make() -> SplashViewController {
-        SplashViewController()
+    static func make(generateStep: Signal<Bool>) -> SplashViewController {
+        SplashViewController(generateStep: generateStep)
     }
 }
 

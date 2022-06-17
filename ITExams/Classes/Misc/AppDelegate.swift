@@ -7,17 +7,23 @@
 
 import UIKit
 import OtterScaleiOS
+import RushSDK
+import RxCocoa
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+    
+    lazy var sdkProvider = SDKProvider()
+    
+    private lazy var generateStepInSplash = PublishRelay<Bool>()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         NumberLaunches().launch()
         
-        let vc = SplashViewController.make()
+        let vc = SplashViewController.make(generateStep: generateStepInSplash.asSignal())
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
         
@@ -31,6 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TestCloseObserver.shared.startObserve()
         
         IAPManager.initialize()
+        
+        runProvider(on: vc.view)
+        
+        sdkProvider.application(application, didFinishLaunchingWithOptions: launchOptions)
+        SDKStorage.shared.pushNotificationsManager.application(didFinishLaunchingWithOptions: launchOptions)
         
         return true
     }
@@ -46,5 +57,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         BranchManager.shared.application(continue: userActivity)
         
         return true
+    }
+}
+
+// MARK: Private
+private extension AppDelegate {
+    func runProvider(on view: UIView) {
+        let settings = SDKSettings(backendBaseUrl: GlobalDefinitions.rushSDKHost,
+                                   backendApiKey: GlobalDefinitions.rushSDKApiKey,
+                                   amplitudeApiKey: GlobalDefinitions.amplitudeApiKey,
+                                   appsFlyerApiKey: nil,
+                                   facebookActive: false,
+                                   branchActive: false,
+                                   firebaseActive: false,
+                                   applicationTag: GlobalDefinitions.applicationTag,
+                                   userToken: SessionManager().getSession()?.userToken,
+                                   userId: nil,
+                                   view: view,
+                                   shouldAddStorePayment: true,
+                                   featureAppBackendUrl: nil,
+                                   featureAppBackendApiKey: nil,
+                                   appleAppID: GlobalDefinitions.appleAppID)
+        
+        sdkProvider.initialize(settings: settings) { [weak self] success in
+            self?.generateStepInSplash.accept(true)
+        }
     }
 }
