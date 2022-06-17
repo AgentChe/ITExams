@@ -9,6 +9,7 @@ struct Exam: Codable, Hashable {
     let code: String
     let title: String
     let subTitle: String
+    let questionsCount: Int
     let api: String
     let domain: String
 }

@@ -10,7 +10,6 @@ import OtterScaleiOS
 
 protocol PaygateManagerProtocol {
     func obtainMonetization(forceUpdate: Bool) -> Single<Monetization?>
-    func obtainPaygate(domain: String, apiKey: String) -> Single<Paygate?>
 }
 
 final class PaygateManager: PaygateManagerProtocol {
@@ -19,6 +18,7 @@ final class PaygateManager: PaygateManagerProtocol {
     }
     
     private let defaultRequestWrapper = DefaultRequestWrapper()
+    
     private let sessionManager = SessionManager()
 }
 
@@ -26,26 +26,6 @@ final class PaygateManager: PaygateManagerProtocol {
 extension PaygateManager {
     func obtainMonetization(forceUpdate: Bool = false) -> Single<Monetization?> {
         forceUpdate ? loadAndStoreMonetization() : localMonetization()
-    }
-    
-    func obtainPaygate(domain: String, apiKey: String) -> Single<Paygate?> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
-        let usedProducts = OtterScale.shared.getUsedProducts()
-            .map { products -> [String] in
-                products.appleAppStore + products.googlePlay + products.stripe
-            }
-        
-        let request = GetPaygateRequest(domain: domain,
-                                        apiKey: apiKey,
-                                        userToken: userToken,
-                                        userProducts: usedProducts ?? [])
-        
-        return defaultRequestWrapper
-            .callServerApi(requestBody: request)
-            .map { GetPaygateResponse.map(response: $0) }
     }
 }
 

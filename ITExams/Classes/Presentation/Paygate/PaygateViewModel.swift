@@ -15,12 +15,10 @@ final class PaygateViewModel {
         static let lifetime = "prepbundle.it.lifetime"
     }
     
-    var tryAgain: ((Error) -> (Observable<Void>))?
-    
     let buy = PublishRelay<String>()
     let restore = PublishRelay<Void>()
 
-    lazy var paygate = makePaygate()
+    lazy var questionsCount = makeQuestionsCount()
     lazy var monetization = makeMonetization()
     lazy var prices = makePrices()
     lazy var buyed = makeBuyed()
@@ -32,42 +30,15 @@ final class PaygateViewModel {
     private lazy var purchaseInteractor = PaygateInteractor()
     private lazy var paygateManager = PaygateManager()
     private lazy var profileManager = ProfileManager()
-    
-    private lazy var observableRetrySingle = ObservableRetrySingle()
 }
 
 // MARK: Private
 private extension PaygateViewModel {
-    func makePaygate() -> Driver<Paygate> {
+    func makeQuestionsCount() -> Driver<Int> {
         profileManager
             .obtainExamEnvironment()
-            .asObservable()
-            .flatMap { [weak self] examEnvironment -> Observable<Paygate?> in
-                guard let self = self, let examEnvironment = examEnvironment else {
-                    return .never()
-                }
-                
-                func source() -> Single<Paygate?> {
-                    self.paygateManager
-                        .obtainPaygate(domain: examEnvironment.exam.domain,
-                                       apiKey: examEnvironment.exam.api)
-                }
-                
-                func trigger(error: Error) -> Observable<Void> {
-                    guard let tryAgain = self.tryAgain?(error) else {
-                        return .empty()
-                    }
-                    
-                    return tryAgain
-                }
-                
-                return self.observableRetrySingle
-                    .retry(source: { source() },
-                           trigger: { trigger(error: $0) })
-                    .trackActivity(self.activityIndicator)
-            }
-            .compactMap { $0 }
-            .asDriver(onErrorDriveWith: .never())
+            .map { $0?.exam.questionsCount ?? 0 }
+            .asDriver(onErrorJustReturn: 0)
     }
     
     func makeMonetization() -> Driver<Monetization> {

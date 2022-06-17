@@ -187,35 +187,12 @@ private extension PracticeViewModel {
     func makeQuestionsCount() -> Driver<Int?> {
         Driver
             .combineLatest(activeSubscription, examEnvironment)
-            .flatMapLatest { [weak self] activeSubscription, examEnvironment -> Driver<Int?> in
-                guard let self = self else {
-                    return .never()
-                }
-                
+            .map { activeSubscription, examEnvironment -> Int? in
                 guard !activeSubscription else {
-                    return .just(nil)
+                    return nil
                 }
                 
-                func source() -> Single<Int?> {
-                    self.paygateManager
-                        .obtainPaygate(domain: examEnvironment.exam.domain,
-                                       apiKey: examEnvironment.exam.api)
-                        .map { $0?.questionsCount }
-                }
-                
-                func trigger(error: Error) -> Observable<Void> {
-                    guard let tryAgain = self.tryAgain?(error) else {
-                        return .empty()
-                    }
-                    
-                    return tryAgain
-                }
-                
-                return self.observableRetrySingle
-                    .retry(source: { source() },
-                           trigger: { trigger(error: $0) })
-                    .trackActivity(self.activity)
-                    .asDriver(onErrorJustReturn: nil)
+                return examEnvironment.exam.questionsCount
             }
     }
     

@@ -59,13 +59,13 @@
 "Onboarding.Exams.Header" = "Exam";
 "Onboarding.Exams.Title" = "Which exam are you\nstudying for?";
 "Onboarding.Exams.Exam1.Name" = "AWS";
-"Onboarding.Exams.Exam1.Text" = "Amazon Web Services certification exams";
+"Onboarding.Exams.Exam1.Text" = "Amazon Web Services certification exams (10,000+ questions)";
 "Onboarding.Exams.Exam2.Name" = "CompTIA";
-"Onboarding.Exams.Exam2.Text" = "The Computing Technology Industry Association cerification exams";
+"Onboarding.Exams.Exam2.Text" = "The Computing Technology Industry Association cerification exams (7,500+ questions)";
 "Onboarding.Exams.Exam3.Name" = "CISSP";
-"Onboarding.Exams.Exam3.Text" = "Cybersecurity and IT Security Certifications and Training";
+"Onboarding.Exams.Exam3.Text" = "Cybersecurity and IT Security Certifications and Training (1,500+ questions)";
 "Onboarding.Exams.Exam4.Name" = "ACMA";
-"Onboarding.Exams.Exam4.Text" = "Aruba Certified Mobility Associate exams";
+"Onboarding.Exams.Exam4.Text" = "Aruba Certified Mobility Associate exams (500+ questions)";
 "Onboarding.Course.Header" = "Course";
 "Onboarding.Course.Title" = "What do you want\nto learn?";
 "Onboarding.Course.SubTitle" = "Choose one and remember that you can always switch courses later on";
