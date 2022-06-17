@@ -7,7 +7,7 @@
 
 struct PaygatePrice {
     enum Product {
-        case lifetime, subscription
+        case lifetime, monthlyTrial, monthly
     }
     
     let product: Product

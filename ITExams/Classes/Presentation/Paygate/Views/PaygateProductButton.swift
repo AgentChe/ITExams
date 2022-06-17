@@ -66,7 +66,7 @@ private extension PaygateProductButton {
             
             name = "Paygate.Plans.Product1.Title".localized
             placeholder = "Paygate.Plans.Product1.Placeholder".localized
-        case .subscription:
+        case .monthly, .monthlyTrial:
             div = 4
             period = "Paygate.Week".localized
             

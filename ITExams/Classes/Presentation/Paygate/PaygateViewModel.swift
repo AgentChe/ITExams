@@ -10,8 +10,9 @@ import RxCocoa
 
 final class PaygateViewModel {
     enum Constants {
-        static let lifetime = "exam.nursing.lifetime"
-        static let monthly = "exam.nursing.monthly"
+        static let monthlyTrial = "prepbundle.it.monthly_trial"
+        static let monthly = "prepbundle.it.monthly"
+        static let lifetime = "prepbundle.it.lifetime"
     }
     
     let buy = PublishRelay<String>()
@@ -49,7 +50,7 @@ private extension PaygateViewModel {
     func makePrices() -> Driver<[PaygatePrice]> {
         iapManager
             .obtainPrices(for: [
-                Constants.lifetime, Constants.monthly
+                Constants.lifetime, Constants.monthly, Constants.monthlyTrial
             ])
             .map { prices -> [PaygatePrice] in
                 prices.compactMap { price -> PaygatePrice? in
@@ -57,7 +58,9 @@ private extension PaygateViewModel {
                     case Constants.lifetime:
                         return PaygatePrice(product: .lifetime, price: price)
                     case Constants.monthly:
-                        return PaygatePrice(product: .subscription, price: price)
+                        return PaygatePrice(product: .monthly, price: price)
+                    case Constants.monthlyTrial:
+                        return PaygatePrice(product: .monthlyTrial, price: price)
                     default:
                         return nil
                     }

@@ -117,7 +117,7 @@ final class PaygateViewController: UIViewController {
             .disposed(by: disposeBag)
         
         trialView.trialButton.rx.tap
-            .map { PaygateViewModel.Constants.lifetime }
+            .map { PaygateViewModel.Constants.monthlyTrial }
             .bind(to: viewModel.buy)
             .disposed(by: disposeBag)
         
@@ -167,7 +167,7 @@ extension PaygateViewController {
             products.appleAppStore + products.googlePlay + products.stripe
         } ?? []
         
-        let mode: Mode = usedProducts.contains(PaygateViewModel.Constants.monthly) ? .onlyPlans : .full
+        let mode: Mode = usedProducts.contains(PaygateViewModel.Constants.monthlyTrial) ? .onlyPlans : .full
         
         let vc = PaygateViewController(mode: mode)
         vc.modalPresentationStyle = .fullScreen
@@ -192,13 +192,14 @@ private extension PaygateViewController {
             guard let self = self else {
                 return
             }
-
+            
             switch price.product {
             case .lifetime:
                 self.plansView.lifetimeButton.price = price
-                self.trialView.setup(price: price)
-            case .subscription:
+            case .monthly:
                 self.plansView.subscriptionButton.price = price
+            case .monthlyTrial:
+                self.trialView.setup(price: price)
             }
         }
     }
