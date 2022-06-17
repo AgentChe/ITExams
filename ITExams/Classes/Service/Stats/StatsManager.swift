@@ -8,9 +8,9 @@
 import RxSwift
 
 protocol StatsManagerProtocol {
-    func resetStats(for courseId: Int) -> Single<Void>
-    func obtainStats(for courseId: Int) -> Single<Stats?>
-    func obtainTestStats(courseId: Int, userTestId: Int) -> Single<TestStats?>
+    func resetStats(domain: String, apiKey: String, courseId: Int) -> Single<Void>
+    func obtainStats(domain: String, apiKey: String, courseId: Int) -> Single<Stats?>
+    func obtainTestStats(domain: String, apiKey: String, courseId: Int, userTestId: Int) -> Single<TestStats?>
 }
 
 final class StatsManager: StatsManagerProtocol {
@@ -22,12 +22,15 @@ final class StatsManager: StatsManagerProtocol {
 
 // MARK: Public
 extension StatsManager {
-    func resetStats(for courseId: Int) -> Single<Void> {
+    func resetStats(domain: String, apiKey: String, courseId: Int) -> Single<Void> {
         guard let userToken = sessionManager.getSession()?.userToken else {
             return .error(SignError.tokenNotFound)
         }
         
-        let request = ResetStatsRequest(userToken: userToken, courseId: courseId)
+        let request = ResetStatsRequest(domain: domain,
+                                        apiKey: apiKey,
+                                        userToken: userToken,
+                                        courseId: courseId)
         
         return defaultRequestWrapper
             .callServerApi(requestBody: request)
@@ -37,24 +40,29 @@ extension StatsManager {
             })
     }
     
-    func obtainStats(for courseId: Int) -> Single<Stats?> {
+    func obtainStats(domain: String, apiKey: String, courseId: Int) -> Single<Stats?> {
         guard let userToken = sessionManager.getSession()?.userToken else {
             return .error(SignError.tokenNotFound)
         }
         
-        let request = GetStatsRequest(userToken: userToken, courseId: courseId)
+        let request = GetStatsRequest(domain: domain,
+                                      apiKey: apiKey,
+                                      userToken: userToken,
+                                      courseId: courseId)
         
         return defaultRequestWrapper
             .callServerApi(requestBody: request)
             .map { try GetStatsResponseMapper.map(from: $0) }
     }
     
-    func obtainTestStats(courseId: Int, userTestId: Int) -> Single<TestStats?> {
+    func obtainTestStats(domain: String, apiKey: String, courseId: Int, userTestId: Int) -> Single<TestStats?> {
         guard let userToken = sessionManager.getSession()?.userToken else {
             return .error(SignError.tokenNotFound)
         }
         
-        let request = GetTestStatsRequest(userToken: userToken,
+        let request = GetTestStatsRequest(domain: domain,
+                                          apiKey: apiKey,
+                                          userToken: userToken,
                                           courseId: courseId,
                                           userTestId: userTestId,
                                           peek: true)

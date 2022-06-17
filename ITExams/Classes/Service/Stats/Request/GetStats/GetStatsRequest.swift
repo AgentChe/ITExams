@@ -8,6 +8,8 @@
 import Alamofire
 
 struct GetStatsRequest: APIRequestBody {
+    let domain: String
+    let apiKey: String
     let userToken: String
     let courseId: Int
     

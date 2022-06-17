@@ -16,8 +16,6 @@ final class MyProfileViewModel {
     lazy var elements = makeElements()
     
     private lazy var dateOfExam = makeDateOfExam()
-    private lazy var exam = makeExam()
-    private lazy var course = makeCourse()
     private lazy var examEnvironment = makeExamEnvironment()
     private lazy var studyMode = makeStudyMode()
     private lazy var dailyGoal = makeDailyGoal()
@@ -35,19 +33,18 @@ private extension MyProfileViewModel {
         Driver
             .combineLatest(
                 dateOfExam,
-                exam,
-                course,
+                examEnvironment,
                 studyMode,
                 dailyGoal,
                 resetedStats
             )
             .map { stub -> [MyProfileTableElement] in
-                let (dateOfExam, exam, course, studyMode, dailyGoal, resetedStats) = stub
+                let (dateOfExam, examEnvironment, studyMode, dailyGoal, resetedStats) = stub
                 
                 return [
                     .dateOfExam(dateOfExam),
-                    .exams(exam),
-                    .course(course?.name ?? ""),
+                    .exams(examEnvironment?.exam.title ?? ""),
+                    .course(examEnvironment?.course.name ?? ""),
                     .studyMode(studyMode),
                     .dailyGoal(dailyGoal),
                     .resetProgress(resetedStats)
@@ -160,15 +157,17 @@ private extension MyProfileViewModel {
         let start = resetStats.map { true }
         
         let action = resetStats
-            .withLatestFrom(course)
-            .flatMapLatest { [weak self] course -> Observable<Bool> in
-                guard let self = self, let course = course else {
+            .withLatestFrom(examEnvironment)
+            .flatMapLatest { [weak self] examEnvironment -> Observable<Bool> in
+                guard let self = self, let examEnvironment = examEnvironment else {
                     return .never()
                 }
 
                 func source() -> Single<Void> {
                     self.statsManager
-                        .resetStats(for: course.id)
+                        .resetStats(domain: examEnvironment.exam.domain,
+                                    apiKey: examEnvironment.exam.api,
+                                    courseId: examEnvironment.course.id)
                 }
 
                 func trigger(error: Error) -> Observable<Void> {

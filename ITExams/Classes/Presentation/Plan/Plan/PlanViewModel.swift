@@ -90,7 +90,9 @@ private extension PlanViewModel {
                     return triggers
                         .flatMapLatest {
                             self.planManager
-                                .obtainPlan(for: examEnvironment.course.id)
+                                .obtainPlan(domain: examEnvironment.exam.domain,
+                                            apiKey: examEnvironment.exam.api,
+                                            courseId: examEnvironment.course.id)
                                 .flatMap { plan -> Single<Plan> in
                                     guard let plan = plan else {
                                         return .error(ContentError(.notContent))

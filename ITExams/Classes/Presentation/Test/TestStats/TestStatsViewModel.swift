@@ -83,18 +83,21 @@ private extension TestStatsViewModel {
                 userTestId.compactMap { $0 }
                     .asDriver(onErrorDriveWith: .never()),
                 
-                examEnvironment.map { $0.course.id }
+                examEnvironment
             )
             .flatMapLatest { [weak self] args -> Driver<TestStats> in
                 guard let self = self else {
                     return .empty()
                 }
                 
-                let (userTestId, courseId) = args
+                let (userTestId, examEnvironment) = args
                 
                 func source() -> Single<TestStats> {
                     self.statsManager
-                        .obtainTestStats(courseId: courseId, userTestId: userTestId)
+                        .obtainTestStats(domain: examEnvironment.exam.domain,
+                                         apiKey: examEnvironment.exam.api,
+                                         courseId: examEnvironment.course.id,
+                                         userTestId: userTestId)
                         .flatMap { stats -> Single<TestStats> in
                             guard let stats = stats else {
                                 return .error(ContentError(.notContent))
