@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B99EA73E9EE909CA219D5966 /* Pods_ITExams.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CAE425F2492CFBE02D3BA9C /* Pods_ITExams.framework */; };
+		DE1A7CF3285C9404003E35BC /* ExamEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1A7CF2285C9404003E35BC /* ExamEnvironment.swift */; };
 		DE1CA98C27F2ED4600C66DAD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1CA98B27F2ED4600C66DAD /* MainViewController.swift */; };
 		DE1CA98E27F2ED6800C66DAD /* MainViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1CA98D27F2ED6800C66DAD /* MainViewCoordinator.swift */; };
 		DE1CA99027F2ED7100C66DAD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1CA98F27F2ED7100C66DAD /* MainView.swift */; };
@@ -370,6 +371,7 @@
 		5CAE425F2492CFBE02D3BA9C /* Pods_ITExams.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ITExams.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60A15AB3126C33013B05E7BD /* Pods-ITExams.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITExams.release.xcconfig"; path = "Target Support Files/Pods-ITExams/Pods-ITExams.release.xcconfig"; sourceTree = "<group>"; };
 		A13C46BD67BFF2A820848253 /* Pods-ITExams.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITExams.debug.xcconfig"; path = "Target Support Files/Pods-ITExams/Pods-ITExams.debug.xcconfig"; sourceTree = "<group>"; };
+		DE1A7CF2285C9404003E35BC /* ExamEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamEnvironment.swift; sourceTree = "<group>"; };
 		DE1CA98B27F2ED4600C66DAD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DE1CA98D27F2ED6800C66DAD /* MainViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewCoordinator.swift; sourceTree = "<group>"; };
 		DE1CA98F27F2ED7100C66DAD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -968,6 +970,7 @@
 				DEE74EB027F34CB6002FE71D /* Exam.swift */,
 				DE95A8D2283299E100809171 /* DayOfWeek.swift */,
 				DEADEAFD283563510057AA44 /* Profile.swift */,
+				DE1A7CF2285C9404003E35BC /* ExamEnvironment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2665,6 +2668,7 @@
 				DE95A890282E89B500809171 /* SettingsProfileCell.swift in Sources */,
 				DE5D0BCF2852823F000A1C9B /* PracticeTableUnlockPremiumCell.swift in Sources */,
 				DE6BFE452850A8C200F5CF20 /* QuestionTableQuestionReferenceCell.swift in Sources */,
+				DE1A7CF3285C9404003E35BC /* ExamEnvironment.swift in Sources */,
 				DE3FD60527E9D4C200E76844 /* PaygateTrialView.swift in Sources */,
 				DE2B0FFC27D7960E005280DB /* ODailyGoalView.swift in Sources */,
 				DE1CA9A227F2FC2E00C66DAD /* Monetization.swift in Sources */,

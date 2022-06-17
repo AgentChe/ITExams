@@ -18,6 +18,7 @@ final class MyProfileViewModel {
     private lazy var dateOfExam = makeDateOfExam()
     private lazy var exam = makeExam()
     private lazy var course = makeCourse()
+    private lazy var examEnvironment = makeExamEnvironment()
     private lazy var studyMode = makeStudyMode()
     private lazy var dailyGoal = makeDailyGoal()
     private lazy var resetedStats = makeResetStats()
@@ -81,28 +82,22 @@ private extension MyProfileViewModel {
     }
     
     func makeExam() -> Driver<String> {
-        let initial = profileManager
-            .obtainSelectedExam()
-            .map { $0?.title ?? "" }
-            .asDriver(onErrorJustReturn: "")
-        
-        let updated = ProfileMediator.shared
-            .changedExam
-            .map { $0.title }
-            .asDriver(onErrorJustReturn: "")
-        
-        return Driver.merge(initial, updated)
+        examEnvironment.map { $0?.exam.title ?? "" }
     }
     
     func makeCourse() -> Driver<Course?> {
+        examEnvironment.map { $0?.course }
+    }
+    
+    func makeExamEnvironment() -> Driver<ExamEnvironment?> {
         let initial = profileManager
-            .obtainSelectedCourse(forceUpdate: false)
+            .obtainExamEnvironment()
             .asDriver(onErrorJustReturn: nil)
         
         let updated = ProfileMediator.shared
-            .changedCourse
-            .map { course -> Course? in
-                course
+            .changedExamEnvironment
+            .map { examEnvironment -> ExamEnvironment? in
+                examEnvironment
             }
             .asDriver(onErrorJustReturn: nil)
         

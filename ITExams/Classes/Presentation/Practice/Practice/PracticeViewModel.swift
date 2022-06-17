@@ -20,8 +20,7 @@ final class PracticeViewModel {
     private lazy var dailyQiestion = makeDailyQuestion()
     private lazy var testsCount = makeTestsCount()
     private lazy var questionsCount = makeQuestionsCount()
-    private lazy var currentExam = makeCurrentExam()
-    private lazy var currentCourse = makeCurrentCourse()
+    private lazy var examEnvironment = makeExamEnvironment()
     private lazy var activeSubscription = makeActiveSubscription()
     
     private lazy var sessionManager = SessionManager()
@@ -107,20 +106,17 @@ private extension PracticeViewModel {
     }
     
     func makeDailyQuestion() -> Driver<String?> {
-        Driver
-            .combineLatest(currentExam, currentCourse)
-            .flatMap { [weak self] args -> Driver<String?> in
+        examEnvironment
+            .flatMap { [weak self] examEnvironment -> Driver<String?> in
                 guard let self = self else {
                     return .never()
                 }
                 
-                let (exam, course) = args
-                
                 func source() -> Single<String?> {
                     self.questionManager
-                        .obtainQotdTest(domain: exam.domain,
-                                        apiKey: exam.api,
-                                        courseId: course.id,
+                        .obtainQotdTest(domain: examEnvironment.exam.domain,
+                                        apiKey: examEnvironment.exam.api,
+                                        courseId: examEnvironment.course.id,
                                         activeSubscription: false)
                         .map { qotdTest -> String? in
                             qotdTest?.test.questions.first?.question
@@ -149,15 +145,15 @@ private extension PracticeViewModel {
             .startWith(Void())
         
         return Driver
-            .combineLatest(trigger, currentCourse) { $1 }
-            .flatMap { [weak self] course -> Driver<TestsKit?> in
+            .combineLatest(trigger, examEnvironment) { $1 }
+            .flatMap { [weak self] examEnvironment -> Driver<TestsKit?> in
                 guard let self = self else {
                     return .never()
                 }
                 
                 func source() -> Single<TestsKit?> {
                     self.questionManager
-                        .obtainTestsKit(courseId: course.id)
+                        .obtainTestsKit(courseId: examEnvironment.course.id)
                 }
                 
                 func trigger(error: Error) -> Observable<Void> {
@@ -204,27 +200,14 @@ private extension PracticeViewModel {
             }
     }
     
-    func makeCurrentExam() -> Driver<Exam> {
+    func makeExamEnvironment() -> Driver<ExamEnvironment> {
         let initial = profileManager
-            .obtainSelectedExam()
+            .obtainExamEnvironment()
             .compactMap { $0 }
             .asDriver(onErrorDriveWith: .never())
         
         let updated = ProfileMediator.shared
-            .changedExam
-            .asDriver(onErrorDriveWith: .never())
-        
-        return Driver.merge(initial, updated)
-    }
-    
-    func makeCurrentCourse() -> Driver<Course> {
-        let initial = profileManager
-            .obtainSelectedCourse(forceUpdate: false)
-            .compactMap { $0 }
-            .asDriver(onErrorDriveWith: .never())
-        
-        let updated = ProfileMediator.shared
-            .changedCourse
+            .changedExamEnvironment
             .asDriver(onErrorDriveWith: .never())
         
         return Driver.merge(initial, updated)

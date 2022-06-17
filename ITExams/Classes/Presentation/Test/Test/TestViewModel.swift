@@ -31,8 +31,7 @@ final class TestViewModel {
     lazy var userTestId = makeUserTestId()
     lazy var bottomViewState = makeBottomState()
     lazy var testMode = makeTestMode()
-    lazy var exam = makeExam()
-    lazy var course = makeCourse()
+    lazy var examEnvironment = makeExamEnvironment()
     lazy var needPayment = makeNeedPayment()
     
     lazy var loadTestActivityIndicator = RxActivityIndicator()
@@ -55,8 +54,8 @@ final class TestViewModel {
 // MARK: Private
 private extension TestViewModel {
     func makeCourseName() -> Driver<String> {
-        course
-            .map { $0?.name ?? "" }
+        examEnvironment
+            .map { $0?.course.name ?? "" }
             .asDriver(onErrorDriveWith: .empty())
     }
     
@@ -217,19 +216,16 @@ private extension TestViewModel {
             return tryAgain
         }
         
-        let exam = exam
+        let examEnvironment = examEnvironment
             .compactMap { $0 }
-            .asObservable()
-        let courseId = course
-            .compactMap { $0?.id }
             .asObservable()
         let type = testType
             .compactMap { $0 }
             .asObservable()
         
         return Observable
-            .combineLatest(exam, courseId, type)
-            .flatMapLatest { [weak self] exam, courseId, type -> Observable<Test> in
+            .combineLatest(examEnvironment, type)
+            .flatMapLatest { [weak self] examEnvironment, type -> Observable<Test> in
                 guard let self = self else {
                     return .empty()
                 }
@@ -238,58 +234,58 @@ private extension TestViewModel {
                 
                 switch type {
                 case let .get(testId):
-                    test = self.questionManager.obtainTest(domain: exam.domain,
-                                                           apiKey: exam.api,
-                                                           courseId: courseId,
+                    test = self.questionManager.obtainTest(domain: examEnvironment.exam.domain,
+                                                           apiKey: examEnvironment.exam.api,
+                                                           courseId: examEnvironment.course.id,
                                                            testId: testId,
                                                            time: nil,
                                                            activeSubscription: self.sessionManager.hasActiveSubscriptions())
                 case .tenSet:
-                    test = self.questionManager.obtainTenTest(domain: exam.domain,
-                                                              apiKey: exam.api,
-                                                              courseId: courseId,
+                    test = self.questionManager.obtainTenTest(domain: examEnvironment.exam.domain,
+                                                              apiKey: examEnvironment.exam.api,
+                                                              courseId: examEnvironment.course.id,
                                                               activeSubscription: self.sessionManager.hasActiveSubscriptions())
                 case .failedSet:
-                    test = self.questionManager.obtainFailedTest(domain: exam.domain,
-                                                                 apiKey: exam.api,
-                                                                 courseId: courseId,
+                    test = self.questionManager.obtainFailedTest(domain: examEnvironment.exam.domain,
+                                                                 apiKey: examEnvironment.exam.api,
+                                                                 courseId: examEnvironment.course.id,
                                                                  activeSubscription: self.sessionManager.hasActiveSubscriptions())
                 case .qotd:
-                    test = self.questionManager.obtainQotdTest(domain: exam.domain,
-                                                               apiKey: exam.api,
-                                                               courseId: courseId,
+                    test = self.questionManager.obtainQotdTest(domain: examEnvironment.exam.domain,
+                                                               apiKey: examEnvironment.exam.api,
+                                                               courseId: examEnvironment.course.id,
                                                                activeSubscription: self.sessionManager.hasActiveSubscriptions())
                                                .map { $0?.test }
                 case .randomSet:
-                    test = self.questionManager.obtainRandomTest(domain: exam.domain,
-                                                                 apiKey: exam.api,
-                                                                 courseId: courseId,
+                    test = self.questionManager.obtainRandomTest(domain: examEnvironment.exam.domain,
+                                                                 apiKey: examEnvironment.exam.api,
+                                                                 courseId: examEnvironment.course.id,
                                                                  activeSubscription: self.sessionManager.hasActiveSubscriptions())
                 case .saved:
-                    test = self.questionManager.obtainSavedTest(domain: exam.domain,
-                                                                apiKey: exam.api,
-                                                                courseId: courseId,
+                    test = self.questionManager.obtainSavedTest(domain: examEnvironment.exam.domain,
+                                                                apiKey: examEnvironment.exam.api,
+                                                                courseId: examEnvironment.course.id,
                                                                 activeSubscription: self.sessionManager.hasActiveSubscriptions())
                 case .timed(let minutes):
-                    test = self.questionManager.obtainTest(domain: exam.domain,
-                                                           apiKey: exam.api,
-                                                           courseId: courseId,
+                    test = self.questionManager.obtainTest(domain: examEnvironment.exam.domain,
+                                                           apiKey: examEnvironment.exam.api,
+                                                           courseId: examEnvironment.course.id,
                                                            testId: nil,
                                                            time: minutes,
                                                            activeSubscription: self.sessionManager.hasActiveSubscriptions())
                 case .plan(let testId):
-                    test = self.questionManager.obtainPlanTest(domain: exam.domain,
-                                                               apiKey: exam.api,
+                    test = self.questionManager.obtainPlanTest(domain: examEnvironment.exam.domain,
+                                                               apiKey: examEnvironment.exam.api,
                                                                testId: testId)
                 case .quick:
-                    test = self.questionManager.obtainQuickTest(domain: exam.domain,
-                                                                apiKey: exam.api,
-                                                                courseId: courseId,
+                    test = self.questionManager.obtainQuickTest(domain: examEnvironment.exam.domain,
+                                                                apiKey: examEnvironment.exam.api,
+                                                                courseId: examEnvironment.course.id,
                                                                 activeSubscription: self.sessionManager.hasActiveSubscriptions())
                 case .custom(let attributes):
-                    test = self.questionManager.obtainCustomTest(domain: exam.domain,
-                                                                 apiKey: exam.api,
-                                                                 courseId: courseId,
+                    test = self.questionManager.obtainCustomTest(domain: examEnvironment.exam.domain,
+                                                                 apiKey: examEnvironment.exam.api,
+                                                                 courseId: examEnvironment.course.id,
                                                                  activeSubscription: self.sessionManager.hasActiveSubscriptions(),
                                                                  subjectsIds: attributes.subjects.map { $0.id },
                                                                  includeMissedQuestions: attributes.isOnMissedQuestions,
@@ -438,15 +434,9 @@ private extension TestViewModel {
             .asDriver(onErrorJustReturn: nil)
     }
     
-    func makeExam() -> Driver<Exam?> {
+    func makeExamEnvironment() -> Driver<ExamEnvironment?> {
         profileManager
-            .obtainSelectedExam()
-            .asDriver(onErrorJustReturn: nil)
-    }
-    
-    func makeCourse() -> Driver<Course?> {
-        profileManager
-            .obtainSelectedCourse(forceUpdate: false)
+            .obtainExamEnvironment()
             .asDriver(onErrorJustReturn: nil)
     }
     

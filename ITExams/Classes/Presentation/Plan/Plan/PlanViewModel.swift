@@ -20,8 +20,7 @@ final class PlanViewModel {
     
     lazy var activity = RxActivityIndicator()
     
-    private lazy var currentExam = makeCurrentExam()
-    private lazy var currentCourse = makeCurrentCourse()
+    private lazy var examEnvironment = makeExamEnvironment()
     private lazy var plan = makePlan()
     private lazy var activeSubscription = makeActiveSubscription()
     
@@ -60,10 +59,9 @@ private extension PlanViewModel {
     }
     
     func makePlanCurrent() -> Driver<PlanCurrent> {
-        Driver
-            .combineLatest(currentExam, currentCourse) {
-                PlanCurrent(exam: $0, course: $1)
-            }
+        examEnvironment.map {
+            PlanCurrent(exam: $0.exam, course: $0.course)
+        }
     }
     
     func makePlanStudyScore() -> Driver<PlanStudyScore> {
@@ -74,8 +72,8 @@ private extension PlanViewModel {
     }
     
     func makePlan() -> Driver<Plan> {
-        currentCourse
-            .flatMapLatest { [weak self] course -> Driver<Plan> in
+        examEnvironment
+            .flatMapLatest { [weak self] examEnvironment -> Driver<Plan> in
                 guard let self = self else {
                     return .never()
                 }
@@ -92,7 +90,7 @@ private extension PlanViewModel {
                     return triggers
                         .flatMapLatest {
                             self.planManager
-                                .obtainPlan(for: course.id)
+                                .obtainPlan(for: examEnvironment.course.id)
                                 .flatMap { plan -> Single<Plan> in
                                     guard let plan = plan else {
                                         return .error(ContentError(.notContent))
@@ -122,27 +120,14 @@ private extension PlanViewModel {
             }
     }
     
-    func makeCurrentExam() -> Driver<Exam> {
+    func makeExamEnvironment() -> Driver<ExamEnvironment> {
         let initial = profileManager
-            .obtainSelectedExam()
+            .obtainExamEnvironment()
             .compactMap { $0 }
             .asDriver(onErrorDriveWith: .never())
         
         let updated = ProfileMediator.shared
-            .changedExam
-            .asDriver(onErrorDriveWith: .never())
-        
-        return Driver.merge(initial, updated)
-    }
-    
-    func makeCurrentCourse() -> Driver<Course> {
-        let initial = profileManager
-            .obtainSelectedCourse(forceUpdate: false)
-            .compactMap { $0 }
-            .asDriver(onErrorDriveWith: .never())
-        
-        let updated = ProfileMediator.shared
-            .changedCourse
+            .changedExamEnvironment
             .asDriver(onErrorDriveWith: .never())
         
         return Driver.merge(initial, updated)

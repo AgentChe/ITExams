@@ -15,7 +15,7 @@ final class StatsViewModel {
     lazy var activity = RxActivityIndicator()
     
     private lazy var stats = makeStats()
-    private lazy var currentCourse = makeCurrentCourse()
+    private lazy var examEnvironment = makeExamEnvironment()
     private lazy var selectedTestDaysOfWeek = makeSelectedTestDaysOfWeek()
     private lazy var activeSubscription = makeActiveSubscription()
     
@@ -122,8 +122,8 @@ private extension StatsViewModel {
     }
     
     func makeStats() -> Driver<Stats> {
-        currentCourse
-            .flatMapLatest { [weak self] course -> Driver<Stats> in
+        examEnvironment
+            .flatMapLatest { [weak self] examEnvironment -> Driver<Stats> in
                 guard let self = self else {
                     return .never()
                 }
@@ -140,7 +140,7 @@ private extension StatsViewModel {
                     return triggers
                         .flatMapLatest {
                             self.statsManager
-                                .obtainStats(for: course.id)
+                                .obtainStats(for: examEnvironment.course.id)
                                 .flatMap { stats -> Single<Stats> in
                                     guard let stats = stats else {
                                         return .error(ContentError(.notContent))
@@ -170,14 +170,14 @@ private extension StatsViewModel {
             }
     }
     
-    func makeCurrentCourse() -> Driver<Course> {
+    func makeExamEnvironment() -> Driver<ExamEnvironment> {
         let initial = profileManager
-            .obtainSelectedCourse(forceUpdate: false)
+            .obtainExamEnvironment()
             .compactMap { $0 }
             .asDriver(onErrorDriveWith: .never())
         
         let updated = ProfileMediator.shared
-            .changedCourse
+            .changedExamEnvironment
             .asDriver(onErrorDriveWith: .never())
         
         return Driver.merge(initial, updated)

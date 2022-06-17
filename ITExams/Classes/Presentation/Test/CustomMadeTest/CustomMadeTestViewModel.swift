@@ -15,7 +15,7 @@ final class CustomMadeTestViewModel {
     lazy var activity = RxActivityIndicator()
     
     private lazy var subjects = makeSubjects()
-    private lazy var currentCourse = makeCurrentCourse()
+    private lazy var examEnvironment = makeExamEnvironment()
     
     private lazy var profileManager = ProfileManager()
     private lazy var questionManager = QuestionManager()
@@ -68,15 +68,15 @@ private extension CustomMadeTestViewModel {
     }
     
     func makeSubjects() -> Driver<[Subject]> {
-        currentCourse
-            .flatMapLatest { [weak self] course -> Driver<[Subject]> in
+        examEnvironment
+            .flatMapLatest { [weak self] examEnvironment -> Driver<[Subject]> in
                 guard let self = self else {
                     return .never()
                 }
                 
                 func source() -> Single<[Subject]> {
                     self.questionManager
-                        .obtainTestsKit(courseId: course.id)
+                        .obtainTestsKit(courseId: examEnvironment.course.id)
                         .map { $0?.subjects ?? [] }
                 }
                 
@@ -96,9 +96,9 @@ private extension CustomMadeTestViewModel {
             }
     }
     
-    func makeCurrentCourse() -> Driver<Course> {
+    func makeExamEnvironment() -> Driver<ExamEnvironment> {
         profileManager
-            .obtainSelectedCourse(forceUpdate: false)
+            .obtainExamEnvironment()
             .compactMap { $0 }
             .asDriver(onErrorDriveWith: .never())
     }

@@ -9,8 +9,7 @@ import RxCocoa
 
 protocol ProfileMediatorDelegate: AnyObject {
     func prodileMediatorDidChanged(dateOfExam: Date)
-    func prodileMediatorDidChanged(exam: Exam)
-    func prodileMediatorDidChanged(course: Course)
+    func prodileMediatorDidChanged(examEnvironment: ExamEnvironment)
     func prodileMediatorDidChanged(testMode: TestMode)
     func prodileMediatorDidChanged(testMinutes: Int)
     func prodileMediatorDidChanged(testDaysOfWeek: [DayOfWeek])
@@ -20,8 +19,7 @@ final class ProfileMediator {
     static let shared = ProfileMediator()
     
     private let changedDateOfExamTrigger = PublishRelay<Date>()
-    private let changedExamTrigger = PublishRelay<Exam>()
-    private let changedCourseTrigger = PublishRelay<Course>()
+    private let changedExamEnvironmentTrigger = PublishRelay<ExamEnvironment>()
     private let changedTestModeTrigger = PublishRelay<TestMode>()
     private let changedTestMinutesTrigger = PublishRelay<Int>()
     private let changedTestDaysOfWeekTrigger = PublishRelay<[DayOfWeek]>()
@@ -43,23 +41,13 @@ extension ProfileMediator {
         }
     }
     
-    func notifyAboutChanged(exam: Exam) {
+    func notifyAboutChanged(examEnvironment: ExamEnvironment) {
         DispatchQueue.main.async { [weak self] in
             self?.delegates.forEach {
-                $0.weak?.prodileMediatorDidChanged(exam: exam)
+                $0.weak?.prodileMediatorDidChanged(examEnvironment: examEnvironment)
             }
             
-            self?.changedExamTrigger.accept(exam)
-        }
-    }
-    
-    func notifyAboutChanged(course: Course) {
-        DispatchQueue.main.async { [weak self] in
-            self?.delegates.forEach {
-                $0.weak?.prodileMediatorDidChanged(course: course)
-            }
-            
-            self?.changedCourseTrigger.accept(course)
+            self?.changedExamEnvironmentTrigger.accept(examEnvironment)
         }
     }
     
@@ -100,12 +88,8 @@ extension ProfileMediator {
         changedDateOfExamTrigger.asSignal()
     }
     
-    var changedExam: Signal<Exam> {
-        changedExamTrigger.asSignal()
-    }
-    
-    var changedCourse: Signal<Course> {
-        changedCourseTrigger.asSignal()
+    var changedExamEnvironment: Signal<ExamEnvironment> {
+        changedExamEnvironmentTrigger.asSignal()
     }
     
     var changedTestMode: Signal<TestMode> {

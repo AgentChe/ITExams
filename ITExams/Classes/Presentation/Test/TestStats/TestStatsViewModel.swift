@@ -18,7 +18,7 @@ final class TestStatsViewModel {
     lazy var activity = RxActivityIndicator()
     
     private lazy var stats = makeStats()
-    private lazy var currentCourse = makeCurrentCourse()
+    private lazy var examEnvironment = makeExamEnvironment()
     
     private lazy var statsManager = StatsManager()
     private lazy var profileManager = ProfileManager()
@@ -83,7 +83,7 @@ private extension TestStatsViewModel {
                 userTestId.compactMap { $0 }
                     .asDriver(onErrorDriveWith: .never()),
                 
-                currentCourse.map { $0.id }
+                examEnvironment.map { $0.course.id }
             )
             .flatMapLatest { [weak self] args -> Driver<TestStats> in
                 guard let self = self else {
@@ -120,9 +120,9 @@ private extension TestStatsViewModel {
             }
     }
     
-    func makeCurrentCourse() -> Driver<Course> {
+    func makeExamEnvironment() -> Driver<ExamEnvironment> {
         profileManager
-            .obtainSelectedCourse(forceUpdate: false)
+            .obtainExamEnvironment()
             .compactMap { $0 }
             .asDriver(onErrorDriveWith: .never())
     }

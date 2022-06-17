@@ -20,8 +20,7 @@ protocol ProfileManagerProtocol {
     func obtainReferenceDateOfExam() -> Single<Date?>
     func obtainDateOfExam(forceUpdate: Bool) -> Single<Date?>
     func obtainExams() -> Single<[Exam]>
-    func obtainSelectedExam() -> Single<Exam?>
-    func obtainSelectedCourse(forceUpdate: Bool) -> Single<Course?>
+    func obtainExamEnvironment() -> Single<ExamEnvironment?>
     func obtainTestMode(forceUpdate: Bool) -> Single<TestMode?>
     func obtainTestMinutes(forceUpdate: Bool) -> Single<Int?>
     func obtainTestDaysOfWeek() -> Single<[DayOfWeek]?>
@@ -33,8 +32,7 @@ final class ProfileManager: ProfileManagerProtocol {
     enum Constants {
         static let referenceDateOfExamKey = "profile_manager_reference_date_of_exam_key"
         static let dateOfExamKey = "profile_manager_date_of_exam_key"
-        static let examKey = "profile_manager_exam_key"
-        static let courseKey = "profile_manager_course_key"
+        static let examEnvironmentKey = "profile_manager_exam_environment_key"
         static let testModeKey = "profile_manager_test_mode_key"
         static let testMinutesKey = "profile_manager_test_minutes_key"
         static let testDaysOfWeekKey = "profile_manager_days_of_week_key"
@@ -72,13 +70,12 @@ extension ProfileManager {
                 guard let self = self else {
                     return
                 }
-                
+
                 self.store(dateOfExam: examDate)
                 self.store(testMode: testMode)
                 self.store(testMinutes: testMinutes)
                 self.store(testDaysOfWeek: testDaysOfWeek)
-                self.store(exam: exam)
-                self.store(course: course)
+                self.store(exam: exam, course: course)
             })
     }
     
@@ -136,24 +133,20 @@ extension ProfileManager {
             }
     }
     
-    func obtainSelectedExam() -> Single<Exam?> {
-        Single<Exam?>
+    func obtainExamEnvironment() -> Single<ExamEnvironment?> {
+        Single<ExamEnvironment?>
             .create { event in
-                guard let data = UserDefaults.standard.data(forKey: Constants.examKey) else {
+                guard let data = UserDefaults.standard.data(forKey: Constants.examEnvironmentKey) else {
                     event(.success(nil))
                     return Disposables.create()
                 }
                 
-                let exam = try? JSONDecoder().decode(Exam.self, from: data)
+                let examEnvironment = try? JSONDecoder().decode(ExamEnvironment.self, from: data)
                 
-                event(.success(exam))
+                event(.success(examEnvironment))
                 
                 return Disposables.create()
             }
-    }
-    
-    func obtainSelectedCourse(forceUpdate: Bool) -> Single<Course?> {
-        forceUpdate ? loadSelectedCourse() : cachedSelectedCourse()
     }
     
     func obtainTestMode(forceUpdate: Bool) -> Single<TestMode?> {
@@ -209,19 +202,19 @@ private extension ProfileManager {
         let testMode = cachedTestMode()
         let testMinutes = cachedTestMinutes()
         let examDate = cachedDateOfExam()
-        let selectedCourse = cachedSelectedCourse()
+        let examEnvironment = obtainExamEnvironment()
         
         return Single
             .zip(
                 testMode,
                 testMinutes,
                 examDate,
-                selectedCourse
-            ) { testMode, testMinutes, examDate, selectedCourse -> Profile in
+                examEnvironment
+            ) { testMode, testMinutes, examDate, examEnvironment -> Profile in
                 Profile(testMode: testMode,
                         testMinutes: testMinutes,
                         examDate: examDate,
-                        selectedCourse: selectedCourse)
+                        selectedCourse: examEnvironment?.course)
             }
     }
     
@@ -239,11 +232,11 @@ private extension ProfileManager {
                 guard let self = self, let profile = profile else {
                     return
                 }
-                
+
                 self.store(testMode: profile.testMode)
                 self.store(testMinutes: profile.testMinutes)
                 self.store(dateOfExam: profile.examDate)
-                self.store(course: profile.selectedCourse)
+                self.store(exam: nil, course: profile.selectedCourse)
             })
     }
     
@@ -284,52 +277,20 @@ private extension ProfileManager {
             })
     }
     
-    func store(exam: Exam?) {
-        guard let exam = exam, let data = try? JSONEncoder().encode(exam) else {
+    func store(exam: Exam?, course: Course?) {
+        guard let exam = exam, let course = course else {
             return
         }
         
-        UserDefaults.standard.set(data, forKey: Constants.examKey)
+        let environment = ExamEnvironment(exam: exam, course: course)
         
-        ProfileMediator.shared.notifyAboutChanged(exam: exam)
-    }
-    
-    func store(course: Course?) {
-        guard let course = course, let data = try? JSONEncoder().encode(course) else {
+        guard let data = try? JSONEncoder().encode(environment) else {
             return
         }
         
-        UserDefaults.standard.set(data, forKey: Constants.courseKey)
+        UserDefaults.standard.set(data, forKey: Constants.examEnvironmentKey)
         
-        ProfileMediator.shared.notifyAboutChanged(course: course)
-    }
-    
-    func cachedSelectedCourse() -> Single<Course?> {
-        Single<Course?>
-            .create { event in
-                guard let data = UserDefaults.standard.data(forKey: Constants.courseKey) else {
-                    event(.success(nil))
-                    return Disposables.create()
-                }
-                
-                let course = try? JSONDecoder().decode(Course.self, from: data)
-                
-                event(.success(course))
-                
-                return Disposables.create()
-            }
-    }
-    
-    func loadSelectedCourse() -> Single<Course?> {
-        loadProfile()
-            .map { $0?.selectedCourse }
-            .do(onSuccess: { [weak self] course in
-                guard let self = self, let course = course else {
-                    return
-                }
-                
-                self.store(course: course)
-            })
+        ProfileMediator.shared.notifyAboutChanged(examEnvironment: environment)
     }
     
     func store(testMode: TestMode?) {

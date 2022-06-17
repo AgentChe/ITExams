@@ -16,7 +16,7 @@ final class ReviewViewModel {
     lazy var activity = RxActivityIndicator()
     
     private lazy var currentFilter = makeCurrentFilter()
-    private lazy var currentCourse = makeCurrentCourse()
+    private lazy var examEnvironment = makeExamEnvironment()
     
     private lazy var profileManager = ProfileManager()
     private lazy var questionManager = QuestionManager()
@@ -32,15 +32,15 @@ private extension ReviewViewModel {
             .startWith(Void())
          
         return Driver
-            .combineLatest(currentCourse, currentFilter, passTestTrigger)
+            .combineLatest(examEnvironment, currentFilter, passTestTrigger)
             .flatMapLatest { [weak self] args -> Driver<[Review]> in
                 guard let self = self else {
                     return .never()
                 }
                 
-                let (course, filter, _) = args
+                let (examEnvironment, filter, _) = args
                 
-                return self.makeLoader(courseId: course.id, filter: filter)
+                return self.makeLoader(courseId: examEnvironment.course.id, filter: filter)
                     .scan([]) { $0 + $1 }
             }
             .map { reviews -> [ReviewTableElement] in
@@ -86,14 +86,14 @@ private extension ReviewViewModel {
             .asDriver(onErrorDriveWith: .never())
     }
     
-    func makeCurrentCourse() -> Driver<Course> {
+    func makeExamEnvironment() -> Driver<ExamEnvironment> {
         let initial = profileManager
-            .obtainSelectedCourse(forceUpdate: false)
+            .obtainExamEnvironment()
             .compactMap { $0 }
             .asDriver(onErrorDriveWith: .never())
         
         let updated = ProfileMediator.shared
-            .changedCourse
+            .changedExamEnvironment
             .asDriver(onErrorDriveWith: .never())
         
         return Driver.merge(initial, updated)
