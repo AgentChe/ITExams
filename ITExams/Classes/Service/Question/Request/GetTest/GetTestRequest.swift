@@ -8,6 +8,8 @@
 import Alamofire
 
 struct GetTestRequest: APIRequestBody {
+    let domain: String
+    let apiKey: String
     let userToken: String
     let courseId: Int
     let testId: Int?
@@ -15,7 +17,7 @@ struct GetTestRequest: APIRequestBody {
     let activeSubscription: Bool
     
     var url: String {
-        GlobalDefinitions.domainUrl + "/api/testings/get"
+        domain + "/api/testings/get"
     }
     
     var method: HTTPMethod {
@@ -24,7 +26,7 @@ struct GetTestRequest: APIRequestBody {
     
     var parameters: Parameters? {
         var params: [String: Any] = [
-            "_api_key": GlobalDefinitions.apiKey,
+            "_api_key": apiKey,
             "_user_token": userToken,
             "course_id": courseId,
             "user_is_premium": activeSubscription

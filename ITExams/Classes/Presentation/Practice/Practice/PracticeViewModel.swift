@@ -20,6 +20,7 @@ final class PracticeViewModel {
     private lazy var dailyQiestion = makeDailyQuestion()
     private lazy var testsCount = makeTestsCount()
     private lazy var questionsCount = makeQuestionsCount()
+    private lazy var currentExam = makeCurrentExam()
     private lazy var currentCourse = makeCurrentCourse()
     private lazy var activeSubscription = makeActiveSubscription()
     
@@ -106,15 +107,21 @@ private extension PracticeViewModel {
     }
     
     func makeDailyQuestion() -> Driver<String?> {
-        currentCourse
-            .flatMap { [weak self] course -> Driver<String?> in
+        Driver
+            .combineLatest(currentExam, currentCourse)
+            .flatMap { [weak self] args -> Driver<String?> in
                 guard let self = self else {
                     return .never()
                 }
                 
+                let (exam, course) = args
+                
                 func source() -> Single<String?> {
                     self.questionManager
-                        .obtainQotdTest(courseId: course.id, activeSubscription: false)
+                        .obtainQotdTest(domain: exam.domain,
+                                        apiKey: exam.api,
+                                        courseId: course.id,
+                                        activeSubscription: false)
                         .map { qotdTest -> String? in
                             qotdTest?.test.questions.first?.question
                         }
@@ -195,6 +202,19 @@ private extension PracticeViewModel {
                     .map { $0?.questionsCount }
                     .asDriver(onErrorJustReturn: nil)
             }
+    }
+    
+    func makeCurrentExam() -> Driver<Exam> {
+        let initial = profileManager
+            .obtainSelectedExam()
+            .compactMap { $0 }
+            .asDriver(onErrorDriveWith: .never())
+        
+        let updated = ProfileMediator.shared
+            .changedExam
+            .asDriver(onErrorDriveWith: .never())
+        
+        return Driver.merge(initial, updated)
     }
     
     func makeCurrentCourse() -> Driver<Course> {
