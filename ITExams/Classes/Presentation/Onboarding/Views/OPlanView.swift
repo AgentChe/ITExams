@@ -161,7 +161,7 @@ private extension OPlanView {
     
     func showColumns() {
         column1Height.constant = 60.scale
-        column2Height.constant = 222.scale
+        column2Height.constant = 182.scale
         
         UIView.animate(withDuration: 2, animations: { [weak self] in
             guard let self = self else {
@@ -217,9 +217,9 @@ private extension OPlanView {
         ])
         
         NSLayoutConstraint.activate([
-            gridView.widthAnchor.constraint(equalToConstant: 335.scale),
-            gridView.heightAnchor.constraint(equalToConstant: 223.scale),
-            gridView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            gridView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            gridView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            gridView.heightAnchor.constraint(equalToConstant: 186.scale),
             gridView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 77.scale)
         ])
         
@@ -232,7 +232,7 @@ private extension OPlanView {
         NSLayoutConstraint.activate([
             column1View.widthAnchor.constraint(equalToConstant: 82.scale),
             column1Height,
-            column1View.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 84.scale),
+            column1View.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 102.scale),
             column1View.bottomAnchor.constraint(equalTo: gridView.bottomAnchor)
         ])
         
@@ -250,7 +250,7 @@ private extension OPlanView {
         NSLayoutConstraint.activate([
             column2View.widthAnchor.constraint(equalToConstant: 82.scale),
             column2Height,
-            column2View.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 207.scale),
+            column2View.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 225.scale),
             column2View.bottomAnchor.constraint(equalTo: gridView.bottomAnchor)
         ])
         
