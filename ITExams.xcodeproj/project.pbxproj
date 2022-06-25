@@ -156,10 +156,6 @@
 		DE6BFDDF284E89E900F5CF20 /* GetTestResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDDE284E89E900F5CF20 /* GetTestResponseMapper.swift */; };
 		DE6BFDE1284F307A00F5CF20 /* SplashActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDE0284F307A00F5CF20 /* SplashActivity.swift */; };
 		DE6BFDE5284F571600F5CF20 /* OTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDE4284F571600F5CF20 /* OTestView.swift */; };
-		DE6BFDE8284F5D4D00F5CF20 /* OQuestionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDE7284F5D4D00F5CF20 /* OQuestionTableView.swift */; };
-		DE6BFDEA284F5D6300F5CF20 /* OQuestionTableElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDE9284F5D6300F5CF20 /* OQuestionTableElement.swift */; };
-		DE6BFDED284F5DD200F5CF20 /* OQuestionTableQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDEC284F5DD200F5CF20 /* OQuestionTableQuestionCell.swift */; };
-		DE6BFDEF284F5DE200F5CF20 /* OQuestionTableAnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDEE284F5DE200F5CF20 /* OQuestionTableAnswerCell.swift */; };
 		DE6BFDF2284F8E5400F5CF20 /* OQuestionFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDF1284F8E5400F5CF20 /* OQuestionFavoriteButton.swift */; };
 		DE6BFDF4284F942A00F5CF20 /* SaveQuestionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDF3284F942A00F5CF20 /* SaveQuestionRequest.swift */; };
 		DE6BFDF6284F946900F5CF20 /* RemoveSavedQuestionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDF5284F946900F5CF20 /* RemoveSavedQuestionRequest.swift */; };
@@ -517,10 +513,6 @@
 		DE6BFDDE284E89E900F5CF20 /* GetTestResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTestResponseMapper.swift; sourceTree = "<group>"; };
 		DE6BFDE0284F307A00F5CF20 /* SplashActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashActivity.swift; sourceTree = "<group>"; };
 		DE6BFDE4284F571600F5CF20 /* OTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTestView.swift; sourceTree = "<group>"; };
-		DE6BFDE7284F5D4D00F5CF20 /* OQuestionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OQuestionTableView.swift; sourceTree = "<group>"; };
-		DE6BFDE9284F5D6300F5CF20 /* OQuestionTableElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OQuestionTableElement.swift; sourceTree = "<group>"; };
-		DE6BFDEC284F5DD200F5CF20 /* OQuestionTableQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OQuestionTableQuestionCell.swift; sourceTree = "<group>"; };
-		DE6BFDEE284F5DE200F5CF20 /* OQuestionTableAnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OQuestionTableAnswerCell.swift; sourceTree = "<group>"; };
 		DE6BFDF1284F8E5400F5CF20 /* OQuestionFavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OQuestionFavoriteButton.swift; sourceTree = "<group>"; };
 		DE6BFDF3284F942A00F5CF20 /* SaveQuestionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveQuestionRequest.swift; sourceTree = "<group>"; };
 		DE6BFDF5284F946900F5CF20 /* RemoveSavedQuestionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSavedQuestionRequest.swift; sourceTree = "<group>"; };
@@ -1364,34 +1356,6 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		DE6BFDE6284F5D3A00F5CF20 /* Question */ = {
-			isa = PBXGroup;
-			children = (
-				DE6BFDF0284F8E3900F5CF20 /* TableView */,
-				DE6BFDF1284F8E5400F5CF20 /* OQuestionFavoriteButton.swift */,
-			);
-			path = Question;
-			sourceTree = "<group>";
-		};
-		DE6BFDEB284F5D6900F5CF20 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				DE6BFDEC284F5DD200F5CF20 /* OQuestionTableQuestionCell.swift */,
-				DE6BFDEE284F5DE200F5CF20 /* OQuestionTableAnswerCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		DE6BFDF0284F8E3900F5CF20 /* TableView */ = {
-			isa = PBXGroup;
-			children = (
-				DE6BFDEB284F5D6900F5CF20 /* Cell */,
-				DE6BFDE9284F5D6300F5CF20 /* OQuestionTableElement.swift */,
-				DE6BFDE7284F5D4D00F5CF20 /* OQuestionTableView.swift */,
-			);
-			path = TableView;
-			sourceTree = "<group>";
-		};
 		DE6BFDFC28507A3F00F5CF20 /* SendAnswer */ = {
 			isa = PBXGroup;
 			children = (
@@ -2208,12 +2172,12 @@
 		DED4724627CE4C4300AEF8A6 /* Atoms */ = {
 			isa = PBXGroup;
 			children = (
-				DE6BFDE6284F5D3A00F5CF20 /* Question */,
 				DE2B100827D9F42A005280DB /* CreatingPlan */,
 				DED4725127D208B100AEF8A6 /* ExamsTable */,
 				DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */,
 				DE55A4B127D64CB300B53B46 /* OProgressView.swift */,
 				DE2B0FFD27D798F4005280DB /* ODailyView.swift */,
+				DE6BFDF1284F8E5400F5CF20 /* OQuestionFavoriteButton.swift */,
 				DE2B100127D8789F005280DB /* OStudyModeCell.swift */,
 				DE2B101027DA4B49005280DB /* OPlanGridView.swift */,
 			);
@@ -2419,7 +2383,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE6BFDDD284E899B00F5CF20 /* GetOnboardingTestRequest.swift in Sources */,
-				DE6BFDE8284F5D4D00F5CF20 /* OQuestionTableView.swift in Sources */,
 				DE6BFE7F285141F600F5CF20 /* CircleProgressView.swift in Sources */,
 				DE50438C2822775300C6B1C8 /* StepCollectionView.swift in Sources */,
 				DE5D0BC9285281FB000A1C9B /* PracticeTableTitleCell.swift in Sources */,
@@ -2624,7 +2587,6 @@
 				DE2B0FFE27D798F4005280DB /* ODailyView.swift in Sources */,
 				DE6BFE412850A8A700F5CF20 /* QuestionTableExplanationTextCell.swift in Sources */,
 				DE6BFE5A2851283A00F5CF20 /* TestStats.swift in Sources */,
-				DE6BFDEA284F5D6300F5CF20 /* OQuestionTableElement.swift in Sources */,
 				DE5D0BE9285883A9000A1C9B /* PracticeDateOfExamViewController.swift in Sources */,
 				DE1CA9A827F2FC6200C66DAD /* GetMonetizationResponseMapper.swift in Sources */,
 				DE6BFE062850966500F5CF20 /* GetQotdTestRequest.swift in Sources */,
@@ -2671,7 +2633,6 @@
 				DEC34612281971160069A060 /* TryAgainViewController.swift in Sources */,
 				DE3FD61527EA09E400E76844 /* DefaultRequestWrapper.swift in Sources */,
 				DE95A8CF2832902600809171 /* DailyGoalView.swift in Sources */,
-				DE6BFDED284F5DD200F5CF20 /* OQuestionTableQuestionCell.swift in Sources */,
 				DE93788027C4B2600073F27C /* PaddingPickerView.swift in Sources */,
 				DE93787227C4B2600073F27C /* Scalable.swift in Sources */,
 				DED4724827CE4C4B00AEF8A6 /* OMotivationCell.swift in Sources */,
@@ -2715,7 +2676,6 @@
 				DE93787F27C4B2600073F27C /* PaddingLabel.swift in Sources */,
 				DE6BFDFE28507A4E00F5CF20 /* SendAnswerRequest.swift in Sources */,
 				DE93787C27C4B2600073F27C /* NavigationController.swift in Sources */,
-				DE6BFDEF284F5DE200F5CF20 /* OQuestionTableAnswerCell.swift in Sources */,
 				DE9378D827C4C0E90073F27C /* OnboardingViewController.swift in Sources */,
 				DE6BFDC9284E128400F5CF20 /* Review.swift in Sources */,
 				DED4724327CE406600AEF8A6 /* OStartView.swift in Sources */,

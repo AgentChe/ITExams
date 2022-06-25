@@ -21,11 +21,13 @@ final class OTestView: OSlideView {
     lazy var progressLabel = makeLabel()
     lazy var favoriteButton = makeFavoriteButton()
     lazy var tableView = makeTableView()
+    lazy var bottomView = makeBottomView()
     lazy var preloader = makePreloader()
     
     private lazy var questionManager = QuestionManager()
     
     private lazy var disposeBag = DisposeBag()
+    private lazy var disposables = [Disposable]()
     
     private lazy var activity = RxActivityIndicator()
     
@@ -146,6 +148,7 @@ private extension OTestView {
             })
             .disposed(by: disposeBag)
     }
+    
     func start(questions: [Question], completion: @escaping () -> Void) {
         setup(questions: questions, index: 0, completion: completion)
     }
@@ -174,27 +177,132 @@ private extension OTestView {
     }
     
     func setup(question: Question, completion: @escaping () -> Void) {
-        var elements = [OQuestionTableElement]()
+        disposables.forEach { $0.dispose() }
+        disposables = []
         
-        elements.append(contentsOf: [
-            .question(question.question),
-            .offset(20.scale)
-        ])
+        let questionElement = makeQuestion(question: question)
         
-        let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"]
+        tableView.setup(question: questionElement)
         
-        question.answers.enumerated().forEach { index, answer in
-            let element = OQuestionTableAnswer(isSelected: false,
-                                               mark: alphabet[index],
-                                               answer: answer.answer ?? "")
-            elements.append(.answer(element))
-            
-            if (question.answers.count - 1) != index {
-                elements.append(.offset(12.scale))
+        let answer = tableView
+            .selectedAnswersRelay
+            .asDriver(onErrorDriveWith: .never())
+        
+        var bottomState = TestBottomView.State.hidden
+        
+        let answerDisposable = answer
+            .map { answer -> TestBottomView.State in
+                answer.answerIds.isEmpty ? .hidden : .confirm
             }
+            .startWith(.hidden)
+            .drive(Binder(bottomView) { base, state in
+                base.setup(state: state)
+                bottomState = state
+            })
+        disposables.append(answerDisposable)
+        
+        let tappedDisposable = bottomView.button.rx.tap
+            .withLatestFrom(answer)
+            .bind(to: Binder(self) { base, answer in
+                switch bottomState {
+                case .confirm:
+                    bottomState = .next
+                    base.bottomView.setup(state: .next)
+                    
+                    let resultElement = base.makeResult(question: question, currentAnswer: answer)
+                    base.tableView.setup(question: resultElement)
+                case .next:
+                    completion()
+                default:
+                    break
+                }
+            })
+        disposables.append(tappedDisposable)
+    }
+    
+    func makeQuestion(question: Question) -> QuestionElement {
+        let answers = question.answers.map { PossibleAnswerElement(id: $0.id,
+                                                                   answer: $0.answer,
+                                                                   answerHtml: $0.answerHtml,
+                                                                   image: $0.image) }
+        
+        let content: [QuestionContentCollectionType] = [
+            question.image.map { .image($0) },
+            question.video.map { .video($0) }
+        ].compactMap { $0 }
+        
+        let elements: [TestingCellType] = [
+            !content.isEmpty ? .content(content) : nil,
+            .question(question.question, html: question.questionHtml),
+            .answers(answers)
+        ].compactMap { $0 }
+        
+        var referenceCellType = [TestingCellType]()
+        if let reference = question.reference, !reference.isEmpty {
+            referenceCellType.append(.reference(reference))
         }
         
-        tableView.setup(elements: elements, didSelect: completion)
+        let element = QuestionElement(id: question.id,
+                                      elements: elements + referenceCellType,
+                                      isMultiple: question.multiple,
+                                      index: -1,
+                                      isAnswered: question.isAnswered,
+                                      questionsCount: -1,
+                                      isSaved: question.isSaved)
+        
+        return element
+    }
+    
+    func makeResult(question: Question, currentAnswer: AnswerElement) -> QuestionElement {
+        let content: [QuestionContentCollectionType] = [
+            question.image.map { .image($0) },
+            question.video.map { .video($0) }
+        ].compactMap { $0 }
+        
+        let elements: [TestingCellType] = [
+            !content.isEmpty ? .content(content) : nil,
+            .question(question.question, html: question.questionHtml)
+        ].compactMap { $0 }
+        
+        let result = question.answers.map { questionAnswer -> AnswerResultElement in
+            let state: AnswerState = currentAnswer.answerIds.contains(questionAnswer.id)
+                ? questionAnswer.isCorrect ? .correct : .error
+                : questionAnswer.isCorrect ? question.multiple ? .warning : .correct : .initial
+            
+            return AnswerResultElement(answer: questionAnswer.answer,
+                                       answerHtml: questionAnswer.answerHtml,
+                                       image: questionAnswer.image,
+                                       state: state)
+        }
+        
+        let explanation: [TestingCellType]
+        let explanationText: TestingCellType?
+        if (question.explanation != nil || question.explanationHtml != nil) {
+            explanationText = .explanationText(question.explanation ?? "", html: question.explanationHtml ?? "")
+        } else {
+            explanationText = nil
+        }
+        let explanationImages = question.media.map { TestingCellType.explanationImage($0)}
+        if explanationText != nil || !explanationImages.isEmpty {
+            explanation = [.explanationTitle] + explanationImages + [explanationText].compactMap { $0 }
+        } else {
+            explanation = []
+        }
+        
+        var referenceCellType = [TestingCellType]()
+        if let reference = question.reference, !reference.isEmpty {
+            referenceCellType.append(.reference(reference))
+        }
+        
+        let element = QuestionElement(id: question.id,
+                                      elements: elements + [.result(result)] + explanation + referenceCellType,
+                                      isMultiple: question.multiple,
+                                      index: -1,
+                                      isAnswered: question.isAnswered,
+                                      questionsCount: -1,
+                                      isSaved: question.isSaved)
+        
+        return element
     }
     
     func openError() -> Observable<Void> {
@@ -237,6 +345,13 @@ private extension OTestView {
         ])
         
         NSLayoutConstraint.activate([
+            bottomView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            bottomView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            bottomView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            bottomView.heightAnchor.constraint(equalToConstant: ScreenSize.isIphoneXFamily ? 148.scale : 110.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
             preloader.centerXAnchor.constraint(equalTo: centerXAnchor),
             preloader.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
@@ -259,15 +374,24 @@ private extension OTestView {
         return view
     }
     
-    func makeTableView() -> OQuestionTableView {
-        let view = OQuestionTableView()
+    func makeTableView() -> QuestionTableView {
+        let view = QuestionTableView()
         view.layer.cornerRadius = 12.scale
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.layer.masksToBounds = true
-        view.contentInset = UIEdgeInsets(top: 32.scale, left: 0, bottom: 32.scale, right: 0)
-        view.separatorStyle = .none
-        view.showsVerticalScrollIndicator = false
+        view.contentInset = UIEdgeInsets(top: 32.scale, left: 0, bottom: ScreenSize.isIphoneXFamily ? 148.scale : 110.scale, right: 0)
         view.backgroundColor = Appearance.backgroundColor
+        view.separatorStyle = .none
+        view.contentInsetAdjustmentBehavior = .never
+        view.showsVerticalScrollIndicator = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeBottomView() -> TestBottomView {
+        let view = TestBottomView()
+        view.backgroundColor = UIColor.clear
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
