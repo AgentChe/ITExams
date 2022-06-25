@@ -15,7 +15,7 @@ protocol OCourseViewDelegate: AnyObject {
 
 final class OCourseView: OSlideView {
     weak var vc: UIViewController?
-    weak var courseDelegate: OCourseViewDelegate?
+    var courseDelegates = [Weak<OCourseViewDelegate>]()
     
     lazy var backButton = makeBackButton()
     lazy var headerLabel = makeHeaderLabel()
@@ -45,6 +45,21 @@ final class OCourseView: OSlideView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: Public
+extension OCourseView {
+    func add(delegate: OCourseViewDelegate) {
+        let weakly = delegate as AnyObject
+        courseDelegates.append(Weak<OCourseViewDelegate>(weakly))
+        courseDelegates = courseDelegates.filter { $0.weak != nil }
+    }
+
+    func remove(delegate: OCourseViewDelegate) {
+        if let index = courseDelegates.firstIndex(where: { $0.weak === delegate }) {
+            courseDelegates.remove(at: index)
+        }
     }
 }
 
@@ -114,7 +129,7 @@ private extension OCourseView {
                     return
                 }
                 
-                self.courseDelegate?.courseViewDidSelected(course: course)
+                self.courseDelegates.forEach { $0.weak?.courseViewDidSelected(course: course) }
                 
                 self.onNext()
             })

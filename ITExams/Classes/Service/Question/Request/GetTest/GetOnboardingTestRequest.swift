@@ -11,6 +11,7 @@ struct GetOnboardingTestRequest: APIRequestBody {
     let domain: String
     let apiKey: String
     let userToken: String
+    let courseId: Int
     
     var url: String {
         domain + "/api/testings/onboarding_set"
@@ -24,7 +25,7 @@ struct GetOnboardingTestRequest: APIRequestBody {
          [
             "_api_key": apiKey,
             "_user_token": userToken,
-            "course_id": 1
+            "course_id": courseId
         ]
     }
 }

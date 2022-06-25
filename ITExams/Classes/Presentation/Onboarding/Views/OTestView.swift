@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxRelay
+import RxCocoa
 
 protocol OTestViewDelegate: AnyObject {
     func testViewDidFinished()
@@ -31,6 +32,7 @@ final class OTestView: OSlideView {
     private lazy var observableRetrySingle = ObservableRetrySingle()
     
     private lazy var selectedExam = BehaviorRelay<Exam?>(value: nil)
+    private lazy var selectedCourse = BehaviorRelay<Course?>(value: nil)
     
     override init(step: OnboardingView.Step) {
         super.init(step: step)
@@ -48,30 +50,13 @@ final class OTestView: OSlideView {
 extension OTestView: OExamsViewDelegate {
     func examsDidSelected(element: Exam) {
         selectedExam.accept(element)
-        
-        func source() -> Single<Test?> {
-            questionManager
-                .obtainOnboardingTest(domain: element.domain,
-                                      apiKey: element.api,
-                                      forceUpdate: true)
-        }
-        
-        func trigger(error: Error) -> Observable<Void> {
-            openError()
-        }
-        
-        observableRetrySingle
-            .retry(source: { source() },
-                   trigger: { trigger(error: $0) })
-            .trackActivity(activity)
-            .asDriver(onErrorJustReturn: nil)
-            .compactMap { $0?.questions }
-            .drive(Binder(self) { base, questions in
-                base.start(questions: questions) {
-                    base.testViewDelegate?.testViewDidFinished()
-                }
-            })
-            .disposed(by: disposeBag)
+    }
+}
+
+// MARK: OCourseViewDelegate
+extension OTestView: OCourseViewDelegate {
+    func courseViewDidSelected(course: Course) {
+        selectedCourse.accept(course)
     }
 }
 
@@ -79,6 +64,52 @@ extension OTestView: OExamsViewDelegate {
 private extension OTestView {
     func initialize() {
         backgroundColor = Appearance.mainColor
+        
+        Driver
+            .combineLatest(
+                selectedExam
+                    .compactMap { $0 }
+                    .asDriver(onErrorDriveWith: .never()),
+                selectedCourse
+                    .compactMap { $0 }
+                    .asDriver(onErrorDriveWith: .never())
+            )
+            .flatMapLatest { [weak self] exam, course -> Driver<Test> in
+                guard let self = self else {
+                    return .never()
+                }
+                
+                func source() -> Single<Test> {
+                    self.questionManager
+                        .obtainOnboardingTest(domain: exam.domain,
+                                              apiKey: exam.api,
+                                              courseId: course.id,
+                                              forceUpdate: true)
+                        .flatMap { test -> Single<Test> in
+                            guard let test = test else {
+                                return .error(ContentError(.notContent))
+                            }
+                            
+                            return .just(test)
+                        }
+                }
+                
+                func trigger(error: Error) -> Observable<Void> {
+                    self.openError()
+                }
+                
+                return self.observableRetrySingle
+                    .retry(source: { source() },
+                           trigger: { trigger(error: $0) })
+                    .trackActivity(self.activity)
+                    .asDriver(onErrorDriveWith: .never())
+            }
+            .drive(Binder(self) { base, test in
+                base.start(questions: test.questions) {
+                    base.testViewDelegate?.testViewDidFinished()
+                }
+            })
+            .disposed(by: disposeBag)
         
         activity
             .drive(Binder(self) { base, activity in

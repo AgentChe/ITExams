@@ -25,7 +25,7 @@ protocol QuestionManagerProtocol {
                           includeAnsweredQuestions: Bool,
                           questionsCount: Int) -> Single<Test?>
     func obtainPlanTest(domain: String, apiKey: String, testId: Int) -> Single<Test?>
-    func obtainOnboardingTest(domain: String, apiKey: String, forceUpdate: Bool) -> Single<Test?>
+    func obtainOnboardingTest(domain: String, apiKey: String, courseId: Int, forceUpdate: Bool) -> Single<Test?>
     func obtainReview(domain: String, apiKey: String, courseId: Int, mode: Int, offset: Int) -> Single<[Review]>
     func saveQuestion(domain: String, apiKey: String, questionId: Int) -> Single<Void>
     func removeSavedQuestion(domain: String, apiKey: String, questionId: Int) -> Single<Void>
@@ -224,8 +224,8 @@ extension QuestionManager {
             .map { GetTestResponseMapper.map(from: $0, key: apiKey) }
     }
     
-    func obtainOnboardingTest(domain: String, apiKey: String, forceUpdate: Bool) -> Single<Test?> {
-        forceUpdate ? loadOnboardingTest(domain: domain, apiKey: apiKey) : cachedOnboardingTest()
+    func obtainOnboardingTest(domain: String, apiKey: String, courseId: Int, forceUpdate: Bool) -> Single<Test?> {
+        forceUpdate ? loadOnboardingTest(domain: domain, apiKey: apiKey, courseId: courseId) : cachedOnboardingTest()
     }
     
     func obtainReview(domain: String, apiKey: String, courseId: Int, mode: Int, offset: Int) -> Single<[Review]> {
@@ -330,14 +330,15 @@ extension QuestionManager {
 
 // MARK: Private
 private extension QuestionManager {
-    func loadOnboardingTest(domain: String, apiKey: String) -> Single<Test?> {
+    func loadOnboardingTest(domain: String, apiKey: String, courseId: Int) -> Single<Test?> {
         guard let userToken = sessionManager.getSession()?.userToken else {
             return .error(SignError.tokenNotFound)
         }
         
         let request = GetOnboardingTestRequest(domain: domain,
                                                apiKey: apiKey,
-                                               userToken: userToken)
+                                               userToken: userToken,
+                                               courseId: courseId)
         
         return xorRequestWrapper
             .callServerStringApi(requestBody: request, key: apiKey)
