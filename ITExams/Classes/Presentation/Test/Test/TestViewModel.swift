@@ -264,7 +264,8 @@ private extension TestViewModel {
                     test = self.questionManager.obtainQotdTest(domain: examEnvironment.exam.domain,
                                                                apiKey: examEnvironment.exam.api,
                                                                courseId: examEnvironment.course.id,
-                                                               activeSubscription: self.sessionManager.hasActiveSubscriptions())
+                                                               activeSubscription: self.sessionManager.hasActiveSubscriptions(),
+                                                               forceUpdate: true)
                                                .map { $0?.test }
                 case .randomSet:
                     test = self.questionManager.obtainRandomTest(domain: examEnvironment.exam.domain,

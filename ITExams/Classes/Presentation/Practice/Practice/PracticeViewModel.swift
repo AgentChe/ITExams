@@ -117,7 +117,8 @@ private extension PracticeViewModel {
                         .obtainQotdTest(domain: examEnvironment.exam.domain,
                                         apiKey: examEnvironment.exam.api,
                                         courseId: examEnvironment.course.id,
-                                        activeSubscription: false)
+                                        activeSubscription: false,
+                                        forceUpdate: false)
                         .map { qotdTest -> String? in
                             qotdTest?.test.questions.first?.question
                         }

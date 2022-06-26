@@ -12,7 +12,7 @@ protocol QuestionManagerProtocol {
     func obtainTest(domain: String, apiKey: String, courseId: Int, testId: Int?, time: Int?, activeSubscription: Bool) -> Single<Test?>
     func obtainTenTest(domain: String, apiKey: String, courseId: Int, activeSubscription: Bool) -> Single<Test?>
     func obtainFailedTest(domain: String, apiKey: String, courseId: Int, activeSubscription: Bool) -> Single<Test?>
-    func obtainQotdTest(domain: String, apiKey: String, courseId: Int, activeSubscription: Bool) -> Single<QotdTest?>
+    func obtainQotdTest(domain: String, apiKey: String, courseId: Int, activeSubscription: Bool, forceUpdate: Bool) -> Single<QotdTest?>
     func obtainRandomTest(domain: String, apiKey: String, courseId: Int, activeSubscription: Bool) -> Single<Test?>
     func obtainSavedTest(domain: String, apiKey: String, courseId: Int, activeSubscription: Bool) -> Single<Test?>
     func obtainQuickTest(domain: String, apiKey: String, courseId: Int, activeSubscription: Bool) -> Single<Test?>
@@ -115,8 +115,16 @@ extension QuestionManager {
             .map { GetTestResponseMapper.map(from: $0, key: apiKey) }
     }
     
-    func obtainQotdTest(domain: String, apiKey: String, courseId: Int, activeSubscription: Bool) -> Single<QotdTest?> {
-        cachedQotdTest(courseId: courseId)
+    func obtainQotdTest(domain: String,
+                        apiKey: String,
+                        courseId: Int,
+                        activeSubscription: Bool,
+                        forceUpdate: Bool) -> Single<QotdTest?> {
+        if forceUpdate {
+            return loadQotdTest(domain: domain, apiKey: apiKey, courseId: courseId, activeSubscription: activeSubscription)
+        }
+        
+        return cachedQotdTest(courseId: courseId)
             .flatMap { [weak self] test -> Single<QotdTest?> in
                 guard let self = self else {
                     return .never()
