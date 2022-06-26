@@ -55,7 +55,15 @@ extension PaygateTrialView {
         cell1SubTitleLabel.attributedText = "Paygate.FreeTrial.Cell1.SubTitle".localized.attributed(with: attrs)
         cell2SubTitleLabel.attributedText = String(format: "Paygate.FreeTrial.Cell2.SubTitle".localized, questionsCount).attributed(with: attrs)
         cell3SubTitleLabel.attributedText = "Paygate.FreeTrial.Cell3.SubTitle".localized.attributed(with: attrs)
-        cell4SubTitleLabel.attributedText = "Paygate.FreeTrial.Cell4.SubTitle".localized.attributed(with: attrs)
+        
+        if let date = Calendar.current.date(byAdding: .day, value: 7, to: Date()) {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM dd"
+            
+            let string = String(format: "Paygate.FreeTrial.Cell4.SubTitle".localized, dateFormatter.string(from: date))
+            
+            cell4SubTitleLabel.attributedText = string.attributed(with: attrs)
+        }
     }
     
     func setup(price: PaygatePrice) {

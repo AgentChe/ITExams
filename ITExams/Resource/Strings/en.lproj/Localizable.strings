@@ -124,7 +124,7 @@
 "Paygate.FreeTrial.Cell3.Title" = "Day 5: Trial Reminder";
 "Paygate.FreeTrial.Cell3.SubTitle" = "We’ll send you a notification. Cancel\nanytime in just 15 seconds";
 "Paygate.FreeTrial.Cell4.Title" = "Day 7: Trial Ends";
-"Paygate.FreeTrial.Cell4.SubTitle" = "Your subscritption will start Feb 22";
+"Paygate.FreeTrial.Cell4.SubTitle" = "Your subscritption will start %@";
 "Paygate.FreeTrial.Price" = "7 days free, then %@/year\nonly %@/week";
 "Paygate.FreeTrial.TrialButton" = "Start free trial";
 "Paygate.FreeTrial.PlansButton" = "View all plans";
