@@ -90,12 +90,14 @@ final class PaygateViewController: UIViewController {
         viewModel
             .buyed
             .emit(onNext: { [weak self] result in
-                if !result {
+                let (success, productId) = result
+                
+                if !success {
                     Toast.notify(with: "Paygate.Purchase.Failed".localized, style: .danger)
                     return
                 }
                 
-                self?.dismiss(with: .bied)
+                self?.buyed(productId: productId)
             })
             .disposed(by: disposeBag)
         
@@ -209,6 +211,29 @@ private extension PaygateViewController {
     
     func configureMode() {
         plansView.backButton.isHidden = mode == .onlyPlans
+    }
+    
+    func buyed(productId: String) {
+        guard productId == PaygateViewModel.Constants.monthlyTrial else {
+            dismiss(with: .bied)
+            return
+        }
+        
+        PushNotificationsManager.shared.retriveAuthorizationStatus { [weak self] status in
+            guard let self = self else {
+                return
+            }
+            
+            switch status {
+            case .authorized:
+                self.dismiss(with: .bied)
+            case .notDetermined, .denied:
+                let vc = RequestPushTokenViewController.make {
+                    self.dismiss(with: .bied)
+                }
+                self.present(vc, animated: false)
+            }
+        }
     }
     
     func dismiss(with result: PaygateViewControllerResult) {

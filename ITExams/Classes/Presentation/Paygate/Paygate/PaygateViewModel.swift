@@ -71,9 +71,9 @@ private extension PaygateViewModel {
             .asDriver(onErrorJustReturn: [])
     }
     
-    func makeBuyed() -> Signal<Bool> {
+    func makeBuyed() -> Signal<(Bool, String)> {
         let purchase = buy
-            .flatMapLatest { [weak self] productId -> Observable<Bool> in
+            .flatMapLatest { [weak self] productId -> Observable<(Bool, String)> in
                 guard let self = self else {
                     return .never()
                 }
@@ -90,10 +90,11 @@ private extension PaygateViewModel {
                     }
                     .trackActivity(self.activityIndicator)
                     .catchAndReturn(false)
+                    .map { ($0, productId) }
             }
         
         return purchase
-            .asSignal(onErrorJustReturn: false)
+            .asSignal(onErrorJustReturn: (false, ""))
     }
     
     func makeRestored() -> Signal<Bool> {

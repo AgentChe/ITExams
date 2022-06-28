@@ -295,3 +295,9 @@
 
 // MARK: TestViewer
 "TestViewer.Title" = "Question";
+
+// MARK: RequestPushToken
+"RequestPushToken.Title" = "Your 7-day trial has started";
+"RequestPushToken.SubTitle" = "You will get notifications about when your trial\nis about to end and more";
+"RequestPushToken.Remind" = "Remind me ";
+"RequestPushToken.Later" = "Maybe later";
