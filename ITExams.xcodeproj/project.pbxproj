@@ -337,6 +337,9 @@
 		DEC34614281971200069A060 /* TryAgainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC34613281971200069A060 /* TryAgainView.swift */; };
 		DEC34616281971E50069A060 /* ObservableRetrySingle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC34615281971E50069A060 /* ObservableRetrySingle.swift */; };
 		DEC34618281979350069A060 /* ContentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC34617281979350069A060 /* ContentError.swift */; };
+		DECF266D286B304E0012DF1C /* PushNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECF266C286B304E0012DF1C /* PushNotificationsManager.swift */; };
+		DECF2672286B306A0012DF1C /* PushNotificationsAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECF2671286B306A0012DF1C /* PushNotificationsAuthorizationStatus.swift */; };
+		DECF2674286B307E0012DF1C /* PushNotificationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECF2673286B307E0012DF1C /* PushNotificationsModel.swift */; };
 		DED4724327CE406600AEF8A6 /* OStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724227CE406600AEF8A6 /* OStartView.swift */; };
 		DED4724527CE4BF700AEF8A6 /* OMotivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724427CE4BF700AEF8A6 /* OMotivationView.swift */; };
 		DED4724827CE4C4B00AEF8A6 /* OMotivationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */; };
@@ -696,6 +699,9 @@
 		DEC34613281971200069A060 /* TryAgainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryAgainView.swift; sourceTree = "<group>"; };
 		DEC34615281971E50069A060 /* ObservableRetrySingle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableRetrySingle.swift; sourceTree = "<group>"; };
 		DEC34617281979350069A060 /* ContentError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentError.swift; sourceTree = "<group>"; };
+		DECF266C286B304E0012DF1C /* PushNotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsManager.swift; sourceTree = "<group>"; };
+		DECF2671286B306A0012DF1C /* PushNotificationsAuthorizationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsAuthorizationStatus.swift; sourceTree = "<group>"; };
+		DECF2673286B307E0012DF1C /* PushNotificationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsModel.swift; sourceTree = "<group>"; };
 		DED4724227CE406600AEF8A6 /* OStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OStartView.swift; sourceTree = "<group>"; };
 		DED4724427CE4BF700AEF8A6 /* OMotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMotivationView.swift; sourceTree = "<group>"; };
 		DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMotivationCell.swift; sourceTree = "<group>"; };
@@ -1058,15 +1064,7 @@
 		DE3FD5FD27E9D3FA00E76844 /* Paygate */ = {
 			isa = PBXGroup;
 			children = (
-				DE3FD61D27EADB6300E76844 /* Models */,
-				DE3FD60827E9FFE100E76844 /* Views */,
-				DE3FD5FE27E9D40600E76844 /* PaygateViewController.swift */,
-				DE3FD60027E9D41000E76844 /* PaygateViewModel.swift */,
-				DE3FD60427E9D4C200E76844 /* PaygateTrialView.swift */,
-				DE3FD60627E9FEA400E76844 /* PaygatePlansView.swift */,
-				DE3FD61927EA2AAE00E76844 /* PaygateViewControllerDelegate.swift */,
-				DE3FD61B27EA312700E76844 /* PaygateInteractor.swift */,
-				DE3FD62027EB280100E76844 /* PaygateView.swift */,
+				DECF266A286B23980012DF1C /* Paygate */,
 			);
 			path = Paygate;
 			sourceTree = "<group>";
@@ -1651,6 +1649,7 @@
 		DE93783F27C4B2600073F27C /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				DECF266B286B303C0012DF1C /* PushNotifications */,
 				DE1CA99627F2F79100C66DAD /* Analytics */,
 				DE2B101427DB1390005280DB /* Network */,
 				DE93784027C4B2600073F27C /* Extension */,
@@ -2169,6 +2168,40 @@
 			path = TryAgain;
 			sourceTree = "<group>";
 		};
+		DECF266A286B23980012DF1C /* Paygate */ = {
+			isa = PBXGroup;
+			children = (
+				DE3FD60827E9FFE100E76844 /* Views */,
+				DE3FD61D27EADB6300E76844 /* Models */,
+				DE3FD5FE27E9D40600E76844 /* PaygateViewController.swift */,
+				DE3FD60027E9D41000E76844 /* PaygateViewModel.swift */,
+				DE3FD60427E9D4C200E76844 /* PaygateTrialView.swift */,
+				DE3FD60627E9FEA400E76844 /* PaygatePlansView.swift */,
+				DE3FD61927EA2AAE00E76844 /* PaygateViewControllerDelegate.swift */,
+				DE3FD61B27EA312700E76844 /* PaygateInteractor.swift */,
+				DE3FD62027EB280100E76844 /* PaygateView.swift */,
+			);
+			path = Paygate;
+			sourceTree = "<group>";
+		};
+		DECF266B286B303C0012DF1C /* PushNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				DECF2670286B305F0012DF1C /* Models */,
+				DECF266C286B304E0012DF1C /* PushNotificationsManager.swift */,
+			);
+			path = PushNotifications;
+			sourceTree = "<group>";
+		};
+		DECF2670286B305F0012DF1C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DECF2671286B306A0012DF1C /* PushNotificationsAuthorizationStatus.swift */,
+				DECF2673286B307E0012DF1C /* PushNotificationsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		DED4724627CE4C4300AEF8A6 /* Atoms */ = {
 			isa = PBXGroup;
 			children = (
@@ -2394,6 +2427,7 @@
 				DE95A8AC283219D000809171 /* StepCollectionFinalCell.swift in Sources */,
 				DE95A8CD2832901E00809171 /* DailyGoalViewModel.swift in Sources */,
 				DE6BFDBC284E0E4F00F5CF20 /* Answer.swift in Sources */,
+				DECF2674286B307E0012DF1C /* PushNotificationsModel.swift in Sources */,
 				DE2B10C227DB14EE005280DB /* TestMode.swift in Sources */,
 				DE6BFDF2284F8E5400F5CF20 /* OQuestionFavoriteButton.swift in Sources */,
 				DE93789B27C4BF070073F27C /* SplashViewController.swift in Sources */,
@@ -2591,6 +2625,7 @@
 				DE1CA9A827F2FC6200C66DAD /* GetMonetizationResponseMapper.swift in Sources */,
 				DE6BFE062850966500F5CF20 /* GetQotdTestRequest.swift in Sources */,
 				DE95A87A282E307000809171 /* ProfileTabsView.swift in Sources */,
+				DECF2672286B306A0012DF1C /* PushNotificationsAuthorizationStatus.swift in Sources */,
 				DEC346042817D5BF0069A060 /* CoursesTableView.swift in Sources */,
 				DE3FD5FF27E9D40600E76844 /* PaygateViewController.swift in Sources */,
 				DE6BFDAA284E06FA00F5CF20 /* ReviewFilterButton.swift in Sources */,
@@ -2668,6 +2703,7 @@
 				DE5D0BF0285894A2000A1C9B /* TestEmptyViewController.swift in Sources */,
 				DE6BFDC2284E0F3400F5CF20 /* AnswerMapper.swift in Sources */,
 				DE95A8A9282ED40500809171 /* MyProfileResetProgressCell.swift in Sources */,
+				DECF266D286B304E0012DF1C /* PushNotificationsManager.swift in Sources */,
 				DE95A87C282E310200809171 /* ProfileTabView.swift in Sources */,
 				DE6BFDBA284E0E4300F5CF20 /* Question.swift in Sources */,
 				DE2B10CF27DB14EE005280DB /* IAPProduct.swift in Sources */,

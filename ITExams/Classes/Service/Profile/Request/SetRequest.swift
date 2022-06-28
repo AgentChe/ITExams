@@ -16,6 +16,7 @@ struct SetRequest: APIRequestBody {
     private let examDate: String?
     private let testMinutes: Int?
     private let courseId: Int?
+    private let pushToken: String?
     
     init(domain: String,
          apiKey: String,
@@ -24,7 +25,8 @@ struct SetRequest: APIRequestBody {
          testMode: Int? = nil,
          examDate: String? = nil,
          testMinutes: Int? = nil,
-         courseId: Int? = nil) {
+         courseId: Int? = nil,
+         pushToken: String? = nil) {
         self.domain = domain
         self.apiKey = apiKey
         self.userToken = userToken
@@ -33,6 +35,7 @@ struct SetRequest: APIRequestBody {
         self.examDate = examDate
         self.testMinutes = testMinutes
         self.courseId = courseId
+        self.pushToken = pushToken
     }
     
     var url: String {
@@ -67,6 +70,10 @@ struct SetRequest: APIRequestBody {
         
         if let courseId = courseId {
             params["current_application_course_id"] = courseId
+        }
+        
+        if let pushToken = pushToken {
+            params["notification_key"] = pushToken
         }
         
         return params

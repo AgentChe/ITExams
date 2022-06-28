@@ -16,6 +16,7 @@ struct OCombineData {
     let studyMode: OStudyModeElement
     let testMinutes: Int
     let testDays: [DayOfWeek]
+    let pushToken: String?
 }
 
 final class OnboardingCombineData {
@@ -27,6 +28,7 @@ final class OnboardingCombineData {
     private var studyMode: OStudyModeElement?
     private var testMinutes: Int?
     private var testDays: [DayOfWeek]?
+    private var pushToken: String?
     
     func combineData() -> OCombineData? {
         guard
@@ -48,7 +50,8 @@ final class OnboardingCombineData {
                             examDate: examDate,
                             studyMode: studyMode,
                             testMinutes: testMinutes,
-                            testDays: testDays)
+                            testDays: testDays,
+                            pushToken: pushToken)
     }
 }
 

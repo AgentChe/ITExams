@@ -90,7 +90,8 @@ private extension OPlanView {
                                          testMinutes: combineData.testMinutes,
                                          testDaysOfWeek: combineData.testDays,
                                          exam: combineData.exam,
-                                         course: combineData.course)
+                                         course: combineData.course,
+                                         pushToken: combineData.pushToken)
                                     .map { true }
                                     .catchAndReturn(false)
                             }

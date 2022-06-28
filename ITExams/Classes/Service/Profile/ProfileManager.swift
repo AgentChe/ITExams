@@ -17,7 +17,8 @@ protocol ProfileManagerProtocol {
              testMinutes: Int?,
              testDaysOfWeek: [DayOfWeek]?,
              exam: Exam?,
-             course: Course?) -> Single<Void>
+             course: Course?,
+             pushToken: String?) -> Single<Void>
     func obtainProfile(forceUpdate: Bool) -> Single<Profile?>
     func obtainReferenceDateOfExam() -> Single<Date?>
     func obtainDateOfExam(forceUpdate: Bool) -> Single<Date?>
@@ -55,7 +56,8 @@ extension ProfileManager {
              testMinutes: Int? = nil,
              testDaysOfWeek: [DayOfWeek]? = nil,
              exam: Exam? = nil,
-             course: Course? = nil) -> Single<Void> {
+             course: Course? = nil,
+             pushToken: String? = nil) -> Single<Void> {
         guard let userToken = sessionManager.getSession()?.userToken else {
             return .error(SignError.tokenNotFound)
         }
@@ -67,7 +69,8 @@ extension ProfileManager {
                                  testMode: testMode?.code(),
                                  examDate: examDateStringFormatted(examDate),
                                  testMinutes: testMinutes,
-                                 courseId: course?.id)
+                                 courseId: course?.id,
+                                 pushToken: pushToken)
         
         return defaultRequestWrapper
             .callServerApi(requestBody: request)
