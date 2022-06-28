@@ -65,7 +65,7 @@ private extension AppDelegate {
     func runProvider(on view: UIView) {
         let settings = SDKSettings(backendBaseUrl: GlobalDefinitions.rushSDKHost,
                                    backendApiKey: GlobalDefinitions.rushSDKApiKey,
-                                   amplitudeApiKey: GlobalDefinitions.amplitudeApiKey,
+                                   amplitudeApiKey: nil,
                                    appsFlyerApiKey: nil,
                                    facebookActive: false,
                                    branchActive: false,
