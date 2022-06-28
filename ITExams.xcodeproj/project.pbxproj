@@ -708,6 +708,7 @@
 		DECF2676286B363A0012DF1C /* RequestPushTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPushTokenViewController.swift; sourceTree = "<group>"; };
 		DECF2678286B36430012DF1C /* RequestPushTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPushTokenView.swift; sourceTree = "<group>"; };
 		DECF267A286B3B260012DF1C /* RequestPushTokenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPushTokenViewModel.swift; sourceTree = "<group>"; };
+		DECF267C286B4D940012DF1C /* ITExams.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ITExams.entitlements; sourceTree = "<group>"; };
 		DED4724227CE406600AEF8A6 /* OStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OStartView.swift; sourceTree = "<group>"; };
 		DED4724427CE4BF700AEF8A6 /* OMotivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMotivationView.swift; sourceTree = "<group>"; };
 		DED4724727CE4C4B00AEF8A6 /* OMotivationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMotivationCell.swift; sourceTree = "<group>"; };
@@ -1616,6 +1617,7 @@
 		DE93782227C4AF350073F27C /* ITExams */ = {
 			isa = PBXGroup;
 			children = (
+				DECF267C286B4D940012DF1C /* ITExams.entitlements */,
 				DE93783E27C4B2380073F27C /* Classes */,
 				DE93783727C4B00C0073F27C /* Resource */,
 			);
@@ -2928,9 +2930,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ITExams/ITExams.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = AY43JM5PH6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ITExams/Info.plist;
@@ -2945,7 +2948,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = prepbundle.it;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "ITExams AppStore";
@@ -2961,9 +2964,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ITExams/ITExams.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = AY43JM5PH6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ITExams/Info.plist;
@@ -2978,7 +2982,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = prepbundle.it;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "ITExams AppStore";
