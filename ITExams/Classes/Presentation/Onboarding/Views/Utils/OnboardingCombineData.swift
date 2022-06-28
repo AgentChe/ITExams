@@ -106,4 +106,8 @@ extension OnboardingCombineData: ODailyGoalViewDelegate {
     func dailyGoalDidSelected(daysOfWeek: [DayOfWeek]) {
         self.testDays = daysOfWeek
     }
+    
+    func dailyGoalDidReceived(pushToken: String?) {
+        self.pushToken = pushToken
+    }
 }
