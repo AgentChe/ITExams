@@ -128,33 +128,53 @@ private extension TestViewModel {
         let didFinishTest = timer
             .compactMap { $0 == 0 ? () : nil }
             .withLatestFrom(userTestId)
-            .withLatestFrom(examEnvironment) { ($0, $1) }
-            .flatMap { [weak self] userTestId, examEnvironment -> Single<Int> in
-                guard let self = self, let examEnvironment = examEnvironment else {
-                    return .never()
-                }
-                
-                return self.questionManager
-                    .finishTest(domain: examEnvironment.exam.domain,
-                                apiKey: examEnvironment.exam.api,
-                                userTestId: userTestId)
-                    .map { userTestId }
-            }
         
         let submit = didTapSubmit
             .withLatestFrom(userTestId)
         
-        return Observable.merge(didFinishTest, submit)
+        let userTestId = Observable
+            .merge(didFinishTest, submit)
+            .withLatestFrom(examEnvironment) { ($0, $1) }
+            .flatMapLatest { [weak self] args -> Observable<Int> in
+                let (userTestId, examEnvironment) = args
+                
+                guard let self = self, let exam = examEnvironment?.exam else {
+                    return .never()
+                }
+                
+                func source() -> Single<Int> {
+                    self.questionManager
+                        .finishTest(domain: exam.domain,
+                                    apiKey: exam.api,
+                                    userTestId: userTestId)
+                        .map { userTestId }
+                }
+                
+                func trigger(error: Error) -> Observable<Void> {
+                    guard let tryAgain = self.tryAgain?(error) else {
+                        return .empty()
+                    }
+                    
+                    return tryAgain
+                }
+
+                return self.observableRetrySingle
+                    .retry(source: { source() },
+                           trigger: { trigger(error: $0) })
+                    .trackActivity(self.sendAnswerActivityIndicator)
+            }
+        
+        return userTestId
             .withLatestFrom(courseName) { ($0, $1) }
             .withLatestFrom(testType) { ($0.0, $0.1, $1) }
             .withLatestFrom(examEnvironment) { ($0.0, $0.1, $0.2, $1) }
             .compactMap { userTestId, courseName, testType, examEnvironment -> TestFinish? in
-                guard let testType = testType, let examEnvironment = examEnvironment else {
+                guard let testType = testType, let exam = examEnvironment?.exam else {
                     return nil
                 }
                 
-                return TestFinish(domain: examEnvironment.exam.domain,
-                                  apiKey: examEnvironment.exam.api,
+                return TestFinish(domain: exam.domain,
+                                  apiKey: exam.api,
                                   userTestId: userTestId,
                                   courseName: courseName,
                                   testType: testType)
