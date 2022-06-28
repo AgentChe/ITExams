@@ -565,7 +565,7 @@ private extension TestViewModel {
                         let isCorrect = !result.contains(where: { $0.state == .warning || $0.state == .error })
                         self?.logAnswerAnalitycs(isCorrect: isCorrect, courseName: courseName)
                     } else {
-                        let isCorrect = result.contains(where: { $0.state == .correct })
+                        let isCorrect = !result.contains(where: { $0.state == .error })
                         self?.logAnswerAnalitycs(isCorrect: isCorrect, courseName: courseName)
                     }
                     

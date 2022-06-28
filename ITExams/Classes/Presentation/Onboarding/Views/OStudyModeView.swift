@@ -48,6 +48,13 @@ final class OStudyModeView: OSlideView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func moveToThis() {
+        super.moveToThis()
+        
+        AmplitudeManager.shared
+            .logEvent(name: "Exam Mode Screen")
+    }
 }
 
 // MARK: Private
@@ -66,6 +73,9 @@ private extension OStudyModeView {
                 }
                 
                 self.studyModeDelegate?.studyModeViewDidSelected(element: element)
+                
+                AmplitudeManager.shared
+                    .logEvent(name: element.code.analytics)
                 
                 self.onNext()
             })
@@ -215,5 +225,19 @@ private extension OStudyModeView {
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
+    }
+}
+
+// MARK: Additional
+private extension TestMode {
+    var analytics: String {
+        switch self {
+        case .fullComplect:
+            return "full support"
+        case .noExplanations:
+            return "without explanations"
+        case .onAnExam:
+            return "exam style"
+        }
     }
 }

@@ -39,6 +39,9 @@ final class OQuizResultView: OSlideView {
     override func moveToThis() {
         super.moveToThis()
         
+        AmplitudeManager.shared
+            .logEvent(name: "Onboarding Screen 3")
+        
         beginnerFilledWidth.constant = 108.scale
         
         UIView.animate(withDuration: 1, animations: { [weak self] in

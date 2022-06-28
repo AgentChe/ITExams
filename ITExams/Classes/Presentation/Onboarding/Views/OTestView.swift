@@ -35,6 +35,7 @@ final class OTestView: OSlideView {
     
     private lazy var selectedExam = BehaviorRelay<Exam?>(value: nil)
     private lazy var selectedCourse = BehaviorRelay<Course?>(value: nil)
+    private lazy var currentIndex = BehaviorRelay<Int?>(value: nil)
     
     override init(step: OnboardingView.Step) {
         super.init(step: step)
@@ -67,15 +68,35 @@ private extension OTestView {
     func initialize() {
         backgroundColor = Appearance.mainColor
         
+        let exam = selectedExam
+            .compactMap { $0 }
+            .asDriver(onErrorDriveWith: .never())
+        
+        let course = selectedCourse
+            .compactMap { $0 }
+            .asDriver(onErrorDriveWith: .never())
+        
+        let index = currentIndex
+            .compactMap { $0 }
+            .asDriver(onErrorDriveWith: .never())
+        
         Driver
-            .combineLatest(
-                selectedExam
-                    .compactMap { $0 }
-                    .asDriver(onErrorDriveWith: .never()),
-                selectedCourse
-                    .compactMap { $0 }
-                    .asDriver(onErrorDriveWith: .never())
-            )
+            .combineLatest(course, index)
+            .drive(Binder(self) { base, args in
+                let (course, index) = args
+                
+                AmplitudeManager.shared
+                    .logEvent(name: "Question Screen",
+                              parameters: [
+                                "course": course.name,
+                                "mode": "onboarding",
+                                "step": index
+                              ])
+            })
+            .disposed(by: disposeBag)
+        
+        Driver
+            .combineLatest(exam, course)
             .flatMapLatest { [weak self] exam, course -> Driver<Test> in
                 guard let self = self else {
                     return .never()
@@ -172,6 +193,8 @@ private extension OTestView {
             .letterSpacing(-0.44.scale)
         let progress = String(format: "%i/%i", index + 1, questions.count)
         progressLabel.attributedText = progress.attributed(with: attrs)
+        
+        currentIndex.accept(index + 1)
         
         favoriteButton.question = question
     }
@@ -275,6 +298,9 @@ private extension OTestView {
                                        state: state)
         }
         
+        let isCorrect = !result.contains(where: { $0.state == .warning || $0.state == .error })
+        logAnswered(isCorrect: isCorrect)
+        
         let explanation: [TestingCellType]
         let explanationText: TestingCellType?
         if (question.explanation != nil || question.explanationHtml != nil) {
@@ -303,6 +329,21 @@ private extension OTestView {
                                       isSaved: question.isSaved)
         
         return element
+    }
+    
+    func logAnswered(isCorrect: Bool) {
+        guard let courseName = selectedCourse.value?.name else {
+            return
+        }
+        
+        let logName = isCorrect ? "Question Answered Correctly" : "Question Answered Incorrectly"
+        
+        AmplitudeManager.shared
+            .logEvent(name: logName,
+                      parameters: [
+                        "course": courseName,
+                        "mode": "onboarding"
+                      ])
     }
     
     func openError() -> Observable<Void> {

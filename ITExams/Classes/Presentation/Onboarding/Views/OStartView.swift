@@ -30,6 +30,9 @@ final class OStartView: OSlideView {
 private extension OStartView {
     func initialize() {
         backgroundColor = Appearance.backgroundColor
+        
+        AmplitudeManager.shared
+            .logEvent(name: "Welcome Screen")
     }
 }
 

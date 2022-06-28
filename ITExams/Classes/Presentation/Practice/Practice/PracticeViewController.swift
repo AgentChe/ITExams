@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RushSDK
 
 final class PracticeViewController: UIViewController {
     lazy var mainView = PracticeView()
@@ -21,6 +22,9 @@ final class PracticeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        AmplitudeManager.shared
+            .logEvent(name: "Study Screen")
         
         viewModel.tryAgain = { [weak self] error -> Observable<Void> in
             guard let self = self else {
@@ -78,14 +82,23 @@ extension PracticeViewController: PracticeTableViewDelegate {
     }
     
     func practiceTableDidTappedDailyQuestion() {
+        AmplitudeManager.shared
+            .logEvent(name: "Study Tap", parameters: ["what": "question of the day"])
+        
         TestCoordinator.shared.start(testType: .qotd, from: self)
     }
     
     func practiceTableDidTappedRandomTest() {
+        AmplitudeManager.shared
+            .logEvent(name: "Study Tap", parameters: ["what": "random set"])
+        
         TestCoordinator.shared.start(testType: .randomSet, from: self)
     }
     
     func practiceTableDidTappedMissedTest(questionsCount: Int) {
+        AmplitudeManager.shared
+            .logEvent(name: "Study Tap", parameters: ["what": "missed questions"])
+        
         if questionsCount == 0 {
             let vc = TestEmptyViewController.make(mode: .noMissed)
             vc.delegate = self
@@ -96,10 +109,16 @@ extension PracticeViewController: PracticeTableViewDelegate {
     }
     
     func practiceTableDidTappedQuickTest() {
+        AmplitudeManager.shared
+            .logEvent(name: "Study Tap", parameters: ["what": "quick questions"])
+        
         TestCoordinator.shared.start(testType: .quick, from: self)
     }
     
     func practiceTableDidTappedSavedTest(questionsCount: Int) {
+        AmplitudeManager.shared
+            .logEvent(name: "Study Tap", parameters: ["what": "saved questions"])
+        
         if questionsCount == 0 {
             let vc = TestEmptyViewController.make(mode: .noSaved)
             vc.delegate = self
@@ -110,6 +129,9 @@ extension PracticeViewController: PracticeTableViewDelegate {
     }
     
     func practiceTableDidTappedCustomTest() {
+        AmplitudeManager.shared
+            .logEvent(name: "Study Tap", parameters: ["what": "custom test"])
+        
         let vc = CustomMadeTestViewController.make()
         vc.delegate = self
         present(vc, animated: true)

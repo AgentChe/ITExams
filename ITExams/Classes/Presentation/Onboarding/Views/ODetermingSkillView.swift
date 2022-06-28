@@ -29,6 +29,9 @@ final class ODetermingSkillView: OSlideView {
     override func moveToThis() {
         super.moveToThis()
         
+        AmplitudeManager.shared
+            .logEvent(name: "Onboarding Screen 2")
+        
         progressView.progressAnimation(duration: 4.5)
         calculatePercent()
     }

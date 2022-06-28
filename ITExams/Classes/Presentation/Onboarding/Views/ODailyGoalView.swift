@@ -46,6 +46,9 @@ final class ODailyGoalView: OSlideView {
     override func moveToThis() {
         super.moveToThis()
         
+        AmplitudeManager.shared
+            .logEvent(name: "Days to Study Screen")
+        
         pickerView.selectRow(2, inComponent: 0, animated: false)
     }
 }

@@ -31,6 +31,13 @@ final class OQuizSolutionView: OSlideView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func moveToThis() {
+        super.moveToThis()
+        
+        AmplitudeManager.shared
+            .logEvent(name: "Quiz Proposal Screen")
+    }
 }
 
 // MARK: Private
@@ -41,11 +48,17 @@ private extension OQuizSolutionView {
     
     @objc
     func didSkip() {
+        AmplitudeManager.shared
+            .logEvent(name: "Quiz Proposal Tap", parameters: ["what": "skip"])
+        
         quizSolutionDelegate?.quizSolutionDidSkip()
     }
     
     @objc
     func didStart() {
+        AmplitudeManager.shared
+            .logEvent(name: "Quiz Proposal Tap", parameters: ["what": "start"])
+        
         quizSolutionDelegate?.quizSolutionDidStart()
     }
 }

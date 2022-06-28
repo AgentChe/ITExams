@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import OtterScaleiOS
+import RushSDK
 
 final class PaygateViewController: UIViewController {
     enum Mode {
@@ -137,17 +138,19 @@ final class PaygateViewController: UIViewController {
             .disposed(by: disposeBag)
         
         trialView.plansButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else {
-                    return
-                }
+            .bind(to: Binder(self) { base, void in
+                AmplitudeManager.shared
+                    .logEvent(name: "Paygate Screen", parameters: ["type": "all_plans"])
                 
-                self.mainView.moveToPlans()
+                base.mainView.moveToPlans()
             })
             .disposed(by: disposeBag)
         
         plansView.backButton.rx.tap
             .bind(to: Binder(self) { base, void in
+                AmplitudeManager.shared
+                    .logEvent(name: "Paygate Screen", parameters: ["type": "trial_plan"])
+                
                 base.mainView.backToTrial()
             })
             .disposed(by: disposeBag)

@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RushSDK
 
 final class CoursesViewController: UIViewController {
     lazy var mainView = CoursesView()

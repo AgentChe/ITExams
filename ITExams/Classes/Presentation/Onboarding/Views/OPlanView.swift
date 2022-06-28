@@ -50,6 +50,9 @@ final class OPlanView: OSlideView {
     override func moveToThis() {
         super.moveToThis()
         
+        AmplitudeManager.shared
+            .logEvent(name: "Onboarding Screen 5")
+        
         openUp()
     }
 }
