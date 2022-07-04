@@ -19,6 +19,7 @@ protocol ProfileManagerProtocol {
              exam: Exam?,
              course: Course?,
              pushToken: String?) -> Single<Void>
+    func resetCourse(domain: String, apiKey: String) -> Single<Void>
     func obtainProfile(forceUpdate: Bool) -> Single<Profile?>
     func obtainReferenceDateOfExam() -> Single<Date?>
     func obtainDateOfExam(forceUpdate: Bool) -> Single<Date?>
@@ -86,6 +87,20 @@ extension ProfileManager {
                 self.store(testDaysOfWeek: testDaysOfWeek)
                 self.store(exam: exam, course: course)
             })
+    }
+    
+    func resetCourse(domain: String, apiKey: String) -> Single<Void> {
+        guard let userToken = sessionManager.getSession()?.userToken else {
+            return .error(SignError.tokenNotFound)
+        }
+        
+        let request = ResetCourseRequest(domain: domain,
+                                         apiKey: apiKey,
+                                         userToken: userToken)
+        
+        return defaultRequestWrapper
+            .callServerApi(requestBody: request)
+            .mapToVoid()
     }
     
     func obtainProfile(forceUpdate: Bool) -> Single<Profile?> {

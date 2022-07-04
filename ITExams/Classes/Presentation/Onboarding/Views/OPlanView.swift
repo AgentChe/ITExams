@@ -89,8 +89,8 @@ private extension OPlanView {
                                          testMode: combineData.studyMode.code,
                                          testMinutes: combineData.testMinutes,
                                          testDaysOfWeek: combineData.testDays,
-                                         exam: combineData.exam,
-                                         course: combineData.course,
+                                         exam: combineData.exam.code == exam.code ? combineData.exam : nil,
+                                         course: combineData.exam.code == exam.code ? combineData.course : nil,
                                          pushToken: combineData.pushToken)
                                     .map { true }
                                     .catchAndReturn(false)

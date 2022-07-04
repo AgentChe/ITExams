@@ -58,11 +58,15 @@ private extension ExamAndCourseViewModel {
                             
                             let requests = exams
                                 .map { environment -> Single<Void> in
-                                    self.profileManager.set(domain: environment.domain,
-                                                            apiKey: environment.api,
-                                                            exam: save.exam,
-                                                            course: save.course
-                                    )
+                                    if environment.code == save.exam.code {
+                                        return self.profileManager.set(domain: environment.domain,
+                                                                       apiKey: environment.api,
+                                                                       exam: save.exam,
+                                                                       course: save.course)
+                                    } else {
+                                        return self.profileManager.resetCourse(domain: environment.domain,
+                                                                               apiKey: environment.api)
+                                    }
                                 }
                             
                             return Single

@@ -137,6 +137,7 @@
 		DE60B3022872DC5400C3AD11 /* ExamAndCourseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE60B3012872DC5400C3AD11 /* ExamAndCourseTableView.swift */; };
 		DE60B3042872DC6600C3AD11 /* ExamAndCourseTableElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE60B3032872DC6600C3AD11 /* ExamAndCourseTableElement.swift */; };
 		DE60B3062872DC8100C3AD11 /* ExamAndCourseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE60B3052872DC8100C3AD11 /* ExamAndCourseTableCell.swift */; };
+		DE60B3082873170E00C3AD11 /* ResetCourseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE60B3072873170E00C3AD11 /* ResetCourseRequest.swift */; };
 		DE6BFD9F284E021A00F5CF20 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */; };
 		DE6BFDA1284E022200F5CF20 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */; };
 		DE6BFDA5284E023400F5CF20 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDA4284E023400F5CF20 /* ReviewView.swift */; };
@@ -506,6 +507,7 @@
 		DE60B3012872DC5400C3AD11 /* ExamAndCourseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamAndCourseTableView.swift; sourceTree = "<group>"; };
 		DE60B3032872DC6600C3AD11 /* ExamAndCourseTableElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamAndCourseTableElement.swift; sourceTree = "<group>"; };
 		DE60B3052872DC8100C3AD11 /* ExamAndCourseTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamAndCourseTableCell.swift; sourceTree = "<group>"; };
+		DE60B3072873170E00C3AD11 /* ResetCourseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetCourseRequest.swift; sourceTree = "<group>"; };
 		DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		DE6BFDA4284E023400F5CF20 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
@@ -994,6 +996,7 @@
 				DE2B106A27DB14ED005280DB /* LoginRequest.swift */,
 				DE2B106B27DB14ED005280DB /* SyncTokensRequest.swift */,
 				DE2B106F27DB14EE005280DB /* SetRequest.swift */,
+				DE60B3072873170E00C3AD11 /* ResetCourseRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -2488,6 +2491,7 @@
 				DE95A8AC283219D000809171 /* StepCollectionFinalCell.swift in Sources */,
 				DE95A8CD2832901E00809171 /* DailyGoalViewModel.swift in Sources */,
 				DE6BFDBC284E0E4F00F5CF20 /* Answer.swift in Sources */,
+				DE60B3082873170E00C3AD11 /* ResetCourseRequest.swift in Sources */,
 				DECF2674286B307E0012DF1C /* PushNotificationsModel.swift in Sources */,
 				DE2B10C227DB14EE005280DB /* TestMode.swift in Sources */,
 				DE6BFDF2284F8E5400F5CF20 /* OQuestionFavoriteButton.swift in Sources */,

@@ -132,11 +132,15 @@ private extension CoursesViewModel {
                             
                             let requests = exams
                                 .map { environment -> Single<Void> in
-                                    self.profileManager.set(domain: environment.domain,
-                                                            apiKey: environment.api,
-                                                            exam: exam,
-                                                            course: course
-                                    )
+                                    if environment.code == exam.code {
+                                        return self.profileManager.set(domain: environment.domain,
+                                                                       apiKey: environment.api,
+                                                                       exam: exam,
+                                                                       course: course)
+                                    } else {
+                                        return self.profileManager.resetCourse(domain: environment.domain,
+                                                                               apiKey: environment.api)
+                                    }
                                 }
                             
                             return Single
