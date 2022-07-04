@@ -52,7 +52,7 @@ final class ODailyGoalView: OSlideView {
         
         PushNotificationsManager.shared.add(observer: self)
         
-        pickerView.selectRow(2, inComponent: 0, animated: false)
+        pickerView.selectRow(10, inComponent: 0, animated: false)
     }
 }
 
@@ -77,7 +77,7 @@ extension ODailyGoalView: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        30
+        51
     }
 }
 
@@ -95,7 +95,7 @@ extension ODailyGoalView: UIPickerViewDelegate {
             .textColor(Appearance.blackColor)
             .font(Fonts.Inter.bold(size: 32.scale))
         
-        let string = String(row + 1)
+        let string = String(row + 10)
         
         label?.attributedText = string.attributed(with: attrs)
         
@@ -130,7 +130,7 @@ private extension ODailyGoalView {
     
     func selectedTestMinutes() {
         let row = self.pickerView.selectedRow(inComponent: 0)
-        let minutes = row + 1
+        let minutes = row + 10
         
         dailyGoalDelegate?.dailyGoalDidSelected(testMinutes: minutes)
     }

@@ -73,7 +73,7 @@ extension DailyGoalView: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        30
+        51
     }
 }
 
@@ -91,7 +91,7 @@ extension DailyGoalView: UIPickerViewDelegate {
             .textColor(Appearance.blackColor)
             .font(Fonts.Inter.bold(size: 32.scale))
         
-        let string = String(row + 1)
+        let string = String(row + 10)
         
         label?.attributedText = string.attributed(with: attrs)
         

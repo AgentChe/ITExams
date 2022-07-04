@@ -76,7 +76,7 @@ extension DailyGoalViewController {
 private extension DailyGoalViewController {
     func save() {
         let row = mainView.pickerView.selectedRow(inComponent: 0)
-        let minutes = row + 1
+        let minutes = row + 10
         
         let days = [mainView.suDayView,
                     mainView.mnDayView,
