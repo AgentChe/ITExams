@@ -41,7 +41,7 @@ private extension CoursesViewModel {
                 func source() -> Single<[(Exam, [Course])]> {
                     let zipped = exams.map { exam -> Single<(Exam, [Course])> in
                         return self.coursesManager
-                            .retrieveCourses(domain: exam.domain, apiKey: exam.api)
+                            .obtainCourses(domain: exam.domain, apiKey: exam.api)
                             .map { courses -> (Exam, [Course]) in
                                 (exam, courses)
                             }

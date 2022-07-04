@@ -8,7 +8,7 @@
 import RxSwift
 
 protocol CoursesManagerProtocol: AnyObject {
-    func retrieveCourses(domain: String, apiKey: String) -> Single<[Course]>
+    func obtainCourses(domain: String, apiKey: String) -> Single<[Course]>
 }
 
 final class CoursesManager: CoursesManagerProtocol {
@@ -23,7 +23,7 @@ final class CoursesManager: CoursesManagerProtocol {
 
 // MARK: Public
 extension CoursesManager {
-    func retrieveCourses(domain: String, apiKey: String) -> Single<[Course]> {
+    func obtainCourses(domain: String, apiKey: String) -> Single<[Course]> {
         guard let userToken = sessionManager.getSession()?.userToken else {
             return .deferred { .just([]) }
         }

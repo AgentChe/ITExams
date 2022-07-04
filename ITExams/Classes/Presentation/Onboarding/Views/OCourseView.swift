@@ -77,7 +77,7 @@ extension OCourseView: OExamsViewDelegate {
         
         func source() -> Single<[Course]> {
             coursesManager
-                .retrieveCourses(domain: element.domain, apiKey: element.api)
+                .obtainCourses(domain: element.domain, apiKey: element.api)
         }
         
         func trigger(error: Error) -> Observable<Void> {
@@ -123,11 +123,7 @@ private extension OCourseView {
         backgroundColor = Appearance.backgroundColor
         
         button.rx.tap
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                
+            .bind(to: Binder(self) { base, void in
                 guard let element = self.tableView.elements.first(where: { $0.isSelected }) else {
                     return
                 }
@@ -136,22 +132,18 @@ private extension OCourseView {
                     return
                 }
                 
-                self.courseDelegates.forEach { $0.weak?.courseViewDidSelected(course: course) }
+                base.courseDelegates.forEach { $0.weak?.courseViewDidSelected(course: course) }
                 
                 AmplitudeManager.shared
                     .logEvent(name: "App Tap", parameters: ["what": course.name])
                 
-                self.onNext()
+                base.onNext()
             })
             .disposed(by: disposeBag)
         
         activity
-            .drive(onNext: { [weak self] activity in
-                guard let self = self else {
-                    return
-                }
-                
-                activity ? self.preloader.startAnimating() : self.preloader.stopAnimating()
+            .drive(Binder(preloader) { base, activity in
+                activity ? base.startAnimating() : base.stopAnimating()
             })
             .disposed(by: disposeBag)
     }
