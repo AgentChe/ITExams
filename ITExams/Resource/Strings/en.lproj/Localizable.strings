@@ -18,7 +18,7 @@
 
 // MARK: Splash
 "Splash.Name" = "IT Exams";
-"Splash.Text" = "Personalized study prep";
+"Splash.Text" = "Personalized exam prep";
 "Splash.Preloader1" = "Checking your account...";
 "Splash.Preloader2" = "Syncing the question bank...";
 "Splash.Preloader3" = "Setting up your account...";
@@ -41,21 +41,21 @@
 
 // MARK: Onboarding
 "Onboarding.Start.Header" = "Personal Plan";
-"Onboarding.Start.Title" = "Let’s build together\nyour study program";
-"Onboarding.Start.SubTitle" = "First, let’s find out your regular study norm. For its calculation we will need to know some information about you.";
+"Onboarding.Start.Title" = "Let’s build your\npersonal study program";
+"Onboarding.Start.SubTitle" = "We will need to gather some information about your habbits, your current level and the exam you are studying for.";
 "Onboarding.Start.Button" = "Let’s go";
 "Onboarding.Motivation.Header" = "Motivation";
-"Onboarding.Motivation.Title" = "How the App Name\ncan help you?";
-"Onboarding.Motivation.SubTitle" = "Don’t worry, you’ll still have access to every feature";
-"Onboarding.Motivation.Cell1" = "Expand my knowledge";
+"Onboarding.Motivation.Title" = "How exactly we\ncan help you?";
+"Onboarding.Motivation.SubTitle" = "We'll use this data to build your personal study plan";
+"Onboarding.Motivation.Cell1" = "Get to know all questions";
 "Onboarding.Motivation.Cell2" = "Keep track of progress";
 "Onboarding.Motivation.Cell3" = "Develop a learning habit";
 "Onboarding.Age.Header" = "Assessment";
 "Onboarding.Age.Title" = "What is your age?";
-"Onboarding.Age.SubTitle" = "It will give you the opportunity to compare your results with your peers";
-"Onboarding.Why.Header" = "Why App Name?";
-"Onboarding.Why.Title" = "It’s not a cramming -\nit’s a playing";
-"Onboarding.Why.SubTitle" = "What if we told you that you could enjoy studying for your exam? It seems like a game, keeping you sharp and interested.";
+"Onboarding.Age.SubTitle" = "We'll see the comparison of your results with the ones of your peers";
+"Onboarding.Why.Header" = "Why this app?";
+"Onboarding.Why.Title" = "No cramming,\nonly true learning";
+"Onboarding.Why.SubTitle" = "The explanations you see after answering help you to understand the idea behind each question. You'll stay sharp and interested.";
 "Onboarding.Exams.Header" = "Exam";
 "Onboarding.Exams.Title" = "Which exam are you\nstudying for?";
 "Onboarding.Exams.Exam1.Name" = "AWS";
@@ -68,47 +68,47 @@
 "Onboarding.Exams.Exam4.Text" = "Aruba Certified Mobility Associate exams (500+ questions)";
 "Onboarding.Course.Header" = "Course";
 "Onboarding.Course.Title" = "What do you want\nto learn?";
-"Onboarding.Course.SubTitle" = "Choose one and remember that you can always switch courses later on";
-"Onboarding.QuizSolution.Title" = "Now, take this 1-2\nminute quiz";
-"Onboarding.QuizSolution.SubTitle" = "It’s important to enhance your learning";
+"Onboarding.Course.SubTitle" = "Choose the course you need and switch to the other later on";
+"Onboarding.QuizSolution.Title" = "Now, please take this\n2-minute quiz";
+"Onboarding.QuizSolution.SubTitle" = "With its' help we'll understand your current level";
 "Onboarding.QuizSolution.Skip" = "Skip";
 "Onboarding.QuizSolution.Start" = "Start";
 "Onboarding.DetermingSkill.Title" = "Thank you";
-"Onboarding.DetermingSkill.SubTitle" = "We’re determining your skill level in Advanced Networking";
+"Onboarding.DetermingSkill.SubTitle" = "We’re analyzing your current level";
 "Onboarding.QuizResult.Header" = "Quiz Result";
 "Onboarding.QuizResult.Title" = "Your starting level";
-"Onboarding.QuizResult.SubTitle" = "Keep it up! You’ll be able to move much faster through the question bank";
+"Onboarding.QuizResult.SubTitle" = "Keep it up! Soon you’ll be able to move through the question bank  much faster";
 "Onboarding.QuizResult.Level1" = "Beginner";
 "Onboarding.QuizResult.Level2" = "Middle";
 "Onboarding.QuizResult.Level3" = "Advanced";
 "Onboarding.QuizResult.Button" = "Create a personal plan";
 "Onboarding.ExamDate.Header" = "Exam date";
-"Onboarding.ExamDate.Title" = "When are you\ntaking your exam?";
-"Onboarding.ExamDate.SubTitle" = "Don't worry if you don't know for sure, you can set later";
+"Onboarding.ExamDate.Title" = "When are you\ntaking the exam?";
+"Onboarding.ExamDate.SubTitle" = "No worries if you don't know for sure, you can set it later";
 "Onboarding.ExamDate.Skip" = "I don’t know";
 "Onboarding.DailyGoal.Header" = "Daily goal";
-"Onboarding.DailyGoal.Title" = "Picks days and time\nto spend studying";
-"Onboarding.DailyGoal.SubTitle" = "Based on your answers, we recommend to study 3 minute a day.";
+"Onboarding.DailyGoal.Title" = "Pick the days and amount of time\nyou'll dedicate to studying";
+"Onboarding.DailyGoal.SubTitle" = "We recommend to study at least 20 minutes a day.";
 "Onboarding.DailyGoal.min" = "min";
 "Onboarding.StudyMode.Header" = "Study mode";
 "Onboarding.StudyMode.Title" = "What study mode\ndo you prefer?";
-"Onboarding.StudyMode.SubTitle" = "This will define your test mode and you can control it through the settings";
+"Onboarding.StudyMode.SubTitle" = "This will define your test mode. You can later change it in the settings";
 "Onboarding.StudyMode.Mode1.Title" = "Full support";
-"Onboarding.StudyMode.Mode1.Text" = "After the answer, the correct one and the explanation will be shown";
+"Onboarding.StudyMode.Mode1.Text" = "After answering you'll see the correct options and the explanation";
 "Onboarding.StudyMode.Mode2.Title" = "Without explanations";
-"Onboarding.StudyMode.Mode2.Text" = "Only the correct answer will be shown before the next question";
+"Onboarding.StudyMode.Mode2.Text" = "The app will show only the correct answer before the next question";
 "Onboarding.StudyMode.Mode3.Title" = "Exam-style";
-"Onboarding.StudyMode.Mode3.Text" = "See the results only after answering all questions";
+"Onboarding.StudyMode.Mode3.Text" = "See the final result only after answering all questions";
 "Onboarding.CreatingPlanView.Title" = "Creating your plan";
-"Onboarding.CreatingPlanView.Section1" = "Identifying your goals";
+"Onboarding.CreatingPlanView.Section1" = "Processing your goals";
 "Onboarding.CreatingPlanView.Section2" = "Analyzing your personal data";
-"Onboarding.CreatingPlanView.Section3" = "Recognizing exam details";
+"Onboarding.CreatingPlanView.Section3" = "Accounting for exam details";
 "Onboarding.CreatingPlanView.Section4" = "Reviewing study preferences";
 "Onboarding.CreatingPlanView.100%" = "100%";
 "Onboarding.CreatingPlanView.Years" = "%@ years old";
 "Onboarding.CreatingPlanView.DailyGoal" = "Daily goal";
 "Onboarding.PlanView.Title" = "Your personal plan\nhas been generated";
-"Onboarding.PlanView.SubTitle" = "Easier to reach your goal with a created plan";
+"Onboarding.PlanView.SubTitle" = "Reach your goal with a study plan, which will guide you from A to Z";
 "Onboarding.PlanView.Column1.Title" = "Now";
 "Onboarding.PlanView.Column1.Period" = "Week 1";
 "Onboarding.PlanView.Column2.Title" = "15 tests\nper week";
@@ -130,10 +130,10 @@
 "Paygate.FreeTrial.PlansButton" = "View all plans";
 "Paygate.Plans.Title" = "Get access to unlimited\nstudy material";
 "Paygate.Plans.Cell1" = "Unlimited access to %i+ questions";
-"Paygate.Plans.Cell2" = "Never waste your time to learning";
+"Paygate.Plans.Cell2" = "Spend your time effectively";
 "Paygate.Plans.Cell3" = "98% pass rate on the first attempt";
 "Paygate.Plans.Product1.Title" = "Lifetime";
-"Paygate.Plans.Product1.Placeholder" = "BEST  VALUE • SAVE 21%";
+"Paygate.Plans.Product1.Placeholder" = "BEST VALUE • SAVE 21%";
 "Paygate.Plans.Product2.Title" = "Monthly";
 "Paygate.Plans.Product2.Placeholder" = "POPULAR";
 "Paygate.Plans.TermsOfService" = "Terms of Service";
@@ -149,16 +149,16 @@
 "Main.Profile" = "Profile";
 
 // MARK: Plan
-"Plan.StudyScore.Title" = "Studyscore";
+"Plan.StudyScore.Title" = "Study score";
 "Plan.StudyScore.Goal" = "Your goal - %@";
 "Plan.Test.Questions" = "%i questions";
 "Plan.FinalStep" = "Final step";
 "Plan.FinalStep.Title1" = "You’re in the right place!";
-"Plan.FinalStep.SubTitle1" = "Complete this final step to check your\npreparation for the exam";
+"Plan.FinalStep.SubTitle1" = "Complete the final step to check your\nreadiness for the exam";
 "Plan.FinalStep.Title2" = "You’re in the right place!";
-"Plan.FinalStep.SubTitle2" = "Complete this final step to check your\npreparation for the exam";
-"Plan.FinalStep.Title3" = "Great job completing the final step!";
-"Plan.FinalStep.SubTitle3" = "You got %i%%. Take it again to consolidate the\nresult";
+"Plan.FinalStep.SubTitle2" = "Complete the final step to check your\nreadiness for the exam";
+"Plan.FinalStep.Title3" = "Congrats on completing the final step!";
+"Plan.FinalStep.SubTitle3" = "You scored %i%%. Re-take the exam\nresult";
 "Plan.FinalStep.Button1" = "Start";
 "Plan.FinalStep.Button2" = "Continue";
 "Plan.FinalStep.Button3" = "Try Again";
@@ -169,7 +169,7 @@
 "Courses.Current" = "Current";
 
 // MARK: TryAgain
-"TryAgain.Title" = "The app failed to perform a\nrequest";
+"TryAgain.Title" = "We've encountered a problem\nduring a request";
 "TryAgain.SubTitle" = "If there’s a connection issue on your side try one more time. If the connection is fine and the error keeps on repeating please get in touch with the support";
 "TryAgain.Button" = "Try again";
 "TryAgain.Contact" = "Contact the support";
@@ -182,7 +182,7 @@
 
 // MARK: Settings
 "Settings.Premium.Title" = "Go premium";
-"Settings.Premium.SubTitle" = "Know all 10000+ questions\nbeforehand";
+"Settings.Premium.SubTitle" = "Know all questions\nbeforehand";
 "Settings.MyProfile" = "My profile";
 "Settings.App" = "App";
 "Settings.ContactUs" = "Contact us";
@@ -229,7 +229,7 @@
 "Review.Correct" = "Correct";
 "Review.Saved" = "Saved";
 "Review.Empty.Title" = "No questions";
-"Review.Empty.SubTitle" = "Take a quick test below to review all of your answered questions ";
+"Review.Empty.SubTitle" = "Take a quick test and review all of the answered questions here.";
 "Review.Empty.Button" = "Take a quick test";
 
 // MARK: Question
@@ -271,16 +271,16 @@
 "Practice.UnlockPremium.Button" = "Get Premium";
 
 // MARK: PracticeDateOfExam
-"PracticeDateOfExam.Title1" = "Change your exam’s date";
-"PracticeDateOfExam.Title2" = "Set your exam’s date";
+"PracticeDateOfExam.Title1" = "Change your exam date";
+"PracticeDateOfExam.Title2" = "Set your exam date";
 "PracticeDateOfExam.SaveButton" = "Save date";
 
 // MARK: TestEmpty
 "TestEmpty.NoSaved.Title" = "No saved questions";
-"TestEmpty.NoSaved.Text" = "Tap the bookmark icon at the top of any questions and you can review them here.";
+"TestEmpty.NoSaved.Text" = "Tap the bookmark icon at the top of any question during the test to review it later here.";
 "TestEmpty.NoMissed.Title" = "No missed questions";
-"TestEmpty.NoMissed.Text" = "Take a quick test below and you can review them here";
-"TestEmpty.NoMissed.Button" = "Take a quick test";
+"TestEmpty.NoMissed.Text" = "Take a quick test and review the missed questions here";
+"TestEmpty.NoMissed.Button" = "Take a test";
 
 // MARK: CustomMadeTest
 "CustomMadeTest.Title" = "Custom made";
