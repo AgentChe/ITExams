@@ -74,7 +74,7 @@ extension PaygateTrialView {
         formatter.numberStyle = .currency
         formatter.locale = price.price.priceLocale
 
-        let priceDiv: Double = price.price.priceValue / 53
+        let priceDiv: Double = price.price.priceValue / 30 * 7
         let priceDivLocalized: String
         if priceDiv < 100 {
             formatter.maximumFractionDigits = 1
