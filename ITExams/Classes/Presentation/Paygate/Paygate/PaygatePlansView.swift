@@ -18,6 +18,7 @@ final class PaygatePlansView: UIView {
     lazy var subscriptionButton = makeProductButton()
     lazy var continueButton = makeContinueButton()
     lazy var termsOfServiceButton = makeTermsOfServiceButton()
+    lazy var restoreButton = makeRestoreButton()
     lazy var privacyPolicyButton = makePrivacyPolicyButton()
     lazy var preloader = makePreloader()
     
@@ -118,19 +119,25 @@ private extension PaygatePlansView {
             continueButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 29.scale),
             continueButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -29.scale),
             continueButton.heightAnchor.constraint(equalToConstant: 48.scale),
-            continueButton.bottomAnchor.constraint(equalTo: termsOfServiceButton.topAnchor, constant: -10.scale)
+            continueButton.bottomAnchor.constraint(equalTo: termsOfServiceButton.topAnchor, constant: -20.scale)
         ])
         
         NSLayoutConstraint.activate([
-            termsOfServiceButton.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -8.scale),
+            termsOfServiceButton.trailingAnchor.constraint(equalTo: restoreButton.leadingAnchor, constant: -16.scale),
             termsOfServiceButton.heightAnchor.constraint(equalToConstant: 17.scale),
-            termsOfServiceButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -33.scale : -21.scale)
+            termsOfServiceButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -43.scale : -21.scale)
         ])
         
         NSLayoutConstraint.activate([
-            privacyPolicyButton.leadingAnchor.constraint(equalTo: centerXAnchor, constant: 8.scale),
+            restoreButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            restoreButton.heightAnchor.constraint(equalToConstant: 17.scale),
+            restoreButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -43.scale : -21.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            privacyPolicyButton.leadingAnchor.constraint(equalTo: restoreButton.trailingAnchor, constant: 16.scale),
             privacyPolicyButton.heightAnchor.constraint(equalToConstant: 17.scale),
-            privacyPolicyButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -33.scale : -21.scale)
+            privacyPolicyButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -43.scale : -21.scale)
         ])
         
         NSLayoutConstraint.activate([
@@ -220,6 +227,19 @@ private extension PaygatePlansView {
         
         let view = TapAreaButton()
         view.setAttributedTitle("Paygate.Plans.TermsOfService".localized.attributed(with: attrs), for: .normal)
+        view.backgroundColor = UIColor.clear
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeRestoreButton() -> TapAreaButton {
+        let attrs = TextAttributes()
+            .textColor(Appearance.greyColor.withAlphaComponent(0.6))
+            .font(Fonts.Inter.regular(size: 12.scale))
+        
+        let view = TapAreaButton()
+        view.setAttributedTitle("Paygate.Plans.Restore".localized.attributed(with: attrs), for: .normal)
         view.backgroundColor = UIColor.clear
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)

@@ -125,9 +125,12 @@
 "Paygate.FreeTrial.Cell3.SubTitle" = "We’ll send you a notification. Cancel\nanytime in just 15 seconds";
 "Paygate.FreeTrial.Cell4.Title" = "Day 7: Trial Ends";
 "Paygate.FreeTrial.Cell4.SubTitle" = "Your subscritption will start %@";
-"Paygate.FreeTrial.Price" = "7 days free, then %@/year\nonly %@/week";
+"Paygate.FreeTrial.Price" = "7 days free, then %@/month\nonly %@/week";
 "Paygate.FreeTrial.TrialButton" = "Start free trial";
 "Paygate.FreeTrial.PlansButton" = "View all plans";
+"Paygate.FreeTrial.Restore" = "Restore Purcahses";
+"Paygate.FreeTrial.TermsOfUse" = "Terms of Use";
+"Paygate.FreeTrial.PrivacyPolicy" = "Privacy Policy";
 "Paygate.Plans.Title" = "Get access to unlimited\nstudy material";
 "Paygate.Plans.Cell1" = "Unlimited access to %i+ questions";
 "Paygate.Plans.Cell2" = "Spend your time effectively";
@@ -136,7 +139,8 @@
 "Paygate.Plans.Product1.Placeholder" = "BEST VALUE • SAVE 21%";
 "Paygate.Plans.Product2.Title" = "Monthly";
 "Paygate.Plans.Product2.Placeholder" = "POPULAR";
-"Paygate.Plans.TermsOfService" = "Terms of Service";
+"Paygate.Plans.Restore" = "Restore Purcahses";
+"Paygate.Plans.TermsOfService" = "Terms of Use";
 "Paygate.Plans.PrivacyPolicy" = "Privacy Policy";
 "Paygate.Purchase.Failed" = "Failed to purchase";
 "Paygate.Week" = "week";

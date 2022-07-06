@@ -65,6 +65,8 @@ final class PaygateViewController: UIViewController {
         
         Observable
             .merge(
+                trialView.termsOfServiceButton.rx.tap.map { GlobalDefinitions.termsOfServiceUrl },
+                trialView.privacyPolicyButton.rx.tap.map { GlobalDefinitions.privacyPolicyUrl },
                 plansView.termsOfServiceButton.rx.tap.map { GlobalDefinitions.termsOfServiceUrl },
                 plansView.privacyPolicyButton.rx.tap.map { GlobalDefinitions.privacyPolicyUrl }
             )
@@ -75,6 +77,14 @@ final class PaygateViewController: UIViewController {
                 
                 UIApplication.shared.open(url, options: [:])
             })
+            .disposed(by: disposeBag)
+        
+        Observable
+            .merge(
+                trialView.restoreButton.rx.tap.asObservable(),
+                plansView.restoreButton.rx.tap.asObservable()
+            )
+            .bind(to: viewModel.restore)
             .disposed(by: disposeBag)
         
         Observable
@@ -252,8 +262,10 @@ private extension PaygateViewController {
         
         trialView.priceLabel.isHidden = active
         trialView.trialButton.isHidden = active
+        trialView.restoreButton.isHidden = active
         plansView.lifetimeButton.isHidden = active
         plansView.subscriptionButton.isHidden = active
         plansView.continueButton.isHidden = active
+        plansView.restoreButton.isHidden = active
     }
 }

@@ -30,6 +30,9 @@ final class PaygateTrialView: UIView {
     lazy var priceLabel = makePriceLabel()
     lazy var trialButton = makeTrialButton()
     lazy var plansButton = makePlansButton()
+    lazy var termsOfServiceButton = makeTermsOfServiceButton()
+    lazy var restoreButton = makeRestoreButton()
+    lazy var privacyPolicyButton = makePrivacyPolicyButton()
     lazy var preloader = makePreloader()
     
     override init(frame: CGRect) {
@@ -232,7 +235,7 @@ private extension PaygateTrialView {
         
         NSLayoutConstraint.activate([
             priceLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            priceLabel.bottomAnchor.constraint(equalTo: trialButton.topAnchor, constant: -32.scale)
+            priceLabel.bottomAnchor.constraint(equalTo: trialButton.topAnchor, constant: ScreenSize.isIphoneXFamily ? -32.scale : -22.scale)
         ])
         
         NSLayoutConstraint.activate([
@@ -246,7 +249,25 @@ private extension PaygateTrialView {
             plansButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 29.scale),
             plansButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -29.scale),
             plansButton.heightAnchor.constraint(equalToConstant: 23.scale),
-            plansButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -61.scale : -21.scale)
+            plansButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -81.scale : -51.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            termsOfServiceButton.trailingAnchor.constraint(equalTo: restoreButton.leadingAnchor, constant: -16.scale),
+            termsOfServiceButton.heightAnchor.constraint(equalToConstant: 17.scale),
+            termsOfServiceButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -43.scale : -21.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            restoreButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            restoreButton.heightAnchor.constraint(equalToConstant: 17.scale),
+            restoreButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -43.scale : -21.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            privacyPolicyButton.leadingAnchor.constraint(equalTo: restoreButton.trailingAnchor, constant: 16.scale),
+            privacyPolicyButton.heightAnchor.constraint(equalToConstant: 17.scale),
+            privacyPolicyButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -43.scale : -21.scale)
         ])
         
         NSLayoutConstraint.activate([
@@ -369,6 +390,45 @@ private extension PaygateTrialView {
         
         let view = TapAreaButton()
         view.setAttributedTitle("Paygate.FreeTrial.PlansButton".localized.attributed(with: attrs), for: .normal)
+        view.backgroundColor = UIColor.clear
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeTermsOfServiceButton() -> TapAreaButton {
+        let attrs = TextAttributes()
+            .textColor(Appearance.greyColor.withAlphaComponent(0.6))
+            .font(Fonts.Inter.regular(size: 12.scale))
+        
+        let view = TapAreaButton()
+        view.setAttributedTitle("Paygate.FreeTrial.TermsOfUse".localized.attributed(with: attrs), for: .normal)
+        view.backgroundColor = UIColor.clear
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeRestoreButton() -> TapAreaButton {
+        let attrs = TextAttributes()
+            .textColor(Appearance.greyColor.withAlphaComponent(0.6))
+            .font(Fonts.Inter.regular(size: 12.scale))
+        
+        let view = TapAreaButton()
+        view.setAttributedTitle("Paygate.FreeTrial.Restore".localized.attributed(with: attrs), for: .normal)
+        view.backgroundColor = UIColor.clear
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makePrivacyPolicyButton() -> TapAreaButton {
+        let attrs = TextAttributes()
+            .textColor(Appearance.greyColor.withAlphaComponent(0.6))
+            .font(Fonts.Inter.regular(size: 12.scale))
+        
+        let view = TapAreaButton()
+        view.setAttributedTitle("Paygate.FreeTrial.PrivacyPolicy".localized.attributed(with: attrs), for: .normal)
         view.backgroundColor = UIColor.clear
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
