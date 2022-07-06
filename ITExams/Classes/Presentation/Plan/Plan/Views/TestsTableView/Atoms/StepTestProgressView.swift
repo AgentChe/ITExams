@@ -42,7 +42,9 @@ private extension StepTestProgressView {
         
         var columns = [UIView]()
         
-        if progress <= 33 {
+        if progress == 0 {
+            columns = []
+        } else if progress <= 33 {
             columns = [column1]
         } else if progress <= 66 {
             columns = [column1, column2]
