@@ -16,7 +16,7 @@ final class TabView: UIView {
     lazy var practiceItem = makeItem(image: "Main.Practice", title: "Main.Practice")
     lazy var profileItem = makeItem(image: "Main.Profile", title: "Main.Profile")
     
-    var selectedTab = Tab.plan {
+    var selectedTab = Tab.practice {
         didSet {
             update()
         }

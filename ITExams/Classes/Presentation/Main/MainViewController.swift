@@ -27,7 +27,7 @@ final class MainViewController: UIViewController {
         rx.methodInvoked(#selector(UIViewController.viewDidLayoutSubviews))
             .take(1)
             .subscribe(onNext: { [weak self] _ in
-                self?.update(selectedTab: .plan)
+                self?.update(selectedTab: .practice)
             })
             .disposed(by: disposeBag)
     }
