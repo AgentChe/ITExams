@@ -167,7 +167,7 @@ extension QuestionManager {
         
         return defaultRequestWrapper
             .callServerApi(requestBody: request)
-            .map { GetTestResponseMapper.map(from: $0, key: apiKey) }
+            .map { GetTestResponseMapper.map(from: $0) }
     }
     
     func obtainQuickTest(domain: String, apiKey: String, courseId: Int, activeSubscription: Bool) -> Single<Test?> {
