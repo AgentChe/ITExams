@@ -35,7 +35,7 @@ extension SubjectsView {
         
         self.elements = elements
         
-        state = .compressed
+        state = elements.count > 3 ? .compressed : .all
         
         fill(resize: resize)
     }

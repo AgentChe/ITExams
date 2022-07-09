@@ -45,12 +45,16 @@ private extension CustomMadeTestViewModel {
                                                                   isOnAnsweredQuestions: answeredQuestionsElement,
                                                                   questionsCount: questionsCount)
             
+            result.append(.startTest(collectorElement))
+            if !subjectsElement.isEmpty {
+                result.append(contentsOf: [
+                    .offset(26.scale),
+                    .title("CustomMadeTest.Subjects".localized),
+                    .offset(18.scale),
+                    .subjects(subjectsElement),
+                ])
+            }
             result.append(contentsOf: [
-                .startTest(collectorElement),
-                .offset(26.scale),
-                .title("CustomMadeTest.Subjects".localized),
-                .offset(18.scale),
-                .subjects(subjectsElement),
                 .offset(26.scale),
                 .title("CustomMadeTest.QuestionType".localized),
                 .offset(18.scale),
