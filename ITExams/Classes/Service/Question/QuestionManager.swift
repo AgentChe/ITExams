@@ -24,7 +24,7 @@ protocol QuestionManagerProtocol {
                           includeMissedQuestions: Bool,
                           includeAnsweredQuestions: Bool,
                           questionsCount: Int) -> Single<Test?>
-    func obtainPlanTest(domain: String, apiKey: String, testId: Int) -> Single<Test?>
+    func obtainPlanTest(domain: String, apiKey: String, testId: Int, activeSubscription: Bool) -> Single<Test?>
     func obtainOnboardingTest(domain: String, apiKey: String, courseId: Int, forceUpdate: Bool) -> Single<Test?>
     func obtainReview(domain: String, apiKey: String, courseId: Int, mode: Int, offset: Int) -> Single<[Review]>
     func saveQuestion(domain: String, apiKey: String, questionId: Int) -> Single<Void>
@@ -217,7 +217,7 @@ extension QuestionManager {
             .map { GetTestResponseMapper.map(from: $0, key: apiKey) }
     }
     
-    func obtainPlanTest(domain: String, apiKey: String, testId: Int) -> Single<Test?> {
+    func obtainPlanTest(domain: String, apiKey: String, testId: Int, activeSubscription: Bool) -> Single<Test?> {
         guard let userToken = sessionManager.getSession()?.userToken else {
             return .error(SignError.tokenNotFound)
         }
@@ -225,7 +225,8 @@ extension QuestionManager {
         let request = GetPlanTestRequest(domain: domain,
                                          apiKey: apiKey,
                                          userToken: userToken,
-                                         testId: testId)
+                                         testId: testId,
+                                         activeSubscription: activeSubscription)
         
         return xorRequestWrapper
             .callServerStringApi(requestBody: request, key: apiKey)

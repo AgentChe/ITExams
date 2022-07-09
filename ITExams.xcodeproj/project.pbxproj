@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B99EA73E9EE909CA219D5966 /* Pods_ITExams.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CAE425F2492CFBE02D3BA9C /* Pods_ITExams.framework */; };
+		DE06C6AC28799118009866FC /* TestSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE06C6AB28799118009866FC /* TestSequence.swift */; };
 		DE1A7CF3285C9404003E35BC /* ExamEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1A7CF2285C9404003E35BC /* ExamEnvironment.swift */; };
 		DE1A7CF7285CE122003E35BC /* SplashSDKInitialize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1A7CF6285CE122003E35BC /* SplashSDKInitialize.swift */; };
 		DE1A7CF9285CE282003E35BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE1A7CF8285CE282003E35BC /* GoogleService-Info.plist */; };
@@ -378,6 +379,7 @@
 		5CAE425F2492CFBE02D3BA9C /* Pods_ITExams.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ITExams.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60A15AB3126C33013B05E7BD /* Pods-ITExams.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITExams.release.xcconfig"; path = "Target Support Files/Pods-ITExams/Pods-ITExams.release.xcconfig"; sourceTree = "<group>"; };
 		A13C46BD67BFF2A820848253 /* Pods-ITExams.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITExams.debug.xcconfig"; path = "Target Support Files/Pods-ITExams/Pods-ITExams.debug.xcconfig"; sourceTree = "<group>"; };
+		DE06C6AB28799118009866FC /* TestSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSequence.swift; sourceTree = "<group>"; };
 		DE1A7CF2285C9404003E35BC /* ExamEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamEnvironment.swift; sourceTree = "<group>"; };
 		DE1A7CF6285CE122003E35BC /* SplashSDKInitialize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashSDKInitialize.swift; sourceTree = "<group>"; };
 		DE1A7CF8285CE282003E35BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1424,6 +1426,7 @@
 				DE6BFE5828511D9800F5CF20 /* TestStats */,
 				DE6BFE4D2850B92E00F5CF20 /* Test */,
 				DE6BFE8828524FE500F5CF20 /* TestCoordinator.swift */,
+				DE06C6AB28799118009866FC /* TestSequence.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -2797,6 +2800,7 @@
 				DE95A875282E2E2F00809171 /* ProfileViewModel.swift in Sources */,
 				DE93786A27C4B2600073F27C /* UIColorExtension.swift in Sources */,
 				DE95A88E282E81F000809171 /* SettingsPremiumCell.swift in Sources */,
+				DE06C6AC28799118009866FC /* TestSequence.swift in Sources */,
 				DE93787427C4B2600073F27C /* TextAttributes.swift in Sources */,
 				DE2B10DB27DB14EE005280DB /* Session.swift in Sources */,
 				DEE74EAD27F32486002FE71D /* ProfileMediator.swift in Sources */,

@@ -8,7 +8,10 @@
 import UIKit
 
 protocol StepTestsTableViewDelegate: AnyObject {
-    func stepTestsTableDidSelect(element: PlanTest, activeSubscription: Bool, lockedStep: Bool)
+    func stepTestsTableDidSelect(elements: [PlanTest],
+                                 selected: PlanTest,
+                                 activeSubscription: Bool,
+                                 lockedStep: Bool)
 }
 
 final class StepTestsTableView: UITableView {
@@ -64,7 +67,8 @@ extension StepTestsTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let element = elements[indexPath.section]
         
-        mainDelegate?.stepTestsTableDidSelect(element: element,
+        mainDelegate?.stepTestsTableDidSelect(elements: elements,
+                                              selected: element,
                                               activeSubscription: activeSubscription,
                                               lockedStep: lockedStep)
     }

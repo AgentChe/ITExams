@@ -85,14 +85,14 @@ extension PracticeViewController: PracticeTableViewDelegate {
         AmplitudeManager.shared
             .logEvent(name: "Study Tap", parameters: ["what": "question of the day"])
         
-        TestCoordinator.shared.start(testType: .qotd, from: self)
+        TestCoordinator.shared.start(testTypes: [.qotd], from: self)
     }
     
     func practiceTableDidTappedRandomTest() {
         AmplitudeManager.shared
             .logEvent(name: "Study Tap", parameters: ["what": "random set"])
         
-        TestCoordinator.shared.start(testType: .randomSet, from: self)
+        TestCoordinator.shared.start(testTypes: [.randomSet], from: self)
     }
     
     func practiceTableDidTappedMissedTest(questionsCount: Int) {
@@ -104,7 +104,7 @@ extension PracticeViewController: PracticeTableViewDelegate {
             vc.delegate = self
             present(vc, animated: true)
         } else {
-            TestCoordinator.shared.start(testType: .failedSet, from: self)
+            TestCoordinator.shared.start(testTypes: [.failedSet], from: self)
         }
     }
     
@@ -112,7 +112,7 @@ extension PracticeViewController: PracticeTableViewDelegate {
         AmplitudeManager.shared
             .logEvent(name: "Study Tap", parameters: ["what": "quick questions"])
         
-        TestCoordinator.shared.start(testType: .quick, from: self)
+        TestCoordinator.shared.start(testTypes: [.quick], from: self)
     }
     
     func practiceTableDidTappedSavedTest(questionsCount: Int) {
@@ -124,7 +124,7 @@ extension PracticeViewController: PracticeTableViewDelegate {
             vc.delegate = self
             present(vc, animated: true)
         } else {
-            TestCoordinator.shared.start(testType: .saved, from: self)
+            TestCoordinator.shared.start(testTypes: [.saved], from: self)
         }
     }
     
@@ -146,14 +146,14 @@ extension PracticeViewController: PracticeTableViewDelegate {
 // MARK: TestEmptyViewControllerDelegate
 extension PracticeViewController: TestEmptyViewControllerDelegate {
     func testEmptyDidTappedTakeTest() {
-        TestCoordinator.shared.start(testType: .quick, from: self)
+        TestCoordinator.shared.start(testTypes: [.quick], from: self)
     }
 }
 
 // MARK: CustomMadeTestViewControllerDelegate
 extension PracticeViewController: CustomMadeTestViewControllerDelegate {
     func customMadeTestViewControllerDidStart(attributes: CustomTestAttributes) {
-        TestCoordinator.shared.start(testType: .custom(attributes), from: self)
+        TestCoordinator.shared.start(testTypes: [.custom(attributes)], from: self)
     }
 }
 

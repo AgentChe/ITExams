@@ -12,6 +12,7 @@ struct GetPlanTestRequest: APIRequestBody {
     let apiKey: String
     let userToken: String
     let testId: Int
+    let activeSubscription: Bool
     
     var url: String {
         domain + "/api/plan/test"
@@ -25,7 +26,8 @@ struct GetPlanTestRequest: APIRequestBody {
          [
             "_api_key": apiKey,
             "_user_token": userToken,
-            "id": testId
+            "id": testId,
+            "user_is_premium": activeSubscription
         ]
     }
 }

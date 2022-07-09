@@ -307,7 +307,8 @@ private extension TestViewModel {
                 case .plan(let testId):
                     test = self.questionManager.obtainPlanTest(domain: examEnvironment.exam.domain,
                                                                apiKey: examEnvironment.exam.api,
-                                                               testId: testId)
+                                                               testId: testId,
+                                                               activeSubscription: self.sessionManager.hasActiveSubscriptions())
                 case .quick:
                     test = self.questionManager.obtainQuickTest(domain: examEnvironment.exam.domain,
                                                                 apiKey: examEnvironment.exam.api,

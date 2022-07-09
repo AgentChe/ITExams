@@ -107,18 +107,24 @@ extension PlanViewController: StepCollectionViewDelegate {
 
 // MARK: StepTestsTableViewDelegate
 extension PlanViewController: StepTestsTableViewDelegate {
-    func stepTestsTableDidSelect(element: PlanTest, activeSubscription: Bool, lockedStep: Bool) {
+    func stepTestsTableDidSelect(elements: [PlanTest],
+                                 selected: PlanTest,
+                                 activeSubscription: Bool,
+                                 lockedStep: Bool) {
         guard !lockedStep else {
             return
         }
         
-        let needPayment = activeSubscription ? false : element.paid
+        let needPayment = activeSubscription ? false : selected.paid
         
         if needPayment {
             let vc = PaygateViewController.make()
             present(vc, animated: true)
         } else {
-            TestCoordinator.shared.start(testType: .plan(testId: element.id), from: self)
+            let index = elements.firstIndex(of: selected) ?? 0
+            let result = elements.suffix(elements.count - index)
+            
+            TestCoordinator.shared.start(testTypes: result.map { .plan(testId: $0.id) }, from: self)
         }
     }
 }
