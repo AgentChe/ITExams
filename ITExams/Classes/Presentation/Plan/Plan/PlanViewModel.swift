@@ -82,7 +82,11 @@ private extension PlanViewModel {
                     let triggers = Signal
                         .merge(
                             StatsMediator.shared.resetedStats,
-                            QuestionMediator.shared.testPassed
+                            QuestionMediator.shared.testPassed,
+                            // Поскольку вызов метода сохранения приосходит для каждого экзамена, медиатор кидает соответствующее количество уведомлений. Ставим заглушку в 1 сек, чтобы не делать лишние запросы.
+                            ProfileMediator.shared.changedDateOfExam
+                                .map { _ in Void() }
+                                .debounce(RxTimeInterval.seconds(1))
                         )
                         .asObservable()
                         .startWith(Void())
