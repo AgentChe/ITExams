@@ -125,7 +125,6 @@ final class TestViewController: UIViewController {
             .filter { $0 == .back }
             .bind(to: Binder(self) { base, _ in
                 base.delegate?.testViewControllerDismiss()
-                FirebaseManager.shared.logEvent(name: "client_test_finished")
             })
             .disposed(by: disposeBag)
         

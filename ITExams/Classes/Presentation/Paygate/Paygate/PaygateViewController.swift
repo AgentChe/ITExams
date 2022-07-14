@@ -45,6 +45,9 @@ final class PaygateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        FirebaseManager.shared
+            .logEvent(name: "client_paygate_screen")
+        
         viewModel.questionsCount
             .drive(Binder(self) { base, questionsCount in
                 base.configure(questionsCount: questionsCount)

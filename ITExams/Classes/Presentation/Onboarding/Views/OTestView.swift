@@ -129,6 +129,9 @@ private extension OTestView {
             }
             .drive(Binder(self) { base, test in
                 base.start(questions: test.questions) {
+                    FirebaseManager.shared
+                        .logEvent(name: "client_onboarding_test_finished")
+                    
                     base.testViewDelegate?.testViewDidFinished()
                 }
             })

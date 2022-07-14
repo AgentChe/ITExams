@@ -68,6 +68,9 @@ extension TestSequence: TestViewControllerDelegate {
     }
     
     func testViewController(finish: TestFinish) {
+        FirebaseManager.shared
+            .logEvent(name: "client_test_finished")
+        
         testStatsVC = TestStatsViewController.make(finish: finish)
         testStatsVC?.delegate = self
 
