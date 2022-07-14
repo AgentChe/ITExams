@@ -2989,7 +2989,7 @@
 				CODE_SIGN_ENTITLEMENTS = ITExams/ITExams.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = AY43JM5PH6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ITExams/Info.plist;
@@ -3004,7 +3004,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.4;
+				MARKETING_VERSION = 1.1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = prepbundle.it;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "ITExams AppStore";
@@ -3023,7 +3023,7 @@
 				CODE_SIGN_ENTITLEMENTS = ITExams/ITExams.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = AY43JM5PH6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ITExams/Info.plist;
@@ -3038,7 +3038,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.4;
+				MARKETING_VERSION = 1.1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = prepbundle.it;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "ITExams AppStore";
