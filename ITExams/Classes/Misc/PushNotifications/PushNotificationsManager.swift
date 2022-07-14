@@ -6,6 +6,7 @@
 //
 
 import FirebaseMessaging
+import OtterScaleiOS
 
 protocol PushNotificationsDelegate: AnyObject {
     func pushNotificationsDidReceive(authorizationStatus: PushNotificationsAuthorizationStatus)
@@ -102,6 +103,10 @@ extension PushNotificationsManager {
 private extension PushNotificationsManager {
     func received(pushToken: Data?, error: Error?) {
         Messaging.messaging().apnsToken = pushToken
+        
+        if let fcmToken = Messaging.messaging().fcmToken {
+            OtterScale.shared.set(pushNotificationsToken: fcmToken)
+        }
         
         DispatchQueue.main.async { [weak self] in
             if error == nil, let token = Messaging.messaging().fcmToken {
