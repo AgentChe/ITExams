@@ -7,11 +7,11 @@
 
 import RxSwift
 import RxCocoa
+import OtterScaleiOS
 
 final class PaygateViewModel {
     enum Constants {
-        static let monthlyTrial = "prepbundle.it.monthly_trial"
-        static let monthly = "prepbundle.it.monthly"
+        static let monthly = "prepbundle.it.monthly_trial"
         static let lifetime = "prepbundle.it.lifetime"
     }
     
@@ -20,7 +20,7 @@ final class PaygateViewModel {
 
     lazy var questionsCount = makeQuestionsCount()
     lazy var monetization = makeMonetization()
-    lazy var prices = makePrices()
+    lazy var products = makeProducts()
     lazy var buyed = makeBuyed()
     lazy var restored = makeRestored()
     
@@ -48,20 +48,29 @@ private extension PaygateViewModel {
             .map { $0 ?? .suggest }
     }
     
-    func makePrices() -> Driver<[PaygatePrice]> {
+    func makeProducts() -> Driver<[PaygateProduct]> {
         iapManager
             .obtainPrices(for: [
-                Constants.lifetime, Constants.monthly, Constants.monthlyTrial
+                Constants.lifetime, Constants.monthly
             ])
-            .map { prices -> [PaygatePrice] in
-                prices.compactMap { price -> PaygatePrice? in
+            .map { prices -> [PaygateProduct] in
+                prices.compactMap { price -> PaygateProduct? in
                     switch price.id {
                     case Constants.lifetime:
-                        return PaygatePrice(product: .lifetime, price: price)
+                        let lifetimePrice = prices.first(where: { $0.id == Constants.lifetime })
+                        let monthlyPrice = prices.first(where: { $0.id == Constants.monthly })
+                        
+                        guard let lifetimePrice = lifetimePrice, let monthlyPrice = monthlyPrice else {
+                            return nil
+                        }
+                        
+                        return PaygateProduct.lifetime(lifetimePrice: lifetimePrice, monthlyPrice: monthlyPrice)
                     case Constants.monthly:
-                        return PaygatePrice(product: .monthly, price: price)
-                    case Constants.monthlyTrial:
-                        return PaygatePrice(product: .monthlyTrial, price: price)
+                        let usedProducts = OtterScale.shared.getUsedProducts()
+                            .map { $0.appleAppStore } ?? []
+                        let withTrial = !usedProducts.contains(PaygateViewModel.Constants.monthly)
+                        
+                        return PaygateProduct.monthly(price: price, withTrial: withTrial)
                     default:
                         return nil
                     }
@@ -71,9 +80,9 @@ private extension PaygateViewModel {
             .asDriver(onErrorJustReturn: [])
     }
     
-    func makeBuyed() -> Signal<(Bool, String)> {
+    func makeBuyed() -> Signal<Bool> {
         let purchase = buy
-            .flatMapLatest { [weak self] productId -> Observable<(Bool, String)> in
+            .flatMapLatest { [weak self] productId -> Observable<Bool> in
                 guard let self = self else {
                     return .never()
                 }
@@ -90,11 +99,10 @@ private extension PaygateViewModel {
                     }
                     .trackActivity(self.activityIndicator)
                     .catchAndReturn(false)
-                    .map { ($0, productId) }
             }
         
         return purchase
-            .asSignal(onErrorJustReturn: (false, ""))
+            .asSignal(onErrorJustReturn: false)
     }
     
     func makeRestored() -> Signal<Bool> {

@@ -7,36 +7,16 @@
 
 import UIKit
 import RxSwift
-import OtterScaleiOS
 import RushSDK
 
 final class PaygateViewController: UIViewController {
-    enum Mode {
-        case full, onlyPlans
-    }
-    
     weak var delegate: PaygateViewControllerDelegate?
     
     lazy var mainView = PaygateView()
     
-    private lazy var trialView = PaygateTrialView()
-    private lazy var plansView = PaygatePlansView()
-    
     private lazy var disposeBag = DisposeBag()
     
     private lazy var viewModel = PaygateViewModel()
-    
-    private let mode: Mode
-    
-    private init(mode: Mode) {
-        self.mode = mode
-        
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func loadView() {
         view = mainView
@@ -60,18 +40,16 @@ final class PaygateViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.prices
-            .drive(Binder(self) { base, prices in
-                base.configure(prices: prices)
+        viewModel.products
+            .drive(Binder(self) { base, products in
+                base.configure(products: products)
             })
             .disposed(by: disposeBag)
         
         Observable
             .merge(
-                trialView.termsOfServiceButton.rx.tap.map { GlobalDefinitions.termsOfServiceUrl },
-                trialView.privacyPolicyButton.rx.tap.map { GlobalDefinitions.privacyPolicyUrl },
-                plansView.termsOfServiceButton.rx.tap.map { GlobalDefinitions.termsOfServiceUrl },
-                plansView.privacyPolicyButton.rx.tap.map { GlobalDefinitions.privacyPolicyUrl }
+                mainView.termsOfServiceButton.rx.tap.map { GlobalDefinitions.termsOfServiceUrl },
+                mainView.privacyPolicyButton.rx.tap.map { GlobalDefinitions.privacyPolicyUrl }
             )
             .subscribe(onNext: { path in
                 guard let url = URL(string: path) else {
@@ -82,19 +60,11 @@ final class PaygateViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        Observable
-            .merge(
-                trialView.restoreButton.rx.tap.asObservable(),
-                plansView.restoreButton.rx.tap.asObservable()
-            )
+        mainView.restoreButton.rx.tap
             .bind(to: viewModel.restore)
             .disposed(by: disposeBag)
         
-        Observable
-            .merge(
-                trialView.closeButton.rx.tap.asObservable(),
-                plansView.closeButton.rx.tap.asObservable()
-            )
+        mainView.closeButton.rx.tap
             .bind(to: Binder(self) { base, void in
                 base.dismiss(with: .cancelled)
             })
@@ -102,15 +72,13 @@ final class PaygateViewController: UIViewController {
         
         viewModel
             .buyed
-            .emit(onNext: { [weak self] result in
-                let (success, productId) = result
-                
+            .emit(onNext: { [weak self] success in
                 if !success {
-                    Toast.notify(with: "Paygate.Purchase.Failed".localized, style: .danger)
+                    Toast.notify(with: "Paygate.Failed".localized, style: .danger)
                     return
                 }
                 
-                self?.buyed(productId: productId)
+                self?.dismiss(with: .bied)
             })
             .disposed(by: disposeBag)
         
@@ -118,7 +86,7 @@ final class PaygateViewController: UIViewController {
             .restored
             .emit(onNext: { [weak self] result in
                 if !result {
-                    Toast.notify(with: "Paygate.Purchase.Failed".localized, style: .danger)
+                    Toast.notify(with: "Paygate.Failed".localized, style: .danger)
                     return
                 }
                 
@@ -132,17 +100,12 @@ final class PaygateViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        trialView.trialButton.rx.tap
-            .map { PaygateViewModel.Constants.monthlyTrial }
-            .bind(to: viewModel.buy)
-            .disposed(by: disposeBag)
-        
-        plansView.continueButton.rx.tap
+        mainView.continueButton.rx.tap
             .bind(to: Binder(self) { base, void in
                 let id = [
-                    base.plansView.lifetimeButton,
-                    base.plansView.subscriptionButton
-                ].first(where: { $0.isChecked })?.price?.price.id
+                    base.mainView.lifetimeButton,
+                    base.mainView.subscriptionButton
+                ].first(where: { $0.isChecked })?.product?.price.id
                 
                 guard let id = id else {
                     return
@@ -152,42 +115,14 @@ final class PaygateViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        trialView.plansButton.rx.tap
-            .bind(to: Binder(self) { base, void in
-                AmplitudeManager.shared
-                    .logEvent(name: "Paygate Screen", parameters: ["type": "all_plans"])
-                
-                base.mainView.moveToPlans()
-            })
-            .disposed(by: disposeBag)
-        
-        plansView.backButton.rx.tap
-            .bind(to: Binder(self) { base, void in
-                AmplitudeManager.shared
-                    .logEvent(name: "Paygate Screen", parameters: ["type": "trial_plan"])
-                
-                base.mainView.backToTrial()
-            })
-            .disposed(by: disposeBag)
-        
-        plansView.lifetimeButton.isChecked = true
-        
-        mainView.register(trialView: trialView, plansView: plansView, mode: mode)
-        
-        configureMode()
+        mainView.lifetimeButton.isChecked = true
     }
 }
 
 // MARK: Make
 extension PaygateViewController {
     static func make() -> PaygateViewController {
-        let usedProducts = OtterScale.shared.getUsedProducts().map { products -> [String] in
-            products.appleAppStore + products.googlePlay + products.stripe
-        } ?? []
-        
-        let mode: Mode = usedProducts.contains(PaygateViewModel.Constants.monthlyTrial) ? .onlyPlans : .full
-        
-        let vc = PaygateViewController(mode: mode)
+        let vc = PaygateViewController()
         vc.modalPresentationStyle = .fullScreen
         return vc
     }
@@ -196,55 +131,24 @@ extension PaygateViewController {
 // MARK: Private
 private extension PaygateViewController {
     func configure(questionsCount: Int) {
-        trialView.setup(questionsCount: questionsCount)
-        plansView.setup(questionsCount: questionsCount)
+        mainView.setup(questionsCount: questionsCount)
     }
     
     func configure(monetization: Monetization) {
-        trialView.closeButton.isHidden = monetization == .block
-        plansView.closeButton.isHidden = monetization == .block
+        mainView.closeButton.isHidden = monetization == .block
     }
     
-    func configure(prices: [PaygatePrice]) {
-        prices.forEach { [weak self] price in
+    func configure(products: [PaygateProduct]) {
+        products.forEach { [weak self] product in
             guard let self = self else {
                 return
             }
             
-            switch price.product {
+            switch product.type {
             case .lifetime:
-                self.plansView.lifetimeButton.price = price
+                self.mainView.lifetimeButton.product = product
             case .monthly:
-                self.plansView.subscriptionButton.price = price
-            case .monthlyTrial:
-                self.trialView.setup(price: price)
-            }
-        }
-    }
-    
-    func configureMode() {
-        plansView.backButton.isHidden = mode == .onlyPlans
-    }
-    
-    func buyed(productId: String) {
-        guard productId == PaygateViewModel.Constants.monthlyTrial else {
-            dismiss(with: .bied)
-            return
-        }
-        
-        PushNotificationsManager.shared.retriveAuthorizationStatus { [weak self] status in
-            guard let self = self else {
-                return
-            }
-            
-            switch status {
-            case .authorized:
-                self.dismiss(with: .bied)
-            case .notDetermined, .denied:
-                let vc = RequestPushTokenViewController.make {
-                    self.dismiss(with: .bied)
-                }
-                self.present(vc, animated: false)
+                self.mainView.subscriptionButton.product = product
             }
         }
     }
@@ -260,15 +164,11 @@ private extension PaygateViewController {
     }
     
     func activityIndicator(active: Bool) {
-        active ? trialView.preloader.startAnimating() : trialView.preloader.stopAnimating()
-        active ? plansView.preloader.startAnimating() : plansView.preloader.stopAnimating()
+        active ? mainView.preloader.startAnimating() : mainView.preloader.stopAnimating()
         
-        trialView.priceLabel.isHidden = active
-        trialView.trialButton.isHidden = active
-        trialView.restoreButton.isHidden = active
-        plansView.lifetimeButton.isHidden = active
-        plansView.subscriptionButton.isHidden = active
-        plansView.continueButton.isHidden = active
-        plansView.restoreButton.isHidden = active
+        mainView.lifetimeButton.isHidden = active
+        mainView.subscriptionButton.isHidden = active
+        mainView.continueButton.isHidden = active
+        mainView.restoreButton.isHidden = active
     }
 }

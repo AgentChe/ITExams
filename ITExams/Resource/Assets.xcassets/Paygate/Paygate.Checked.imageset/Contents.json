@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Frame notification.png",
+      "filename" : "Group.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Frame notification@2x.png",
+      "filename" : "Group@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Frame notification@3x.png",
+      "filename" : "Group@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

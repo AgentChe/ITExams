@@ -1,5 +1,5 @@
 //
-//  PaygatePlansCell.swift
+//  PaygateInfoCell.swift
 //  ITExams
 //
 //  Created by Андрей Чернышев on 22.03.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PaygatePlansCell: UIView {
+final class PaygateInfoCell: UIView {
     lazy var imageView = makeImageView()
     lazy var label = makeLabel()
     
@@ -15,7 +15,6 @@ final class PaygatePlansCell: UIView {
         super.init(frame: frame)
         
         makeConstraints()
-        initialize()
     }
     
     required init?(coder: NSCoder) {
@@ -24,7 +23,7 @@ final class PaygatePlansCell: UIView {
 }
 
 // MARK: Public
-extension PaygatePlansCell {
+extension PaygateInfoCell {
     func setup(text: String) {
         let attrs = TextAttributes()
             .textColor(Appearance.blackColor)
@@ -35,38 +34,29 @@ extension PaygatePlansCell {
     }
 }
 
-// MARK: Private
-private extension PaygatePlansCell {
-    func initialize() {
-        backgroundColor = Appearance.backgroundColor
-    }
-}
-
 // MARK: Make constraints
-private extension PaygatePlansCell {
+private extension PaygateInfoCell {
     func makeConstraints() {
         NSLayoutConstraint.activate([
-            imageView.widthAnchor.constraint(equalToConstant: 21.scale),
-            imageView.heightAnchor.constraint(equalToConstant: 21.scale),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20.scale),
+            imageView.widthAnchor.constraint(equalToConstant: 10.scale),
+            imageView.heightAnchor.constraint(equalToConstant: 7.scale),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 47.scale),
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 45.scale),
-            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8.scale),
-            label.topAnchor.constraint(equalTo: topAnchor),
-            label.bottomAnchor.constraint(equalTo: bottomAnchor)
+            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 67.scale),
+            label.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 }
 
 // MARK: Lazy initialization
-private extension PaygatePlansCell {
+private extension PaygateInfoCell {
     func makeImageView() -> UIImageView {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
-        view.image = UIImage(named: "Paygate.Check")
+        view.image = UIImage(named: "Paygate.CellChecked")
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
@@ -74,7 +64,6 @@ private extension PaygatePlansCell {
     
     func makeLabel() -> UILabel {
         let view = UILabel()
-        view.numberOfLines = 0
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
