@@ -66,7 +66,7 @@ extension PaygateProduct {
                                       priceDescription: nil,
                                       discount: nil,
                                       bottomPrice: nil,
-                                      bottomDescription: "Paygate.Monthly.Bottom".localized)
+                                      bottomDescription: withTrial ? "Paygate.Monthly.Bottom1".localized : "Paygate.Monthly.Bottom2".localized)
         
         return PaygateProduct(type: .monthly,
                               price: price,
