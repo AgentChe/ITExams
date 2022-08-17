@@ -25,6 +25,8 @@ final class PaygateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        AmplitudeManager.shared
+            .logEvent(name: "Paygate Screen", parameters: [:])
         FirebaseManager.shared
             .logEvent(name: "client_paygate_screen")
         
