@@ -35,7 +35,8 @@ struct GetCustomTestRequest: APIRequestBody {
             "subjects": subjects,
             "include_missed_questions": includeMissedQuestions,
             "include_answered_questions": includeAnsweredQuestions,
-            "size": questionsCount
+            "size": questionsCount,
+            "platform": 3
         ]
     }
 }

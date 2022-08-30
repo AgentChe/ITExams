@@ -23,7 +23,8 @@ struct GetProfileRequest: APIRequestBody {
     var parameters: Parameters? {
         [
             "_api_key": apiKey,
-            "_user_token": userToken
+            "_user_token": userToken,
+            "platform": 3
         ]
     }
 }

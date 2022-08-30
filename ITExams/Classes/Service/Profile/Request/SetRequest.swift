@@ -49,7 +49,8 @@ struct SetRequest: APIRequestBody {
     var parameters: Parameters? {
         var params: [String: Any] = [
             "_api_key": apiKey,
-            "_user_token": userToken
+            "_user_token": userToken,
+            "platform": 3
         ]
         
         if let level = self.level {

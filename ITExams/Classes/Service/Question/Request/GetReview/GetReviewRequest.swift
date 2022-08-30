@@ -29,7 +29,8 @@ struct GetReviewRequest: APIRequestBody {
             "_user_token": userToken,
             "course_id": courseId,
             "mode": mode,
-            "offset": offset
+            "offset": offset,
+            "platform": 3
         ]
     }
 }

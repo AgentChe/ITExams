@@ -38,7 +38,8 @@ struct GetMonetizationRequest: APIRequestBody {
         var params: Parameters = [
             "_api_key": apiKey,
             "anonymous_id": appAnonymousId,
-            "version": version
+            "version": version,
+            "platform": 3
         ]
         
         if let userToken = self.userToken {

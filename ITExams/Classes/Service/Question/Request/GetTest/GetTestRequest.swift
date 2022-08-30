@@ -29,7 +29,8 @@ struct GetTestRequest: APIRequestBody {
             "_api_key": apiKey,
             "_user_token": userToken,
             "course_id": courseId,
-            "user_is_premium": activeSubscription
+            "user_is_premium": activeSubscription,
+            "platform": 3
         ]
         
         if let testId = testId {

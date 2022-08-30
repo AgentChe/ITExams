@@ -25,7 +25,8 @@ struct AgainTestRequest: APIRequestBody {
         [
             "_api_key": apiKey,
             "_user_token": userToken,
-            "user_test_id": userTestId
+            "user_test_id": userTestId,
+            "platform": 3
         ]
     }
 }

@@ -25,7 +25,8 @@ struct RemoveSavedQuestionRequest: APIRequestBody {
          [
             "_api_key": apiKey,
             "_user_token": userToken,
-            "question_id": questionId
+            "question_id": questionId,
+            "platform": 3
         ]
     }
 }

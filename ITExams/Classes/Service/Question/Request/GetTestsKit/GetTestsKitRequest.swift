@@ -25,7 +25,8 @@ struct GetTestsKitRequest: APIRequestBody {
         [
             "_api_key": apiKey,
             "_user_token": userToken,
-            "course_id": courseId
+            "course_id": courseId,
+            "platform": 3
         ]
     }
 }

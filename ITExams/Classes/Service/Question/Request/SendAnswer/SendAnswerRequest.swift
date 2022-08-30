@@ -29,7 +29,8 @@ struct SendAnswerRequest: APIRequestBody {
             "_user_token": userToken,
             "question_id": questionId,
             "user_test_id": userTestId,
-            "answer_ids": answerIds
+            "answer_ids": answerIds,
+            "platform": 3
         ]
     }
 }

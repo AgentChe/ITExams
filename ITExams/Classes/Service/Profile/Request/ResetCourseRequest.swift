@@ -25,7 +25,8 @@ struct ResetCourseRequest: APIRequestBody {
         [
             "_api_key": apiKey,
             "_user_token": userToken,
-            "current_application_course_id": 0
+            "current_application_course_id": 0,
+            "platform": 3
         ]
     }
 }

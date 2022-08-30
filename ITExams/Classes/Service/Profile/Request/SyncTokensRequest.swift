@@ -25,7 +25,8 @@ struct SyncTokensRequest: APIRequestBody {
         [
             "_api_key": apiKey,
             "user_token": newToken,
-            "_user_token": oldToken
+            "_user_token": oldToken,
+            "platform": 3
         ]
     }
 }
