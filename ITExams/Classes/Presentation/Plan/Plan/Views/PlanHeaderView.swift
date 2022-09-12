@@ -27,7 +27,6 @@ private extension PlanHeaderView {
     func makeConstraints() {
         NSLayoutConstraint.activate([
             currentView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            currentView.trailingAnchor.constraint(equalTo: trailingAnchor),
             currentView.bottomAnchor.constraint(equalTo: studyScoreView.topAnchor, constant: -16.scale)
         ])
         

@@ -32,6 +32,7 @@ extension PlanCurrentView {
             .font(Fonts.Inter.semiBold(size: 15.scale))
             .lineHeight(18.scale)
             .letterSpacing(-0.44.scale)
+            .lineBreakMode(.byTruncatingTail)
         label.attributedText = string.attributed(with: attrs)
     }
 }
@@ -43,7 +44,8 @@ private extension PlanCurrentView {
             container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12.scale),
             container.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -12.scale),
             container.topAnchor.constraint(equalTo: topAnchor),
-            container.bottomAnchor.constraint(equalTo: bottomAnchor)
+            container.bottomAnchor.constraint(equalTo: bottomAnchor),
+            container.widthAnchor.constraint(lessThanOrEqualToConstant: 250.scale)
         ])
 
         NSLayoutConstraint.activate([
