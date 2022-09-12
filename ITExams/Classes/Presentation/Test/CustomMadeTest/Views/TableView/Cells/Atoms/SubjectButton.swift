@@ -77,7 +77,8 @@ private extension SubjectButton {
 private extension SubjectButton {
     func makeConstraints() {
         NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: centerXAnchor),
+            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.scale),
+            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16.scale),
             label.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
