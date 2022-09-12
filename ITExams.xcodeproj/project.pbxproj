@@ -97,6 +97,8 @@
 		DE50439028227ACE00C6B1C8 /* StepCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE50438F28227ACE00C6B1C8 /* StepCollectionLayout.swift */; };
 		DE5043952822A85300C6B1C8 /* StepCollectionElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5043942822A85300C6B1C8 /* StepCollectionElement.swift */; };
 		DE54AC1128CF32DC004F1514 /* Onboarding.Start.json in Resources */ = {isa = PBXBuildFile; fileRef = DE54AC1028CF32DC004F1514 /* Onboarding.Start.json */; };
+		DE54AC1428CF6280004F1514 /* ConfirmResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE54AC1328CF6280004F1514 /* ConfirmResetViewController.swift */; };
+		DE54AC1628CF6288004F1514 /* ConfirmResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE54AC1528CF6288004F1514 /* ConfirmResetView.swift */; };
 		DE55A4AE27D6458000B53B46 /* OCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4AD27D6458000B53B46 /* OCourseView.swift */; };
 		DE55A4B027D64C7700B53B46 /* ODetermingSkillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4AF27D64C7600B53B46 /* ODetermingSkillView.swift */; };
 		DE55A4B227D64CB300B53B46 /* OProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A4B127D64CB300B53B46 /* OProgressView.swift */; };
@@ -459,6 +461,8 @@
 		DE50438F28227ACE00C6B1C8 /* StepCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCollectionLayout.swift; sourceTree = "<group>"; };
 		DE5043942822A85300C6B1C8 /* StepCollectionElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCollectionElement.swift; sourceTree = "<group>"; };
 		DE54AC1028CF32DC004F1514 /* Onboarding.Start.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Onboarding.Start.json; sourceTree = "<group>"; };
+		DE54AC1328CF6280004F1514 /* ConfirmResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmResetViewController.swift; sourceTree = "<group>"; };
+		DE54AC1528CF6288004F1514 /* ConfirmResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmResetView.swift; sourceTree = "<group>"; };
 		DE55A4AD27D6458000B53B46 /* OCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCourseView.swift; sourceTree = "<group>"; };
 		DE55A4AF27D64C7600B53B46 /* ODetermingSkillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ODetermingSkillView.swift; sourceTree = "<group>"; };
 		DE55A4B127D64CB300B53B46 /* OProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OProgressView.swift; sourceTree = "<group>"; };
@@ -1119,6 +1123,15 @@
 				DE54AC1028CF32DC004F1514 /* Onboarding.Start.json */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		DE54AC1228CF6272004F1514 /* ConfirmReset */ = {
+			isa = PBXGroup;
+			children = (
+				DE54AC1328CF6280004F1514 /* ConfirmResetViewController.swift */,
+				DE54AC1528CF6288004F1514 /* ConfirmResetView.swift */,
+			);
+			path = ConfirmReset;
 			sourceTree = "<group>";
 		};
 		DE5D0BBF2852819E000A1C9B /* Views */ = {
@@ -1934,6 +1947,7 @@
 		DE95A898282ECF9500809171 /* MyProfile */ = {
 			isa = PBXGroup;
 			children = (
+				DE54AC1228CF6272004F1514 /* ConfirmReset */,
 				DE95A8C928328FF000809171 /* DailyGoal */,
 				DE95A8C22832891900809171 /* StudyMode */,
 				DE95A8B22832786A00809171 /* DateOfExam */,
@@ -2483,6 +2497,7 @@
 				DE2B10BE27DB14EE005280DB /* GetCourcesResponseMapper.swift in Sources */,
 				DE95A89C282ECFD000809171 /* MyProfileViewModel.swift in Sources */,
 				DEC345FE2816FE070069A060 /* CoursesViewModel.swift in Sources */,
+				DE54AC1628CF6288004F1514 /* ConfirmResetView.swift in Sources */,
 				DE6BFE132850974A00F5CF20 /* TestCloseObserver.swift in Sources */,
 				DE6BFE7228512AC700F5CF20 /* TestStatsTableInfoCell.swift in Sources */,
 				DE2A569A2859F6D3009259A2 /* QuestionsCountCollectionLayout.swift in Sources */,
@@ -2510,6 +2525,7 @@
 				DE1CA9A627F2FC5900C66DAD /* GetMonetizationRequest.swift in Sources */,
 				DE6BFE312850A0C500F5CF20 /* AVPlayerView.swift in Sources */,
 				DE6BFDE5284F571600F5CF20 /* OTestView.swift in Sources */,
+				DE54AC1428CF6280004F1514 /* ConfirmResetViewController.swift in Sources */,
 				DE5D0BED285883BB000A1C9B /* PracticeDateOfExamView.swift in Sources */,
 				DE5D0BC7285281EF000A1C9B /* PracticeTableExamDateCell.swift in Sources */,
 				DE5D0C012858A27F000A1C9B /* CustomMadeTestTableElement.swift in Sources */,

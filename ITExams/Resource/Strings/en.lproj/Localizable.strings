@@ -287,3 +287,8 @@
 
 // MARK: TestViewer
 "TestViewer.Title" = "Question";
+
+// MARK: ConfirmReset
+"ConfirmReset.Title" = "Reset the exam progress?";
+"ConfirmReset.SubTitle" = "This will remove all your progress\non the current exam. Are you sure\nyou want to reset?";
+"ConfirmReset.Reset" = "Reset progress";

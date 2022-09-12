@@ -66,9 +66,14 @@ extension MyProfileViewController: MyProfileTableViewDelegate {
             let vc = DailyGoalViewController.make()
             present(vc, animated: true)
         case .resetProgress(let activity):
-            if !activity {
-                viewModel.resetStats.accept(Void())
+            guard !activity else {
+                return
             }
+            
+            let vc = ConfirmResetViewController.make { [weak self] in
+                self?.viewModel.resetStats.accept(Void())
+            }
+            present(vc, animated: false)
         }
     }
 }
