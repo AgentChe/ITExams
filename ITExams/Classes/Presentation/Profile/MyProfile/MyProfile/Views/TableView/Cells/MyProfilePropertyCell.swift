@@ -40,7 +40,9 @@ extension MyProfilePropertyCell {
                             .textColor(Appearance.greyColor.withAlphaComponent(0.6))
                             .font(Fonts.Inter.regular(size: 15.scale))
                             .lineHeight(22.5.scale)
-                            .letterSpacing(-0.14.scale))
+                            .letterSpacing(-0.14.scale)
+                            .textAlignment(.right)
+                            .lineBreakMode(.byTruncatingTail))
     }
 }
 
@@ -51,6 +53,9 @@ private extension MyProfilePropertyCell {
         contentView.backgroundColor = UIColor.clear
         
         selectionStyle = .none
+        
+        titleLabel.setContentHuggingPriority(UILayoutPriority(250), for: .horizontal)
+        valueLabel.setContentHuggingPriority(UILayoutPriority(251), for: .horizontal)
     }
 }
 
@@ -64,6 +69,7 @@ private extension MyProfilePropertyCell {
         
         NSLayoutConstraint.activate([
             valueLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            valueLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 16.scale),
             valueLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -48.scale)
         ])
         

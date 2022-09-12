@@ -36,7 +36,7 @@ private extension MyProfileView {
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20.scale),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20.scale),
             tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16.scale),
-            tableView.heightAnchor.constraint(equalToConstant: 384.scale)
+            tableView.heightAnchor.constraint(equalToConstant: 320.scale)
         ])
     }
 }
