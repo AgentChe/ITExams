@@ -43,7 +43,6 @@ private extension MyProfileViewModel {
                 
                 return [
                     .dateOfExam(dateOfExam),
-                    .exams(examEnvironment?.exam.title ?? ""),
                     .course(examEnvironment?.course.name ?? ""),
                     .studyMode(studyMode),
                     .dailyGoal(dailyGoal),

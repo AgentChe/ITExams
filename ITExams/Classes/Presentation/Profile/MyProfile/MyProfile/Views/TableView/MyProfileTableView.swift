@@ -48,10 +48,6 @@ extension MyProfileTableView: UITableViewDataSource {
             let cell = dequeueReusableCell(withIdentifier: String(describing: MyProfilePropertyCell.self)) as! MyProfilePropertyCell
             cell.setup(title: "MyProfile.DateOfExam".localized, value: value)
             return cell
-        case .exams(let value):
-            let cell = dequeueReusableCell(withIdentifier: String(describing: MyProfilePropertyCell.self)) as! MyProfilePropertyCell
-            cell.setup(title: "MyProfile.Exams".localized, value: value)
-            return cell
         case .course(let value):
             let cell = dequeueReusableCell(withIdentifier: String(describing: MyProfilePropertyCell.self)) as! MyProfilePropertyCell
             cell.setup(title: "MyProfile.Course".localized, value: value)

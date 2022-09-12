@@ -56,9 +56,6 @@ extension MyProfileViewController: MyProfileTableViewDelegate {
         case .dateOfExam:
             let vc = DateOfExamViewController.make()
             present(vc, animated: true)
-        case .exams:
-            let vc = ExamAndCourseViewController.make()
-            present(vc, animated: true)
         case .course:
             let vc = CoursesViewController.make()
             present(vc, animated: true)

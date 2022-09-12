@@ -131,12 +131,6 @@
 		DE5D0C0F2858DC7D000A1C9B /* SubjectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0C0E2858DC7D000A1C9B /* SubjectButton.swift */; };
 		DE5D0C112858DF69000A1C9B /* SubjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0C102858DF68000A1C9B /* SubjectsView.swift */; };
 		DE5D0C1328599828000A1C9B /* CustomMadeTestTableSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5D0C1228599828000A1C9B /* CustomMadeTestTableSwitchCell.swift */; };
-		DE60B2FA2872D93400C3AD11 /* ExamAndCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE60B2F92872D93400C3AD11 /* ExamAndCourseViewController.swift */; };
-		DE60B2FC2872D93D00C3AD11 /* ExamAndCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE60B2FB2872D93D00C3AD11 /* ExamAndCourseViewModel.swift */; };
-		DE60B2FE2872D94400C3AD11 /* ExamAndCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE60B2FD2872D94400C3AD11 /* ExamAndCourseView.swift */; };
-		DE60B3022872DC5400C3AD11 /* ExamAndCourseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE60B3012872DC5400C3AD11 /* ExamAndCourseTableView.swift */; };
-		DE60B3042872DC6600C3AD11 /* ExamAndCourseTableElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE60B3032872DC6600C3AD11 /* ExamAndCourseTableElement.swift */; };
-		DE60B3062872DC8100C3AD11 /* ExamAndCourseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE60B3052872DC8100C3AD11 /* ExamAndCourseTableCell.swift */; };
 		DE60B3082873170E00C3AD11 /* ResetCourseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE60B3072873170E00C3AD11 /* ResetCourseRequest.swift */; };
 		DE6BFD9F284E021A00F5CF20 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */; };
 		DE6BFDA1284E022200F5CF20 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */; };
@@ -499,12 +493,6 @@
 		DE5D0C0E2858DC7D000A1C9B /* SubjectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectButton.swift; sourceTree = "<group>"; };
 		DE5D0C102858DF68000A1C9B /* SubjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectsView.swift; sourceTree = "<group>"; };
 		DE5D0C1228599828000A1C9B /* CustomMadeTestTableSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMadeTestTableSwitchCell.swift; sourceTree = "<group>"; };
-		DE60B2F92872D93400C3AD11 /* ExamAndCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamAndCourseViewController.swift; sourceTree = "<group>"; };
-		DE60B2FB2872D93D00C3AD11 /* ExamAndCourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamAndCourseViewModel.swift; sourceTree = "<group>"; };
-		DE60B2FD2872D94400C3AD11 /* ExamAndCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamAndCourseView.swift; sourceTree = "<group>"; };
-		DE60B3012872DC5400C3AD11 /* ExamAndCourseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamAndCourseTableView.swift; sourceTree = "<group>"; };
-		DE60B3032872DC6600C3AD11 /* ExamAndCourseTableElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamAndCourseTableElement.swift; sourceTree = "<group>"; };
-		DE60B3052872DC8100C3AD11 /* ExamAndCourseTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamAndCourseTableCell.swift; sourceTree = "<group>"; };
 		DE60B3072873170E00C3AD11 /* ResetCourseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetCourseRequest.swift; sourceTree = "<group>"; };
 		DE6BFD9E284E021A00F5CF20 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		DE6BFDA0284E022200F5CF20 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
@@ -1255,35 +1243,6 @@
 			path = Atoms;
 			sourceTree = "<group>";
 		};
-		DE60B2F62872D90C00C3AD11 /* ExamAndCourse */ = {
-			isa = PBXGroup;
-			children = (
-				DE60B2FF2872D95100C3AD11 /* Views */,
-				DE60B2F92872D93400C3AD11 /* ExamAndCourseViewController.swift */,
-				DE60B2FB2872D93D00C3AD11 /* ExamAndCourseViewModel.swift */,
-				DE60B2FD2872D94400C3AD11 /* ExamAndCourseView.swift */,
-			);
-			path = ExamAndCourse;
-			sourceTree = "<group>";
-		};
-		DE60B2FF2872D95100C3AD11 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				DE60B3002872DC4800C3AD11 /* TableView */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		DE60B3002872DC4800C3AD11 /* TableView */ = {
-			isa = PBXGroup;
-			children = (
-				DE60B3012872DC5400C3AD11 /* ExamAndCourseTableView.swift */,
-				DE60B3032872DC6600C3AD11 /* ExamAndCourseTableElement.swift */,
-				DE60B3052872DC8100C3AD11 /* ExamAndCourseTableCell.swift */,
-			);
-			path = TableView;
-			sourceTree = "<group>";
-		};
 		DE6BFD9D284E020900F5CF20 /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -1975,7 +1934,6 @@
 		DE95A898282ECF9500809171 /* MyProfile */ = {
 			isa = PBXGroup;
 			children = (
-				DE60B2F62872D90C00C3AD11 /* ExamAndCourse */,
 				DE95A8C928328FF000809171 /* DailyGoal */,
 				DE95A8C22832891900809171 /* StudyMode */,
 				DE95A8B22832786A00809171 /* DateOfExam */,
@@ -2497,7 +2455,6 @@
 				DE2B100E27DA47AE005280DB /* OPlanView.swift in Sources */,
 				DE3BDBE7284A3BE40091230F /* StatsTableUnlockPremiumButtonCell.swift in Sources */,
 				DE5D0BF42858956F000A1C9B /* NoMissedQuestionsView.swift in Sources */,
-				DE60B2FA2872D93400C3AD11 /* ExamAndCourseViewController.swift in Sources */,
 				DEBCD18A284A02FC000C08A9 /* StatsMainProgressView.swift in Sources */,
 				DE5D0BCB2852820C000A1C9B /* PracticeTableDailyQuestionCell.swift in Sources */,
 				DE6BFE2C2850A05F00F5CF20 /* QuestionContentCollectionCell.swift in Sources */,
@@ -2598,13 +2555,10 @@
 				DE95A8C62832893000809171 /* StudyModeViewModel.swift in Sources */,
 				DE6BFE102850971900F5CF20 /* FinishTestRequest.swift in Sources */,
 				DE5D0C042858AC98000A1C9B /* CustomMadeTestTableStartCell.swift in Sources */,
-				DE60B2FE2872D94400C3AD11 /* ExamAndCourseView.swift in Sources */,
 				DE2B10CE27DB14EE005280DB /* IAPActionResult.swift in Sources */,
 				DEC3460D28185EBB0069A060 /* CourseCurrentView.swift in Sources */,
 				DE5D0BF72858A23C000A1C9B /* CustomMadeTestViewController.swift in Sources */,
-				DE60B3062872DC8100C3AD11 /* ExamAndCourseTableCell.swift in Sources */,
 				DE5D0BF92858A247000A1C9B /* CustomMadeTestViewModel.swift in Sources */,
-				DE60B3042872DC6600C3AD11 /* ExamAndCourseTableElement.swift in Sources */,
 				DE5D0BDB285869D4000A1C9B /* GetTestsKitResponse.swift in Sources */,
 				DE3FD60A27E9FFEE00E76844 /* PaygateInfoCell.swift in Sources */,
 				DE5D0BCD2852822E000A1C9B /* PracticeTableTestsCell.swift in Sources */,
@@ -2616,7 +2570,6 @@
 				DED4725827D20C4C00AEF8A6 /* OExamsTable.swift in Sources */,
 				DE6BFDA8284E03C400F5CF20 /* ReviewFilterView.swift in Sources */,
 				DE95A8A2282ED2D200809171 /* MyProfileTableView.swift in Sources */,
-				DE60B2FC2872D93D00C3AD11 /* ExamAndCourseViewModel.swift in Sources */,
 				DE2A568C2859D3F9009259A2 /* CustomTestAttributes.swift in Sources */,
 				DE6BFDAF284E095500F5CF20 /* ReviewTableElement.swift in Sources */,
 				DEC3460F28196AE90069A060 /* Spinner.swift in Sources */,
@@ -2658,7 +2611,6 @@
 				DEE74EBF27F41960002FE71D /* GetPlanRequest.swift in Sources */,
 				DEBCD17C284949FA000C08A9 /* StatsView.swift in Sources */,
 				DEC345F72816E4BD0069A060 /* PlanCurrent.swift in Sources */,
-				DE60B3022872DC5400C3AD11 /* ExamAndCourseTableView.swift in Sources */,
 				DEBCD1732849458D000C08A9 /* GetStatsRequest.swift in Sources */,
 				DE2B10CD27DB14EE005280DB /* PurchaseValidationObserver.swift in Sources */,
 				DE2A56A1285A0AC1009259A2 /* QuestionViewerViewModel.swift in Sources */,

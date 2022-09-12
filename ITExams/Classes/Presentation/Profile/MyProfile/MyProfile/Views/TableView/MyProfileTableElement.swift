@@ -7,7 +7,6 @@
 
 enum MyProfileTableElement {
     case dateOfExam(String)
-    case exams(String)
     case course(String)
     case studyMode(String)
     case dailyGoal(String)
