@@ -12,10 +12,17 @@ final class OCreatingPlanSectionView: UIView {
     lazy var titleLabel = makeTitleLabel()
     lazy var percentLabel = makePercentLabel()
     
+    private var timer: Timer?
+    
     private let title: String
     private let rows: [String]
     
     private lazy var rowsViews = [OCreatingPlanRowView]()
+    
+    deinit {
+        timer?.invalidate()
+        timer = nil
+    }
     
     init(title: String, rows: [String]) {
         self.title = title
@@ -41,12 +48,15 @@ extension OCreatingPlanSectionView {
         rowsViews.forEach {
             $0.alpha = 0
         }
+        timer?.invalidate()
+        timer = nil
     }
     
     func openUp(completion: @escaping () -> Void) {
         titleLabel.alpha = 1
         percentLabel.alpha = 1
         
+        calculatePercent()
         openUsRows { [weak self] in
             guard let self = self else {
                 return
@@ -92,6 +102,31 @@ private extension OCreatingPlanSectionView {
         }
         
         layoutSubviews()
+    }
+    
+    func calculatePercent() {
+        let attrs = TextAttributes()
+            .textColor(Appearance.mainColor)
+            .font(Fonts.Inter.semiBold(size: 17.scale))
+            .lineHeight(20.4.scale)
+            .letterSpacing(-0.44.scale)
+        
+        let duration = Double(rowsViews.count * 1)
+        var seconds = Double(0)
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] timer in
+            seconds += 0.1
+            
+            var percent = Int(seconds / duration * 100)
+            if percent > 100 {
+                percent = 100
+            }
+            self?.percentLabel.attributedText = String(format: "%i%%", percent).attributed(with: attrs)
+            
+            if seconds >= duration {
+                timer.invalidate()
+            }
+        }
     }
     
     func openUsRows(index: Int = 0, completion: @escaping () -> Void) {
@@ -166,13 +201,7 @@ private extension OCreatingPlanSectionView {
     }
     
     func makePercentLabel() -> UILabel {
-        let attrs = TextAttributes()
-            .textColor(Appearance.mainColor)
-            .font(Fonts.Inter.semiBold(size: 17.scale))
-            .lineHeight(20.4.scale)
-            .letterSpacing(-0.44.scale)
         let view = UILabel()
-        view.attributedText = "Onboarding.CreatingPlanView.100%".localized.attributed(with: attrs)
         view.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
