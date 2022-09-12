@@ -8,7 +8,6 @@
 import UIKit
 
 final class QuestionsCountCollectionCell: UICollectionViewCell {
-    lazy var container = makeContainer()
     lazy var label = makeLabel()
     
     override init(frame: CGRect) {
@@ -35,9 +34,6 @@ extension QuestionsCountCollectionCell {
         label.attributedText = String(element.count).attributed(with: attrs)
         
         label.alpha = element.isSelected ? 1 : 0.2
-        
-        container.layer.borderWidth = element.isSelected ? 2.scale : 0
-        container.layer.borderColor = element.isSelected ? Appearance.mainColor.cgColor : UIColor.clear.cgColor
     }
 }
 
@@ -57,34 +53,18 @@ private extension QuestionsCountCollectionCell {
 private extension QuestionsCountCollectionCell {
     func makeConstraints() {
         NSLayoutConstraint.activate([
-            container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            container.topAnchor.constraint(equalTo: contentView.topAnchor),
-            container.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: container.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: container.centerYAnchor)
+            label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
 }
 
 // MARK: Lazy initialization
-private extension QuestionsCountCollectionCell {
-    func makeContainer() -> UIView {
-        let view = UIView()
-        view.backgroundColor = UIColor.clear
-        view.layer.cornerRadius = 12.scale
-        view.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(view)
-        return view
-    }
-    
+private extension QuestionsCountCollectionCell {    
     func makeLabel() -> UILabel {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        container.addSubview(view)
+        contentView.addSubview(view)
         return view
     }
 }
