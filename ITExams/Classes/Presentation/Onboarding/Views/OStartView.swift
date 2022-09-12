@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import Lottie
 
 final class OStartView: OSlideView {
     lazy var headerLabel = makeHeaderLabel()
     lazy var titleLabel = makeTitleLabel()
     lazy var subTitleLabel = makeSubTitleLabel()
-    lazy var imageView = makeImageView()
+    lazy var animationView = makeAnimationView()
     lazy var button = makeButton()
     
     override init(step: OnboardingView.Step) {
@@ -24,15 +25,21 @@ final class OStartView: OSlideView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func moveToThis() {
+        super.moveToThis()
+        
+        AmplitudeManager.shared
+            .logEvent(name: "Welcome Screen")
+        
+        animationView.play()
+    }
 }
 
 // MARK: Private
 private extension OStartView {
     func initialize() {
         backgroundColor = Appearance.backgroundColor
-        
-        AmplitudeManager.shared
-            .logEvent(name: "Welcome Screen")
     }
 }
 
@@ -57,10 +64,10 @@ private extension OStartView {
         ])
         
         NSLayoutConstraint.activate([
-            imageView.widthAnchor.constraint(equalToConstant: 287.scale),
-            imageView.heightAnchor.constraint(equalToConstant: 287.scale),
-            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 32.scale)
+            animationView.widthAnchor.constraint(equalToConstant: 287.scale),
+            animationView.heightAnchor.constraint(equalToConstant: 287.scale),
+            animationView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            animationView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 32.scale)
         ])
         
         NSLayoutConstraint.activate([
@@ -121,10 +128,11 @@ private extension OStartView {
         return view
     }
     
-    func makeImageView() -> UIImageView {
-        let view = UIImageView()
+    func makeAnimationView() -> AnimationView {
+        let view = AnimationView()
+        view.animation = Animation.named("Onboarding.Start")
         view.contentMode = .scaleAspectFit
-        view.image = UIImage(named: "OStart.Image")
+        view.loopMode = .loop
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

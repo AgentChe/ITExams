@@ -119,6 +119,8 @@ private extension OnboardingView {
                 if index == 0 {
                     view.frame.origin = CGPoint(x: 0, y: 0)
                     addSubview(view)
+                    
+                    view.moveToThis()
                 }
             }
         
