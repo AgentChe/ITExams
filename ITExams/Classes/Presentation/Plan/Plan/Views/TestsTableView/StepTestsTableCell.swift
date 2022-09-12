@@ -29,12 +29,12 @@ final class StepTestsTableCell: UITableViewCell {
 
 // MARK: Public
 extension StepTestsTableCell {
-    func setup(element: PlanTest, activeSubscription: Bool, lockedStep: Bool) {
+    func setup(number: Int, element: PlanTest, activeSubscription: Bool, lockedStep: Bool) {
         let isLocked = isLocked(paid: element.paid, activeSubscription: activeSubscription, lockedStep: lockedStep)
         
         numberBackgroundView.image = UIImage(named: isLocked ? "Plan.Test.LockedNumber" : "Plan.Test.Number")
         
-        numberLabel.attributedText = String(element.sort)
+        numberLabel.attributedText = String(number)
             .attributed(with: TextAttributes()
                             .textColor(isLocked ? Appearance.mainColor : Appearance.whiteColor)
                             .font(Fonts.Inter.black(size: 19.scale))

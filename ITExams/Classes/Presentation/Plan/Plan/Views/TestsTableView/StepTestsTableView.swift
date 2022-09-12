@@ -55,7 +55,8 @@ extension StepTestsTableView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = dequeueReusableCell(withIdentifier: String(describing: StepTestsTableCell.self)) as! StepTestsTableCell
-        cell.setup(element: elements[indexPath.section],
+        cell.setup(number: indexPath.section + 1,
+                   element: elements[indexPath.section],
                    activeSubscription: activeSubscription,
                    lockedStep: lockedStep)
         return cell
