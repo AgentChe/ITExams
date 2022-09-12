@@ -220,7 +220,6 @@
 "Review.All" = "All";
 "Review.Incorrect" = "Incorrect";
 "Review.Correct" = "Correct";
-"Review.Saved" = "Saved";
 "Review.Empty.Title" = "No questions";
 "Review.Empty.SubTitle" = "Take a quick test and review all of the answered questions here.";
 "Review.Empty.Button" = "Take a quick test";

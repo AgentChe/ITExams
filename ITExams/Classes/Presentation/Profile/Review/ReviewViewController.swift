@@ -75,8 +75,7 @@ private extension ReviewViewController {
             .merge(
                 mainView.filterView.allButton.rx.tap.map { ReviewFilter.all },
                 mainView.filterView.incorrectButton.rx.tap.map { ReviewFilter.incorrect },
-                mainView.filterView.correctButton.rx.tap.map { ReviewFilter.correct },
-                mainView.filterView.savedButton.rx.tap.map { ReviewFilter.saved }
+                mainView.filterView.correctButton.rx.tap.map { ReviewFilter.correct }
             )
             .startWith(.all)
             .distinctUntilChanged()

@@ -8,7 +8,7 @@
 import UIKit
 
 enum ReviewFilter {
-    case all, incorrect, correct, saved
+    case all, incorrect, correct
 }
 
 final class ReviewFilterView: UIView {
@@ -21,7 +21,6 @@ final class ReviewFilterView: UIView {
     lazy var allButton = makeButton(title: "Review.All".localized)
     lazy var incorrectButton = makeButton(title: "Review.Incorrect".localized)
     lazy var correctButton = makeButton(title: "Review.Correct".localized)
-    lazy var savedButton = makeButton(title: "Review.Saved".localized)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,8 +40,7 @@ private extension ReviewFilterView {
         let buttons = [
             allButton,
             incorrectButton,
-            correctButton,
-            savedButton
+            correctButton
         ]
         
         buttons.forEach {
@@ -53,7 +51,6 @@ private extension ReviewFilterView {
         case .all: allButton.isChecked = true
         case .incorrect: incorrectButton.isChecked = true
         case .correct: correctButton.isChecked = true
-        case .saved: savedButton.isChecked = true
         }
     }
 }
@@ -80,13 +77,6 @@ private extension ReviewFilterView {
             correctButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 190.scale),
             correctButton.topAnchor.constraint(equalTo: topAnchor),
             correctButton.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            savedButton.widthAnchor.constraint(equalToConstant: 76.scale),
-            savedButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 288.scale),
-            savedButton.topAnchor.constraint(equalTo: topAnchor),
-            savedButton.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

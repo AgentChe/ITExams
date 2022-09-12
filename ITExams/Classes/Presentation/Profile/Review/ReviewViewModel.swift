@@ -82,7 +82,6 @@ private extension ReviewViewModel {
                 case .all: return 0
                 case .incorrect: return 1
                 case .correct: return 2
-                case .saved: return 3
                 }
             }
             .distinctUntilChanged()
