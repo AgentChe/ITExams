@@ -60,20 +60,13 @@ extension OExamsTable: UITableViewDelegate {
             return
         }
         
-        var paths = [IndexPath]()
-        
         if let selectedIndex = elements.firstIndex(where: { $0.isSelected }) {
-            let path = IndexPath(row: 0, section: selectedIndex)
-            paths.append(path)
-            
             elements[selectedIndex].isSelected = false
         }
         
-        paths.append(indexPath)
-        
         elements[indexPath.section].isSelected = true
         
-        reloadRows(at: paths, with: .automatic)
+        reloadData()
         
         mainDelegate?.examsTableDidChangeSelected()
     }
