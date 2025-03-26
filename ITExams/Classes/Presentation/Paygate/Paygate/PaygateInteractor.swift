@@ -8,7 +8,6 @@
 import RxSwift
 import RxCocoa
 import OtterScaleiOS
-import RushSDK
 
 final class PaygateInteractor {
     enum Action {
@@ -31,7 +30,7 @@ final class PaygateInteractor {
     private lazy var callback = PublishRelay<PurchaseActionResult>()
     
     deinit {
-        OtterScale.shared.remove(delegate: self)
+        OtterScale.shared.removeReceiptValidation(delegate: self)
         
         disposables.forEach { $0.dispose() }
     }
@@ -40,8 +39,8 @@ final class PaygateInteractor {
 // MARK: Public
 extension PaygateInteractor {
     func makeActiveSubscription(by action: Action) -> Single<PurchaseActionResult> {
-        OtterScale.shared.remove(delegate: self)
-        OtterScale.shared.add(delegate: self)
+        OtterScale.shared.removeReceiptValidation(delegate: self)
+        OtterScale.shared.addReceiptValidation(delegate: self)
         
         disposables.forEach { $0.dispose() }
         
@@ -74,39 +73,7 @@ extension PaygateInteractor {
 // MARK: OtterScaleReceiptValidationDelegate
 extension PaygateInteractor: OtterScaleReceiptValidationDelegate {
     func otterScaleDidValidatedReceipt(with result: AppStoreValidateResult?) {
-        OtterScale.shared.remove(delegate: self)
         
-        let otterScaleID = OtterScale.shared.getInternalID()
-        
-        let complete: Single<Void>
-        
-        if let cachedToken = self.sessionManager.getSession()?.userToken {
-            if cachedToken != otterScaleID {
-                complete = self.syncTokens(oldToken: cachedToken, newToken: otterScaleID)
-            } else {
-                complete = .deferred { .just(Void()) }
-            }
-        } else {
-            complete = self.login(userToken: otterScaleID)
-        }
-        
-        let disposable = complete.subscribe(onSuccess: { [weak self] in
-            guard let self = self else {
-                return
-            }
-            
-            let session = Session(userToken: otterScaleID)
-            self.sessionManager.store(session: session)
-            
-            SDKStorage.shared.featureAppMediator.notifyAboutUpdate(userId: otterScaleID,
-                                                                   userToken: otterScaleID)
-            
-            let hasActiveSubscriptions = self.sessionManager.hasActiveSubscriptions()
-            let result = PurchaseActionResult.completed(hasActiveSubscriptions)
-            self.callback.accept(result)
-        })
-        
-        disposables.append(disposable)
     }
 }
 

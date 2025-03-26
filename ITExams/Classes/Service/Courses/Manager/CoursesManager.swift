@@ -24,13 +24,9 @@ final class CoursesManager: CoursesManagerProtocol {
 // MARK: Public
 extension CoursesManager {
     func obtainCourses(domain: String, apiKey: String) -> Single<[Course]> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .deferred { .just([]) }
-        }
-        
         let request = GetCourcesRequest(domain: domain,
                                         apiKey: apiKey,
-                                        userToken: userToken)
+                                        userToken: sessionManager.internalId)
         
         return defaultRequestWrapper
             .callServerApi(requestBody: request)

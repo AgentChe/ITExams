@@ -8,19 +8,13 @@
 import RxSwift
 import RxCocoa
 import OtterScaleiOS
-import RushSDK
 
 final class SplashViewModel {
-    enum Step {
-        case onboarding, main, paygate
+    enum Route {
+        case onboarding, paygateTransitionMain, main
     }
     
     var tryAgain: ((Error) -> (Observable<Void>))?
-    
-    lazy var validationComplete = PublishRelay<Void>()
-    
-    lazy var validationActivity = RxActivityIndicator()
-    lazy var libraryActivity = RxActivityIndicator()
     
     private lazy var paygateManager = PaygateManager()
     private lazy var sessionManager = SessionManager()
@@ -31,170 +25,120 @@ final class SplashViewModel {
 
 // MARK: Public
 extension SplashViewModel {
-    func step() -> Driver<Step> {
-        handleValidationComplete()
-            .flatMap { [weak self] _ -> Observable<Void> in
-                guard let self = self else {
-                    return .never()
-                }
-                
-                return self.library()
-            }
-            .flatMap { [weak self] _ -> Single<Step> in
-                guard let self = self else {
-                    return .never()
-                }
-                
-                return self.makeStep()
-            }
-            .asDriver(onErrorDriveWith: .empty())
+    struct Input {
+        let didSDKConfigured: Signal<Void>
+    }
+    
+    struct Output {
+        let route: Driver<Route>
+    }
+    
+    func configure(input: Input) -> Output {
+        let login = login(didSDKConfigured: input.didSDKConfigured)
+        let library = makeLibrary(login: login)
+        
+        return Output(
+            route: makeRoute(library: library)
+        )
     }
 }
 
 // MARK: Private
 private extension SplashViewModel {
-    func handleValidationComplete() -> Observable<Void> {
-        validationComplete.flatMapLatest { [weak self] _ -> Observable<Void> in
-            guard let self = self else {
-                return .never()
-            }
-            
-            let otterScaleID = OtterScale.shared.getInternalID()
-            
-            func source() -> Single<Void> {
-                let complete: Single<Void>
+    func makeRoute(library: Signal<Void>) -> Driver<Route> {
+        library
+            .compactMap { [weak self] void -> Route? in
+                guard let self else { return nil }
                 
-                if let cachedToken = self.sessionManager.getSession()?.userToken {
-                    if cachedToken != otterScaleID {
-                        complete = self.syncTokens(oldToken: cachedToken, newToken: otterScaleID)
-                    } else {
-                        complete = .deferred { .just(Void()) }
-                    }
-                } else {
-                    complete = self.login(userToken: otterScaleID)
-                }
+                guard OnboardingViewController.wasViewed() else { return .onboarding }
                 
-                return complete
-            }
-            
-            func trigger(error: Error) -> Observable<Void> {
-                guard let tryAgain = self.tryAgain?(error) else {
-                    return .empty()
-                }
+                guard sessionManager.hasActiveSubscriptions() else { return .paygateTransitionMain }
                 
-                return tryAgain
+                return .main
             }
-            
-            return self.observableRetrySingle
-                .retry(source: { source() },
-                       trigger: { trigger(error: $0) })
-                .trackActivity(self.validationActivity)
-                .flatMap { _ -> Single<Void> in
-                    let session = Session(userToken: otterScaleID)
-                    self.sessionManager.store(session: session)
+            .asDriver(onErrorDriveWith: .never())
+    }
+    
+    func makeLibrary(login: Signal<Void>) -> Signal<Void> {
+        login
+            .flatMapLatest { [weak self] void -> Signal<Void> in
+                guard let self else { return .never() }
+                
+                func source() -> Single<Void> {
+                    let monetization = paygateManager
+                        .obtainMonetization(forceUpdate: true)
+                        .mapToVoid()
                     
-                    SDKStorage.shared.featureAppMediator.notifyAboutUpdate(userId: otterScaleID,
-                                                                           userToken: otterScaleID)
+                    let profile = profileManager
+                        .obtainProfile(forceUpdate: true)
+                        .mapToVoid()
                     
-                    return .deferred { .just(Void()) }
-                }
-        }
-    }
-    
-    func syncTokens(oldToken: String, newToken: String) -> Single<Void> {
-        profileManager
-            .obtainExams()
-            .flatMap { [weak self] exams -> Single<Void> in
-                guard let self = self else {
-                    return .never()
+                    return Single.zip(
+                        monetization,
+                        profile
+                    ).mapToVoid()
                 }
                 
-                let requests = exams
-                    .map { exam -> Single<Void> in
-                        self.profileManager.syncTokens(domain: exam.domain,
-                                                       apiKey: exam.api,
-                                                       oldToken: oldToken,
-                                                       newToken: newToken)
-                    }
+                func trigger(error: Error) -> Observable<Void> {
+                    tryAgain?(error) ?? .empty()
+                }
                 
-                return Single
-                    .zip(requests)
-                    .mapToVoid()
+                return observableRetrySingle
+                    .retry(
+                        source: { source() },
+                        trigger: { trigger(error: $0) }
+                    )
+                    .asSignal(onErrorSignalWith: .never())
             }
     }
     
-    func login(userToken: String) -> Single<Void> {
-        profileManager
-            .obtainExams()
-            .flatMap { [weak self] exams -> Single<Void> in
-                guard let self = self else {
-                    return .never()
+    func login(didSDKConfigured: Signal<Void>) -> Signal<Void> {
+        didSDKConfigured
+            .flatMapLatest { [weak self] void -> Signal<Void> in
+                guard let self else { return .never() }
+                
+                func source() -> Single<Void> {
+                    let anonymousId = sessionManager.anonymousId
+                    let internalId = sessionManager.internalId
+                    
+                    return profileManager
+                        .obtainExams()
+                        .flatMap { [weak self] exams -> Single<Void> in
+                            guard let self else { return .never() }
+                            
+                            let requests = exams.map { exam -> Single<Void> in
+                                if anonymousId == internalId {
+                                    return self.profileManager.login(
+                                        domain: exam.domain,
+                                        apiKey: exam.api,
+                                        userToken: internalId
+                                    )
+                                } else {
+                                    return self.profileManager.syncTokens(
+                                        domain: exam.domain,
+                                        apiKey: exam.api,
+                                        oldToken: anonymousId,
+                                        newToken: internalId
+                                    )
+                                }
+                            }
+                            
+                            return Single
+                                .zip(requests)
+                                .mapToVoid()
+                        }
                 }
                 
-                let requests = exams
-                    .map { exam -> Single<Void> in
-                        self.profileManager.login(domain: exam.domain,
-                                                  apiKey: exam.api,
-                                                  userToken: userToken)
-                    }
-                
-                return Single
-                    .zip(requests)
-                    .mapToVoid()
-            }
-    }
-    
-    func library() -> Observable<Void> {
-        func source() -> Single<Void> {
-            let monetization = paygateManager
-                .obtainMonetization(forceUpdate: true)
-                .mapToVoid()
-            
-            let profile = profileManager
-                .obtainProfile(forceUpdate: true)
-                .mapToVoid()
-            
-            return Single.zip(
-                monetization,
-                profile
-            ).mapToVoid()
-        }
-        
-        func trigger(error: Error) -> Observable<Void> {
-            guard let tryAgain = self.tryAgain?(error) else {
-                return .empty()
-            }
-            
-            return tryAgain
-        }
-        
-        return self.observableRetrySingle
-            .retry(source: { source() },
-                   trigger: { trigger(error: $0) })
-            .trackActivity(libraryActivity)
-    }
-    
-    func makeStep() -> Single<Step> {
-        Single<Step>
-            .create { event in
-                let step: Step
-                
-                if !OnboardingViewController.wasViewed() {
-                    step = .onboarding
-                } else if self.needPayment() {
-                    step = .paygate
-                } else {
-                    step = .main
+                func trigger(error: Error) -> Observable<Void> {
+                    tryAgain?(error) ?? .empty()
                 }
                 
-                event(.success(step))
-                
-                return Disposables.create()
+                return observableRetrySingle
+                    .retry(
+                        source: { source() },
+                        trigger: { trigger(error: $0) }
+                    )
+                    .asSignal(onErrorSignalWith: .never())
             }
-    }
-    
-    func needPayment() -> Bool {
-        let activeSubscription = sessionManager.hasActiveSubscriptions()
-        return !activeSubscription
     }
 }

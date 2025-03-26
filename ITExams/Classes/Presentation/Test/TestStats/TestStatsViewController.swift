@@ -67,10 +67,6 @@ final class TestStatsViewController: UIViewController {
 // MARK: Make
 extension TestStatsViewController {
     static func make(finish: TestFinish) -> TestStatsViewController {
-        AmplitudeManager.shared
-            .logEvent(name: "Test Stats Screen",
-                      parameters: ["mode": TestAnalytics.name(mode: finish.testType)])
-        
         let vc = TestStatsViewController()
         vc.viewModel.userTestId.accept(finish.userTestId)
         vc.modalPresentationStyle = .fullScreen

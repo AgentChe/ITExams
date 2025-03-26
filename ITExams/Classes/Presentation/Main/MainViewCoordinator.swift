@@ -26,23 +26,14 @@ final class MainViewCoordinator {
             parentVC?.mainView.tabView.selectedTab = tab
 
             changeVC(on: planVC)
-            
-            AmplitudeManager.shared
-                .logEvent(name: "Tab Bar Tap", parameters: ["what": "plan"])
         case .practice:
             parentVC?.mainView.tabView.selectedTab = tab
             
             changeVC(on: practiceVC)
-            
-            AmplitudeManager.shared
-                .logEvent(name: "Tab Bar Tap", parameters: ["what": "practice"])
         case .profile:
             parentVC?.mainView.tabView.selectedTab = tab
             
             changeVC(on: profileVC)
-            
-            AmplitudeManager.shared
-                .logEvent(name: "Tab Bar Tap", parameters: ["what": "profile"])
         }
     }
 }

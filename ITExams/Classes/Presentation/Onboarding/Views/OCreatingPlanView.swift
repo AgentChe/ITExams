@@ -28,9 +28,6 @@ final class OCreatingPlanView: OSlideView {
     override func moveToThis() {
         super.moveToThis()
         
-        AmplitudeManager.shared
-            .logEvent(name: "Onboarding Screen 4")
-        
         guard let data = combineData?.combineData() else {
             return
         }

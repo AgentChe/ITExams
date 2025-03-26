@@ -59,13 +59,9 @@ extension ProfileManager {
              exam: Exam? = nil,
              course: Course? = nil,
              pushToken: String? = nil) -> Single<Void> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = SetRequest(domain: domain,
                                  apiKey: apiKey,
-                                 userToken: userToken,
+                                 userToken: sessionManager.internalId,
                                  level: motivation,
                                  testMode: testMode?.code(),
                                  examDate: examDateStringFormatted(examDate),
@@ -90,13 +86,9 @@ extension ProfileManager {
     }
     
     func resetCourse(domain: String, apiKey: String) -> Single<Void> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = ResetCourseRequest(domain: domain,
                                          apiKey: apiKey,
-                                         userToken: userToken)
+                                         userToken: sessionManager.internalId)
         
         return defaultRequestWrapper
             .callServerApi(requestBody: request)
@@ -141,12 +133,6 @@ extension ProfileManager {
                          questionsCount: 7500,
                          api: GlobalDefinitions.comptiaApiKey,
                          domain: GlobalDefinitions.comptiaDomainUrl),
-                    Exam(code: "CISSP",
-                         title: "Onboarding.Exams.Exam3.Name".localized,
-                         subTitle: "Onboarding.Exams.Exam3.Text".localized,
-                         questionsCount: 1500,
-                         api: GlobalDefinitions.cisspApiKey,
-                         domain: GlobalDefinitions.cisspDomainUrl),
                     Exam(code: "ACMA",
                          title: "Onboarding.Exams.Exam4.Name".localized,
                          subTitle: "Onboarding.Exams.Exam4.Text".localized,
@@ -247,13 +233,9 @@ private extension ProfileManager {
     }
     
     func loadProfile() -> Single<Profile?> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = GetProfileRequest(domain: GlobalDefinitions.awsDomainUrl,
                                         apiKey: GlobalDefinitions.awsApiKey,
-                                        userToken: userToken)
+                                        userToken: sessionManager.internalId)
         
         return defaultRequestWrapper
             .callServerApi(requestBody: request)

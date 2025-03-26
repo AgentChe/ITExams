@@ -19,9 +19,6 @@ final class TestRateUs {
             return
         }
         
-        AmplitudeManager.shared
-            .logEvent(name: "Rating Request", parameters: [:])
-        
         SKStoreReviewController.requestReview()
         
         UserDefaults.standard.setValue(true, forKey: Constants.showFirstAfterPass)

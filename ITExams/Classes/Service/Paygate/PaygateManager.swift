@@ -49,7 +49,7 @@ private extension PaygateManager {
     func loadAndStoreMonetization() -> Single<Monetization?> {
         let request = GetMonetizationRequest(domain: GlobalDefinitions.awsDomainUrl,
                                              apiKey: GlobalDefinitions.awsApiKey,
-                                             userToken: sessionManager.getSession()?.userToken,
+                                             userToken: sessionManager.internalId,
                                              version: UIDevice.appVersion ?? "1",
                                              appAnonymousId: OtterScale.shared.getAnonymousID())
         

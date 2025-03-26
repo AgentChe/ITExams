@@ -20,13 +20,9 @@ final class PlanManager: PlanManagerProtocol {
 // MARK: Public
 extension PlanManager {
     func obtainPlan(domain: String, apiKey: String, courseId: Int) -> Single<Plan?> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = GetPlanRequest(domain: domain,
                                      apiKey: apiKey,
-                                     userToken: userToken,
+                                     userToken: sessionManager.internalId,
                                      courseId: courseId)
         
         return defaultRequestWrapper

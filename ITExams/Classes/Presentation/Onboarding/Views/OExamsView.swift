@@ -37,13 +37,6 @@ final class OExamsView: OSlideView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func moveToThis() {
-        super.moveToThis()
-        
-        AmplitudeManager.shared
-            .logEvent(name: "App Screen")
-    }
 }
 
 // MARK: Public
@@ -104,9 +97,6 @@ private extension OExamsView {
                 }
                 
                 self.examDelegates.forEach { $0.weak?.examsDidSelected(element: element) }
-                
-                AmplitudeManager.shared
-                    .logEvent(name: "App Tap", parameters: ["what": element.code])
                 
                 self.onNext()
             })

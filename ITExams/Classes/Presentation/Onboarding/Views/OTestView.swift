@@ -81,21 +81,6 @@ private extension OTestView {
             .asDriver(onErrorDriveWith: .never())
         
         Driver
-            .combineLatest(course, index)
-            .drive(Binder(self) { base, args in
-                let (course, index) = args
-                
-                AmplitudeManager.shared
-                    .logEvent(name: "Question Screen",
-                              parameters: [
-                                "course": course.name,
-                                "mode": "onboarding",
-                                "step": index
-                              ])
-            })
-            .disposed(by: disposeBag)
-        
-        Driver
             .combineLatest(exam, course)
             .flatMapLatest { [weak self] exam, course -> Driver<Test> in
                 guard let self = self else {
@@ -129,9 +114,6 @@ private extension OTestView {
             }
             .drive(Binder(self) { base, test in
                 base.start(questions: test.questions) {
-                    FirebaseManager.shared
-                        .logEvent(name: "client_onboarding_test_finished")
-                    
                     base.testViewDelegate?.testViewDidFinished()
                 }
             })
@@ -301,9 +283,6 @@ private extension OTestView {
                                        state: state)
         }
         
-        let isCorrect = !result.contains(where: { $0.state == .warning || $0.state == .error })
-        logAnswered(isCorrect: isCorrect)
-        
         let explanation: [TestingCellType]
         let explanationText: TestingCellType?
         if (question.explanation != nil || question.explanationHtml != nil) {
@@ -332,21 +311,6 @@ private extension OTestView {
                                       isSaved: question.isSaved)
         
         return element
-    }
-    
-    func logAnswered(isCorrect: Bool) {
-        guard let courseName = selectedCourse.value?.name else {
-            return
-        }
-        
-        let logName = isCorrect ? "Question Answered Correctly" : "Question Answered Incorrectly"
-        
-        AmplitudeManager.shared
-            .logEvent(name: logName,
-                      parameters: [
-                        "course": courseName,
-                        "mode": "onboarding"
-                      ])
     }
     
     func openError() -> Observable<Void> {

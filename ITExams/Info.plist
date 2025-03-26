@@ -16,17 +16,9 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>fb1100258050553338</string>
-			</array>
+			<array/>
 		</dict>
 	</array>
-	<key>FacebookAppID</key>
-	<string>1100258050553338</string>
-	<key>FacebookClientToken</key>
-	<string>987c9218607b6fe206194b97b4866015</string>
-	<key>FacebookDisplayName</key>
-	<string>Prepbundle IT</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Inter-Regular.ttf</string>
@@ -34,7 +26,5 @@
 		<string>Inter-Bold.ttf</string>
 		<string>Inter-Black.ttf</string>
 	</array>
-	<key>branch_key</key>
-	<string>key_live_noYP3aS2cLQ3DVV4JxJyRddfvAot06Pm</string>
 </dict>
 </plist>

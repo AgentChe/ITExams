@@ -23,13 +23,9 @@ final class StatsManager: StatsManagerProtocol {
 // MARK: Public
 extension StatsManager {
     func resetStats(domain: String, apiKey: String, courseId: Int) -> Single<Void> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = ResetStatsRequest(domain: domain,
                                         apiKey: apiKey,
-                                        userToken: userToken,
+                                        userToken: sessionManager.internalId,
                                         courseId: courseId)
         
         return defaultRequestWrapper
@@ -41,13 +37,9 @@ extension StatsManager {
     }
     
     func obtainStats(domain: String, apiKey: String, courseId: Int) -> Single<Stats?> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = GetStatsRequest(domain: domain,
                                       apiKey: apiKey,
-                                      userToken: userToken,
+                                      userToken: sessionManager.internalId,
                                       courseId: courseId)
         
         return defaultRequestWrapper
@@ -56,13 +48,9 @@ extension StatsManager {
     }
     
     func obtainTestStats(domain: String, apiKey: String, courseId: Int, userTestId: Int) -> Single<TestStats?> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = GetTestStatsRequest(domain: domain,
                                           apiKey: apiKey,
-                                          userToken: userToken,
+                                          userToken: sessionManager.internalId,
                                           courseId: courseId,
                                           userTestId: userTestId,
                                           peek: true)

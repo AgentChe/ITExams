@@ -96,7 +96,6 @@ final class TestViewController: UIViewController {
                 let (answers, name) = args
                 
                 base.viewModel.answers.accept(answers)
-                base.logTapAnalytics(courseName: name, what: "answer")
             })
             .disposed(by: disposeBag)
         
@@ -133,7 +132,6 @@ final class TestViewController: UIViewController {
             .withLatestFrom(viewModel.courseName)
             .bind(to: Binder(self) { base, name in
                 base.viewModel.didTapNext.accept(Void())
-                base.logTapAnalytics(courseName: name, what: "continue")
             })
             .disposed(by: disposeBag)
         
@@ -151,8 +149,6 @@ final class TestViewController: UIViewController {
             .withLatestFrom(viewModel.courseName) { ($0, $1) }
             .bind(to: Binder(self) { base, args in
                 let (content, courseName) = args
-                
-                base.logTapAnalytics(courseName: courseName, what: "media")
                 
                 switch content {
                 case let .image(url):
@@ -174,14 +170,6 @@ final class TestViewController: UIViewController {
             .filter { $0 }
             .emit(to: Binder(self) { base, needPayment in
                 base.delegate?.testViewControllerNeedPayment()
-            })
-            .disposed(by: disposeBag)
-            
-        viewModel.needPayment
-            .filter(!)
-            .withLatestFrom(viewModel.courseName)
-            .emit(onNext: { [weak self] name in
-                self?.logAnalytics(courseName: name)
             })
             .disposed(by: disposeBag)
         
@@ -214,16 +202,12 @@ final class TestViewController: UIViewController {
                                         courseName: courseName,
                                         testType: base.testType)
                 
-                base.logTapAnalytics(courseName: courseName, what: "close")
-                
                 base.delegate?.testViewControllerClose(finish: finish)
             })
             .disposed(by: disposeBag)
         
         viewModel.testFinish
             .drive(Binder(self) { base, element in
-                base.logTapAnalytics(courseName: element.courseName, what: "finish test")
-                
                 base.delegate?.testViewController(finish: element)
             })
             .disposed(by: disposeBag)
@@ -269,25 +253,6 @@ private extension TestViewController {
         default:
             mainView.titleLabel.attributedText = progress.attributed(with: attrs)
         }
-    }
-    
-    func logAnalytics(courseName: String) {
-        let name = TestAnalytics.name(mode: testType)
-        
-        AmplitudeManager.shared
-            .logEvent(name: "Question Screen",
-                      parameters: ["course": courseName,
-                                   "mode": name])
-    }
-    
-    func logTapAnalytics(courseName: String, what: String) {
-        let name = TestAnalytics.name(mode: testType)
-        
-        AmplitudeManager.shared
-            .logEvent(name: "Question Tap",
-                      parameters: ["course": courseName,
-                                   "mode": name,
-                                   "what": what])
     }
     
     func openError() -> Observable<Void> {

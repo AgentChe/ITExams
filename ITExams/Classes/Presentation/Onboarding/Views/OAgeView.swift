@@ -45,9 +45,6 @@ final class OAgeView: OSlideView {
     override func moveToThis() {
         super.moveToThis()
         
-        AmplitudeManager.shared
-            .logEvent(name: "Age Screen")
-        
         pickerView.selectRow(2, inComponent: 0, animated: false)
     }
 }

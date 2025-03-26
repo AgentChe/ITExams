@@ -29,9 +29,6 @@ final class OStartView: OSlideView {
     override func moveToThis() {
         super.moveToThis()
         
-        AmplitudeManager.shared
-            .logEvent(name: "Welcome Screen")
-        
         animationView.play()
     }
 }
@@ -128,9 +125,9 @@ private extension OStartView {
         return view
     }
     
-    func makeAnimationView() -> AnimationView {
-        let view = AnimationView()
-        view.animation = Animation.named("Onboarding.Start")
+    func makeAnimationView() -> LottieAnimationView {
+        let view = LottieAnimationView()
+        view.animation = LottieAnimation.named("Onboarding.Start")
         view.contentMode = .scaleAspectFit
         view.loopMode = .loop
         view.translatesAutoresizingMaskIntoConstraints = false

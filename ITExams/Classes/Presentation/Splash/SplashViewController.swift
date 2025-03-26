@@ -11,27 +11,17 @@ import RxCocoa
 import OtterScaleiOS
 
 final class SplashViewController: UIViewController {
-    lazy var mainView = SplashView()
+    private lazy var mainView = SplashView()
     
     private lazy var viewModel = SplashViewModel()
     
     private lazy var disposeBag = DisposeBag()
     
-    private lazy var sdkInitialize = SplashSDKInitialize(vc: self, rushSDKSignal: generateStep)
-    
     private var wasAnimated = false
     
-    private let generateStep: Signal<Bool>
+    private lazy var sdkInitialize = SplashReceiptValidationObserver()
     
-    private init(generateStep: Signal<Bool>) {
-        self.generateStep = generateStep
-        
-        super.init(nibName: nil, bundle: .main)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    private lazy var didSDKConfiguredTrigger = PublishRelay<Void>()
     
     override func loadView() {
         view = mainView
@@ -41,38 +31,21 @@ final class SplashViewController: UIViewController {
         super.viewDidLoad()
         
         viewModel.tryAgain = { [weak self] error -> Observable<Void> in
-            guard let self = self else {
-                return .never()
-            }
-            
-            return self.openError()
+            self?.open(error: error) ?? .never()
         }
         
-        viewModel.step()
-            .drive(onNext: { [weak self] step in
-                guard let self = self else {
-                    return
-                }
-                
-                self.activity(state: .none)
-                self.goNext(at: step)
+        let output = viewModel.configure(input: SplashViewModel.Input(
+            didSDKConfigured: didSDKConfiguredTrigger.asSignal()
+        ))
+
+        output.route
+            .drive(Binder(self) { base, route in
+                base.route(route)
             })
             .disposed(by: disposeBag)
-        
-        sdkInitialize.initialize { [weak self] progress in
-            guard let self = self else {
-                return
-            }
-            
-            switch progress {
-            case .error:
-                self.activity(state: .none)
-            case .initializing:
-                self.activity(state: .sdkInitialize)
-            case .complete:
-                self.activity(state: .library)
-                self.viewModel.validationComplete.accept(Void())
-            }
+
+        sdkInitialize.observe { [weak self] in
+            self?.didSDKConfiguredTrigger.accept(Void())
         }
     }
     
@@ -93,53 +66,45 @@ final class SplashViewController: UIViewController {
 
 // MARK: Make
 extension SplashViewController {
-    static func make(generateStep: Signal<Bool>) -> SplashViewController {
-        SplashViewController(generateStep: generateStep)
+    static func make() -> SplashViewController {
+        SplashViewController()
     }
 }
 
 // MARK: PaygateViewControllerDelegate
 extension SplashViewController: PaygateViewControllerDelegate {
     func paygateDidClosed(with result: PaygateViewControllerResult) {
-        goNext(at: .main)
+        goNext(.main)
     }
 }
 
 // MARK: Private
 private extension SplashViewController {
-    func goNext(at step: SplashViewModel.Step) {
-        switch step {
+    func route(_ route: SplashViewModel.Route) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [weak self] in
+            self?.goNext(route)
+        }
+    }
+    
+    func goNext(_ route: SplashViewModel.Route) {
+        switch route {
         case .onboarding:
-            UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = OnboardingViewController.make()
+            UIApplication.shared.keyWindow?.rootViewController = OnboardingViewController.make()
         case .main:
-            UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController = MainViewController.make()
-        case .paygate:
+            UIApplication.shared.keyWindow?.rootViewController = MainViewController.make()
+        case .paygateTransitionMain:
             let vc = PaygateViewController.make()
             vc.delegate = self
             present(vc, animated: true)
         }
     }
     
-    func activity(state: SplashActivity) {
-        state == .none ? mainView.preloader.stopAnimating() : mainView.preloader.startAnimating()
-        
-        let attrs = TextAttributes()
-            .textColor(Appearance.greyColor)
-            .font(Fonts.Inter.regular(size: 15.scale))
-            .lineHeight(22.5.scale)
-            .letterSpacing(-0.14.scale)
-            .textAlignment(.center)
-        mainView.preloaderLabel.attributedText = state.text.attributed(with: attrs)
-    }
-    
-    func openError() -> Observable<Void> {
+    func open(error: Error) -> Observable<Void> {
         Observable<Void>
             .create { [weak self] observe in
-                guard let self = self else {
-                    return Disposables.create()
-                }
+                guard let self else { return Disposables.create() }
                 
-                let vc = TryAgainViewController.make {
+                let vc = TryAgainViewController.make() {
                     observe.onNext(())
                 }
                 self.present(vc, animated: true)

@@ -582,14 +582,6 @@ private extension TestViewModel {
                                                    state: state)
                     }
                     
-                    if currentQuestion.multiple {
-                        let isCorrect = !result.contains(where: { $0.state == .warning || $0.state == .error })
-                        self?.logAnswerAnalitycs(isCorrect: isCorrect, courseName: courseName)
-                    } else {
-                        let isCorrect = !result.contains(where: { $0.state == .error })
-                        self?.logAnswerAnalitycs(isCorrect: isCorrect, courseName: courseName)
-                    }
-                    
                     return .result(result)
                 }
                 
@@ -685,19 +677,6 @@ private extension TestViewModel {
                 return (nil, elements)
             }
         }
-    }
-}
-
-private extension TestViewModel {
-    func logAnswerAnalitycs(isCorrect: Bool, courseName: String) {
-        guard let type = testType.value else {
-            return
-        }
-        let name = isCorrect ? "Question Answered Correctly" : "Question Answered Incorrectly"
-        let mode = TestAnalytics.name(mode: type)
-        
-        AmplitudeManager.shared
-            .logEvent(name: name, parameters: ["course" : courseName, "mode": mode])
     }
 }
 

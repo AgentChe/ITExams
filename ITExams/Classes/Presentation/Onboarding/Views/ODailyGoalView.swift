@@ -11,7 +11,6 @@ import RxSwift
 protocol ODailyGoalViewDelegate: AnyObject {
     func dailyGoalDidSelected(testMinutes: Int)
     func dailyGoalDidSelected(daysOfWeek: [DayOfWeek])
-    func dailyGoalDidReceived(pushToken: String?)
 }
 
 final class ODailyGoalView: OSlideView {
@@ -47,26 +46,7 @@ final class ODailyGoalView: OSlideView {
     override func moveToThis() {
         super.moveToThis()
         
-        AmplitudeManager.shared
-            .logEvent(name: "Days to Study Screen")
-        
-        PushNotificationsManager.shared.add(observer: self)
-        
         pickerView.selectRow(10, inComponent: 0, animated: false)
-    }
-}
-
-// MARK: PushNotificationsDelegate
-extension ODailyGoalView: PushNotificationsDelegate {
-    func pushNotificationsDidReceive(authorizationStatus: PushNotificationsAuthorizationStatus) {}
-    func pushNotificationsDidReceive(model: PushNotificationsModel) {}
-    
-    func pushNotificationsDidReceive(token: String?) {
-        dailyGoalDelegate?.dailyGoalDidReceived(pushToken: token)
-        
-        PushNotificationsManager.shared.remove(observer: self)
-        
-        onNext()
     }
 }
 
@@ -123,7 +103,7 @@ private extension ODailyGoalView {
                 self.selectedTestMinutes()
                 self.selectedTestDays()
                 
-                PushNotificationsManager.shared.requestAuthorization()
+                self.onNext()
             })
             .disposed(by: disposeBag)
     }

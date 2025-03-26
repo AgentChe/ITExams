@@ -7,7 +7,6 @@
 
 import UIKit
 import RxSwift
-import RushSDK
 
 final class PaygateViewController: UIViewController {
     weak var delegate: PaygateViewControllerDelegate?
@@ -27,8 +26,6 @@ final class PaygateViewController: UIViewController {
         
         AmplitudeManager.shared
             .logEvent(name: "Paygate Screen", parameters: [:])
-        FirebaseManager.shared
-            .logEvent(name: "client_paygate_screen")
         
         viewModel.questionsCount
             .drive(Binder(self) { base, questionsCount in

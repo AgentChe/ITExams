@@ -51,13 +51,9 @@ final class QuestionManager: QuestionManagerProtocol {
 // MARK: Public
 extension QuestionManager {
     func obtainTestsKit(domain: String, apiKey: String, courseId: Int) -> Single<TestsKit?> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = GetTestsKitRequest(domain: domain,
                                          apiKey: apiKey,
-                                         userToken: userToken,
+                                         userToken: sessionManager.internalId,
                                          courseId: courseId)
         
         return defaultRequestWrapper
@@ -66,13 +62,9 @@ extension QuestionManager {
     }
     
     func obtainTest(domain: String, apiKey: String, courseId: Int, testId: Int?, time: Int?, activeSubscription: Bool) -> Single<Test?> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = GetTestRequest(domain: domain,
                                      apiKey: apiKey,
-                                     userToken: userToken,
+                                     userToken: sessionManager.internalId,
                                      courseId: courseId,
                                      testId: testId,
                                      time: time,
@@ -84,13 +76,9 @@ extension QuestionManager {
     }
     
     func obtainTenTest(domain: String, apiKey: String, courseId: Int, activeSubscription: Bool) -> Single<Test?> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = GetTenTestRequest(domain: domain,
                                         apiKey: apiKey,
-                                        userToken: userToken,
+                                        userToken: sessionManager.internalId,
                                         courseId: courseId,
                                         activeSubscription: activeSubscription)
         
@@ -100,13 +88,9 @@ extension QuestionManager {
     }
     
     func obtainFailedTest(domain: String, apiKey: String, courseId: Int, activeSubscription: Bool) -> Single<Test?> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = GetFailedTestRequest(domain: domain,
                                            apiKey: apiKey,
-                                           userToken: userToken,
+                                           userToken: sessionManager.internalId,
                                            courseId: courseId,
                                            activeSubscription: activeSubscription)
         
@@ -139,13 +123,9 @@ extension QuestionManager {
     }
     
     func obtainRandomTest(domain: String, apiKey: String, courseId: Int, activeSubscription: Bool) -> Single<Test?> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = GetRandomTestRequest(domain: domain,
                                            apiKey: apiKey,
-                                           userToken: userToken,
+                                           userToken: sessionManager.internalId,
                                            courseId: courseId,
                                            activeSubscription: activeSubscription)
         
@@ -155,13 +135,9 @@ extension QuestionManager {
     }
     
     func obtainSavedTest(domain: String, apiKey: String, courseId: Int, activeSubscription: Bool) -> Single<Test?> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = GetSavedTestRequest(domain: domain,
                                           apiKey: apiKey,
-                                          userToken: userToken,
+                                          userToken: sessionManager.internalId,
                                           courseId: courseId,
                                           activeSubscription: activeSubscription)
         
@@ -171,13 +147,9 @@ extension QuestionManager {
     }
     
     func obtainQuickTest(domain: String, apiKey: String, courseId: Int, activeSubscription: Bool) -> Single<Test?> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = GetCustomTestRequest(domain: domain,
                                            apiKey: apiKey,
-                                           userToken: userToken,
+                                           userToken: sessionManager.internalId,
                                            courseId: courseId,
                                            activeSubscription: activeSubscription,
                                            subjects: [],
@@ -198,13 +170,9 @@ extension QuestionManager {
                           includeMissedQuestions: Bool,
                           includeAnsweredQuestions: Bool,
                           questionsCount: Int) -> Single<Test?> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = GetCustomTestRequest(domain: domain,
                                            apiKey: apiKey,
-                                           userToken: userToken,
+                                           userToken: sessionManager.internalId,
                                            courseId: courseId,
                                            activeSubscription: activeSubscription,
                                            subjects: subjectsIds,
@@ -218,13 +186,9 @@ extension QuestionManager {
     }
     
     func obtainPlanTest(domain: String, apiKey: String, testId: Int, activeSubscription: Bool) -> Single<Test?> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = GetPlanTestRequest(domain: domain,
                                          apiKey: apiKey,
-                                         userToken: userToken,
+                                         userToken: sessionManager.internalId,
                                          testId: testId,
                                          activeSubscription: activeSubscription)
         
@@ -238,13 +202,9 @@ extension QuestionManager {
     }
     
     func obtainReview(domain: String, apiKey: String, courseId: Int, mode: Int, offset: Int) -> Single<[Review]> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = GetReviewRequest(domain: domain,
                                        apiKey: apiKey,
-                                       userToken: userToken,
+                                       userToken: sessionManager.internalId,
                                        courseId: courseId,
                                        mode: mode,
                                        offset: offset)
@@ -255,13 +215,9 @@ extension QuestionManager {
     }
     
     func saveQuestion(domain: String, apiKey: String, questionId: Int) -> Single<Void> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = SaveQuestionRequest(domain: domain,
                                           apiKey: apiKey,
-                                          userToken: userToken,
+                                          userToken: sessionManager.internalId,
                                           questionId: questionId)
         
         return defaultRequestWrapper
@@ -270,13 +226,9 @@ extension QuestionManager {
     }
     
     func removeSavedQuestion(domain: String, apiKey: String, questionId: Int) -> Single<Void> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = RemoveSavedQuestionRequest(domain: domain,
                                                  apiKey: apiKey,
-                                                 userToken: userToken,
+                                                 userToken: sessionManager.internalId,
                                                  questionId: questionId)
         
         return defaultRequestWrapper
@@ -285,13 +237,9 @@ extension QuestionManager {
     }
     
     func obtainAgainTest(domain: String, apiKey: String, userTestId: Int) -> Single<Test?> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = AgainTestRequest(domain: domain,
                                        apiKey: apiKey,
-                                       userToken: userToken,
+                                       userToken: sessionManager.internalId,
                                        userTestId: userTestId)
         
         return xorRequestWrapper
@@ -300,13 +248,9 @@ extension QuestionManager {
     }
     
     func finishTest(domain: String, apiKey: String, userTestId: Int) -> Single<Void> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = FinishTestRequest(domain: domain,
                                         apiKey: apiKey,
-                                        userToken: userToken,
+                                        userToken: sessionManager.internalId,
                                         userTestId: userTestId)
         
         return defaultRequestWrapper
@@ -315,13 +259,9 @@ extension QuestionManager {
     }
     
     func sendAnswer(domain: String, apiKey: String, questionId: Int, userTestId: Int, answerIds: [Int]) -> Single<Bool?> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = SendAnswerRequest(domain: domain,
                                         apiKey: apiKey,
-                                        userToken: userToken,
+                                        userToken: sessionManager.internalId,
                                         questionId: questionId,
                                         answerIds: answerIds,
                                         userTestId: userTestId)
@@ -340,13 +280,9 @@ extension QuestionManager {
 // MARK: Private
 private extension QuestionManager {
     func loadOnboardingTest(domain: String, apiKey: String, courseId: Int) -> Single<Test?> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = GetOnboardingTestRequest(domain: domain,
                                                apiKey: apiKey,
-                                               userToken: userToken,
+                                               userToken: sessionManager.internalId,
                                                courseId: courseId)
         
         return xorRequestWrapper
@@ -379,13 +315,9 @@ private extension QuestionManager {
     }
     
     func loadQotdTest(domain: String, apiKey: String, courseId: Int, activeSubscription: Bool) -> Single<QotdTest?> {
-        guard let userToken = sessionManager.getSession()?.userToken else {
-            return .error(SignError.tokenNotFound)
-        }
-        
         let request = GetQotdTestRequest(domain: domain,
                                          apiKey: apiKey,
-                                         userToken: userToken,
+                                         userToken: sessionManager.internalId,
                                          courseId: courseId,
                                          activeSubscription: activeSubscription)
         
