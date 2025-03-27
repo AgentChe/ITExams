@@ -26,7 +26,6 @@ final class PracticeViewModel {
     private lazy var sessionManager = SessionManager()
     private lazy var profileManager = ProfileManager()
     private lazy var questionManager = QuestionManager()
-    private lazy var paygateManager = PaygateManager()
     
     private lazy var observableRetrySingle = ObservableRetrySingle()
 }

@@ -47,7 +47,6 @@ private extension SettingsAppCell {
                 termsOfUseButton.rx.tap
                     .map { GlobalDefinitions.termsOfServiceUrl }
             )
-            .compactMap { URL(string: $0) }
             .subscribe(onNext: { url in
                 UIApplication.shared.open(url, options: [:])
             })
@@ -109,7 +108,7 @@ private extension SettingsAppCell {
         view.layer.shadowOpacity = 0.08
         view.layer.shadowOffset = .zero
         view.layer.shadowRadius = 6.scale
-        view.backgroundColor = Appearance.whiteColor
+        view.backgroundColor = Appearance.mono100
         view.layer.cornerRadius = 12.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)

@@ -43,7 +43,7 @@ extension DateOfExamView {
 // MARK: Private
 private extension DateOfExamView {
     func initialize() {
-        backgroundColor = Appearance.backgroundColor
+        backgroundColor = Appearance.main100
     }
     
     @objc
@@ -55,7 +55,7 @@ private extension DateOfExamView {
         formatter.locale = Locale.current
         
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.bold(size: 24.scale))
             .lineHeight(28.8.scale)
             .letterSpacing(-0.44.scale)
@@ -130,7 +130,7 @@ private extension DateOfExamView {
 private extension DateOfExamView {
     func makeHeaderLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.mainColor)
+            .textColor(Appearance.main300)
             .font(Fonts.Inter.bold(size: 17.scale))
             .lineHeight(20.4.scale)
             .letterSpacing(-0.44.scale)
@@ -145,7 +145,7 @@ private extension DateOfExamView {
     
     func makeTitleLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.bold(size: 28.scale))
             .lineHeight(33.6.scale)
             .letterSpacing(-0.44.scale)
@@ -161,7 +161,7 @@ private extension DateOfExamView {
     
     func makeDateContainer() -> UIView {
         let view = UIView()
-        view.backgroundColor = Appearance.whiteColor
+        view.backgroundColor = Appearance.mono100
         view.layer.cornerRadius = 12.scale
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.08
@@ -181,7 +181,7 @@ private extension DateOfExamView {
     
     func makeSubTitleLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.greyColor)
+            .textColor(Appearance.mono300)
             .font(Fonts.Inter.regular(size: 15.scale))
             .lineHeight(22.5.scale)
             .letterSpacing(-0.14.scale)
@@ -209,7 +209,7 @@ private extension DateOfExamView {
         if #available(iOS 13.4, *) {
              view.preferredDatePickerStyle = .wheels
         }
-        view.setValue(Appearance.greyColor, forKeyPath: "textColor")
+        view.setValue(Appearance.mono300, forKeyPath: "textColor")
         view.datePickerMode = .countDownTimer
         view.datePickerMode = .date
         view.addTarget(self, action: #selector(dateDidChanged), for: .valueChanged)
@@ -220,13 +220,13 @@ private extension DateOfExamView {
     
     func makeButton() -> UIButton {
         let attrs = TextAttributes()
-            .textColor(Appearance.whiteColor)
+            .textColor(Appearance.mono100)
             .font(Fonts.Inter.semiBold(size: 17.scale))
             .letterSpacing(-0.44.scale)
         
         let view = UIButton()
         view.setAttributedTitle("Next".localized.attributed(with: attrs), for: .normal)
-        view.backgroundColor = Appearance.mainColor
+        view.backgroundColor = Appearance.main300
         view.layer.cornerRadius = 8.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
@@ -235,7 +235,7 @@ private extension DateOfExamView {
     
     func makeSkipButton() -> TapAreaButton {
         let attrs = TextAttributes()
-            .textColor(Appearance.mainColor)
+            .textColor(Appearance.main300)
             .font(Fonts.Inter.semiBold(size: 17.scale))
             .letterSpacing(-0.44.scale)
         

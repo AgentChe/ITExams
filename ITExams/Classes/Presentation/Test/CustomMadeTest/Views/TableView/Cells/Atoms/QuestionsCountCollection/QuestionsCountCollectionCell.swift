@@ -26,7 +26,7 @@ final class QuestionsCountCollectionCell: UICollectionViewCell {
 extension QuestionsCountCollectionCell {
     func setup(element: QuestionsCountCollectionElement) {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.bold(size: 24.scale))
             .lineHeight(28.8.scale)
             .letterSpacing(-0.44.scale)

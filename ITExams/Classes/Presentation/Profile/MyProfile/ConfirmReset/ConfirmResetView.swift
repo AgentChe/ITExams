@@ -85,7 +85,7 @@ private extension ConfirmResetView {
     
     func makeContainer() -> UIView {
         let view = UIView()
-        view.backgroundColor = Appearance.backgroundColor
+        view.backgroundColor = Appearance.main100
         view.layer.cornerRadius = 12.scale
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -95,7 +95,7 @@ private extension ConfirmResetView {
     
     func makeTitleLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.bold(size: 19.scale))
             .lineHeight(26.6.scale)
             .letterSpacing(-0.44.scale)
@@ -111,7 +111,7 @@ private extension ConfirmResetView {
     
     func makeSubTitleLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.greyColor)
+            .textColor(Appearance.mono300)
             .font(Fonts.Inter.regular(size: 17.scale))
             .lineHeight(25.5.scale)
             .textAlignment(.center)
@@ -126,13 +126,13 @@ private extension ConfirmResetView {
     
     func makeResetButton() -> UIButton {
         let attrs = TextAttributes()
-            .textColor(Appearance.whiteColor)
+            .textColor(Appearance.mono100)
             .font(Fonts.Inter.bold(size: 17.scale))
             .letterSpacing(-0.44.scale)
         
         let view = UIButton()
         view.layer.cornerRadius = 8.scale
-        view.backgroundColor = Appearance.mainColor
+        view.backgroundColor = Appearance.main300
         view.setAttributedTitle("ConfirmReset.Reset".localized.attributed(with: attrs), for: .normal)
         view.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(view)
@@ -141,13 +141,13 @@ private extension ConfirmResetView {
     
     func makeCancelButton() -> UIButton {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.bold(size: 17.scale))
             .letterSpacing(-0.44.scale)
         
         let view = UIButton()
         view.layer.cornerRadius = 8.scale
-        view.backgroundColor = Appearance.fourthColor
+        view.backgroundColor = Appearance.custom230_231_248
         view.setAttributedTitle("Cancel".localized.attributed(with: attrs), for: .normal)
         view.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(view)

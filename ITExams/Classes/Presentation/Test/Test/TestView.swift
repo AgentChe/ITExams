@@ -30,7 +30,7 @@ final class TestView: UIView {
 // MARK: Private
 private extension TestView {
     func initialize() {
-        backgroundColor = Appearance.mainColor
+        backgroundColor = Appearance.main300
     }
 }
 
@@ -109,7 +109,7 @@ private extension TestView {
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.layer.masksToBounds = true
         view.contentInset = UIEdgeInsets(top: 32.scale, left: 0, bottom: ScreenSize.isIphoneXFamily ? 148.scale : 110.scale, right: 0)
-        view.backgroundColor = Appearance.backgroundColor
+        view.backgroundColor = Appearance.main100
         view.separatorStyle = .none
         view.contentInsetAdjustmentBehavior = .never
         view.showsVerticalScrollIndicator = false

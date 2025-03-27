@@ -30,7 +30,7 @@ final class PracticeTableUnlockPremiumCell: UITableViewCell {
 extension PracticeTableUnlockPremiumCell {
     func setup(element: Int) {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.bold(size: 24.scale))
             .lineHeight(28.8.scale)
             .letterSpacing(-0.44.scale)
@@ -101,14 +101,14 @@ private extension PracticeTableUnlockPremiumCell {
     
     func makeButton() -> UIButton {
         let attrs = TextAttributes()
-            .textColor(Appearance.whiteColor)
+            .textColor(Appearance.mono100)
             .font(Fonts.Inter.semiBold(size: 17.scale))
             .letterSpacing(-0.44.scale)
         
         let view = UIButton()
         view.setAttributedTitle("Practice.UnlockPremium.Button".localized.attributed(with: attrs), for: .normal)
         view.layer.cornerRadius = 8.scale
-        view.backgroundColor = Appearance.mainColor
+        view.backgroundColor = Appearance.main300
         view.addTarget(self, action: #selector(tapped), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)

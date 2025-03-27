@@ -26,7 +26,7 @@ final class StatsView: UIView {
 // MARK: Private
 private extension StatsView {
     func initialize() {
-        backgroundColor = Appearance.backgroundColor
+        backgroundColor = Appearance.main100
     }
 }
 

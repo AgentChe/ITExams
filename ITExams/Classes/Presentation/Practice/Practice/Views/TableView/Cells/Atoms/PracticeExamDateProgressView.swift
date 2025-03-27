@@ -69,20 +69,20 @@ private extension PracticeExamDateProgressView {
         trackLayer.fillColor = UIColor.clear.cgColor
         trackLayer.lineCap = .round
         trackLayer.lineWidth = 30.scale
-        trackLayer.strokeColor = Appearance.mainColor.withAlphaComponent(0.1).cgColor
+        trackLayer.strokeColor = Appearance.main300.withAlphaComponent(0.1).cgColor
 
         progressLayer.path = circularPath.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
         progressLayer.lineCap = .round
         progressLayer.lineWidth = 30.scale
-        progressLayer.strokeColor = Appearance.mainColor.cgColor
+        progressLayer.strokeColor = Appearance.main300.cgColor
         progressLayer.strokeStart = 0
         
         dotLayer.path = dotPath.cgPath
-        dotLayer.fillColor = Appearance.mainColor.cgColor
+        dotLayer.fillColor = Appearance.main300.cgColor
         dotLayer.lineCap = .round
         dotLayer.lineWidth = 3.scale
-        dotLayer.strokeColor = Appearance.whiteColor.cgColor
+        dotLayer.strokeColor = Appearance.mono100.cgColor
         
         layer.addSublayer(trackLayer)
         layer.addSublayer(progressLayer)

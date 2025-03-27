@@ -52,7 +52,7 @@ extension StudyModeView {
 // MARK: Private
 private extension StudyModeView {
     func initialize() {
-        backgroundColor = Appearance.backgroundColor
+        backgroundColor = Appearance.main100
     }
     
     @objc
@@ -134,7 +134,7 @@ private extension StudyModeView {
 private extension StudyModeView {
     func makeHeaderLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.mainColor)
+            .textColor(Appearance.main300)
             .font(Fonts.Inter.bold(size: 17.scale))
             .lineHeight(20.4.scale)
             .letterSpacing(-0.44.scale)
@@ -149,7 +149,7 @@ private extension StudyModeView {
     
     func makeTitleLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.bold(size: 28.scale))
             .lineHeight(33.6.scale)
             .letterSpacing(-0.44.scale)
@@ -165,7 +165,7 @@ private extension StudyModeView {
     
     func makeSubTitleLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.greyColor)
+            .textColor(Appearance.mono300)
             .font(Fonts.Inter.regular(size: 15.scale))
             .lineHeight(22.5.scale)
             .letterSpacing(-0.14.scale)
@@ -192,13 +192,13 @@ private extension StudyModeView {
     
     func makeButton() -> UIButton {
         let attrs = TextAttributes()
-            .textColor(Appearance.whiteColor)
+            .textColor(Appearance.mono100)
             .font(Fonts.Inter.semiBold(size: 17.scale))
             .letterSpacing(-0.44.scale)
         
         let view = UIButton()
         view.setAttributedTitle("Next".localized.attributed(with: attrs), for: .normal)
-        view.backgroundColor = Appearance.mainColor
+        view.backgroundColor = Appearance.main300
         view.layer.cornerRadius = 8.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)

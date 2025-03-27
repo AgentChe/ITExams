@@ -28,7 +28,7 @@ final class StatsTableUnlockPremiumButtonCell: UITableViewCell {
 extension StatsTableUnlockPremiumButtonCell {
     func setup(element: Int) {
         let attrs = TextAttributes()
-            .textColor(Appearance.whiteColor)
+            .textColor(Appearance.mono100)
             .font(Fonts.Inter.semiBold(size: 17.scale))
             .lineHeight(20.scale)
             .letterSpacing(-0.44.scale)
@@ -74,7 +74,7 @@ private extension StatsTableUnlockPremiumButtonCell {
 private extension StatsTableUnlockPremiumButtonCell {
     func makeContainer() -> UIView {
         let view = UIView()
-        view.backgroundColor = Appearance.mainColor
+        view.backgroundColor = Appearance.main300
         view.layer.cornerRadius = 8.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)

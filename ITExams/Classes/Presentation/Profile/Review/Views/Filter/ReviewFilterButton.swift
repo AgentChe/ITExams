@@ -35,11 +35,11 @@ private extension ReviewFilterButton {
         let attrs = TextAttributes()
             .font(Fonts.Inter.regular(size: 15.scale))
             .letterSpacing(-0.14.scale)
-        let selectedAttrs = attrs.textColor(Appearance.whiteColor)
-        let unselectedAttrs = attrs.textColor(Appearance.blackColor)
+        let selectedAttrs = attrs.textColor(Appearance.mono100)
+        let unselectedAttrs = attrs.textColor(Appearance.mono200)
         let string = title.attributed(with: isChecked ? selectedAttrs : unselectedAttrs)
         setAttributedTitle(string, for: .normal)
         
-        backgroundColor = isChecked ? Appearance.mainColor : Appearance.greyColor.withAlphaComponent(0.1)
+        backgroundColor = isChecked ? Appearance.main300 : Appearance.mono300.withAlphaComponent(0.1)
     }
 }

@@ -31,23 +31,23 @@ final class CoursesTableCourseCell: UITableViewCell {
 extension CoursesTableCourseCell {
     func setup(element: CoursesTableCourseElement) {
         let nameAttrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.semiBold(size: 17.scale))
             .lineHeight(20.4.scale)
             .letterSpacing(-0.44.scale)
         nameLabel.attributedText = element.course.name.attributed(with: nameAttrs)
         
         let textAttrs = TextAttributes()
-            .textColor(Appearance.greyColor)
+            .textColor(Appearance.mono300)
             .font(Fonts.Inter.regular(size: 15.scale))
             .lineHeight(20.4.scale)
             .letterSpacing(-0.14.scale)
         subTitleLabel.attributedText = element.course.subTitle.attributed(with: textAttrs)
         
         container.layer.borderWidth = element.isSelected ? 2.scale : 0
-        container.layer.borderColor = element.isSelected ? Appearance.mainColor.cgColor : UIColor.clear.cgColor
+        container.layer.borderColor = element.isSelected ? Appearance.main300.cgColor : UIColor.clear.cgColor
         
-        container.backgroundColor = element.isSelected ? Appearance.mainColor.withAlphaComponent(0.1) : Appearance.whiteColor
+        container.backgroundColor = element.isSelected ? Appearance.main300.withAlphaComponent(0.1) : Appearance.mono100
         
         currentView.isHidden = !element.isCurrent
         
@@ -120,7 +120,7 @@ private extension CoursesTableCourseCell {
     
     func makeCurrentView() -> CourseCurrentView {
         let view = CourseCurrentView()
-        view.backgroundColor = Appearance.mainColor
+        view.backgroundColor = Appearance.main300
         view.layer.cornerRadius = 9.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(view)

@@ -30,7 +30,7 @@ extension PlanStudyScoreView {
         let goalString = String(format: "Plan.StudyScore.Goal".localized, goal)
         goalLabel.attributedText = goalString
             .attributed(with: TextAttributes()
-                            .textColor(Appearance.whiteColor.withAlphaComponent(0.8))
+                            .textColor(Appearance.mono100.withAlphaComponent(0.8))
                             .font(Fonts.Inter.regular(size: 14.scale))
                             .lineHeight(19.6.scale)
                             .letterSpacing(-0.14.scale))
@@ -38,7 +38,7 @@ extension PlanStudyScoreView {
         let progressString = "\(progress)%"
         progressLabel.attributedText = progressString
             .attributed(with: TextAttributes()
-                            .textColor(Appearance.whiteColor)
+                            .textColor(Appearance.mono100)
                             .font(Fonts.Inter.regular(size: 19.scale))
                             .lineHeight(26.6.scale)
                             .letterSpacing(-0.44.scale))
@@ -50,7 +50,7 @@ private extension PlanStudyScoreView {
     func initialize() {
         titleLabel.attributedText = "Plan.StudyScore.Title".localized
             .attributed(with: TextAttributes()
-                            .textColor(Appearance.whiteColor)
+                            .textColor(Appearance.mono100)
                             .font(Fonts.Inter.semiBold(size: 15.scale))
                             .lineHeight(18.scale)
                             .letterSpacing(-0.44.scale))

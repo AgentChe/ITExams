@@ -27,7 +27,7 @@ final class ReviewView: UIView {
 // MARK: Private
 private extension ReviewView {
     func initialize() {
-        backgroundColor = Appearance.backgroundColor
+        backgroundColor = Appearance.main100
     }
 }
 
@@ -75,7 +75,7 @@ private extension ReviewView {
         view.layer.shadowRadius = 6.scale
         view.separatorStyle = .none
         view.showsVerticalScrollIndicator = false
-        view.backgroundColor = Appearance.whiteColor
+        view.backgroundColor = Appearance.mono100
         view.layer.cornerRadius = 12.scale
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false

@@ -29,7 +29,7 @@ final class NoSavedQuestionsView: UIView {
 // MARK: Private
 private extension NoSavedQuestionsView {
     func initialize() {
-        backgroundColor = Appearance.mainColor
+        backgroundColor = Appearance.main300
     }
 }
 
@@ -82,7 +82,7 @@ private extension NoSavedQuestionsView {
     
     func makeContainer() -> UIView {
         let view = UIView()
-        view.backgroundColor = Appearance.backgroundColor
+        view.backgroundColor = Appearance.main100
         view.layer.cornerRadius = 12.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
@@ -100,7 +100,7 @@ private extension NoSavedQuestionsView {
     
     func makeTitleLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.bold(size: 19.scale))
             .lineHeight(26.6.scale)
             .letterSpacing(-0.44.scale)
@@ -115,7 +115,7 @@ private extension NoSavedQuestionsView {
     
     func makeTextLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.regular(size: 17.scale))
             .lineHeight(25.5.scale)
             .letterSpacing(-0.14.scale)

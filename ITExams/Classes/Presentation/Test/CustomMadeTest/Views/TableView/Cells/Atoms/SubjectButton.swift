@@ -57,19 +57,19 @@ private extension SubjectButton {
     func backgroundColor() -> UIColor {
         // Фейковый элемент для кнопки More с id -1000
         if element.subject.id == -1000 {
-            return Appearance.greyColor.withAlphaComponent(0.1)
+            return Appearance.mono300.withAlphaComponent(0.1)
         }
         
-        return element.isSelected ? Appearance.mainColor : Appearance.greyColor.withAlphaComponent(0.1)
+        return element.isSelected ? Appearance.main300 : Appearance.mono300.withAlphaComponent(0.1)
     }
     
     func textColor() -> UIColor {
         // Фейковый элемент для кнопки More с id -1000
         if element.subject.id == -1000 {
-            return Appearance.mainColor
+            return Appearance.main300
         }
         
-        return element.isSelected ? Appearance.whiteColor : Appearance.blackColor
+        return element.isSelected ? Appearance.mono100 : Appearance.mono200
     }
 }
 

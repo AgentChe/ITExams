@@ -37,7 +37,7 @@ extension PracticeTableTestsCell {
         self.element = element
         
         let attrs = TextAttributes()
-            .textColor(Appearance.greyColor.withAlphaComponent(0.7))
+            .textColor(Appearance.mono300.withAlphaComponent(0.7))
             .font(Fonts.Inter.regular(size: 14.scale))
             .lineHeight(19.6.scale)
             .letterSpacing(-0.14.scale)
@@ -131,7 +131,7 @@ private extension PracticeTableTestsCell {
 private extension PracticeTableTestsCell {
     func makeContainer() -> UIView {
         let view = UIView()
-        view.backgroundColor = Appearance.whiteColor
+        view.backgroundColor = Appearance.mono100
         view.layer.cornerRadius = 12.scale
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.08

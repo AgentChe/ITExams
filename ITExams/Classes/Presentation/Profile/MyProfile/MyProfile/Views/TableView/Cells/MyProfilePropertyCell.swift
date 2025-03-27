@@ -30,14 +30,14 @@ extension MyProfilePropertyCell {
     func setup(title: String, value: String) {
         titleLabel.attributedText = title
             .attributed(with: TextAttributes()
-                            .textColor(Appearance.blackColor)
+                            .textColor(Appearance.mono200)
                             .font(Fonts.Inter.regular(size: 15.scale))
                             .lineHeight(22.5.scale)
                             .letterSpacing(-0.14.scale))
         
         valueLabel.attributedText = value
             .attributed(with: TextAttributes()
-                            .textColor(Appearance.greyColor.withAlphaComponent(0.6))
+                            .textColor(Appearance.mono300.withAlphaComponent(0.6))
                             .font(Fonts.Inter.regular(size: 15.scale))
                             .lineHeight(22.5.scale)
                             .letterSpacing(-0.14.scale)
@@ -109,7 +109,7 @@ private extension MyProfilePropertyCell {
     
     func makeSeparator() -> UIView {
         let view = UIView()
-        view.backgroundColor = Appearance.greyColor.withAlphaComponent(0.16.scale)
+        view.backgroundColor = Appearance.mono300.withAlphaComponent(0.16.scale)
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
         return view

@@ -77,7 +77,7 @@ private extension PracticeTestButton {
     
     func makeNameLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.semiBold(size: 15.scale))
             .lineHeight(18.scale)
             .letterSpacing(-0.44.scale)
@@ -107,7 +107,7 @@ private extension PracticeTestButton {
     
     func makeSeparator() -> UIView {
         let view = UIView()
-        view.backgroundColor = Appearance.greyColor.withAlphaComponent(0.1)
+        view.backgroundColor = Appearance.mono300.withAlphaComponent(0.1)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

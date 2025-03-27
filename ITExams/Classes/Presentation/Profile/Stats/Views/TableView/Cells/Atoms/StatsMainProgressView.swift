@@ -49,20 +49,20 @@ private extension StatsMainProgressView {
         totalLayer.fillColor = UIColor.clear.cgColor
         totalLayer.lineCap = .round
         totalLayer.lineWidth = 14.scale
-        totalLayer.strokeColor = Appearance.backgroundColor.cgColor
+        totalLayer.strokeColor = Appearance.main100.cgColor
         
         answeredLayer.path = circularPath.cgPath
         answeredLayer.fillColor = UIColor.clear.cgColor
         answeredLayer.lineCap = .round
         answeredLayer.lineWidth = 14.scale
-        answeredLayer.strokeColor = Appearance.thirdColor.cgColor
+        answeredLayer.strokeColor = Appearance.main500.cgColor
         answeredLayer.strokeStart = 0
         
         correctLayer.path = circularPath.cgPath
         correctLayer.fillColor = UIColor.clear.cgColor
         correctLayer.lineCap = .round
         correctLayer.lineWidth = 14.scale
-        correctLayer.strokeColor = Appearance.successColor.cgColor
+        correctLayer.strokeColor = Appearance.system200.cgColor
         correctLayer.strokeStart = 0
         
         layer.addSublayer(totalLayer)

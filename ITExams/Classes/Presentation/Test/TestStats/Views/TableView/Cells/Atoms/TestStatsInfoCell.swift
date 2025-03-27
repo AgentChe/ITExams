@@ -55,7 +55,7 @@ private extension TestStatsInfoCell {
 private extension TestStatsInfoCell {
     func makePlaceholderLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.greyColor)
+            .textColor(Appearance.mono300)
             .font(Fonts.Inter.regular(size: 15.scale))
             .lineHeight(22.5.scale)
             .letterSpacing(-0.14.scale)
@@ -77,7 +77,7 @@ private extension TestStatsInfoCell {
     
     func makeSeparator() -> UIView {
         let view = UIView()
-        view.backgroundColor = Appearance.greyColor.withAlphaComponent(0.16)
+        view.backgroundColor = Appearance.mono300.withAlphaComponent(0.16)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

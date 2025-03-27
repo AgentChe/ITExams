@@ -28,7 +28,7 @@ final class QuestionViewerView: UIView {
 // MARK: Private
 private extension QuestionViewerView {
     func initialize() {
-        backgroundColor = Appearance.mainColor
+        backgroundColor = Appearance.main300
     }
 }
 
@@ -75,7 +75,7 @@ private extension QuestionViewerView {
     
     func makeTitleLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.whiteColor)
+            .textColor(Appearance.mono100)
             .font(Fonts.Inter.semiBold(size: 17.scale))
             .lineHeight(20.4.scale)
             .textAlignment(.center)
@@ -100,7 +100,7 @@ private extension QuestionViewerView {
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.layer.masksToBounds = true
         view.contentInset = UIEdgeInsets(top: 32.scale, left: 0, bottom: 32.scale, right: 0)
-        view.backgroundColor = Appearance.backgroundColor
+        view.backgroundColor = Appearance.main100
         view.separatorStyle = .none
         view.contentInsetAdjustmentBehavior = .never
         view.showsVerticalScrollIndicator = false

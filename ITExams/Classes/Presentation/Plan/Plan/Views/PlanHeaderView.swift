@@ -51,7 +51,7 @@ private extension PlanHeaderView {
     
     func makeStudyScoreView() -> PlanStudyScoreView {
         let view = PlanStudyScoreView()
-        view.backgroundColor = Appearance.mainColor
+        view.backgroundColor = Appearance.main300
         view.layer.cornerRadius = 12.scale
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.translatesAutoresizingMaskIntoConstraints = false

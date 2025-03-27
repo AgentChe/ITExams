@@ -240,7 +240,7 @@ private extension TestViewController {
     
     func update(progress: String) {
         let attrs = TextAttributes()
-            .textColor(Appearance.whiteColor)
+            .textColor(Appearance.mono100)
             .font(Fonts.Inter.semiBold(size: 17.scale))
             .lineHeight(20.4.scale)
             .textAlignment(.center)

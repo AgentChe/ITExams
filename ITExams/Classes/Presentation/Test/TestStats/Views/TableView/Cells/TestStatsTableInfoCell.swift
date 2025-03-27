@@ -31,7 +31,7 @@ final class TestStatsTableInfoCell: UITableViewCell {
 extension TestStatsTableInfoCell {
     func setup(element: TestStatsInfo) {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.semiBold(size: 15.scale))
             .lineHeight(18.scale)
             .letterSpacing(-0.44.scale)
@@ -105,7 +105,7 @@ private extension TestStatsTableInfoCell {
 private extension TestStatsTableInfoCell {
     func makeContainer() -> UIView {
         let view = UIView()
-        view.backgroundColor = Appearance.whiteColor
+        view.backgroundColor = Appearance.mono100
         view.layer.cornerRadius = 12.scale
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.08

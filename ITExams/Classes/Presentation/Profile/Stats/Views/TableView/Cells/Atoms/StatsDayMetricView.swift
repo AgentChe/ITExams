@@ -32,7 +32,7 @@ final class StatsDayMetricView: UIView {
 extension StatsDayMetricView {
     func setup(element: StatsTableDailyMetrics.WeekDay) {
         let attrs = TextAttributes()
-            .textColor(Appearance.greyColor.withAlphaComponent(0.5))
+            .textColor(Appearance.mono300.withAlphaComponent(0.5))
             .font(Fonts.Inter.regular(size: 14.scale))
             .lineHeight(20.scale)
             .letterSpacing(-0.14.scale)
@@ -81,7 +81,7 @@ private extension StatsDayMetricView {
 private extension StatsDayMetricView {
     func makeCurrentView() -> CircleView {
         let view = CircleView()
-        view.backgroundColor = Appearance.buttonBackgroundColor
+        view.backgroundColor = Appearance.main200
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
@@ -104,7 +104,7 @@ private extension StatsDayMetricView {
     
     func makePlannedView() -> CircleView {
         let view = CircleView()
-        view.backgroundColor = Appearance.mainColor
+        view.backgroundColor = Appearance.main300
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

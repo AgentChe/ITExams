@@ -68,12 +68,12 @@ private extension TestStatsTableActionsCell {
 private extension TestStatsTableActionsCell {
     func makeRestartButton() -> UIButton {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.semiBold(size: 17.scale))
             .letterSpacing(-0.44.scale)
         
         let view = UIButton()
-        view.backgroundColor = Appearance.buttonBackgroundColor
+        view.backgroundColor = Appearance.main200
         view.layer.cornerRadius = 8.scale
         view.setAttributedTitle("TestStats.Restart".localized.attributed(with: attrs), for: .normal)
         view.addTarget(self, action: #selector(tappedRestart), for: .touchUpInside)
@@ -84,12 +84,12 @@ private extension TestStatsTableActionsCell {
     
     func makeNextTestButton() -> UIButton {
         let attrs = TextAttributes()
-            .textColor(Appearance.whiteColor)
+            .textColor(Appearance.mono100)
             .font(Fonts.Inter.semiBold(size: 17.scale))
             .letterSpacing(-0.44.scale)
         
         let view = UIButton()
-        view.backgroundColor = Appearance.mainColor
+        view.backgroundColor = Appearance.main300
         view.layer.cornerRadius = 8.scale
         view.setAttributedTitle("TestStats.NextTest".localized.attributed(with: attrs), for: .normal)
         view.addTarget(self, action: #selector(tappedNextTest), for: .touchUpInside)

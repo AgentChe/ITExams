@@ -27,7 +27,7 @@ final class ProfileView: UIView {
 // MARK: Private
 private extension ProfileView {
     func initialize() {
-        backgroundColor = Appearance.backgroundColor
+        backgroundColor = Appearance.main100
     }
 }
 
@@ -59,7 +59,7 @@ private extension ProfileView {
 private extension ProfileView {
     func makeTitleLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.bold(size: 24.scale))
             .lineHeight(28.8.scale)
             .letterSpacing(-0.44.scale)
@@ -73,7 +73,7 @@ private extension ProfileView {
     
     func makeTabsView() -> ProfileTabsView {
         let view = ProfileTabsView()
-        view.backgroundColor = Appearance.mainColor
+        view.backgroundColor = Appearance.main300
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

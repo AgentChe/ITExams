@@ -33,11 +33,11 @@ final class TestStatsFilterButton: UIButton {
 private extension TestStatsFilterButton {
     func update() {
         let attrs = TextAttributes()
-            .textColor(isChecked ? Appearance.whiteColor : Appearance.blackColor)
+            .textColor(isChecked ? Appearance.mono100 : Appearance.mono200)
             .font(Fonts.Inter.regular(size: 15.scale))
             .letterSpacing(-0.14.scale)
         setAttributedTitle(text.attributed(with: attrs), for: .normal)
         
-        backgroundColor = isChecked ? Appearance.mainColor : Appearance.buttonBackgroundColor
+        backgroundColor = isChecked ? Appearance.main300 : Appearance.main200
     }
 }

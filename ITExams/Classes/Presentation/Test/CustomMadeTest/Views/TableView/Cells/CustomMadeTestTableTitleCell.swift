@@ -26,7 +26,7 @@ final class CustomMadeTestTableTitleCell: UITableViewCell {
 extension CustomMadeTestTableTitleCell {
     func setup(title: String) {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.semiBold(size: 17.scale))
             .lineHeight(20.4.scale)
             .letterSpacing(-0.44.scale)

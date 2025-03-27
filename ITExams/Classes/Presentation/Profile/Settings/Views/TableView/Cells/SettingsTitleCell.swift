@@ -26,7 +26,7 @@ final class SettingsTitleCell: UITableViewCell {
 extension SettingsTitleCell {
     func setup(title: String) {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.semiBold(size: 17.scale))
             .letterSpacing(-0.44.scale)
         titleLabel.attributedText = title.attributed(with: attrs)

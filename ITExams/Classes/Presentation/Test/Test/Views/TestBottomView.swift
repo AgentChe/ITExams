@@ -41,7 +41,7 @@ extension TestBottomView {
         let attrs = TextAttributes()
             .font(Fonts.Inter.semiBold(size: 17.scale))
             .letterSpacing(-0.44.scale)
-            .textColor(Appearance.whiteColor)
+            .textColor(Appearance.mono100)
             .textAlignment(.center)
         
         switch state {
@@ -98,7 +98,7 @@ private extension TestBottomView {
     func makeButton() -> UIButton {
         let view = UIButton()
         view.layer.cornerRadius = 8.scale
-        view.backgroundColor = Appearance.mainColor
+        view.backgroundColor = Appearance.main300
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
@@ -108,7 +108,7 @@ private extension TestBottomView {
         let view = TestBottomSpinner()
         view.isUserInteractionEnabled = false   
         view.layer.cornerRadius = 8.scale
-        view.backgroundColor = Appearance.mainColor
+        view.backgroundColor = Appearance.main300
         view.stop()
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)

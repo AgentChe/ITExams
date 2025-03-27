@@ -65,13 +65,13 @@ private extension CustomMadeTestTableStartCell {
 private extension CustomMadeTestTableStartCell {
     func makeButton() -> UIButton {
         let attrs = TextAttributes()
-            .textColor(Appearance.whiteColor)
+            .textColor(Appearance.mono100)
             .font(Fonts.Inter.semiBold(size: 17.scale))
             .letterSpacing(-0.44.scale)
         
         let view = UIButton()
         view.setAttributedTitle("CustomMadeTest.StartTest".localized.attributed(with: attrs), for: .normal)
-        view.backgroundColor = Appearance.mainColor
+        view.backgroundColor = Appearance.main300
         view.layer.cornerRadius = 8.scale
         view.addTarget(self, action: #selector(tapped), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false

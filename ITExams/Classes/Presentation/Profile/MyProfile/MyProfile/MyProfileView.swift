@@ -25,7 +25,7 @@ final class MyProfileView: UIView {
 // MARK: Private
 private extension MyProfileView {
     func initialize() {
-        backgroundColor = Appearance.backgroundColor
+        backgroundColor = Appearance.main100
     }
 }
 
@@ -52,7 +52,7 @@ private extension MyProfileView {
         view.separatorStyle = .none
         view.isScrollEnabled = false
         view.showsVerticalScrollIndicator = false
-        view.backgroundColor = Appearance.whiteColor
+        view.backgroundColor = Appearance.mono100
         view.layer.cornerRadius = 12.scale
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false

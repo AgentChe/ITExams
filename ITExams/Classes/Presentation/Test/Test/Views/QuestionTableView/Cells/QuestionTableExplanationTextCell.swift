@@ -27,7 +27,7 @@ extension QuestionTableExplanationTextCell {
     func confugure(explanation: String, html: String) {
         let attr = TextAttributes()
             .font(Fonts.Inter.regular(size: 15.scale))
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .lineHeight(22.5.scale)
             .letterSpacing(-0.14.scale)
         

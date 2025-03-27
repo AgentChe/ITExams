@@ -36,12 +36,12 @@ extension StatsTableDailyMetricsCell {
     
     func setup(streaks current: Int, longest: Int) {
         let daysAttrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.bold(size: 40.scale))
             .lineHeight(40.scale)
             .letterSpacing(-0.44.scale)
         let placeholderAttrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.semiBold(size: 15.scale))
             .lineHeight(21.scale)
             .letterSpacing(-0.44.scale)
@@ -136,7 +136,7 @@ private extension StatsTableDailyMetricsCell {
         view.layer.shadowOpacity = 0.08
         view.layer.shadowOffset = .zero
         view.layer.shadowRadius = 6.scale
-        view.backgroundColor = Appearance.whiteColor
+        view.backgroundColor = Appearance.mono100
         view.layer.cornerRadius = 12.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
@@ -145,7 +145,7 @@ private extension StatsTableDailyMetricsCell {
     
     func makePlaceholderLabel(text: String) -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.greyColor)
+            .textColor(Appearance.mono300)
             .font(Fonts.Inter.regular(size: 15.scale))
             .lineHeight(23.scale)
             .letterSpacing(-0.14.scale)

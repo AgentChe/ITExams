@@ -30,10 +30,10 @@ final class TestStatsTableAnswerCell: UITableViewCell {
 extension TestStatsTableAnswerCell {
     func setup(element: TestStatsTableAnswer) {
         iconView.image = UIImage(named: element.correct ? "TestStats.Correct" : "TestStats.Error")
-        iconView.tintColor = element.correct ? Appearance.successColor : Appearance.errorColor
+        iconView.tintColor = element.correct ? Appearance.system200 : Appearance.system100
         
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.regular(size: 15.scale))
             .lineHeight(22.5.scale)
             .letterSpacing(-0.14.scale)
@@ -114,7 +114,7 @@ private extension TestStatsTableAnswerCell {
 private extension TestStatsTableAnswerCell {
     func makeContainer() -> TestStatsAnswerContainer {
         let view = TestStatsAnswerContainer()
-        view.backgroundColor = Appearance.whiteColor
+        view.backgroundColor = Appearance.mono100
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
         return view
@@ -148,7 +148,7 @@ private extension TestStatsTableAnswerCell {
     
     func makeSeparator() -> UIView {
         let view = UIView()
-        view.backgroundColor = Appearance.greyColor.withAlphaComponent(0.16)
+        view.backgroundColor = Appearance.mono300.withAlphaComponent(0.16)
         view.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(view)
         return view

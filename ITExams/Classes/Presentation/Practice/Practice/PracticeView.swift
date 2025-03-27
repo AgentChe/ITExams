@@ -26,7 +26,7 @@ final class PracticeView: UIView {
 // MARK: Private
 private extension PracticeView {
     func initialize() {
-        backgroundColor = Appearance.backgroundColor
+        backgroundColor = Appearance.main100
     }
 }
 

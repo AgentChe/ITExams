@@ -37,7 +37,7 @@ private extension CourseCurrentView {
 private extension CourseCurrentView {
     func makeLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.whiteColor)
+            .textColor(Appearance.mono100)
             .font(Fonts.Inter.semiBold(size: 12.scale))
             .lineHeight(14.4.scale)
             .letterSpacing(-0.44.scale)

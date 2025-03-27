@@ -97,7 +97,7 @@ private extension PracticeDateOfExamView {
     
     func makeContainer() -> UIView {
         let view = UIView()
-        view.backgroundColor = Appearance.whiteColor
+        view.backgroundColor = Appearance.mono100
         view.layer.cornerRadius = 12.scale
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -115,7 +115,7 @@ private extension PracticeDateOfExamView {
     
     func makeTitleLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.bold(size: 19.scale))
             .lineHeight(26.6.scale)
             .letterSpacing(-0.44.scale)
@@ -150,7 +150,7 @@ private extension PracticeDateOfExamView {
         if #available(iOS 13.4, *) {
              view.preferredDatePickerStyle = .wheels
         }
-        view.setValue(Appearance.blackColor, forKeyPath: "textColor")
+        view.setValue(Appearance.mono200, forKeyPath: "textColor")
         view.datePickerMode = .countDownTimer
         view.datePickerMode = .date
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -160,13 +160,13 @@ private extension PracticeDateOfExamView {
     
     func makeSaveButton() -> UIButton {
         let attrs = TextAttributes()
-            .textColor(Appearance.whiteColor)
+            .textColor(Appearance.mono100)
             .font(Fonts.Inter.bold(size: 17.scale))
             .letterSpacing(-0.44.scale)
         
         let view = UIButton()
         view.layer.cornerRadius = 8.scale
-        view.backgroundColor = Appearance.mainColor
+        view.backgroundColor = Appearance.main300
         view.setAttributedTitle("PracticeDateOfExam.SaveButton".localized.attributed(with: attrs), for: .normal)
         view.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(view)

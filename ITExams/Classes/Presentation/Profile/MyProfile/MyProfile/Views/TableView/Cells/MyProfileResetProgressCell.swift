@@ -60,7 +60,7 @@ private extension MyProfileResetProgressCell {
 private extension MyProfileResetProgressCell {
     func makeLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.mainColor)
+            .textColor(Appearance.main300)
             .font(Fonts.Inter.regular(size: 15.scale))
             .lineHeight(22.5.scale)
             .letterSpacing(-0.14.scale)

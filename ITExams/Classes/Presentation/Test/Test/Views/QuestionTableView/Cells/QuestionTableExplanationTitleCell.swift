@@ -49,7 +49,7 @@ private extension QuestionTableExplanationTitleCell {
     func makeTitleLabel() -> UILabel {
         let attr = TextAttributes()
             .font(Fonts.Inter.semiBold(size: 17.scale))
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .lineHeight(22.5.scale)
             .letterSpacing(-0.44.scale)
         

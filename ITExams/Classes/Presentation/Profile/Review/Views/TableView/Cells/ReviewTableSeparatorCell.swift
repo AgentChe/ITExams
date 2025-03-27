@@ -48,7 +48,7 @@ private extension ReviewTableSeparatorCell {
 private extension ReviewTableSeparatorCell {
     func makeSeparator() -> UIView {
         let view = UIView()
-        view.backgroundColor = Appearance.greyColor.withAlphaComponent(0.16)
+        view.backgroundColor = Appearance.mono300.withAlphaComponent(0.16)
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
         return view

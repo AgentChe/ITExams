@@ -31,7 +31,7 @@ extension StepCollectionCell {
         progressView.setup(progress: progress)
         
         let attrs = TextAttributes()
-            .textColor(Appearance.mainColor.withAlphaComponent(0.2))
+            .textColor(Appearance.main300.withAlphaComponent(0.2))
             .font(Fonts.Inter.bold(size: 28.scale))
             .lineHeight(33.6.scale)
             .letterSpacing(-2.scale)
@@ -93,8 +93,8 @@ private extension StepCollectionCell {
         let view = CircleProgressView(arcCenter: CGPoint(x: 68.scale, y: 68.scale),
                                       radius: 62.scale,
                                       lineWidth: 12.scale,
-                                      circleColor: Appearance.fourthColor.withAlphaComponent(0.5),
-                                      trackColor: Appearance.mainColor)
+                                      circleColor: Appearance.custom230_231_248.withAlphaComponent(0.5),
+                                      trackColor: Appearance.main300)
         view.backgroundColor = UIColor.clear
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
@@ -103,7 +103,7 @@ private extension StepCollectionCell {
     
     func makeCircleView() -> CircleView {
         let view = CircleView()
-        view.backgroundColor = Appearance.fourthColor
+        view.backgroundColor = Appearance.custom230_231_248
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
         return view

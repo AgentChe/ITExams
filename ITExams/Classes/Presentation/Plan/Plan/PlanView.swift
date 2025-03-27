@@ -30,7 +30,7 @@ final class PlanView: UIView {
 // MARK: Private
 private extension PlanView {
     func initialize() {
-        backgroundColor = Appearance.backgroundColor
+        backgroundColor = Appearance.main100
     }
 }
 
@@ -81,7 +81,7 @@ private extension PlanView {
     func makeHeaderView() -> PlanHeaderView {
         let view = PlanHeaderView()
         view.isUserInteractionEnabled = true
-        view.backgroundColor = Appearance.secondColor
+        view.backgroundColor = Appearance.main400
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
@@ -117,7 +117,7 @@ private extension PlanView {
         }
         view.separatorStyle = .none
         view.showsVerticalScrollIndicator = false
-        view.backgroundColor = Appearance.whiteColor
+        view.backgroundColor = Appearance.mono100
         view.layer.cornerRadius = 12.scale
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.08

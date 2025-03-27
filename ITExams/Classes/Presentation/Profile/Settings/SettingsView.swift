@@ -25,7 +25,7 @@ final class SettingsView: UIView {
 // MARK: Private
 private extension SettingsView {
     func initialize() {
-        backgroundColor = Appearance.backgroundColor
+        backgroundColor = Appearance.main100
     }
 }
 

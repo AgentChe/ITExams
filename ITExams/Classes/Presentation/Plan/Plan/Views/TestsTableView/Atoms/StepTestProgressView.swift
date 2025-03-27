@@ -34,7 +34,7 @@ extension StepTestProgressView {
 // MARK: Private
 private extension StepTestProgressView {
     func clear() {
-        [column1, column2, column3].forEach { $0.backgroundColor = Appearance.buttonBackgroundColor }
+        [column1, column2, column3].forEach { $0.backgroundColor = Appearance.main200 }
     }
     
     func fill(at progress: Int) {
@@ -56,7 +56,7 @@ private extension StepTestProgressView {
     }
     
     func filledColor(at progress: Int) -> UIColor {
-        progress <= 33 ? Appearance.errorColor : Appearance.successColor
+        progress <= 33 ? Appearance.system100 : Appearance.system200
     }
 }
 

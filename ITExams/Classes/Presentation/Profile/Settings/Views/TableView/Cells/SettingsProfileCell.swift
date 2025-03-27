@@ -74,7 +74,7 @@ private extension SettingsProfileCell {
         view.layer.shadowOpacity = 0.08
         view.layer.shadowOffset = .zero
         view.layer.shadowRadius = 6.scale
-        view.backgroundColor = Appearance.whiteColor
+        view.backgroundColor = Appearance.mono100
         view.layer.cornerRadius = 12.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
@@ -92,7 +92,7 @@ private extension SettingsProfileCell {
     
     func makeTitleLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.regular(size: 15.scale))
             .lineHeight(22.5.scale)
             .letterSpacing(-0.14.scale)

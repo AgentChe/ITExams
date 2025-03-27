@@ -6,13 +6,13 @@
 //
 
 final class Weak<T> {
-    weak private var value: AnyObject?
+    private weak var value: AnyObject?
     
     var weak: T? {
         return value as? T
     }
     
-    init<T: AnyObject>(_ value: T) {
+    init<U: AnyObject>(_ value: U) {
         self.value = value
     }
 }

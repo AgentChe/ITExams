@@ -11,13 +11,13 @@ final class StatsTableMainCell: UITableViewCell {
     lazy var container = makeContainer()
     lazy var progressView = makeProgressView()
     lazy var progressLabel = makeLabel()
-    lazy var answeredIndicatorView = makeIndicatorView(color: Appearance.thirdColor)
+    lazy var answeredIndicatorView = makeIndicatorView(color: Appearance.main500)
     lazy var answeredPlaceholderLabel = makePlaceholderLabel(text: "Stats.Main.Answered".localized)
     lazy var answeredValueLabel = makeLabel()
-    lazy var correctIndicatorView = makeIndicatorView(color: Appearance.successColor)
+    lazy var correctIndicatorView = makeIndicatorView(color: Appearance.system200)
     lazy var correctPlaceholderLabel = makePlaceholderLabel(text: "Stats.Main.Correct".localized)
     lazy var correctValueLabel = makeLabel()
-    lazy var totalIndicatorView = makeIndicatorView(color: Appearance.buttonBackgroundColor)
+    lazy var totalIndicatorView = makeIndicatorView(color: Appearance.main200)
     lazy var totalPlaceholderLabel = makePlaceholderLabel(text: "Stats.Main.Total".localized)
     lazy var totalValueLabel = makeLabel()
     
@@ -41,13 +41,13 @@ extension StatsTableMainCell {
         
         progressLabel.attributedText = String(format: "%i%%", element.answeredPercent)
             .attributed(with: TextAttributes()
-                            .textColor(Appearance.blackColor)
+                            .textColor(Appearance.mono200)
                             .font(Fonts.Inter.bold(size: 30.scale))
                             .lineHeight(36.scale)
                             .letterSpacing(-0.44.scale))
         
         let valueAttrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.semiBold(size: 17.scale))
             .lineHeight(20.scale)
             .letterSpacing(-0.44.scale)
@@ -149,7 +149,7 @@ private extension StatsTableMainCell {
         view.layer.shadowOpacity = 0.08
         view.layer.shadowOffset = .zero
         view.layer.shadowRadius = 6.scale
-        view.backgroundColor = Appearance.whiteColor
+        view.backgroundColor = Appearance.mono100
         view.layer.cornerRadius = 12.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
@@ -175,7 +175,7 @@ private extension StatsTableMainCell {
     
     func makePlaceholderLabel(text: String) -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.greyColor)
+            .textColor(Appearance.mono300)
             .font(Fonts.Inter.regular(size: 15.scale))
             .lineHeight(22.5.scale)
             .letterSpacing(-0.14.scale)

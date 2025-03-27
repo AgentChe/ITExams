@@ -48,7 +48,7 @@ extension AnswerView {
         answerLabel.attributedText = answer
             .attributed(with: TextAttributes()
                             .font(Fonts.Inter.regular(size: 15.scale))
-                            .textColor(Appearance.blackColor)
+                            .textColor(Appearance.mono200)
                             .lineHeight(22.5.scale)
                             .letterSpacing(-0.14.scale))
         
@@ -85,7 +85,7 @@ private extension AnswerView {
         markLabel.attributedText = mark
             .attributed(with: TextAttributes()
                             .font(Fonts.Inter.regular(size: 15.scale))
-                            .textColor(Appearance.greyColor)
+                            .textColor(Appearance.mono300)
                             .lineHeight(22.5.scale)
                             .letterSpacing(-0.14.scale))
         
@@ -110,39 +110,39 @@ private extension AnswerView {
             layer.shadowOpacity = 0.08
             layer.borderWidth = 0
             layer.borderColor = UIColor.clear.cgColor
-            backgroundColor = Appearance.whiteColor
+            backgroundColor = Appearance.mono100
             iconView.image = nil
-            markLabel.textColor = Appearance.greyColor
+            markLabel.textColor = Appearance.mono300
         case .selected:
             layer.shadowOpacity = 0
             layer.borderWidth = 1.scale
-            layer.borderColor = Appearance.mainColor.cgColor
-            backgroundColor = Appearance.mainColor.withAlphaComponent(0.1)
+            layer.borderColor = Appearance.main300.cgColor
+            backgroundColor = Appearance.main300.withAlphaComponent(0.1)
             iconView.image = nil
-            markLabel.textColor = Appearance.mainColor
+            markLabel.textColor = Appearance.main300
         case .correct:
             layer.shadowOpacity = 0
             layer.borderWidth = 1.scale
-            layer.borderColor = Appearance.successColor.cgColor
-            backgroundColor = Appearance.successColor.withAlphaComponent(0.2)
+            layer.borderColor = Appearance.system200.cgColor
+            backgroundColor = Appearance.system200.withAlphaComponent(0.2)
             iconView.image = UIImage(named: "Question.Correct")
-            iconView.tintColor = Appearance.successColor
+            iconView.tintColor = Appearance.system200
             markLabel.textColor = UIColor.clear
         case .error:
             layer.shadowOpacity = 0
             layer.borderWidth = 1.scale
-            layer.borderColor = Appearance.errorColor.cgColor
-            backgroundColor = Appearance.errorColor.withAlphaComponent(0.2)
+            layer.borderColor = Appearance.system100.cgColor
+            backgroundColor = Appearance.system100.withAlphaComponent(0.2)
             iconView.image = UIImage(named: "Question.Error")
-            iconView.tintColor = Appearance.errorColor
+            iconView.tintColor = Appearance.system100
             markLabel.textColor = UIColor.clear
         case .warning:
             layer.shadowOpacity = 0
             layer.borderWidth = 1.scale
-            layer.borderColor = Appearance.thirdColor.cgColor
-            backgroundColor = Appearance.thirdColor.withAlphaComponent(0.2)
+            layer.borderColor = Appearance.main500.cgColor
+            backgroundColor = Appearance.main500.withAlphaComponent(0.2)
             iconView.image = UIImage(named: "Question.Warning")
-            iconView.tintColor = Appearance.thirdColor
+            iconView.tintColor = Appearance.main500
             markLabel.textColor = UIColor.clear
         }
     }

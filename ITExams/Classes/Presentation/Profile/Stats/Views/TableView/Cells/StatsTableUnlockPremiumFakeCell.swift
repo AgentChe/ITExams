@@ -70,7 +70,7 @@ private extension StatsTableUnlockPremiumFakeCell {
     
     func makeTextLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.bold(size: 24.scale))
             .lineHeight(28.8.scale)
             .letterSpacing(-0.44.scale)
@@ -86,7 +86,7 @@ private extension StatsTableUnlockPremiumFakeCell {
     
     func makeTextPaddingLabel() -> PaddingLabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.whiteColor)
+            .textColor(Appearance.mono100)
             .font(Fonts.Inter.semiBold(size: 17.scale))
             .lineHeight(20.4.scale)
             .letterSpacing(-0.44.scale)
@@ -97,7 +97,7 @@ private extension StatsTableUnlockPremiumFakeCell {
         view.numberOfLines = 0
         view.layer.cornerRadius = 8.scale
         view.layer.masksToBounds = true
-        view.backgroundColor = Appearance.mainColor
+        view.backgroundColor = Appearance.main300
         view.attributedText = "Stats.UnlockPremiumFake.Button".localized.attributed(with: attrs)
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)

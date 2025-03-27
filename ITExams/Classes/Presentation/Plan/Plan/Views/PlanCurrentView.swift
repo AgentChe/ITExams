@@ -28,7 +28,7 @@ extension PlanCurrentView {
     func setup(exam: Exam, course: Course) {
         let string = String(format: "%@ - %@", exam.title, course.name)
         let attrs = TextAttributes()
-            .textColor(Appearance.whiteColor)
+            .textColor(Appearance.mono100)
             .font(Fonts.Inter.semiBold(size: 15.scale))
             .lineHeight(18.scale)
             .letterSpacing(-0.44.scale)
@@ -70,7 +70,7 @@ private extension PlanCurrentView {
         let view = UIView()
         view.isUserInteractionEnabled = false
         view.layer.cornerRadius = 17.scale
-        view.backgroundColor = Appearance.whiteColor.withAlphaComponent(0.3)
+        view.backgroundColor = Appearance.mono100.withAlphaComponent(0.3)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

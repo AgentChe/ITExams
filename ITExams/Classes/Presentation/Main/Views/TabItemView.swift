@@ -39,9 +39,9 @@ private extension TabItemView {
         
         switch mode {
         case .selected:
-            color = Appearance.mainColor
+            color = Appearance.main300
         case .deselected:
-            color = Appearance.greyColor
+            color = Appearance.mono300
         }
         
         label.textColor = color

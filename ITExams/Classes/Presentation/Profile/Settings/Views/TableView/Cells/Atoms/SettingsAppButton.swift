@@ -57,7 +57,7 @@ private extension SettingsAppButton {
 private extension SettingsAppButton {
     func makeLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.regular(size: 15.scale))
             .lineHeight(22.5.scale)
             .letterSpacing(-0.14.scale)
@@ -81,7 +81,7 @@ private extension SettingsAppButton {
     func makeSeparator() -> UIView {
         let view = UIView()
         view.isHidden = !withSeparator
-        view.backgroundColor = Appearance.greyColor.withAlphaComponent(0.16)
+        view.backgroundColor = Appearance.mono300.withAlphaComponent(0.16)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

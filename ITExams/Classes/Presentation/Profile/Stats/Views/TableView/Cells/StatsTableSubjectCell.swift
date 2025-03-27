@@ -31,14 +31,14 @@ extension StatsTableSubjectCell {
     func setup(element: SubjectProgress) {
         nameLabel.attributedText = element.name
             .attributed(with: TextAttributes()
-                            .textColor(Appearance.blackColor)
+                            .textColor(Appearance.mono200)
                             .font(Fonts.Inter.regular(size: 15.scale))
                             .lineHeight(22.5.scale)
                             .letterSpacing(-0.14.scale))
         
         rateLabel.attributedText = String(format: "%i%%", element.rate)
             .attributed(with: TextAttributes()
-                            .textColor(Appearance.blackColor)
+                            .textColor(Appearance.mono200)
                             .font(Fonts.Inter.bold(size: 24.scale))
                             .lineHeight(24.scale)
                             .letterSpacing(-0.44.scale))
@@ -47,7 +47,7 @@ extension StatsTableSubjectCell {
         
         correctLabel.attributedText = String(format: "Stats.Subject.Correct".localized, element.answeredCount, element.totalCount)
             .attributed(with: TextAttributes()
-                            .textColor(Appearance.buttonBackgroundSelectedColor)
+                .textColor(Appearance.main200)
                             .font(Fonts.Inter.regular(size: 14.scale))
                             .lineHeight(19.6.scale)
                             .letterSpacing(-0.14.scale))
@@ -107,7 +107,7 @@ private extension StatsTableSubjectCell {
         view.layer.shadowOpacity = 0.08
         view.layer.shadowOffset = .zero
         view.layer.shadowRadius = 6.scale
-        view.backgroundColor = Appearance.whiteColor
+        view.backgroundColor = Appearance.mono100
         view.layer.cornerRadius = 12.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
@@ -126,8 +126,8 @@ private extension StatsTableSubjectCell {
         let view = UIProgressView()
         view.layer.cornerRadius = 4.5.scale
         view.layer.masksToBounds = true
-        view.trackTintColor = Appearance.backgroundColor
-        view.progressTintColor = Appearance.thirdColor
+        view.trackTintColor = Appearance.main100
+        view.progressTintColor = Appearance.main500
         view.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(view)
         return view

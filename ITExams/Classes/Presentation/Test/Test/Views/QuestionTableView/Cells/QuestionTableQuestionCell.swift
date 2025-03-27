@@ -27,7 +27,7 @@ extension QuestionTableQuestionCell {
     func configure(question: String, questionHtml: String) {
         let attr = TextAttributes()
             .font(Fonts.Inter.semiBold(size: 19.scale))
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .lineHeight(26.6.scale)
             .letterSpacing(-0.44.scale)
         

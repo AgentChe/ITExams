@@ -82,7 +82,7 @@ private extension CustomMadeTestTableCountCell {
         view.backgroundColor = UIColor.clear
         view.layer.cornerRadius = 12.scale
         view.layer.borderWidth = 2.scale
-        view.layer.borderColor = Appearance.mainColor.cgColor
+        view.layer.borderColor = Appearance.main300.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
         return view

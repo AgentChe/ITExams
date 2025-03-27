@@ -36,14 +36,14 @@ extension StepTestsTableCell {
         
         numberLabel.attributedText = String(number)
             .attributed(with: TextAttributes()
-                            .textColor(isLocked ? Appearance.mainColor : Appearance.whiteColor)
+                            .textColor(isLocked ? Appearance.main300 : Appearance.mono100)
                             .font(Fonts.Inter.black(size: 19.scale))
                             .lineHeight(22.8.scale)
                             .letterSpacing(-0.44.scale))
         
         nameLabel.attributedText = element.name
             .attributed(with: TextAttributes()
-                            .textColor(Appearance.blackColor)
+                            .textColor(Appearance.mono200)
                             .font(Fonts.Inter.semiBold(size: 15.scale))
                             .lineHeight(21.scale)
                             .letterSpacing(-0.44.scale))
@@ -51,7 +51,7 @@ extension StepTestsTableCell {
         let questionsCount = String(format: "Plan.Test.Questions".localized, element.questionsCount)
         questionsCountLabel.attributedText = questionsCount
             .attributed(with: TextAttributes()
-                            .textColor(Appearance.greyColor)
+                            .textColor(Appearance.mono300)
                             .font(Fonts.Inter.regular(size: 14.scale))
                             .lineHeight(16.8.scale)
                             .letterSpacing(-0.44.scale))

@@ -36,7 +36,7 @@ extension PracticeTableExamDateCell {
 
         daysLabel.attributedText = String(format: "Practice.ExamDate.DaysCount".localized, daysLeft)
             .attributed(with: TextAttributes()
-                            .textColor(Appearance.blackColor)
+                            .textColor(Appearance.mono200)
                             .font(Fonts.Inter.bold(size: 30.scale))
                             .lineHeight(36.scale)
                             .letterSpacing(-1.scale)
@@ -158,7 +158,7 @@ private extension PracticeTableExamDateCell {
 private extension PracticeTableExamDateCell {
     func makeTitleLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.bold(size: 24.scale))
             .lineHeight(28.8.scale)
             .letterSpacing(-0.44.scale)
@@ -172,13 +172,13 @@ private extension PracticeTableExamDateCell {
     
     func makeChangeExamDateButton() -> UIButton {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.regular(size: 14.scale))
             .letterSpacing(-0.14.scale)
         
         let view = UIButton()
         view.setAttributedTitle("Practice.ChangeExamDate".localized.attributed(with: attrs), for: .normal)
-        view.backgroundColor = Appearance.buttonBackgroundColor
+        view.backgroundColor = Appearance.main200
         view.layer.cornerRadius = 8.scale
         view.addTarget(self, action: #selector(tappedChangeDate), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -196,7 +196,7 @@ private extension PracticeTableExamDateCell {
     
     func makeUpcomingLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.greyColor)
+            .textColor(Appearance.mono300)
             .font(Fonts.Inter.regular(size: 14.scale))
             .lineHeight(17.scale)
             .letterSpacing(-0.2.scale)
@@ -211,7 +211,7 @@ private extension PracticeTableExamDateCell {
     
     func makeTrackExamDateButton() -> UIButton {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.regular(size: 15.scale))
             .letterSpacing(-0.14.scale)
         
@@ -220,7 +220,7 @@ private extension PracticeTableExamDateCell {
         view.backgroundColor = UIColor.clear
         view.layer.cornerRadius = 10.scale
         view.layer.borderWidth = 1.scale
-        view.layer.borderColor = Appearance.greyColor.withAlphaComponent(0.2).cgColor
+        view.layer.borderColor = Appearance.mono300.withAlphaComponent(0.2).cgColor
         view.addTarget(self, action: #selector(tappedTrackDate), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)

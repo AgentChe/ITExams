@@ -67,8 +67,8 @@ private extension StepCollectionFinalCell {
         let view = CircleProgressView(arcCenter: CGPoint(x: 68.scale, y: 68.scale),
                                       radius: 62.scale,
                                       lineWidth: 12.scale,
-                                      circleColor: Appearance.fourthColor.withAlphaComponent(0.5),
-                                      trackColor: Appearance.mainColor)
+                                      circleColor: Appearance.custom230_231_248.withAlphaComponent(0.5),
+                                      trackColor: Appearance.main300)
         view.backgroundColor = UIColor.clear
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)

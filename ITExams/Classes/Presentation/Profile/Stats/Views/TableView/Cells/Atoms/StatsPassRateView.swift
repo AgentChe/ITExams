@@ -32,7 +32,7 @@ final class StatsPassRateView: UIView {
 extension StatsPassRateView {
     func setup(element: PassRateProgress) {
         let attrs = TextAttributes()
-            .textColor(Appearance.greyColor)
+            .textColor(Appearance.mono300)
             .font(Fonts.Inter.regular(size: 12.scale))
             .lineHeight(16.8.scale)
             .letterSpacing(-0.14.scale)
@@ -79,7 +79,7 @@ private extension StatsPassRateView {
     
     func makeProgressView() -> UIView {
         let view = UIView()
-        view.backgroundColor = Appearance.mainColor
+        view.backgroundColor = Appearance.main300
         view.layer.cornerRadius = 4.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)

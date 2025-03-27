@@ -87,7 +87,7 @@ private extension TabView {
     func makeItem(image: String, title: String) -> TabItemView {
         let attrs = TextAttributes()
             .font(Fonts.Inter.semiBold(size: 10.scale))
-            .textColor(Appearance.greyColor)
+            .textColor(Appearance.mono300)
             .lineHeight(12.scale)
             .textAlignment(.center)
         

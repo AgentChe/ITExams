@@ -32,7 +32,7 @@ extension CustomMadeTestTableSwitchCell {
         self.element = element
         
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.regular(size: 15.scale))
             .lineHeight(22.5.scale)
             .letterSpacing(-0.14.scale)
@@ -85,7 +85,7 @@ private extension CustomMadeTestTableSwitchCell {
 private extension CustomMadeTestTableSwitchCell {
     func makeContainer() -> UIView {
         let view = UIView()
-        view.backgroundColor = Appearance.whiteColor
+        view.backgroundColor = Appearance.mono100
         view.layer.cornerRadius = 12.scale
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.08
@@ -105,9 +105,9 @@ private extension CustomMadeTestTableSwitchCell {
     
     func makeSwitch() -> UISwitch {
         let view = UISwitch()
-        view.thumbTintColor = Appearance.whiteColor
-        view.onTintColor = Appearance.mainColor
-        view.tintColor = Appearance.fourthColor
+        view.thumbTintColor = Appearance.mono100
+        view.onTintColor = Appearance.main300
+        view.tintColor = Appearance.custom230_231_248
         view.addTarget(self, action: #selector(switched), for: .valueChanged)
         view.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(view)

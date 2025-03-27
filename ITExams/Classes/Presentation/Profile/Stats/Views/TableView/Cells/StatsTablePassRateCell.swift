@@ -149,7 +149,7 @@ private extension StatsTablePassRateCell {
         view.layer.shadowOpacity = 0.08
         view.layer.shadowOffset = .zero
         view.layer.shadowRadius = 6.scale
-        view.backgroundColor = Appearance.whiteColor
+        view.backgroundColor = Appearance.mono100
         view.layer.cornerRadius = 12.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
@@ -158,7 +158,7 @@ private extension StatsTablePassRateCell {
     
     func makePercentLabel(text: String) -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.buttonBackgroundSelectedColor)
+            .textColor(Appearance.main200)
             .font(Fonts.Inter.regular(size: 14.scale))
             .lineHeight(19.6.scale)
             .letterSpacing(-0.14.scale)
@@ -172,7 +172,7 @@ private extension StatsTablePassRateCell {
     
     func makeSeparator() -> UIView {
         let view = UIView()
-        view.backgroundColor = Appearance.backgroundColor
+        view.backgroundColor = Appearance.main100
         view.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(view)
         return view
@@ -180,7 +180,7 @@ private extension StatsTablePassRateCell {
     
     func makePassRateLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.mainColor)
+            .textColor(Appearance.main300)
             .font(Fonts.Inter.regular(size: 14.scale))
             .lineHeight(19.6.scale)
             .letterSpacing(-0.14.scale)
@@ -195,7 +195,7 @@ private extension StatsTablePassRateCell {
     func makeDotsView() -> UILabel {
         let view = UILabel()
         view.lineBreakMode = .byCharWrapping
-        view.textColor = Appearance.mainColor
+        view.textColor = Appearance.main300
         view.text = "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
         view.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(view)

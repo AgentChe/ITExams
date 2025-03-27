@@ -39,9 +39,9 @@ private extension ProfileTabView {
         
         switch mode {
         case .selected:
-            color = Appearance.mainColor
+            color = Appearance.main300
         case .deselected:
-            color = Appearance.whiteColor
+            color = Appearance.mono100
         }
         
         label.textColor = color
@@ -72,7 +72,7 @@ private extension ProfileTabView {
     func makeBackgroundView() -> UIView {
         let view = UIView()
         view.layer.cornerRadius = 12.scale
-        view.backgroundColor = Appearance.whiteColor
+        view.backgroundColor = Appearance.mono100
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

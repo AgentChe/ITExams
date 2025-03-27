@@ -115,25 +115,28 @@
 "Onboarding.PlanView.Button" = "Get my plan";
 
 // MARK: Paygate
-"Paygate.RestorePurchases" = "Restore purchases";
-"Paygate.Title" = "KNOW THE QUESTIONS\nBEFOREHAND";
-"Paygate.Cell1" = "Don’t spend hours learning";
-"Paygate.Cell2" = "Train yourself with %i+ questions";
-"Paygate.Cell3" = "98% pass rate on the first attempt!";
-"Paygate.Info" = "Secured with iTunes. Cancel anytime.";
-"Paygate.TermsOfUse" = "Terms of use";
-"Paygate.And" = " and ";
+"Paygate.Error.Title" = "Error";
+"Paygate.Error.Text" = "An error occurred during execution. Try later.";
+"Paygate.Error.Button" = "OK";
+"Paygate.Title" = "Upgrade Premium";
+"Paygate.Info1" = "Create stunning looks, and discover\nnew styles";
+"Paygate.Info2" = "Capture your clothing, remove backgrounds";
+"Paygate.Info3" = "Store items in your virtual wardrobe";
+"Paygate.EnableFreeTrial" = "Enable Free Trial";
+"Paygate.FreeTrialEnabled" = "Free Trial Enabled";
+"Paygate.Yearly" = "Yearly";
+"Paygate.Yearly.Bottom" = "%@/year";
+"Paygate.PerWeek" = "per week";
+"Paygate.FreeTrialDays" = "3-day free trial";
+"Paygate.Then" = "%@\n";
+"Paygate.Continue" = "Continue";
+"Paygate.TryFreeSubscribe" = "Try free & subscribe";
+"Paygate.CancelAnytime" = "Cancel Anytime";
+"Paygate.NoPaymentNow" = "No payment now";
+"Paygate.TermsOfUse" = "Terms of Use";
 "Paygate.PrivacyPolicy" = "Privacy Policy";
-"Paygate.Failed" = "Failed to make purchase";
-"Paygate.Monthly.Name1" = "7 days FREE";
-"Paygate.Monthly.Name2" = "Quick prep";
-"Paygate.Monthly.Bottom1" = "After 7 day trial";
-"Paygate.Monthly.Bottom2" = "Trial is over";
-"Paygate.Lifetime.Name" = "Lifetime";
-"Paygate.Lifetime.PriceDescription" = "\nIn terms of  1  year";
-"Paygate.Lifetime.BottomDescription" = "paid once";
-"Paygate.Discount" = "SAVE %i%%";
-"Paygate.Price.Period" = "month";
+"Paygate.RestorePurchases" = "Restore Purchases";
+"Paygate.BestOffer" = "⭐ Best Offer";
 
 // MARK: Main
 "Main.Plan" = "Plan";

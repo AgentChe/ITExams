@@ -27,21 +27,21 @@ final class PlanFinalStepView: UIView {
 extension PlanFinalStepView {
     func setup(finalStep: PlanFinalStep, locked: Bool) {
         let titleAttrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.regular(size: 15.scale))
             .lineHeight(22.5.scale)
             .letterSpacing(-0.14.scale)
             .textAlignment(.center)
         
         let subTitleAttrs = TextAttributes()
-            .textColor(Appearance.greyColor)
+            .textColor(Appearance.mono300)
             .font(Fonts.Inter.regular(size: 15.scale))
             .lineHeight(22.5.scale)
             .letterSpacing(-0.14.scale)
             .textAlignment(.center)
         
         let buttonAttrs = TextAttributes()
-            .textColor(Appearance.whiteColor)
+            .textColor(Appearance.mono100)
             .font(Fonts.Inter.semiBold(size: 17.scale))
             .letterSpacing(-0.44.scale)
         
@@ -107,7 +107,7 @@ private extension PlanFinalStepView {
     
     func makeButton() -> UIButton {
         let view = UIButton()
-        view.backgroundColor = Appearance.mainColor
+        view.backgroundColor = Appearance.main300
         view.layer.cornerRadius = 8.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)

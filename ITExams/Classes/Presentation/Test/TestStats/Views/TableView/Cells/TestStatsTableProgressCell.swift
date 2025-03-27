@@ -28,12 +28,12 @@ extension TestStatsTableProgressCell {
     func setup(element: Int) {
         progressView.setup(progress: element)
         
-        let color = element < 80 ? Appearance.errorColor : Appearance.successColor
+        let color = element < 80 ? Appearance.system100 : Appearance.system200
         progressView.update(circleColor: color.withAlphaComponent(0.2))
         progressView.update(trackColor: color)
         
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.semiBold(size: 48.scale))
             .lineHeight(58.scale)
             .letterSpacing(-0.44.scale)
@@ -75,8 +75,8 @@ private extension TestStatsTableProgressCell {
         let view = CircleProgressView(arcCenter: CGPoint(x: 92.scale, y: 92.scale),
                                       radius: 82.scale,
                                       lineWidth: 20.scale,
-                                      circleColor: Appearance.successColor.withAlphaComponent(0.2),
-                                      trackColor: Appearance.successColor)
+                                      circleColor: Appearance.system200.withAlphaComponent(0.2),
+                                      trackColor: Appearance.system200)
         view.backgroundColor = UIColor.clear
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)

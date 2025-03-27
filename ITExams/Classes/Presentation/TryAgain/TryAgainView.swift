@@ -29,7 +29,7 @@ final class TryAgainView: UIView {
 // MARK: Private
 private extension TryAgainView {
     func initialize() {
-        backgroundColor = Appearance.backgroundColor
+        backgroundColor = Appearance.main100
     }
 }
 
@@ -84,7 +84,7 @@ private extension TryAgainView {
     
     func makeTitleLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.blackColor)
+            .textColor(Appearance.mono200)
             .font(Fonts.Inter.semiBold(size: 19.scale))
             .lineHeight(26.6.scale)
             .letterSpacing(-0.44.scale)
@@ -100,7 +100,7 @@ private extension TryAgainView {
     
     func makeSubTitleLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.greyColor)
+            .textColor(Appearance.mono300)
             .font(Fonts.Inter.regular(size: 17.scale))
             .lineHeight(25.5.scale)
             .textAlignment(.center)
@@ -121,7 +121,7 @@ private extension TryAgainView {
         let view = UIButton()
         view.setAttributedTitle("TryAgain.Button".localized.attributed(with: attrs), for: .normal)
         view.layer.cornerRadius = 8.scale
-        view.backgroundColor = Appearance.mainColor
+        view.backgroundColor = Appearance.main300
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
@@ -129,7 +129,7 @@ private extension TryAgainView {
     
     func makeContactButton() -> TapAreaButton {
         let attrs = TextAttributes()
-            .textColor(Appearance.mainColor)
+            .textColor(Appearance.main300)
             .font(Fonts.Inter.semiBold(size: 17.scale))
         
         let view = TapAreaButton()

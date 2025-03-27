@@ -69,7 +69,7 @@ private extension SettingsPremiumCell {
     
     func makeTitleLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.whiteColor)
+            .textColor(Appearance.mono100)
             .font(Fonts.Inter.bold(size: 19.scale))
             .lineHeight(26.6.scale)
             .letterSpacing(-0.44.scale)
@@ -83,7 +83,7 @@ private extension SettingsPremiumCell {
     
     func makeSubTitleLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(Appearance.whiteColor)
+            .textColor(Appearance.mono100)
             .font(Fonts.Inter.regular(size: 15.scale))
             .lineHeight(22.5.scale)
             .letterSpacing(-0.14.scale)
